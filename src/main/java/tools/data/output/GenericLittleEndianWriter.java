@@ -124,6 +124,23 @@ public class GenericLittleEndianWriter implements LittleEndianWriter {
     }
 
     /**
+     * Writes an ASCII string the the stream.
+     *
+     * @param s The ASCII string to write.
+     * @param max The max length
+     */
+    @Override
+    public void writeAsciiString(String s, int max) {
+        if (s.getBytes(ASCII).length > max) {
+            s = s.substring(0, max);
+        }
+        write(s.getBytes(ASCII));
+        for (int i = s.getBytes(ASCII).length; i < max; i++) {
+            write(0);
+        }
+    }
+
+    /**
      * Writes a maple-convention ASCII string to the stream.
      *
      * @param s The ASCII string to use maple-convention to write.

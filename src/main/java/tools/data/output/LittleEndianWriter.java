@@ -91,6 +91,8 @@ public interface LittleEndianWriter {
      */
     void writeNullTerminatedAsciiString(String s);
 
+    void writeAsciiString(String s, int max);
+
     /**
      * Writes a maple-convention ASCII string to the sequence.
      *

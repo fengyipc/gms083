@@ -25,10 +25,7 @@ import java.io.*;
 import java.net.InetAddress;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -654,9 +651,9 @@ public class MapleClient {
 			if (!rs.next()) {
 				return null;
 			}
-			long blubb = rs.getLong("tempban");
-			
-			if (blubb == 0 || rs.getString("tempban").equals("2018-06-20 00:00:00.0")) { // 0000-00-00 or 2018-06-20 (default set in LoginPasswordHandler)
+			Timestamp blubb = rs.getTimestamp("tempban");
+
+			if (blubb == null || rs.getString("tempban").equals("2018-06-20 00:00:00.0")) { // 0000-00-00 or 2018-06-20 (default set in LoginPasswordHandler)
 				return null;
 			}
 			lTempban.setTimeInMillis(rs.getTimestamp("tempban").getTime());

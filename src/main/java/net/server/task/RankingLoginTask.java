@@ -64,7 +64,7 @@ public class RankingLoginTask implements Runnable {
         while (rs.next()) {
             int rankMove = 0;
             rank++;
-            if (rs.getLong("lastlogin") < lastUpdate || rs.getInt("loggedin") > 0) {
+            if (rs.getTimestamp("lastlogin").getTime() < lastUpdate || rs.getInt("loggedin") > 0) {
                 rankMove = rs.getInt((job != -1 ? "jobRankMove" : "rankMove"));
             }
             rankMove += rs.getInt((job != -1 ? "jobRank" : "rank")) - rank;
