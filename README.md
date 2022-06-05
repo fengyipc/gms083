@@ -1,6 +1,6 @@
 ﻿<img src="https://heavenmssurveyhome.files.wordpress.com/2018/12/heavenmslogo.png"  width="370" height="auto">
 
-## MapleStory GMS 0.83 汉化以优化
+## MapleStory GMS 0.83 汉化优化
 
 - [x] Maven
 - [x] 主程序汉化(90%)
