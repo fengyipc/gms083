@@ -34,7 +34,7 @@ status = -1;
 oldSelection = -1;
 
 function start() {
-    cm.sendSimple("Hello, I am Irene from Singapore Airport. I can assist you in getting you to Singapore in no time. Do you want to go to Singapore?\r\n#b#L0#I would like to buy a plane ticket to Singapore\r\n#b#L1#Let me go in to the departure point.");
+    cm.sendSimple("你好,我是新加坡机场的#p9270041#.我可以帮你飞快去新加坡.你要去吗?\r\n#b#L0#我要买去新加坡的机票\r\n#b#L1#让我进入登机口.");
 }
 
 function action(mode, type, selection) {
@@ -46,9 +46,9 @@ function action(mode, type, selection) {
 	
 	if(status == 0){
 		if(selection == 0){
-			cm.sendYesNo("The ticket will cost you 5,000 mesos. Will you purchase the ticket?");
+			cm.sendYesNo("票价是5000金币.要买吗?");
 		}else if(selection == 1){
-			cm.sendYesNo("Would you like to go in now? You will lose your ticket once you go in! Thank you for choosing Wizet Airline.");
+			cm.sendYesNo("现在要进去?进去的话需要收票.");
 		}
 		oldSelection = selection;
 	}else if(status == 1){
@@ -57,15 +57,15 @@ function action(mode, type, selection) {
                                 if(cm.canHold(4031731, 1)) {
                                         cm.gainMeso(-5000);
                                         cm.gainItem(4031731);
-                                        cm.sendOk("Thank you for choosing Wizet Airline! Enjoy your flight!");
+                                        cm.sendOk("谢谢选择大力航空!");
                                         cm.dispose();
                                 }
                                 else {
-                                        cm.sendOk("You don't have a free slot on your ETC inventory for the ticket, please make a room beforehand.");
+                                        cm.sendOk("你其他栏空间不足.");
                                         cm.dispose();
                                 }
 			} else {
-				cm.sendOk("You do not have enough mesos or you've already purchased a ticket.");
+				cm.sendOk("你没有足够的金币,或者已经买过票了.");
 				cm.dispose();
 			}
 		}else if(oldSelection == 1){
@@ -75,10 +75,10 @@ function action(mode, type, selection) {
 					cm.warp(540010100);
 					cm.gainItem(4031731, -1);
 				}else{
-					cm.sendOk("Sorry the plane has taken off, please wait a few minutes.");
+					cm.sendOk("航班已经起飞,请等下一班.");
 				}
 			}else{
-				cm.sendOk("You need a #b#t4031731##k to get on the plane!");
+				cm.sendOk("你需要#b#t4031731##k才可以上飞机!");
 			}
 		}
 		cm.dispose();

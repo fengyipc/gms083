@@ -19,43 +19,43 @@
 */
 
 var status;
- 
+
 function start() {
-        status = -1;
-        action(1, 0, 0);
+    status = -1;
+    action(1, 0, 0);
 }
 
 function action(mode, type, selection) {
-        if (mode == -1) {
-                cm.dispose();
-        } else {
-                var mapobj = cm.getMap();
-            
-                if (mode == 0 && type > 0) {
-                        cm.getPlayer().dropMessage(5, "Eleanor: Oh, lost the Empress and still challenging us? Now you've done it! Prepare yourself!!!");
-                        
-                        mapobj.spawnMonsterOnGroundBelow(Packages.server.life.MapleLifeFactory.getMonster(9001010), new Packages.java.awt.Point(850, 0));
-                        mapobj.destroyNPC(1104002);
-                        
-                        cm.dispose();
-                        return;
-                }
-                if (mode == 1)
-                        status++;
-                else
-                        status--;
-    
-                if(status == 0) {
-                        if(!cm.isQuestStarted(20407)) {
-                                cm.sendOk("... Knight, you still #bseem unsure to face this fight#k, don't you? There's no grace in challenging someone when they are still not mentally ready for the battle. Talk your peace to that big clumsy bird of yours, maybe it'll put some guts on you.");
-                                cm.dispose();
-                                return;
-                        }
-                    
-                        cm.sendAcceptDecline("Hahahahaha! This place's Empress is already under my domain, that's surely a great advance on the #bBlack Wings#k' overthrow towards Maple World... And you, there? Still wants to face us? Or, better yet, since you seem strong enough to be quite a supplementary reinforcement at our service, #rwill you meet our expectations and fancy joining us#k since there's nothing more you can do?");
-                } else if (status == 1) {
-                        cm.sendOk("Heh, cowards have no place on the #rBlack Mage's#k army. Begone!");
-                        cm.dispose();
-                }
+    if (mode == -1) {
+        cm.dispose();
+    } else {
+        var mapobj = cm.getMap();
+
+        if (mode == 0 && type > 0) {
+            cm.getPlayer().dropMessage(5, "#p1104002#: 女皇祝福都没有了还敢挑战我们?!!!");
+
+            mapobj.spawnMonsterOnGroundBelow(Packages.server.life.MapleLifeFactory.getMonster(9001010), new Packages.java.awt.Point(850, 0));
+            mapobj.destroyNPC(1104002);
+
+            cm.dispose();
+            return;
         }
+        if (mode == 1)
+            status++;
+        else
+            status--;
+
+        if (status == 0) {
+            if (!cm.isQuestStarted(20407)) {
+                cm.sendOk("... 骑士, 你还是#b不愿面对战斗#k,对吗? 去跟那只笨手笨脚的大鸟好好谈谈再来吧.");
+                cm.dispose();
+                return;
+            }
+
+            cm.sendAcceptDecline("哈哈哈哈哈!这里的女皇已经被我控制住了,这将是#b黑色之翼#k倾覆冒险岛世界的一大进展... 你还想恨我们作对吗? 还是说你想为我们效力?#r你够资格加入我们吗");
+        } else if (status == 1) {
+            cm.sendOk("呵呵,#r黑魔法师#k的队伍里面才不需要无能的废物,滚!");
+            cm.dispose();
+        }
+    }
 }

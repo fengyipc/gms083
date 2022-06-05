@@ -2,19 +2,19 @@ function start() {
     if(cm.haveItem(4031045)){
         var em = cm.getEventManager("Boats");
         if (em.getProperty("entry") == "true")
-            cm.sendYesNo("Do you want to go to Orbis?");
+            cm.sendYesNo("你想去天空之城?");
         else{
-            cm.sendOk("The boat to Orbis is already travelling, please be patient for the next one.");
+            cm.sendOk("飞船已经离开了,请等下一班.");
             cm.dispose();
         }
     }else{
-        cm.sendOk("Make sure you got a Orbis ticket to travel in this boat. Check your inventory.");
+        cm.sendOk("确定你有我们的船票吗?");
         cm.dispose();
     }
 }
 function action(mode, type, selection) {
     if (mode <= 0) {
-	cm.sendOk("Okay, talk to me if you change your mind!");
+	cm.sendOk("好的,想改变主意了就跟我说!");
 	cm.dispose();
 	return;
     }
@@ -25,7 +25,7 @@ function action(mode, type, selection) {
         cm.dispose();
     }
     else{
-        cm.sendOk("The boat to Orbis is ready to take off, please be patient for the next one.");
+        cm.sendOk("飞船已经停止检票了,请等待下一班.");
         cm.dispose();
     }
 }	

@@ -47,14 +47,14 @@ function action(mode, type, selection) {
                 eim = cm.getEventInstance();
                 if(status == 0) {
                         if(!eim.isEventCleared()) {
-                                cm.sendYesNo("Are you ready to leave this place?");
+                                cm.sendYesNo("准备离开了?");
                         } else {
-                                cm.sendYesNo("You have defeated Capt. Latanica, well done! Are you ready to leave this place?");
+                                cm.sendYesNo("你打败了幽灵船长,干得漂亮!准备离开了?");
                         }
                 } else if(status == 1) {
                         if(eim.isEventCleared()) {
                                 if(!eim.giveEventReward(cm.getPlayer())) {
-                                        cm.sendOk("Please make a room on your inventory to receive the loot.");
+                                        cm.sendOk("背包空间不足已获得奖励.");
                                         cm.dispose();
                                         return;
                                 }

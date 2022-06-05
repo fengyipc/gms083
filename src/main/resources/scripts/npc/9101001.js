@@ -27,7 +27,7 @@
 var status = 0;
 
 function start() {
-    cm.sendNext("You have finished all your trainings. Good job. You seem to be ready to start with the journey right away! Good, I will let you move on to the next place.");
+    cm.sendNext("你完成了所有的训练.干得漂亮.你看样子已经准备好开始旅程了!很好,我会送你去下一站.");
 }
 
 function action(mode, type, selection) {
@@ -36,7 +36,7 @@ function action(mode, type, selection) {
     } else {
         status++;
         if (status == 1) 
-            cm.sendNextPrev("But remember, once you get out of here, you will enter a village full with monsters. Well them, good bye!");
+            cm.sendNextPrev("但是记住,一旦你出去了,你会进入一个满是怪物的村庄!");
         else if (status == 2) {
             cm.warp(40000, 0);
             cm.gainExp(3);

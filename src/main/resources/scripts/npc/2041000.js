@@ -4,17 +4,17 @@ function start() {
         if (em.getProperty("entry") == "true")
             cm.sendYesNo("Do you want to go to Orbis?");
         else{
-            cm.sendOk("The train to Orbis is already travelling, please be patient for the next one.");
+            cm.sendOk("去往天空之城的列车已经出发,请耐心等待下一班列车.");
             cm.dispose();
         }
     }else{
-        cm.sendOk("Make sure you got a Orbis ticket to travel in this train. Check your inventory.");
+        cm.sendOk("请带上你的车票.");
         cm.dispose();
     }
 }
 function action(mode, type, selection) {
     if (mode <= 0) {
-	cm.sendOk("Okay, talk to me if you change your mind!");
+	cm.sendOk("好吧,改变主意了记得来找我!");
         cm.dispose();
 	return;
     } 
@@ -26,7 +26,7 @@ function action(mode, type, selection) {
         cm.dispose();
     }
     else {
-        cm.sendOk("The train to Orbis is ready to take off, please be patient for the next one.");
+        cm.sendOk("列车已经停止检票了,请耐心等待下一班.");
         cm.dispose();
     }
 }

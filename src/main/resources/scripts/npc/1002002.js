@@ -24,45 +24,45 @@
 	Map(s): 		Victoria Road : Lith Harbor (104000000)
 	Description: 		Florina Beach Tour Guide
  */
-var status = 0;
+    var status = 0;
 
-function start() {
-    cm.sendSimple("Have you heard of the beach with a spectacular view of the ocean called #bFlorina Beach#k, located near Lith Harbor? I can take you there right now for either #b1500 mesos#k, or if you have a #bVIP Ticket to Florina Beach#k with you, in which case you'll be there for free.\r\n\r\n#L0##b I'll pay 1500 mesos.#l\r\n#L1# I have a VIP Ticket to Florina Beach.#l\r\n#L2# What is a VIP Ticket to Florina Beach#k?#l");
-}
-
-function action(mode, type, selection) {
-    status++;
-    if (mode != 1)
-        if((mode == 0 && type == 1) || mode == -1 || (mode == 0 && status == 1)){
-            if(type == 1)
-                cm.sendNext("You must have some business to take care of here. You must be tired from all that traveling and hunting. Go take some rest, and if you feel like changing your mind, then come talk to me.");
-            cm.dispose();
-            return;
-        } else
-            status -= 2;
-    if (selection == 0)
+    function start() {
+        cm.sendSimple("你听说过#b黄金海滩#k吗？, 这个地方在明珠港.我可以现在帮助你到那个地方，只需要#b10000金币#k, 或者如果你有一张#b#t4031134##k,那么就可以免费去.\r\n\r\n#L0##b 我愿意付10000金币.#l\r\n#L1# 我有#b#t4031134##k.#l\r\n#L2# 什么是#b#t4031134##k?#l");
+    }
+    
+    function action(mode, type, selection) {
         status++;
-    if(status == 1){
-        if(selection == 1)
-            cm.sendYesNo("So you have a #bVIP Ticket to Florina Beach#k? You can always head over to Florina Beach with that. Alright then, but just be aware that you may be running into some monsters there too. Okay, would you like to head over to Florina Beach right now?");
-        else if (selection == 2)
-            cm.sendNext("You must be curious about a #bVIP Ticket to Florina Beach#k. Haha, that's very understandable. A VIP Ticket to Florina Beach is an item where as long as you have in possession, you may make your way to Florina Beach for free. It's such a rare item that even we had to buy those, but unfortunately I lost mine a few weeks ago during my precious summer break.");
-    } else if (status == 2){
-        if(type != 1 && selection != 0) {
-            cm.sendNextPrev("I came back without it, and it just feels awful not having it. Hopefully someone picked it up and put it somewhere safe. Anyway, this is my story and who knows, you may be able to pick it up and put it to good use. If you have any questions, feel free to ask.");
-			cm.dispose();
-		} else{
-            if (cm.getMeso() < 1500 && selection == 0)
-                cm.sendNext("I think you're lacking mesos. There are many ways to gather up some money, you know, like... selling your armor... defeating monsters... doing quests... you know what I'm talking about.");
-            else if(!cm.haveItem(4031134) && selection != 0){
-                cm.sendNext("Hmmm, so where exactly is your #bVIP Ticket to Florina\r\nBeach#k? Are you sure you have one? Please double-check.");
-            }else{
-                if(selection == 0)
-                    cm.gainMeso(-1500);
-                cm.getPlayer().saveLocation("FLORINA");
-                cm.warp(110000000, "st00");
+        if (mode != 1)
+            if((mode == 0 && type == 1) || mode == -1 || (mode == 0 && status == 1)){
+                if(type == 1)
+                    cm.sendNext("你一定有什么事要处理。你一定是旅行和打猎累了。去休息一下，如果你想改变主意，就来找我。");
+                cm.dispose();
+                return;
+            } else
+                status -= 2;
+        if (selection == 0)
+            status++;
+        if(status == 1){
+            if(selection == 1)
+                cm.sendYesNo("所以你有#b#t4031134##k吗？你可以带着它去黄金海滩。好吧，但是你要知道你可能也会遇到一些怪物。好的，你现在想去黄金海滩吗?");
+            else if (selection == 2)
+                cm.sendNext("你一定对#b#t4031134##k很好奇。哈哈，只要你拥有你就可以免费前往黄金海滩。这是一件很少见的东西，我本来有一张，但不幸的是，几周前我弄丢了。");
+        } else if (status == 2){
+            if(type != 1 && selection != 0) {
+                cm.sendNextPrev("我回来的时候没带，没带感觉很糟糕。希望有人把它捡起来放在安全的地方。不管怎样，这是我的故事，谁知道呢，你也许可以把它捡起来好好利用。");
+                cm.dispose();
+            } else{
+                if (cm.getMeso() < 10000 && selection == 0)
+                    cm.sendNext("你的钱不够。有很多方法可以筹集到一些钱，你知道，比如。。。卖你的装备。。。打败怪物。。。完成任务。。。你知道我在说什么.");
+                else if(!cm.haveItem(4031134) && selection != 0){
+                    cm.sendNext("你确定你有#b#t4031134##k吗？请再核对一下。");
+                }else{
+                    if(selection == 0)
+                        cm.gainMeso(-10000);
+                    cm.getPlayer().saveLocation("FLORINA");
+                    cm.warp(110000000, "st00");
+                }
+                cm.dispose();
             }
-            cm.dispose();
         }
     }
-}

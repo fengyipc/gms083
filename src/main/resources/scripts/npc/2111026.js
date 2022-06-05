@@ -23,7 +23,7 @@
 	Incomplete Magic Square
  */
 
-function start() {
-    cm.sendNext ("This chalkboard has some hard-founded studies annotated on it...");
-    cm.dispose();
-}
+    function start() {
+        cm.sendNext ("这黑板上有一些有根据的研究成果...");
+        cm.dispose();
+    }

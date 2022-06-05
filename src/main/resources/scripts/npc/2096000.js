@@ -25,7 +25,7 @@
  */
 
 var status;
- 
+
 function start() {
         status = -1;
         action(1, 0, 0);
@@ -43,10 +43,11 @@ function action(mode, type, selection) {
                         status++;
                 else
                         status--;
-    
+        
                 if(status == 0) {
-                        cm.sendOk("Amateurs train on this map. Adepts train on the next. Professionals train on the last, where the boss will be awaiting.");
+                        cm.sendOk("业余爱好者在这张地图上训练。行家训练下一个。专业人士在最后一次训练，老板将在那里等待。");
                         cm.dispose();
                 }
         }
 }
+        

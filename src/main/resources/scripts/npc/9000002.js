@@ -37,18 +37,18 @@ function action(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            cm.sendNext("Bam bam bam bam!! You have won the game from the \r\n#bEVENT#k. Congratulations on making it this far!");
+            cm.sendNext("呯 呯 呯 呯!!你在活动的游戏中获得了胜利.恭喜你!");
         } else if (status == 1) {
-            cm.sendNext("You'll be awarded the #bScroll of Secrets#k as the winning prize. On the scroll, it has secret information written in ancient characters.");
+            cm.sendNext("你将获得#b神秘卷轴#k.这个卷轴上用古老的字符写这神秘的信息.");
         } else if (status == 2) {
-            cm.sendNext("The Scroll of Secrets can be deciphered by #rChun Ji#k or \r\n#rGeanie#k at Ludibrium. Bring it with you and something good's bound to happen.");
+            cm.sendNext("你可以去找玩具城的#rChun Ji#k或者\r\n#rGeanie#k鉴定卷轴.");
         } else if (status == 3) {
         if (cm.canHold(4031019)) {
             cm.gainItem(4031019);
             cm.warp(cm.getPlayer().getSavedLocation("EVENT"));
             cm.dispose();
         } else {
-            cm.sendNext("I think your Etc window is full. Please make room, then talk to me.");
+            cm.sendNext("你其他栏满了");
         }
         } else if (status == 4) {
             cm.dispose();

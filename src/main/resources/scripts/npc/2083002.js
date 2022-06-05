@@ -25,8 +25,8 @@
  *@Author: Ronan
  *@NPC: Crystal of Roots
  */
-function start() {
-    cm.sendYesNo("Do you wish to leave?");
+ function start() {
+    cm.sendYesNo("要出去吗?");
 }
 
 function action(mode, type, selection) {

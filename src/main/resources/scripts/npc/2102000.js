@@ -24,19 +24,19 @@ function start() {
     if(cm.haveItem(4031045)){
         var em = cm.getEventManager("Genie");
         if (em.getProperty("entry") == "true") {
-            cm.sendYesNo("This will not be a short flight, so you need to take care of some things, I suggest you do that first before getting on board. Do you still wish to board the genie?");
+            cm.sendYesNo("路途漫长, 你需要做好充分准备,如果还有什么事没处理先处理了再来.现在就要出发吗?");
         } else {
-            cm.sendOk("This genie is getting ready for takeoff. I'm sorry, but you'll have to get on the next ride. The ride schedule is available through the guide at the ticketing booth.");
+            cm.sendOk("精灵已经离开了. 抱歉你需要等待他回来.");
             cm.dispose();
         }
     } else {
-        cm.sendOk("Make sure you got an Ariant ticket to travel in this genie. Check your inventory.");
+        cm.sendOk("你好像没有买票.");
         cm.dispose();
     }
 }
 function action(mode, type, selection) {
     if (mode <= 0) {
-	cm.sendOk("Okay, talk to me if you change your mind!");
+	cm.sendOk("好吧, 如果想改变主意了来找我!");
         cm.dispose();
 	return;
     }
@@ -47,7 +47,7 @@ function action(mode, type, selection) {
         cm.gainItem(4031045, -1);
     }
     else {
-        cm.sendOk("This genie is getting ready for takeoff. I'm sorry, but you'll have to get on the next ride. The ride schedule is available through the guide at the ticketing booth.");
+        cm.sendOk("精灵已经离开了. 抱歉你需要等待他回来.");
     }
     
     cm.dispose();

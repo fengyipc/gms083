@@ -22,7 +22,7 @@
 var status = -1;
 
 function start() {
-    cm.sendNext("魔法师们装备了闪光元素法术和辅助整个团队的次级魔法。在第二次转职后，元素魔法将为相反元素的敌人提供足够的伤害。");
+    cm.sendNext("魔法师们拥有元素法术和辅助整个团队的法术。在第二次转职后，元素魔法将对相反元素的敌人提供足够的伤害。");
 }
 
 function action(mode, type, selection) {

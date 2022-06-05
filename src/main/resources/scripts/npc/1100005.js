@@ -9,6 +9,6 @@
 **/
 
 function start() {
-	cm.sendOk("The weather is so nice. At this rate, we should arrive in no time....");
+	cm.sendOk("天气可真好.我们马上就要抵达了....");
 	cm.dispose();
 }

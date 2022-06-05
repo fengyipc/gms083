@@ -36,7 +36,7 @@ function start() {
 function action(mode, type, selection) {
 	if (mode < 1) {  // disposing issue with stylishs found thanks to Vcoc
                 if (type == 7) {
-			cm.sendNext("I see...take your time, see if you really want it. Let me know when you make up your mind.");
+			cm.sendNext("我知道了...做你的事情去吧,如果什么时候有空了再来找我.");
 		}
             
 		cm.dispose();
@@ -47,7 +47,7 @@ function action(mode, type, selection) {
 			status--;
                     
                 if (status == 0) {
-                        cm.sendSimple("Hi, I'm the face surgery assistant doctor from around here. With a #b#t5152029##k or a #b#t5152048##k, I can make it kick in just nice, trust me. Ah, don't forget, what comes next after the operation will be random! Then, what are you going for?\r\n#L1#Plastic Surgery: #i5152029##t5152029##l\r\n#L2#Cosmetic Lens: #i5152048##t5152048##l");
+                        cm.sendSimple("嗨, 我是#p2100009#.如果你有 #b#t5152029##k或者#b#t5152048##k,我可以让你变得更好看,相信我. 但是别忘了,到底会发生什么谁也说不准! 你想要?\r\n#L1#整形:使用 #i5152029##t5152029##l\r\n#L2#美瞳:使用 #i5152048##t5152048##l");
                 } else if (status == 1) {
                         if (selection == 1) {
                                 beauty = 0;
@@ -67,7 +67,7 @@ function action(mode, type, selection) {
                                                  % 100));
                                         }
                                 }
-                                cm.sendYesNo("If you use the regular coupon, your face may transform into a random new look...do you still want to do it using #b#t5152029##k?");
+                                cm.sendYesNo("如果你使用普通会员卡,你的脸会发生随机的变化.还是要使用#b#t5152029##k吗?");
                         } else if (selection == 2) {
                                 beauty = 1;
                                 if (cm.getPlayer().getGender() == 0) {
@@ -80,7 +80,7 @@ function action(mode, type, selection) {
                                 }
                                 colors = Array();
                                 pushIfItemsExists(colors, [current , current + 100, current + 300, current + 600, current + 700]);
-                                cm.sendYesNo("If you use the regular coupon, you'll be awarded a random pair of cosmetic lenses. Are you going to use a #b#t5152048##k and really make the change to your eyes?");
+                                cm.sendYesNo("如果你使用普通会员卡,你的瞳孔颜色会发生随机的变化.确定还是要使用#b#t5152048##k吗?");
                         }
                 } else if (status == 2){	
 			cm.dispose();
@@ -89,17 +89,17 @@ function action(mode, type, selection) {
                                 if (cm.haveItem(5152029) == true){
                                         cm.gainItem(5152029, -1);
                                         cm.setFace(facenew[Math.floor(Math.random() * facenew.length)]);
-                                        cm.sendOk("Enjoy your new and improved face!");
+                                        cm.sendOk("好了!");
                                 } else {
-                                        cm.sendNext("Um ... it looks like you don't have the coupon specifically for this place...sorry to say this, but without the coupon, there's no plastic surgery for you.");
+                                        cm.sendNext("你好像没有我们的会员卡.");
                                 }
                         } else if (beauty == 1) {
                                 if (cm.haveItem(5152048)){
                                         cm.gainItem(5152048, -1);
                                         cm.setFace(colors[Math.floor(Math.random() * colors.length)]);
-                                        cm.sendOk("Enjoy your new and improved cosmetic lenses!");
+                                        cm.sendOk("好了!");
                                 } else {
-                                       cm.sendOk("Hmm ... it looks like you don't have the coupon specifically for this place. Sorry to say this, but without the coupon, there's no plastic surgery for you...");
+                                       cm.sendOk("你好像没有我们的会员卡...");
                                 }
                         }
 		}

@@ -48,7 +48,7 @@ function action(mode, type, selection) {
                                         cm.gainItem(4031740, -1);
                                         cm.gainItem(4031741, -1);
                     
-                                        cm.sendOk("(As you place the shards a light shines over the circle, repelling whatever omens were brewing inside the artifact.)", 2);
+                                        cm.sendOk("(当你放置碎片时，一束光照在圆圈上, 击退神器内部正在酝酿的任何预兆.)", 2);
                                         cm.dispose();
                                 } else if(progress < 4) {
                                         cm.setQuestProgress(3345, 0);

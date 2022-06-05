@@ -19,18 +19,13 @@
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-/* 	Noel
-	Singapore Random Face Changer
-	@Author AAron (aaroncsn), Cody
-	Side note by aaron [If there is something wrong PM me on fMS]
-
-        GMS-like revised by Ronan -- contents found thanks to Mitsune (GamerBewbs), Waltzing, AyumiLove
+/* 	Sixx
+	Singa REG/VIP Eye Color Changer
 */
+
 var status = 0;
 var beauty = 0;
-var mface_r = Array(20002, 20005, 20006, 20013, 20017, 20021, 20024);
-var fface_r = Array(21002, 21003, 21014, 21016, 21017, 21021, 21027);
-var facenew = Array();
+var colors = Array();
 
 function pushIfItemExists(array, itemid) {
     if ((itemid = cm.getCosmeticItem(itemid)) != -1 && !cm.isCosmeticEquipped(itemid)) {
@@ -38,39 +33,88 @@ function pushIfItemExists(array, itemid) {
     }
 }
 
+function pushIfItemsExists(array, itemidList) {
+    for (var i = 0; i < itemidList.length; i++) {
+        var itemid = itemidList[i];
+        
+        if ((itemid = cm.getCosmeticItem(itemid)) != -1 && !cm.isCosmeticEquipped(itemid)) {
+            array.push(itemid);
+        }
+    }
+}
+
 function start() {
-    cm.sendSimple("If you use this regular coupon, your face may transform into a random new look...do you still want to do it using #b#t5152037##k, I will do it anyways for you. But don't forget, it will be random!\r\n\#L2#OK! (Uses #i5152037# #t5152037#)#l");
+    cm.sendSimple("你好!我是#p9270026#, in charge of Da Yan Jing Lens Shop here at CBD! With #b#t5152039##k or #b#t5152040##k, you can let us take care of the rest and have the kind of beautiful look you've always craved! Remember, the first thing everyone notices about you are the eyes, and we can help you find the cosmetic lens that most fits you! Now, what would you like to use?\r\n#L1#Cosmetic Lenses: #i5152039##t5152039##l\r\n#L2#Cosmetic Lenses: #i5152040##t5152040##l\r\n#L3#One-time Cosmetic Lenses: #i5152107# (any color)#l");
 }
 
 function action(mode, type, selection) {
-    if (mode < 1)  // disposing issue with stylishs found thanks to Vcoc
+    if (mode < 1)
         cm.dispose();
     else {
-        if (mode == 1)
-            status++;
-        else
-            status--;
-        
+        status++;
         if (status == 1) {
-            if (!cm.haveItem(5152037)) {
-                cm.sendOk("Hmm ... it looks like you don't have the coupon specifically for this place. Sorry to say this, but without the coupon, there's no plastic surgery for you...");
-                cm.dispose();
-                return;
+            if (selection == 1) {
+                beauty = 1;
+                var current = cm.getPlayer().getFace()% 100 + 20000 + cm.getPlayer().getGender() * 1000;
+                cm.sendYesNo("If you use the regular coupon, you'll be awarded a random pair of cosmetic lenses. Are you going to use a #b#t5152039##k and really make the change to your eyes?");
+            } else if (selection == 2) {
+                beauty = 2;
+                var current = cm.getPlayer().getFace()% 100 + 20000 + cm.getPlayer().getGender() * 1000;
+                pushIfItemsExists(colors, [current + 200, current + 300, current +400, current + 700]);
+                cm.sendStyle("With our specialized machine, you can see yourself after the treatment in advance. What kind of lens would you like to wear? Choose the style of your liking.", colors);
+            } else if (selection == 3) {
+                beauty = 3;
+                if (cm.getPlayer().getGender() == 0) {
+                    var current = cm.getPlayer().getFace()
+                    % 100 + 20000;
+                }
+                if (cm.getPlayer().getGender() == 1) {
+                    var current = cm.getPlayer().getFace()
+                    % 100 + 21000;
+                }
+                
+                colors = Array();
+                for (var i = 0; i < 8; i++) {
+                    if (cm.haveItem(5152100 + i)) {
+                        pushIfItemExists(colors, current + 100 * i);
+                    }
+                }
+                
+                if (colors.length == 0) {
+                    cm.sendOk("You don't have any One-Time Cosmetic Lens to use.");
+                    cm.dispose();
+                    return;
+                }
+                
+                cm.sendStyle("What kind of lens would you like to wear? Please choose the style of your liking.", colors);
             }
-            
-            facenew = Array();
-            if (cm.getPlayer().getGender() == 0)
-                for(var i = 0; i < mface_r.length; i++) 
-                    pushIfItemExists(facenew, mface_r[i] + cm.getPlayer().getFace()% 1000 - (cm.getPlayer().getFace()% 100));
-            if (cm.getPlayer().getGender() == 1)
-                for(var i = 0; i < fface_r.length; i++) 
-                    pushIfItemExists(facenew, fface_r[i] + cm.getPlayer().getFace()% 1000 - (cm.getPlayer().getFace()% 100));
-            cm.sendYesNo("If you use the regular coupon, your face may transform into a random new look...do you still want to do it using #b#t5152037##k?");
-        } else if (status == 2){
-            cm.gainItem(5152037 , -1);
-            cm.setFace(facenew[Math.floor(Math.random() * facenew.length)]);
-            cm.sendOk("Enjoy your new and improved face!");
-            
+        }
+        else if (status == 2) {
+            if (beauty == 1){
+                if (cm.haveItem(5152039)){
+                    cm.gainItem(5152039, -1);
+                    cm.setFace(Math.floor(Math.random() * 8) * 100 + current);
+                    cm.sendOk("Enjoy your new and improved cosmetic lenses!");
+                } else
+                    cm.sendOk("I'm sorry, but I don't think you have our cosmetic lens coupon with you right now. Without the coupon, I'm afraid I can't do it for you..");
+            } else if (beauty == 2){
+                if (cm.haveItem(5152040)){
+                    cm.gainItem(5152040, -1);
+                    cm.setFace(colors[selection]);
+                    cm.sendOk("Enjoy your new and improved cosmetic lenses!");
+                } else 
+                    cm.sendOk("I'm sorry, but I don't think you have our cosmetic lens coupon with you right now. Without the coupon, I'm afraid I can't do it for you..");
+            } else if (beauty == 3){
+                var color = (colors[selection] / 100) % 100 | 0;
+                
+                if (cm.haveItem(5152100 + color)){
+                    cm.gainItem(5152100 + color, -1);
+                    cm.setFace(colors[selection]);
+                    cm.sendOk("Enjoy your new and improved cosmetic lenses!");
+                } else {
+                    cm.sendOk("I'm sorry, but I don't think you have our cosmetic lens coupon with you right now. Without the coupon, I'm afraid I can't do it for you..");
+                }
+            }
             cm.dispose();
         }
     }

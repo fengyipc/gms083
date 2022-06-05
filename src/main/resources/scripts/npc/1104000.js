@@ -16,7 +16,7 @@ function action(mode, type, selection){
 		status++;
 
 	if(status == 0){
-		cm.sendNext("What the... you don't belong here!");
+		cm.sendNext("我... 你不该来这里!");
 	}
 	else if(status == 1){
 		var puppet = cm.getEventManager("Puppeteer");

@@ -1,8 +1,8 @@
 /*
-	This file is part of the OdinMS Maple Story Server
+    This file is part of the OdinMS Maple Story Server
     Copyright (C) 2008 Patrick Huy <patrick.huy@frz.cc>
-		       Matthias Butz <matze@odinms.de>
-		       Jan Christian Meyer <vimes@odinms.de>
+               Matthias Butz <matze@odinms.de>
+               Jan Christian Meyer <vimes@odinms.de>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -20,8 +20,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 /* NPC Base
-	Map Name (Map ID)
-	Extra NPC info.
+    Map Name (Map ID)
+    Extra NPC info.
  */
 
 function start() {
@@ -38,12 +38,12 @@ function action(mode, type, selection) {
         else
             status--;
         if (status == 0 && mode == 1) {
-			cm.sendYesNo("Would you like to exit the drill hall?");
-		} else if(status == 1) {
-			cm.warp(130020000, 0);
-			cm.dispose();
-		} else {
-			cm.dispose();
-		}
+            cm.sendYesNo("要离开了吗?");
+        } else if (status == 1) {
+            cm.warp(130020000, 0);
+            cm.dispose();
+        } else {
+            cm.dispose();
+        }
     }
 }

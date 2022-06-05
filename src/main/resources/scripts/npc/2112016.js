@@ -28,7 +28,7 @@ function start() {
     if(cm.isQuestStarted(3367)) {
         var c = cm.getQuestProgressInt(3367, 30);
         if(c >= 30) {
-            cm.sendNext("(All files have been organized. Report the found files to Yulete.)", 2);
+            cm.sendNext("(所有文件都整理好了。把找到的文件报告给尤利特.)", 2);
             cm.dispose();
             return;
         }
@@ -40,7 +40,7 @@ function start() {
             
             if(book < 20) {
                 if(!cm.canHold(4031797, 1)) {
-                    cm.sendNext("(You found a report file, but since your ETC is full you choose to put the file in the place you've found.)");
+                    cm.sendNext("(您找到了一个报告文件，但由于背包已满，您选择将该文件放在找到的位置.)");
                     cm.dispose();
                     return;
                 } else {
@@ -49,7 +49,7 @@ function start() {
                 }
             }
             
-            cm.sendNext("(Organized file. #r" + (30 - c) + "#k left.)", 2);
+            cm.sendNext("(找到了文件. #r还差" + (30 - c) + "#k个.)", 2);
             
             cm.setQuestProgress(3367, book, 1);
             cm.setQuestProgress(3367, 30, c);

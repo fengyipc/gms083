@@ -42,9 +42,9 @@ function action(mode, type, selection) {
     
                 if(status == 0) {
                         if(area > 0) {
-                                cm.sendYesNo("Do you wish to leave this place?");
+                                cm.sendYesNo("要离开吗?");
                         } else {
-                                cm.sendYesNo("Do you wish to return to #bHappyville#k?");
+                                cm.sendYesNo("返回#b幸福村#k?");
                         }
                 } else {
                         if(area > 0) {

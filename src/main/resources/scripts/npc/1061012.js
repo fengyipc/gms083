@@ -8,32 +8,32 @@ function start() {
     if (cm.getQuestStatus(6107) == 1 || cm.getQuestStatus(6108) == 1) {
 	var ret = checkJob();
 	if (ret == -1) {
-	    cm.sendOk("Please form a party and talk to me again.");
+	    cm.sendOk("请创建一个队伍再与我交谈");
 	} else if (ret == 0) {
-	    cm.sendOk("Please make sure that your party is a size of 2.");
+	    cm.sendOk("请确定你的队伍只有2个人.");
 	} else if (ret == 1) {
-	    cm.sendOk("One of your party member's job is not eligible for entering the other world.");
+	    cm.sendOk("你的队员没有资格进入异界之门。");
 	} else if (ret == 2) {
-	    cm.sendOk("One of your party member's level is not eligible for entering the other world.");
+	    cm.sendOk("你的队员没有资格进入异界之门。");
 	} else {
 	    var em = cm.getEventManager("s4aWorld");
 	    if (em == null) {
-		cm.sendOk("You're not allowed to enter with unknown reason. Try again." );
+		cm.sendOk("未知原因无法进入。再试一次。" );
 	    } else if (em.getProperty("started").equals("true")) {
-		cm.sendOk("Someone else is already attempting to defeat the Jr.Balrog in another world." );
+		cm.sendOk("已经有人试图在异界之门挑战武术教练。" );
 	    } else {
                 var eli = em.getEligibleParty(cm.getParty());
                 if(eli.size() > 0) {
                     if(!em.startInstance(cm.getParty(), cm.getPlayer().getMap(), 1)) {
-                        cm.sendOk("A party in your name is already registered in this instance.");
+                        cm.sendOk("你的队伍已经登记了");
                     }
                 } else {
-                    cm.sendOk("You cannot start this party quest yet, because either your party is not in the range size, some of your party members are not eligible to attempt it or they are not in this map. If you're having trouble finding party members, try Party Search.");
+                    cm.sendOk("您还无法启动组队任务，因为您的队伍不在范围大小内，您的组队成员中的某些人没有资格尝试，或者他们不在此地图中。");
                 }
 	    }
 	}
     } else {
-        cm.sendOk("You're not allowed to enter the other world with unknown reason.");
+        cm.sendOk("未知原因无法进入。再试一次。。");
     }
     
     cm.dispose();

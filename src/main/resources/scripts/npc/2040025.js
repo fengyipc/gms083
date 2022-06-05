@@ -29,9 +29,9 @@ var map = 221024400;
 
 function start() {
     if (cm.haveItem(4001020))
-        cm.sendSimple("You can use #bEos Rock Scroll#k to activate #bSecond Eos Rock#k. Which of these rocks would you like to teleport to?#b\r\n#L0#First Eos Rock (100th Floor)#l\r\n#L1#Third Eos Rock (41st Floor)#l");
+        cm.sendSimple("使用#b#z4001020##k可以开启#b#p2040025##k.可以穿送到相连的其他魔法石?#b\r\n#L0##p2040024#(100层)#l\r\n#L1##p2040026#(41层)#l");
     else {
-        cm.sendOk("There's a rock that will enable you to teleport to #bFirst Eos Rock or Third Eos Rock#k, but it cannot be activated without the scroll.");
+        cm.sendOk("需要#z4001020#才可以使用魔法石");
         cm.dispose();
     }
 }
@@ -50,9 +50,9 @@ function action(mode, type, selection) {
             status--;
         if (status == 1) {
             if (selection == 0)
-                cm.sendYesNo("You can use #bEos Rock Scroll#k to activate #bSecond Eos Rock#k. Will you teleport to #bFirst Eos Rock#k at the 100th Floor?");
+                cm.sendYesNo("确定要去#p2040024#(100层)吗?");
             else {
-                cm.sendYesNo("You can use #bEos Rock Scroll#k to activate #bSecond Eos Rock#k. Will you teleport to #bThird Eos Rock#k at the 41st Floor?");
+                cm.sendYesNo("确定要去#p2040026#(41层)吗?");
                 map = 221021700;
             }
         } else if (status == 2) {

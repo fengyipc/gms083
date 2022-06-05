@@ -35,15 +35,15 @@ function start() {
         em = cm.getEventManager("DollHouse");
 
         if (em.getProperty("noEntry") == "false") {
-            cm.sendNext("The pendulum is hidden inside a dollhouse that looks different than the others.");
+            cm.sendNext("闹钟藏在玩具屋里,它看着与众不同.");
         }
         else {
-            cm.sendOk("Someone else is already searching the area. Please wait until the area is cleared.");
+            cm.sendOk("其他人正在搜寻这里.请等里面没人了再去");
             cm.dispose();
         }
     }
     else {
-        cm.sendOk("We are not allowed to let the general public wander past this point.");
+        cm.sendOk("我不允许没事人的人通过这里.");
         cm.dispose();
     }
 }
@@ -54,11 +54,11 @@ function action(mode, type, selection) {
     else {
         status++;
         if (status == 1) 
-            cm.sendYesNo("Are you ready to enter the dollhouse map?");
+            cm.sendYesNo("要进去吗?");
         else if (status == 2) {
             var em = cm.getEventManager("DollHouse");
             if (!em.startInstance(cm.getPlayer())) {
-                cm.sendOk("Hmm... The DollHouse is being challenged already, it seems. Try again later.");
+                cm.sendOk("里面有人了.");
             }
             
             cm.dispose();

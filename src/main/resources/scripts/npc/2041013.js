@@ -37,10 +37,10 @@ function action(mode, type, selection) {
 		else
 			status--;
 		if (status == 0) {
-			cm.sendSimple("Oh, hello! Welcome to the Ludibrium Skin-Care! Are you interested in getting tanned and looking sexy? How about a beautiful, snow-white skin? If you have #b#t5153002##k, you can let us take care of the rest and have the kind of skin you've always dreamed of!\r\n#L2#Skin Care: #i5153002##t5153002##l");
+			cm.sendSimple("欢迎来到玩具城皮肤护理中心,你想拥有更性感的皮肤吗? 来做一次精致的皮肤护理吧?如果你有#b#t5153002##k,我们就会对你的皮肤进行一次细致的护理!\r\n#L2#使用: #i5153002##t5153002##l");
                 } else if (status == 1) {
 			if (selection == 2) {
-				cm.sendStyle("With our specialized machine, you can see the way you'll look after the treatment PRIOR to the procedure. What kind of a look are you looking for? Go ahead and choose the style of your liking~!", skin);
+				cm.sendStyle("你可以预先观看护肤后的效果。你想做什么样的皮肤护理？选择你喜欢的风格!", skin);
 			}
 		}
 		else if (status == 2){
@@ -48,9 +48,9 @@ function action(mode, type, selection) {
 			if (cm.haveItem(5153002) == true){
 				cm.gainItem(5153002, -1);
 				cm.setSkin(skin[selection]);
-				cm.sendOk("Enjoy your new and improved skin!");
+				cm.sendOk("做好了!");
 			} else {
-				cm.sendOk("Um...you don't have the skin-care coupon you need to receive the treatment. Sorry, but I am afraid we can't do it for you...");
+				cm.sendOk("你好像没有我们的会员卡");
 			}
 		}
 	}

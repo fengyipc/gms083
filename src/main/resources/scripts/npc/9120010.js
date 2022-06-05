@@ -51,7 +51,7 @@ function action(mode, type, selection) {
         cm.dispose();
     } else {
         if (mode == 0 && status == 0) {
-            cm.sendOk("Really? Let me know if you ever change your mind.");
+            cm.sendOk("真的吗?如果改变主意了还是找我.");
             cm.dispose();
             return;
         } if (mode == 0 && status == 1) {
@@ -61,7 +61,7 @@ function action(mode, type, selection) {
         if (mode == 1)
             status++;
         if (status == 0) {
-            cm.sendYesNo("If you're looking for someone that can pinpoint the characteristics of various items, you're looking at one right now. I'm currently looking for something. Would you like to hear my story?");
+            cm.sendYesNo("如果你在找一个收集各种道具的人，我就是了.我现在在收集一些东西.你想知道吗?");
         } else if (status == 1) {
             var eQuestChoice = makeChoices(eQuestChoices);
             cm.sendSimple(eQuestChoice);
@@ -72,13 +72,13 @@ function action(mode, type, selection) {
             prizeItem = reward[itemSet][0];
             prizeQuantity = reward[itemSet][1];
             if (!cm.canHold(prizeItem)){
-                cm.sendNext("I can't give you the reward if your equip, use, or etc. inventory is full. Please go take a look right now.");
+                cm.sendNext("你背包满了");
             } else if (cm.hasItem(requiredItem, 100)){   // check they have >= 100 in Inventory
                 cm.gainItem(requiredItem,-100);   
                 cm.gainItem(prizeItem,prizeQuantity);
-                cm.sendOk("Hmmm ... if not for this minor scratch ... sigh. I'm afraid I can only deem this a standard-quality item. Well, here's \r\n#t"+ prizeItem +"# for you.");
+                cm.sendOk("嗯,如果不是有这些划痕,哎. 恐怕我只能认为这是一个标准质量的产品.好吧,这是给你的\r\n#t"+ prizeItem +"#.");
             } else{        
-                cm.sendOk("Hey, what do you think you're doing? Go lie to someone that DOESN'T know what he's talking about. Not me!");
+                cm.sendOk("嘿,你觉得你在做什么?去骗一个不知道他在说什么的人。不是我!");
             }
             cm.dispose();
         }
@@ -86,7 +86,7 @@ function action(mode, type, selection) {
 }
 
 function makeChoices(a){
-    var result  = "The items I'm looking for are 1,2,3 ... phew, too many to\r\nmention. Anyhow, if you gather up 100 of the same items,\r\nthen i may trade it with something similiar. What? You may\r\nnot know this, but i keep my end of the promise, so you\r\nneed not worry. Now, shall we trade?\r\n";
+    var result  = "看看\r\n这些东西你收集100个,\r\n我和你做笔交易怎么样?你可能不知道,但是我决不食言.\r\n";
     for (var x = 0; x< a.length; x++){
         result += " #L" + x + "##v" + a[x] + "##t" + a[x] + "##l\r\n";
     }

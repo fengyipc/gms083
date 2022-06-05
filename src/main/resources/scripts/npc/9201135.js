@@ -37,9 +37,9 @@ var status = 0;
 
 function start() {
 	if (cm.getPlayer().getMap().getId() != 540000000) {
-                text = "Hey I'm #p9201135#, your tour guide here in #rMalaysia#k. Where would you like to travel?\n\n";
+                text = "你好,我是#p9201135#,你在马来西亚的旅游向导,你想去什么地方?\n\n";
 	} else {
-                text = "Hey I'm #p9201135#, a tour guide on #rMalaysia#k. Since you're not registered in our special travel package with our partner #bMaple Travel Agency#k, the ride will be significantly more expensive. So, would you like to ride now?\n\n";
+                text = "你好,我是#p9201135#,你在马来西亚的旅游向导.你想去什么地方?\n\n";
                 startedTravel = true;
 	}
         
@@ -60,10 +60,10 @@ function start() {
                 var costs = cost[location];
 
                 for(var i = 0; i < maps.length; i++) {
-                        text +="\t\r\n#b#L" + i + "##m" + maps[i] + "# " + (costs[i] > 0 ?  "(" + costs[i] + "mesos)" : "") + "#l";
+                        text +="\t\r\n#b#L" + i + "##m" + maps[i] + "# " + (costs[i] > 0 ?  "(" + costs[i] + "金币)" : "") + "#l";
                 }
         } else {
-                text +="\t\r\n#b#L0##m" + toMap[location] + "# " + (cost[location] > 0 ?  "(" + cost[location] + "mesos)" : "") + "#l";
+                text +="\t\r\n#b#L0##m" + toMap[location] + "# " + (cost[location] > 0 ?  "(" + cost[location] + "金币)" : "") + "#l";
         }
 
         text += "#k";
@@ -76,7 +76,7 @@ function action(mode, type, selection) {
         cm.dispose();
         return;
     } else if (mode == 0) {
-    	cm.sendNext("You know where to come if you need a ride!");
+    	cm.sendNext("需要了来找我!");
         cm.dispose();
         return;
     } else {
@@ -103,13 +103,13 @@ function action(mode, type, selection) {
         }
         
         if(travelCost > 0) {
-            cm.sendYesNo("Would you like to travel to #b#m" + travelMap + "##k? To head over to #b#m" + travelMap + "##k, it'll cost you #r" + cm.numberWithCommas(travelCost) + " mesos#k. Would you like to go right now?");
+            cm.sendYesNo("你想去#b#m" + travelMap + "##k?去#b#m" + travelMap + "##k将花费你#r" + cm.numberWithCommas(travelCost) + "金币#k. 现在出发吗?");
         } else {
-            cm.sendNext("Had a great time in #rMalaysia#k? I hope so, have a safe travel back!");
+            cm.sendNext("在#r马来西亚#k玩得很开心?我希望如此!");
         }
     } else if (status == 2) {
         if (cm.getMeso() < travelCost) {
-            cm.sendNext("You do not seem to have enough mesos.");
+            cm.sendNext("你的金币不够.");
         } else {
             if(travelCost > 0) {
                 cm.gainMeso(-travelCost);

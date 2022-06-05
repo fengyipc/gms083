@@ -26,27 +26,28 @@
  * @NPC   : Erin (On Orbis Boat )
  */
 
-var status = 0;
+ var status = 0;
 
-function start() {
-    cm.sendYesNo("Do you wish to leave the boat?");
-}
-
-function action(mode, type, selection) {
-if (mode == 0 && status == 1) {
-	cm.sendOk("Good choice");
-	cm.dispose();
-}
-    if (mode > 0)
-        status++;
-    else
-        cm.dispose();
-    
-    if (status == 1) {
-        cm.sendNext ("Alright, see you next time. Take care.");
-    }
-    else if (status == 2) {
-        cm.warp(200000111, 0);// back to Orbis jetty
-        cm.dispose();
-    }
-}
+ function start() {
+     cm.sendYesNo("要下船吗?");
+ }
+ 
+ function action(mode, type, selection) {
+ if (mode == 0 && status == 1) {
+     cm.sendOk("好的");
+     cm.dispose();
+ }
+     if (mode > 0)
+         status++;
+     else
+         cm.dispose();
+     
+     if (status == 1) {
+         cm.sendNext ("下次见,注意安全.");
+     }
+     else if (status == 2) {
+         cm.warp(200000111, 0);// back to Orbis jetty
+         cm.dispose();
+     }
+ }
+ 

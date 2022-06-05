@@ -1,8 +1,8 @@
 /*
-	This file is part of the OdinMS Maple Story Server
+    This file is part of the OdinMS Maple Story Server
     Copyright (C) 2008 Patrick Huy <patrick.huy@frz.cc>
-		       Matthias Butz <matze@odinms.de>
-		       Jan Christian Meyer <vimes@odinms.de>
+               Matthias Butz <matze@odinms.de>
+               Jan Christian Meyer <vimes@odinms.de>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -20,33 +20,33 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 /* Small Street Light
-	Kerning deep Subway areas
-	Nothing at all.
+    Kerning deep Subway areas
+    Nothing at all.
  */
 
 var status;
- 
+
 function start() {
-        status = -1;
-        action(1, 0, 0);
+    status = -1;
+    action(1, 0, 0);
 }
 
 function action(mode, type, selection) {
-        if (mode == -1) {
-                cm.dispose();
-        } else {
-                if (mode == 0 && status == 0) {
-                        cm.dispose();
-                        return;
-                }
-                if (mode == 1)
-                        status++;
-                else
-                        status--;
-    
-                if(status == 0) {
-                        cm.sendOk("A small focus of light lighting in the immersive darkness.");
-                        cm.dispose();
-                }
+    if (mode == -1) {
+        cm.dispose();
+    } else {
+        if (mode == 0 && status == 0) {
+            cm.dispose();
+            return;
         }
+        if (mode == 1)
+            status++;
+        else
+            status--;
+
+        if (status == 0) {
+            cm.sendOk("冥冥中发出微微亮光");
+            cm.dispose();
+        }
+    }
 }

@@ -1,8 +1,8 @@
 /*
-	This file is part of the OdinMS Maple Story Server
+    This file is part of the OdinMS Maple Story Server
     Copyright (C) 2008 Patrick Huy <patrick.huy@frz.cc>
-		       Matthias Butz <matze@odinms.de>
-		       Jan Christian Meyer <vimes@odinms.de>
+               Matthias Butz <matze@odinms.de>
+               Jan Christian Meyer <vimes@odinms.de>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -23,19 +23,19 @@
 status = -1;
 var job;
 var sel;
-actionx = {"Mental" : false, "Physical" : false};
+actionx = { "Mental": false, "Physical": false };
 
 function start() {
     var jobBase = parseInt(cm.getJobId() / 100);
     var jobStyle = 5;
-    if (!(cm.getPlayer().getLevel() >= 70 && jobBase == jobStyle && cm.getJobId() % 10 == 0)){
-        if(cm.getPlayer().getLevel() >= 50 && jobBase % 10 == jobStyle) {
+    if (!(cm.getPlayer().getLevel() >= 70 && jobBase == jobStyle && cm.getJobId() % 10 == 0)) {
+        if (cm.getPlayer().getLevel() >= 50 && jobBase % 10 == jobStyle) {
             status++;
             action(1, 0, 1);
             return;
         }
-        
-        cm.sendNext("Hi there.");
+
+        cm.sendNext("你好.");
         cm.dispose();
         return;
     }
@@ -43,79 +43,79 @@ function start() {
         actionx["Mental"] = true;
     else if (cm.haveItem(4031057))
         actionx["Physical"] = true;
-    cm.sendSimple("Can I help you?#b" + (cm.getJobId() % 10 == 0 ? "\r\n#L0#I want to make the 3th job advancement." : "") + "\r\n#L1#Please allow me to do the Zakum Dungeon Quest.");
+    cm.sendSimple("需要帮助吗？#b" + (cm.getJobId() % 10 == 0 ? "\r\n#L0#我想要进行第三次转职。#l" : "") + "\r\n#L1#我想进行扎昆任务#l.");
 }
 
-function action(mode, type, selection){
+function action(mode, type, selection) {
     status++;
     if (mode == 0 && type == 0) {
         status -= 2;
-    } else if(mode != 1 || (status > 2 && !actionx["Mental"]) || status > 3){
+    } else if (mode != 1 || (status > 2 && !actionx["Mental"]) || status > 3) {
         if (mode == 0 && type == 1)
-            cm.sendNext("Make up your mind.");
+            cm.sendNext("下定决心。");
         cm.dispose();
         return;
     }
-    if (actionx["Mental"]){
+    if (actionx["Mental"]) {
         if (status == 0)
-            cm.sendNext("Great job completing the mental part of the test. You have wisely answered all the questions correctly. I must say, I am quite impressed with the level of wisdom you have displayed there. Please hand me the necklace first, before we take on the next step.");
+            cm.sendNext("很好的完成了测试的心理部分。你明智地回答了所有的问题。我必须说，你在那里表现出的智慧水平给我留下了深刻的印象。请先把项链递给我，然后我们再进行下一步。");
         else if (status == 1)
-            cm.sendYesNo("Okay! Now, you'll be transformed into a much more powerful pirate through me. Before doing that, though, please make sure your SP has been thoroughly used, You'll need to use up at least all of SP's gained until level 70 to make the 3rd job advancement. Oh, and since you have already chosen your path of the occupation by the 2nd job adv., you won't have to choose again for the 3rd job adv. Do you want to do it right now?");
+            cm.sendYesNo("可以！现在，你将通过我变成一个更强大的海盗。不过，在做这件事之前，请确保你的技能点已经被彻底使用，你至少需要用尽所有的技能点，直到70级，才能进行第三次转职。哦，既然你已经选择了第二职业的职业道路，你就不必再为第三职业做转职选择了。你想现在就转职吗？");
         else if (status == 2) {
-            if (cm.getPlayer().getRemainingSp() > 0)
-                if (cm.getPlayer().getRemainingSp() > (cm.getLevel() - 70) * 3) {
-                    cm.sendNext("Please, use all your SP before continuing.");
-                    cm.dispose();
-                    return;
-                }
+            /* if (cm.getPlayer().getRemainingSp() > 0)
+                 if (cm.getPlayer().getRemainingSp() > (cm.getLevel() - 70) * 3) {
+                     cm.sendNext("请在继续之前使用所有技能点。");
+                     cm.dispose();
+                     return;
+                 }*/
             if (cm.getJobId() % 10 == 0) {
                 cm.gainItem(4031058, -1);
                 cm.changeJobById(cm.getJobId() + 1);
                 cm.getPlayer().removePartyQuestItem("JBQ");
             }
-            
-            if(Math.floor(cm.getJobId() / 10) == 51) cm.sendNext("Great! You are now a #bMarauder#k. As a Marauder, you will learn some of the most sophisticated skills related to melee-based attacks. #bEnergy Charge#k is a skill that allows you to store your power and the damage you receive into a special form of energy. Once this ball of energy is charged, you may use #bEnergy Blast#k to apply maximum damage against your enemies, and also use #bEnergy Drain#k to steal your enemy's HP to recover your own. #bTransformation#k will allow you to transform into a superhuman being with devastating melee attacks, and while transformed, you can use #bShockwave#k to cause a mini-earthquake and inflict massive damage to your enemies.");
-            else cm.sendNext("Great! You have now become an #bOutlaw#k. As an Outlaw, you will become a true pistolero, a master of every known Gun attack, as well as a few other skills to help you vanquish evil. #bBurst Fire#k is a more powerful version of Double Shot, shooting more bullets and causing more damage at the same time. You also now have the ability to summon a loyal #bOctopus#k and the swooping #bGaviota#k as your trusty allies, while attacking your enemies using #bBullseye#k. You can also use element-based attacks using #bFlamethrower#k and #bIce Splitter#k.");
+
+            if (Math.floor(cm.getJobId() / 10) == 51) cm.sendNext("太好了！你现在是#b斗士#k了.关于斗士, 你将学习一些与近战攻击相关的最高级技能。#b能量获得#k是一种技能，允许你储存你的力量和伤害，你收到一种特殊形式的能量。一旦这个能量球充满电，你可以使用#b能量爆破#k对敌人造成最大伤害，同时使用#b能量耗转#k偷你敌人的生命来恢复你自己的生命。#b超人变身#k将允许你转化为一个具有毁灭性近战攻击的超人，并且在转化的同时，你可以使用#b冲击波#k引起一场小地震并对你的敌人造成巨大的伤害。");
+            else cm.sendNext("太好了！你现在是#b大副#k了.作为一个大副，你将成为一个真正的火枪手，每一个已知的枪械攻击，以及一些其他技能，帮助你战胜邪恶。#b双管枪射击#k是一个更强大的版本的双重射击，射击更多的子弹，同时造成更多的伤害。你现在也有能力召唤一个忠诚的#b章鱼炮台#k以及俯冲#b海欧空袭#k作为你信任的盟友，在你用#b靶心#k攻击敌人时. 也可以使用基于元素的攻击#b烈焰喷射#k和#b寒冰喷射#k.");
         } else if (status == 3) {
-            cm.sendNextPrev("I've also given you some SP and AP, which will help you get started. You have now become a powerful, powerful pirate, indeed. Remember, though, that the real world will be awaiting your arrival with even tougher obstacles to overcome. Once you feel like you cannot train yourself to reach a higher place, then, and only then, come see me. I'll be here waiting.");
+            cm.sendNextPrev("我也给了你一些技能点和能力值，这将帮助你开始。你现在确实成了一个强大的海盗。不过，请记住，现实世界将等待你的到来，还有更艰难的障碍要克服。一旦你觉得你不能训练自己去更高的地方，那么，只有在那时，来见我。我会在这里等你。");
         }
-    }else if (actionx["Physical"]){
+    } else if (actionx["Physical"]) {
         if (status == 0)
-            cm.sendNext("Great job completing the physical part of the test. I knew you could do it. Now that you have passed the first half of the test, here's the second half. Please give me the necklace first.");
-        else if (status == 1){
-            if (cm.haveItem(4031057)){
+            cm.sendNext("很好的完成了测试的物理部分。我就知道你能做到。既然你已经通过了上半部分的考试，下面是下半部分。请先把项链给我。");
+        else if (status == 1) {
+            if (cm.haveItem(4031057)) {
                 cm.gainItem(4031057, -1);
                 cm.getPlayer().setPartyQuestItemObtained("JBQ");
             }
-            cm.sendNextPrev("Here's the 2nd half of the test. This test will determine whether you are smart enough to take the next step towards greatness. There is a dark, snow-covered area called the Holy Ground at the snowfield in Ossyria, where even the monsters can't reach. On the center of the area lies a huge stone called the Holy Stone. You'll need to offer a special item as the sacrifice, then the Holy Stone will test your wisdom right there on the spot.");
+            cm.sendNextPrev("这是考试的后半部分。这项测试将决定你是否足够聪明，能够迈出迈向成功的下一步。在冰封雪域的雪原上有一个被雪覆盖的黑暗区域，叫做圣地，连怪物都无法到达。在这个区域的中心有一块巨大的石头，叫做神圣的石头。你需要提供一个特殊的项目作为祭品，然后神圣的石头将测试你的智慧。");
         } else if (status == 2)
-            cm.sendNextPrev("You'll need to answer each and every question given to you with honesty and conviction. If you correctly answer all the questions, then the Holy Stone will formally accept you and hand you #b#t4031058##k. Bring back the necklace, and I will help you to the next step forward. Good luck.");
+            cm.sendNextPrev("你需要诚实而坚定地回答每一个问题。如果你正确回答了所有的问题，那么圣石会正式接受你并把#b#t4031058##k交给你.把项链拿回来，我会帮你走到下一步。祝你好运。");
     } else if (cm.getPlayer().gotPartyQuestItem("JB3") && selection == 0) {
-        cm.sendNext("Go, talk with #b#p1090000##k and bring me #b#t4031057##k.");
+        cm.sendNext("去，跟我谈谈#b#p1090000##k，并把#b#t4031057##k带回来给我.");
         cm.dispose();
     } else if (cm.getPlayer().gotPartyQuestItem("JBQ") && selection == 0) {
-        cm.sendNext("Go, talk with #b#p2030006##k and bring me #b#t4031058##k.");
+        cm.sendNext("去，跟我谈谈#b#p2030006##k，并把#b#t4031058##k带回来给我.");
         cm.dispose();
     } else {
         if (sel == undefined)
             sel = selection;
-        if (sel == 0){
-            if (cm.getPlayer().getLevel() >= 70 && cm.getJobId() % 10 == 0){
+        if (sel == 0) {
+            if (cm.getPlayer().getLevel() >= 70 && cm.getJobId() % 10 == 0) {
                 if (status == 0)
-                    cm.sendYesNo("Welcome. I'm #b#p2020013##k, the chief of all pirates, in charge of bringing out the best in each and every pirate that needs my guidance. You seem like the kind of pirate that wants to make the leap forward, the one ready to take on the challenges of the 3th job advancement. But I've seen countless pirates eager to make the jump just like you, only to see them fail. What about you? Are you ready to be tested and make the 3th job advancement?");
-                else if (status == 1){
+                    cm.sendYesNo("欢迎你，我是#b#p2020013##k, 所有海盗的首领，负责把每一个需要我指导的海盗的最好的一面展现出来。你看起来像是那种想大跃进的海盗，准备好迎接第三次转职的挑战。但我见过无数的海盗像你一样渴望跳伞，结果他们失败了。你呢？你准备好接受考验并获得第三次转职吗？");
+                else if (status == 1) {
                     cm.getPlayer().setPartyQuestItemObtained("JB3");
-                    cm.sendNext("Good. You will be tested on two important aspects of the pirate: strength and wisdom. I'll now explain to you the physical half of the test. Remember #b#p1090000##k from Nautilus Harbor? Go see him, and he'll give you the details on the first half of the test. Please complete the mission, and get #b#t4031057##k from #p1090000#.");
+                    cm.sendNext("很好。你将在海盗的两个重要方面受到考验：力量和智慧。我现在给你解释一下测试的物理部分。还记得诺特勒斯号的#b#p1090000##k吗？去见他，他会告诉你考试前半部分的细节。请完成任务，然后从#p1090000#k把#b#t4031057##k带回来给我.");
                 } else if (status == 2)
-                    cm.sendNextPrev("The mental half of the test can only start after you pass the physical part of the test. #b#t4031057##k will be the proof that you have indeed passed the test. I'll let #b#p1022000##k in advance that you're making your way there, so get ready. It won't be easy, but I have the utmost faith in you. Good luck.");
+                    cm.sendNextPrev("只有你通过了身体部分的测试，心理部分的测试才能开始。#b#t4031057##k将证明你确实通过了考试。我会让#b#p1022000##k对你进行测试。在你到达目的地之前，做好准备。这不容易，但我对你有极大的信心。祝你好运。");
             }
         } else {
-            if (cm.getPlayer().getLevel() >= 50){
-            	cm.sendOk("The Chief's Residence Council grants you #bconcession#k to make part of the #rcounteroffensive team against Zakum#k. Good luck on your journey ahead.");
-                if(!(cm.isQuestStarted(100200) || cm.isQuestCompleted(100200))) cm.startQuest(100200);
-                if(Packages.config.YamlConfig.config.server.USE_ENABLE_SOLO_EXPEDITIONS && !cm.isQuestCompleted(100201)) cm.completeQuest(100201);
-            }else
-                cm.sendOk("You're way too weak to make part of the #rcounteroffensive team against Zakum#k. Reach at least #blevel 50#k, then talk to me.");
+            if (cm.getPlayer().getLevel() >= 50) {
+                cm.sendOk("长老会让你挑战扎昆，祝你一切顺利。");
+                if (!(cm.isQuestStarted(100200) || cm.isQuestCompleted(100200))) cm.startQuest(100200);
+                if (Packages.config.YamlConfig.config.server.USE_ENABLE_SOLO_EXPEDITIONS && !cm.isQuestCompleted(100201)) cm.completeQuest(100201);
+            } else
+                cm.sendOk("你太虚弱了，无法挑战#r扎昆#k. 至少达到#b50级#k以后，再与我交谈。");
             cm.dispose();
         }
     }

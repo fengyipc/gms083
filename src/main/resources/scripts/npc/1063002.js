@@ -27,7 +27,7 @@ var repeatablePrizes = [[4010006, 4], [4010007, 4], [4020007, 4]];
 function start() {
     if (cm.isQuestStarted(2054) && !cm.haveItem(4031028,30)) {
         if(!cm.canHold(4031028,30)) {
-            cm.sendNext("Check for a available slot on your ETC inventory.")
+            cm.sendNext("其他栏空间不足.")
             cm.dispose();
             return;
         }
@@ -35,7 +35,7 @@ function start() {
         cm.gainItem(4031028,30);
     } else {
         if(cm.getPlayer().getInventory(Packages.client.inventory.MapleInventoryType.ETC).getNumFreeSlot() < 1) {
-            cm.sendNext("Check for a available slot on your ETC inventory.");
+            cm.sendNext("其他栏空间不足.");
             cm.dispose();
             return;
         }

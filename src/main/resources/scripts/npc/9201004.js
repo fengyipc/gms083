@@ -69,12 +69,12 @@ function action(mode, type, selection) {
             status--;
 
         if(status == 0) {
-            var questionStr = ["How can I engage someone?", "How can I marry?", "How can I divorce?"]
+            var questionStr = ["我怎样才能吸引到某人?", "我怎么能结婚?", "我怎么能离婚?"]
             
             if(!(!cm.getPlayer().isMarried() && getWeddingRingItemId(cm.getPlayer()))) questionStr.push("I want a divorce...");
-            else questionStr.push("I wanna remove my old wedding ring...");
+            else questionStr.push("我想拿掉我的旧结婚戒指...");
             
-            cm.sendSimple("Hello, welcome to #bAmoria#k, a beautiful land where maplers can find love and, if inspired enough, even marry. Do you have any questions about Amoria? Talk it to me.#b\r\n\r\n" + generateSelectionMenu(questionStr));
+            cm.sendSimple("欢迎来到#b#m680000000##k.#b\r\n\r\n" + generateSelectionMenu(questionStr));
         } else if(status == 1) {
             switch(selection) {
                 case 0:

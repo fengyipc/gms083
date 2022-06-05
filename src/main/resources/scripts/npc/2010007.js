@@ -24,7 +24,7 @@ var status = 0;
 var sel;
 
 function start() {
-    cm.sendSimple("What would you like to do?\r\n#b#L0#Create a Guild#l\r\n#L1#Disband your Guild#l\r\n#L2#Increase your Guild's capacity#l#k");
+    cm.sendSimple("你想做什么?\r\n#b#L0#创建家族#l\r\n#L1#解散家族#l\r\n#L2#增加家族容量#l#k");
 }
 
 function action(mode, type, selection) {
@@ -43,23 +43,23 @@ function action(mode, type, selection) {
             sel = selection;
             if (selection == 0) {
                 if (cm.getPlayer().getGuildId() > 0) {
-                    cm.sendOk("You may not create a new Guild while you are in one.");
+                    cm.sendOk("你现在没法创建家族,请先退出当前所在的家族.");
                     cm.dispose();
                 } else
-                    cm.sendYesNo("Creating a Guild costs #b 1500000 mesos#k, are you sure you want to continue?");
+                    cm.sendYesNo("创建家族需要#b1500000金币#k,继续吗?");
             } else if (selection == 1) {
                 if (cm.getPlayer().getGuildId() < 1 || cm.getPlayer().getGuildRank() != 1) {
-                    cm.sendOk("You can only disband a Guild if you are the leader of that Guild.");
+                    cm.sendOk("你不是家族长.");
                     cm.dispose();
                 } else
-                    cm.sendYesNo("Are you sure you want to disband your Guild? You will not be able to recover it afterward and all your GP will be gone.");
+                    cm.sendYesNo("你真要解散你的家族吗? 这个操作无法恢复.");
             } else if (selection == 2) {
                 if (cm.getPlayer().getGuildId() < 1 || cm.getPlayer().getGuildRank() != 1) {
-                    cm.sendOk("You can only increase your Guild's capacity if you are the leader.");
+                    cm.sendOk("只有家族长可以操作.");
                     cm.dispose();
                 } else {
                     var MapleGuild = Java.type("net.server.guild.MapleGuild");  // thanks Conrad for noticing an issue due to call on a static method here
-                    cm.sendYesNo("Increasing your Guild capacity by #b5#k costs #b " + MapleGuild.getIncreaseGuildCost(cm.getPlayer().getGuild().getCapacity()) +" mesos#k, are you sure you want to continue?");
+                    cm.sendYesNo("增加#b5#k家族容量将花费#b " + MapleGuild.getIncreaseGuildCost(cm.getPlayer().getGuild().getCapacity()) +" 金币#k,继续吗?");
                 }
             }
         } else if (status == 2) {

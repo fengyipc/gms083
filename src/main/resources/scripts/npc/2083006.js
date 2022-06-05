@@ -4,12 +4,12 @@
 */
 
 var quests = [3719, 3724, 3730, 3736, 3742, 3748];
-var array = ["Year 2021 - Average Town Entrance", "Year 2099 - Midnight Harbor Entrance", "Year 2215 - Bombed City Center Retail District", "Year 2216 - Ruined City Intersection", "Year 2230 - Dangerous Tower Lobby", "Year 2503 - Air Battleship Bow"/*, "Year 2227 - Dangerous City Intersection"*/];
+var array = ["2021年 - Average Town Entrance", "2099年 - Midnight Harbor Entrance", "2215年 - Bombed City Center Retail District", "2216年 - Ruined City Intersection", "2230年 - Dangerous Tower Lobby", "2503年 - Air Battleship Bow"/*, "Year 2227 - Dangerous City Intersection"*/];
 var limit;
 
 function start() {
         if(!cm.isQuestCompleted(3718)) {
-            cm.sendOk("The time machine has not been activated yet.");
+            cm.sendOk("时间机器还没有被激活.");
             cm.dispose();
             return;
         }
@@ -21,7 +21,7 @@ function start() {
         }
         
         if(limit == 0) {
-            cm.sendOk("Prove your valor against the #bGuardian Nex#k before unlocking next Neo City maps.");
+            cm.sendOk("挑战#bGuardian Nex#k,证明你的勇气,这样才可以解锁下一个逆奥之城的地图.");
             cm.dispose();
             return;
         }
@@ -76,7 +76,7 @@ function action(mode, type, selection) {
                         if (mapid > 0) {
                             cm.warp(mapid, 1);
                         } else {
-                            cm.sendOk("Complete your mission first.");
+                            cm.sendOk("先完成上一个任务.");
                         }
                 }
         }

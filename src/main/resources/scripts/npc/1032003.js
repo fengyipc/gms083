@@ -36,12 +36,12 @@ var check = 0;
 
 function start() {
     if (cm.getLevel() < 25) {
-        cm.sendOk("You must be a higher level to enter the Forest of Patience.");
+        cm.sendOk("进入忍苦森林至少需要25级.");
         cm.dispose();
         check = 1;
     }
     else
-        cm.sendYesNo("Hi, i'm Shane. I can let you into the Forest of Patience for a small fee. Would you like to enter for #b5000#k mesos?");
+        cm.sendYesNo("你好,我是#p1032003#.支付我5000金币,我就可以让你进入忍苦森林,要进入吗?");
 }
 
 function action(mode, type, selection) {
@@ -49,7 +49,7 @@ function action(mode, type, selection) {
         cm.dispose();
     } else {
         if (mode == 0) {
-            cm.sendOk("Alright, see you next time.");
+            cm.sendOk("好的,下次见.");
             cm.dispose();
             return;
         }
@@ -60,7 +60,7 @@ function action(mode, type, selection) {
         if (status == 1) {
             if (check != 1) {
                 if (cm.getPlayer().getMeso() < 5000) {
-                    cm.sendOk("Sorry but it doesn't like you have enough mesos!")
+                    cm.sendOk("对不起,你没有足够的金币!")
                     cm.dispose();
                 }
                 else {

@@ -42,7 +42,7 @@ function action(mode, type, selection) {
         cm.dispose();
     } else {
         if (status == 0 && mode == 0) {
-			cm.sendNext("Let me know if you've changed your mind!");
+			cm.sendNext("如果改变主意了跟我说!");
 			cm.dispose();
         }
 
@@ -55,10 +55,10 @@ function action(mode, type, selection) {
         if (status == 0) {
         	if (cm.getMapId() == hv) {
                 tst = 1; //to shalom temple
-				cm.sendYesNo("The Shalom Temple is unlike any other place in Happyville, would you like to head to #bShalom Temple#k?"); //not GMS lol
+				cm.sendYesNo("#m681000000#不像幸福村的其他地方,想去#b#m681000000##k吗?"); //not GMS lol
 			} else if (cm.getMapId() == smap) {
                 b2h = 1; //back to happyville
-				cm.sendYesNo("Would you like to head back to Happyville?");
+				cm.sendYesNo("想返回#m209000000#吗?");
 			}
 		} else if (status == 1) {
             if (tst == 1) {

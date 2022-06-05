@@ -32,7 +32,7 @@ var state;
 var status;
 var gift;
 var pqType;
- 
+        
 function start() {
         pqType = ((cm.getMapId() / 10) % 10) + 1;
         state = (cm.getMapId() % 10 > 0) ? 1 : 0;
@@ -52,11 +52,11 @@ function action(mode, type, selection) {
                         status++;
                 else
                         status--;
-    
+        
                 if(state > 0) {
-                    insidePqAction(mode, type, selection);
+                        insidePqAction(mode, type, selection);
                 } else {
-                    recruitPqAction(mode, type, selection);
+                        recruitPqAction(mode, type, selection);
                 }
         }
 }
@@ -72,34 +72,34 @@ function recruitPqAction(mode, type, selection) {
                         return;
                 }
 
-                cm.sendSimple("#e#b<Party Quest: Holiday>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nHow about you and your party members collectively beating a quest? Here you'll find obstacles and problems where you won't be able to beat it without great teamwork. If you want to try it, please tell the #bleader of your party#k to talk to me.#b\r\n#L0#I want to participate in the party quest.\r\n#L1#I would like to " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "disable" : "enable") + " Party Search.\r\n#L2#I would like to hear more details.");
+                cm.sendSimple("#e#b<组队挑战:圣诞派对>\r\n#k#n" + em.getProperty("party") + "\r\n\r\n来参加组队挑战吧? 在这里，你会发现一些障碍和问题，如果没有良好的团队合作，你将无法战胜它.如果你想挑战,就让队长来跟我对话#b\r\n#L0#我想参加组队挑战.\r\n#L1#我想" + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "关闭" : "开启") + "队伍搜索.\r\n#L2#我想知道一些细节.");
         } else if (status == 1) {
                 if (selection == 0) {
                         if (cm.getParty() == null) {
-                                cm.sendOk("You can participate in the party quest only if you are in a party.");
+                                cm.sendOk("你只有组队才可以参加挑战.");
                                 cm.dispose();
                         } else if(!cm.isLeader()) {
-                                cm.sendOk("Your party leader must talk to me to start this party quest.");
+                                cm.sendOk("队长才可以开始.");
                                 cm.dispose();
                         } else {
                                 var eli = em.getEligibleParty(cm.getParty());
                                 if(eli.size() > 0) {
                                         if(!em.startInstance(cm.getParty(), cm.getPlayer().getMap(), pqType)) {
-                                                cm.sendOk("Another party has already entered the #rParty Quest#k in this channel. Please try another channel, or wait for the current party to finish.");
+                                                cm.sendOk("其他队伍正在进行挑战了.");
                                         }
                                 }
                                 else {
-                                        cm.sendOk("You cannot start this party quest yet, because either your party is not in the range size, some of your party members are not eligible to attempt it or they are not in this map. If you're having trouble finding party members, try Party Search.");
+                                        cm.sendOk("队伍人数不足或者有人不满足等级限制.");
                                 }
 
                                 cm.dispose();
                         }
                 } else if (selection == 1) {
                         var psState = cm.getPlayer().toggleRecvPartySearchInvite();
-                        cm.sendOk("Your Party Search status is now: #b" + (psState ? "enabled" : "disabled") + "#k. Talk to me whenever you want to change it back.");
+                        cm.sendOk("你当前队伍搜索状态: #b" + (psState ? "开启" : "关闭") + "#k.");
                         cm.dispose();
                 } else {
-                        cm.sendOk("#e#b<Party Quest: Holiday>#k#n\r\n\r\nJoin in with your team to build up the Snowman that will protect Happyville from the misdoings of Scrooge. While inside, work out with your team to protect it at any means necessary while collecting Snow Vigor that will help on the build up of the Snowman.");
+                        cm.sendOk("#e#b<组队挑战:圣诞派对>#k#n\r\n\r\n堆雪人来保护幸福村.进去以后用任何方法保护雪人,为雪人添加活力.");
                         cm.dispose();
                 }
         }
@@ -114,26 +114,26 @@ function insidePqAction(mode, type, selection) {
 
         if(status == 0) {
                 if(stg == -1) {
-                        cm.sendNext("#b#h0##k... you're finally here. This is the place where the residents of Happyville build the giant snowman. But Scrooge's subordinates are attacking it right now. Now Hurry! Our mission is for you and your party to protect the snowman from Scrooge's men within the time limit. If you eliminate them, then they'll drop an item called Snow Vigor. Gather them up and drop them on the snowman, and you'll literally see it grow. Once it returns to its original size, then your task is complete. Just beware of one thing. Some of the subordinates may drop a fake Snow Vigor. A fake Snow Vigor will actually cause the snowman to melt even faster than usual. Best of luck to you.");
+                        cm.sendNext("#b#h0##k... 你来了.这是幸福村居民堆巨型雪人的地方.但是史高基的下属现在正在攻击它.现在赶快! 请在时间范围内保护雪人.如果你消除了它们，它们就会掉落一个叫做雪活力的物品.收集这些并且放在雪人身上,你会看到雪人会长大.当雪人恢复到它正常的大小了你的任务就完成了. 有一个事情要注意就是有可能会出现加的雪人活力,这将使雪人融化.祝你好运.");
                 } else if(stg == 0) {
                         if(cm.getMap().getMonsterById(9400321 + 5 * difficulty) == null) {
-                                cm.sendNext("Please, defeat Scrooge's underlings and make the snowman grow, so that Scrooge has no other way to avoid showing himself up.");
+                                cm.sendNext("拜托,打败这些坏蛋帮雪人长大.");
                                 cm.dispose();
                         } else {
-                                cm.sendNext("Awesome! Just as I expected, you managed to defeat Scrooge's subordinates. Thank you so much! (Stands silent for a while...) Unfortunately, Scrooge doesn't seem like he's going to stop right here. One of his men have already told him what happened, which means... he'll show up soon. Please keep fighting, and again, best of luck to you.");
+                                cm.sendNext("干得漂亮.");
                         }
                 } else {
                         if(!eim.isEventCleared()) {
-                                cm.sendNext("Please defeat the Scrooge, so our Maplemas keeps safe from harm!");
+                                cm.sendNext("请击败他!");
                                 cm.dispose();
                         } else {
-                                cm.sendNext("Wow!! You defeated Scrooge! Thank you so much! You have managed to make this Maplemas safe and sound! Thanks!!");
+                                cm.sendNext("哇!!你做到了!!");
                         }
                 }
         } else if(status == 1) {
                 if(stg == -1) {
                         if(!cm.isEventLeader()) {
-                                cm.sendOk("Please let your party leader talk to me for further details on the mission.");
+                                cm.sendOk("请让队长来.");
                                 cm.dispose();
                                 return;
                         }
@@ -142,19 +142,19 @@ function insidePqAction(mode, type, selection) {
                         var snowman = MapleLifeFactory.getMonster(9400317 + (5 * difficulty));
                         mapobj.spawnMonsterOnGroundBelow(snowman, new java.awt.Point(-180, 15));
                         eim.setIntProperty("snowmanLevel", 1);
-                        eim.dropMessage(5, "The snowman appeared on the field! Protect it using all means necessary!");
+                        eim.dropMessage(5, "雪人出现了,请尽力保护它!");
 
                         eim.setIntProperty("statusStg1", 0);
                         cm.dispose();
                         return;
                 } else if(stg == 0) {
                         if(!cm.isEventLeader()) {
-                                cm.sendOk("Please let your party leader talk to me for further details on the mission.");
+                                cm.sendOk("让队长来.");
                                 cm.dispose();
                                 return;
                         }
 
-                        mapobj.broadcastStringMessage(5, "As the snowman grows to it's prime, the Scrooge appears!");
+                        mapobj.broadcastStringMessage(5, "雪人长大了,怪物出来了!");
                         eim.getEm().getIv().invokeFunction("snowmanHeal", eim);
 
                         var boss = MapleLifeFactory.getMonster(9400318 + difficulty);
@@ -167,11 +167,11 @@ function insidePqAction(mode, type, selection) {
                         gift = cm.haveItem(4032092, 1);
                         if(gift) {
                                 var optStr = generateSelectionMenu(generatePrizeString());
-                                cm.sendSimple("Oh, you brought a #b#t4032092##k with you? That's nice, hold on a bit... Here's your Maplemas gift. Please select the one you'd like to receive:\r\n\r\n" + optStr);
+                                cm.sendSimple("哦,你拿来了一个#b#t4032092##k? 很好，等一下... 这是你的礼物.请选择你想要的:\r\n\r\n" + optStr);
                         } else if(eim.gridCheck(cm.getPlayer()) == -1) {
-                                cm.sendNext("Here's your Maplemas gift. Enjoy~");
+                                cm.sendNext("给你~");
                         } else {
-                                cm.sendOk("Happy Maplemas!!");
+                                cm.sendOk("快乐!!");
                                 cm.dispose();
                         }
                 }
@@ -190,13 +190,13 @@ function insidePqAction(mode, type, selection) {
                                         cm.gainItem(selItems[0][1], selItems[1][1]);
                                 }
                         } else {
-                                cm.sendOk("Please make sure you have room in your EQUIP and USE inventories before proceeding.");
+                                cm.sendOk("背包空间不足.");
                         }
                 } else {
                         if(eim.giveEventReward(cm.getPlayer(), difficulty)) {
                                 eim.gridInsert(cm.getPlayer(), 1);
                         } else {
-                                cm.sendOk("Please make sure you have room in your EQUIP, USE and ETC inventories before proceeding.");
+                                cm.sendOk("背包空间不足.");
                         }
                 }
 

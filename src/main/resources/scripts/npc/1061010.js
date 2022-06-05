@@ -19,7 +19,7 @@ function action(mode, type, selection) {
             status--;
 		
         if(status == 0){
-                cm.sendYesNo("Would you like to leave?");
+                cm.sendYesNo("想离开吗?");
         }else if(status == 1){
                 var mapid = cm.getMapId(), exitid = mapid;
                 if(mapid == 108010101) exitid = 105040305;

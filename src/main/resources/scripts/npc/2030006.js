@@ -22,56 +22,56 @@
 	3rd job advancement - Question trial.
  */
 
-var questionTree = [
+    var questionTree = [
         //Questions Related to CHARACTERS
-        ["In MapleStory, what is the EXP needed to level up from Lv1 to Lv2?", ["20", "15", "4", "12", "16"], 1],
-        ["In 1st job adv. which of the following is WRONG requirement?", ["Magician - Level 8", "Pirate - 20 DEX or more", "Archer - 25 DEX or more", "Thief - 20 LUK or more", "Swordman - 35 STR or more"], 3],
-        ["When you hit by monster, which of the following is not fully explained?", ["Sealed - skills become disabled", "Undead - turns undead & halved recovery amounts", "Weaken - slow down moving speed", "Cursed - EXP received are decreased", "Stunned - cannot move"], 2],
-        ["For the 1st job adv. Which job fully states the job adv. requirement?", ["Pirate - 25 LUK", "Magician - Level 10", "Thief - 25 LUK", "Warrior - 30 STR", "Bowman - 25 DEX"], 4],
+        ["新手1级到2级需要的经验(EXP)是多少?", ["20", "15", "4", "12", "16"], 1],
+        ["第一次转职需求中. 下面哪个是错误的?", ["魔法师 - 8级", "海盗 - 敏捷(DEX)最低需要20", "战士 - 敏捷(DEX)最低需要25", "海盗 - 运气(LUK)最低需要20", "弓箭手 - 力量(STR)最低需要35"], 3],
+        ["当你被怪物击中后,下面哪个说法不正确?", ["封印 - 技能无法使用", "无敌 - 变成无敌状态并且恢复速度减半", "虚弱 - 降低移动速度", "诅咒 - 经验值降低", "眩晕 - 无法移动"], 2],
+        ["第一次转职需求中. 下面哪个是正确的?", ["海盗 - 运气(LUK)最低需要25", "魔法师 - 等级(LV)需要10级别", "飞侠 - 运气(LUK)最低需要25", "战士 - 力量(STR)最低需要30", "弓箭手 - 敏捷(DEX)最低需要25"], 4],
 
         //Questions Related to ITEMS
-        ["Which of following monsters got CORRECT item corresponding to the monster?", ["Royal cactus - Needle", "Wild Boar - Boar fang", "Lazy Buffy - Buffy hat", "Chipmunk - Nut", "Stirge - Stirge's wing"], 4],
-        ["Which of following monsters got WRONG item corresponding to the monster?", ["Greatest Oldies - Greatest oldies", "Nependeath - Nependeath's leaf", "Ghost stump - Seedling", "Sparker - Seal tooth", "Miner Zombie - Zombie's lost tooth"], 1],
+        ["下面哪个怪物和掉落是正确的?", ["仙人掌- 针", "野猪- 野猪牙", "懒巴菲 - 巴菲特的午餐", "花栗鼠 - 螺帽", "蚊蝠 - 施蒂奇的翅膀"], 4],
+        ["下面哪个怪物和掉落是错误的?", ["最伟大的老人 - 最伟大的老人", "海带 - 海带叶", "幽灵树桩 - 幼苗", "火花发生器 - 密封齿", "矿工僵尸 - 僵尸丢失的牙齿"], 1],
         //["In GM Event, how many FRUIT CAKE you can get as reward?", ["20", "200", "5", "25", "100"], 2],
-        ["Which of following potions got CORRECT info.?", ["Warrior Elixir - Attack +5 for 3 minutes", "Pure Water - Recover 700 MP", "Cake - Recover 150 HP & MP", "Salad - Recover 300 MP", "Pizza - Recover 400 HP"], 4],
-        ["Which of following potions got WRONG info.?", ["Mana Elixir - Recover 300 MP", "Tonic - Cures state of weakness", "Apple - Recover 30 HP", "Sunrise Dew - Recover 3000 MP", "Ramen - Recover 1000 HP"], 3],
+        ["下面哪个药水的说明是正确的.?", ["攻击药水 - 攻击+5持续3分钟", "纯净水 - 恢复700MP", "蛋糕 - 恢复150HP&MP", "沙拉 - 恢复300MP", "披萨 - 恢复400HP"], 4],
+        ["下面哪个药水的说明是错误的.?", ["活力神水 - 恢复300MP", "补药 - 恢复虚弱状态", "苹果 - 恢复30HP", "清晨之露 - 恢复3000MP", "拉面 - 恢复1000HP"], 3],
 
         //Questions Related to MONSTERS
-        ["Green Mushroom, Tree Stump, Bubbling, Axe Stump, Octopus, which is highest level of all?", ["Tree Stump", "Bubbling", "Axe Stump", "Octopus", "Green Mushroom"], 2],
-        ["Which monster will be seen during the ship trip to Orbis/Ellinia?", ["Werewolf", "Slime", "Crimson Balrog", "Zakum", "Star Pixie"], 2],
-        ["Maple Island doesn't have which following monsters?", ["Shroom", "Blue Snail", "Slime", "Red Snail", "Pig"], 4],    // to get conformant with website answers, thanks to Vcoc
-        ["Which monster is not at Victoria Island and Sleepywood?", ["Evil Eye", "Sentinel", "Jr. Balrog", "Ghost Stump", "Snail"], 1],
-        ["El Nath doesn't have which following monsters?", ["Dark Yeti", "Dark Ligator", "Yeti & Pepe", "Bain", "Coolie Zombie"], 1],
-        ["Which of following monsters can fly?", ["Malady", "Ligator", "Cold Eye", "Meerkat", "Alishar"], 0],
-        ["Which of these monsters will you NOT be facing in Ossyria?", ["Lunar Pixie", "Lioner", "Cellion", "Croco", "Hector"], 3],
-        ["Which monster has not appeared in Maple Island?", ["Snail", "Shroom", "Evil Eye", "Orange Mushroom", "Blue Snail"], 2],
+        ["以下的怪物 绿蘑菇, 树妖, 绿水灵, 斧木妖, 三眼章鱼, 哪个等级最高?", ["树妖", "绿水灵", "斧木妖", "三眼章鱼", "绿蘑菇"], 2],
+        ["魔法密林到天空之城的大船上能看到的怪物是?", ["狼人", "Slime", "蝙蝠怪", "扎昆", "星精灵"], 2],
+        ["在彩虹岛看不到的的怪物是?", ["蘑菇仔", "蓝蜗牛", "蜗牛", "红蜗牛", "猪猪"], 4],    // to get conformant with website answers, thanks to Vcoc
+        ["维多利亚岛和林中之城不存在的怪物是?", ["风独眼龙", "牛魔王", "蝙蝠怪", "树妖王", "蜗牛"], 1],
+        ["冰封雪域看不到的怪物是?", ["黑雪人", "黑鳄鱼", "企鹅王与白雪人", "白雪人", "僵尸"], 1],
+        ["下面会飞的怪物是哪个?", ["疾病", "套扎器", "冰独眼龙", "猫鼬", "艾莉莎"], 0],
+        ["在神秘岛看不到的怪物是?", ["月精灵", "幼黄独角狮", "幼红独角狮", "黑鳄鱼", "灰狼"], 3],
+        ["在彩虹岛看不到的的怪物是?", ["蜗牛", "蘑菇仔", "风独眼龙", "花蘑菇", "蓝蜗牛"], 2],
 
         //Questions Related to QUESTS
-        ["Which material doesn't need for awaken Hero's Gladius?", ["Flaming Feather", "Old Gladius", "Piece of Ice", "Ancient Scroll", "Fairy Wing"], 4],
-        ["Which of following quests can be repeated?", ["Mystery of Niora Hospital", "Rightful Donation Culture", "The Ghost Whereabout", "Arwen and the Glass Shoe", "Maya and the Weird Medicine"], 3],
-        ["Which of following are not 2nd job adv.?", ["Mage", "Cleric", "Assassin", "Gunslinger", "Fighter"], 0],
-        ["Which of following is the highest level quest?", ["Cupid's Courier", "Lost in the Ocean", "Alcaster and the Dark Crystal", "Eliminating the Drumming Bunny", "War of Pang Pang"], 2],
+        ["任务:英雄的旧战剑 不需要下面个材料?", ["火焰羽毛", "旧战剑", "冰块", "上古卷轴", "妖精之翼"], 4],
+        ["下面哪个任务是可以重复完成的?", ["医院陌生的女人", "枫叶捐赠", "幽灵的痕迹", "艾雯的玻璃鞋", "玛丽和奇妙的药"], 3],
+        ["下面哪个职业不是二转职业?", ["牧师", "射手", "刺客", "火枪手", "剑客"], 0],
+        ["下面哪个任务的需求等级最高?", ["丘比特的信使", "迷失在海洋中", "阿尔卡斯特与黑水晶", "消灭打鼓的兔子", "庞庞之战"], 2],
 
         //Questions Related to TOWN/NPC
-        ["Which town is not at Victoria Island?", ["Florina Beach or Nautilus", "Amherst or Southperry", "Kerning City & Square", "Perion or Ellinia", "Sleepywood"], 1],
-        ["Which is the first NPC you meet in Maple Island?", ["Sera", "Heena", "Lucas", "Roger", "Shanks"], 1],
-        ["Which NPC cannot be seen in El Nath?", ["Vogen", "Sophia", "Pedro", "Master Sergeant Fox", "Rumi"], 1],
-        ["Which NPC cannot be seen in El Nath snowfield?", ["Hidden Rock", "Glibber", "Jeff", "Holy Stone", "Elma the Housekeeper"], 4],
-        ["Which NPC cannot be seen in Perion?", ["Ayan", "Sophia", "Mr. Smith", "Francois", "Manji"], 3],
-        ["Which NPC cannot be seen in Henesys?", ["Teo", "Vicious", "Mia", "Doofus", "Casey"], 0],
-        ["Which NPC cannot be seen in Ellinia?", ["Mr. Park", "Mar the Fairy", "Roel", "Ria", "Shane"], 2],
-        ["Which NPC cannot be seen in Kerning City?", ["Dr. Faymus", "Mong from Kong", "Ervine", "Luke", "Nella"], 3],
-        ["Which NPC is not related to pets?", ["Doofus", "Vicious", "Patricia", "Weaver", "Cloy"], 1],
-        ["In Kerning City, who is the father of Alex, the runaway kid?", ["Chief Stan", "JM From tha Streetz", "Dr. Faymus", "Vicious", "Luke"], 0],
-        ["Which NPC is not belong to Alpha Platoon's Network of Communication?", ["Staff Sergeant Charlie", "Sergeant Bravo", "Corporal Easy", "Master Sergeant Fox", "Peter"], 4],
-        ["What do you receive in return from giving 30 Dark Marbles to the 2nd job advancement NPC?", ["Old Ring", "Memory Powder", "Fairy Dust", "Proof of Hero", "Scroll of Secrets"], 3],
-        ["Which item you give Maya at Henesys in order to cure her sickness?", ["Apple", "Power Elixir", "Weird Medicine", "Chrysanthemum", "Orange Juice"], 2],
-        ["Which of following NPC is not related to item synthesis/refine?", ["Neve", "Serryl", "Shane", "Francois", "JM From tha Streetz"], 2],
-        ["Which NPC cannot be seen in Maple Island?", ["Bari", "Teo", "Pio", "Sid", "Maria"], 1],
-        ["Who do you see in the monitor in the navigation room with Kyrin?", ["Lucas", "Dr. Kim", "Chief Stan", "Scadur", "Professor Foxwit"], 1],
-        ["You know Athena Pierce in Henesys? What color are her eyes?", ["Blue", "Green", "Brown", "Red", "Black"], 1],
-        ["How many feathers are there on Dances with Barlog's Hat?", ["7", "8", "3", "13", "16"], 3],
-        ["What's the color of the marble Grendel the Really Old from Ellinia carries with him?", ["White", "Orange", "Blue", "Purple", "Green"], 2]
+        ["下面不是金银岛城镇的是?", ["佛罗里达/诺特勒斯号", "彩虹村/南港", "废弃都市/广场", "勇士部落/魔法密林", "林中之城"], 1],
+        ["彩虹岛你第一个见到的NPC是谁?", ["莎丽", "希娜", "路卡斯", "罗杰", "桑克斯"], 1],
+        ["冰封雪域见不到的NPC是谁?", ["伯坚", "索非亚", "阿尔卡斯特", "珀斯上尉", "卢米"], 1],
+        ["冰封雪域见不到的NPC是谁?", ["隐藏的岩石", "格里巴", "杰夫", "神圣的石头", "保姆艾玛"], 4],
+        ["勇士部落看不到的NPC是谁?", ["伊安", "索非亚", "斯密斯", "易德", "麦吉"], 3],
+        ["射手村看不到的NPC是谁?", ["特奥", "比休斯", "米雅", "科尔", "凯茜"], 0],
+        ["魔法密林看不到的NPC是谁?", ["帕克", "妖精玛丽", "露尔", "瑞雅", "丽雅"], 2],
+        ["废弃都市看不到的NPC是谁?", ["铭仁", "马龙", "阿勒斯", "鲁克", "内拉"], 3],
+        ["哪个NPC与宠物没关系?", ["科尔", "比休斯", "帕特里沙", "威巴", "科洛伊"], 1],
+        ["废弃都市中, 谁是阿勒斯的爹, 那个离家出走的孩子", ["长老斯坦", "后街吉姆", "铭仁", "比休斯", "鲁克"], 0],
+        ["下面那个NPC不是阿尔法部队的成员?", ["查里中士", "巴伯下士", "伊吉上等兵", "珀斯上尉", "彼特"], 4],
+        ["第二次转职让收集30个黑珍珠后NPC会给你什么?", ["旧戒指", "记忆粉末", "妖精的粉尘", "英雄的证明", "秘密卷轴"], 3],
+        ["射手村的玛雅需要下面哪个物品来治疗她的病?", ["苹果", "活力神水", "奇妙的药", "菊花", "橙汁"], 2],
+        ["下面哪个NPC无法提炼高级 水晶/矿石?", ["奈巴", "舍瑞利", "丽雅", "易德", "后街吉姆"], 2],
+        ["彩虹岛看不到的NPC是谁?", ["白瑞德", "特奥", "皮奥", "赛德", "玛丽亚"], 1],
+        ["在诺特勒斯号凯琳的门口站岗的NPC是谁?", ["路卡斯", "金博士", "长老斯坦", "斯卡德", "狐智教授"], 1],
+        ["你知道射手村郝丽娜的吧,她的眼睛是什么颜色?", ["蓝色", "绿色", "棕色", "红色", "黑色"], 1],
+        ["勇士部落的武术教官头上有多少根羽毛?", ["7", "8", "3", "13", "16"], 3],
+        ["魔法密林的汉斯手中的魔法球是什么颜色的?", ["白色", "橙色", "蓝色", "紫色", "绿色"], 2]
     ];
     
 var status;
@@ -104,13 +104,13 @@ function action(mode, type, selection) {
             if(cm.getPlayer().gotPartyQuestItem("JBQ") && !cm.haveItem(4031058, 1)) {
                 if(cm.haveItem(4005004, 1)) {
                     if(!cm.canHold(4031058)) {
-                        cm.sendNext("Have a free ETC slot available before accepting this trial.");
+                        cm.sendNext("嗯,你确定你的背包其他栏有1个以上的空位?");
                         cm.dispose();
                     } else {
-                        cm.sendNext("Alright... I'll be testing out your wisdom here. Answer all the questions correctly, and you will pass the test BUT, if you even lie to me once, then you'll have to start over again ok, here we go.");
+                        cm.sendNext("好吧... 我将开始测试你，回答正确我的问题, 你就可以顺利通过测试。如果你答错了, 那我们将重新开始测试, 我们开始吧.");
                     }
                 } else {
-                    cm.sendNext("Bring me a #b#t4005004##k to proceed with the trial.");
+                    cm.sendNext("先给我一个#b#t4005004##k才有资格来挑战我的问题.");
                     cm.dispose();
                 }
             } else {
@@ -131,7 +131,7 @@ function action(mode, type, selection) {
             cm.sendSimple(questionHead + questionEntry + "\r\n\r\n#b" + questionOptions + "#k");
         } else if(status >= 2 && status <= 5) {
             if(!evaluateAnswer(selection)) {
-                cm.sendNext("You have failed the question.");
+                cm.sendNext("挑战失败了，请重新尝试!");
                 cm.dispose();
                 return;
             }
@@ -147,16 +147,16 @@ function action(mode, type, selection) {
             cm.sendSimple(questionHead + questionEntry + "\r\n\r\n#b" + questionOptions + "#k");
         } else if(status == 6) {
             if(!evaluateAnswer(selection)) {
-                cm.sendNext("You have failed the question.");
+                cm.sendNext("挑战失败了，请重新尝试!");
                 cm.dispose();
                 return;
             }
             
-            cm.sendOk("Alright. All your answers have been proven as the truth. Your wisdom has been proven.\r\nTake this necklace and go back.");
+            cm.sendOk("恭喜你答对了所有的问题.\r\n带上这条项链回去吧.");
             cm.gainItem(4031058, 1);
             cm.dispose();
         } else {
-            cm.sendOk("Unexpected branch.");
+            cm.sendOk("脚本出错了，请联系GM修复.");
             cm.dispose();
         }
     }
@@ -167,7 +167,7 @@ function evaluateAnswer(selection) {
 }
 
 function generateQuestionHeading() {
-    return "Here's the " + (status) + (status == 1 ? "st" : status == 2 ? "nd" : status == 3 ? "rd" : "th") + " question. ";
+    return "这是第 " + (status) + " 个问题. ";
 }
 
 function shuffleArray(array) {

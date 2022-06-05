@@ -4,17 +4,17 @@ function start() {
         if (em.getProperty("entry") == "true")
             cm.sendYesNo("Do you want to go to Ellinia?");
         else{
-            cm.sendOk("The boat to Ellinia is already travelling, please be patient for the next one.");
+            cm.sendOk("开往魔法密林的飞船已经起航了,请等待下一班.");
             cm.dispose();
         }
     }else{
-        cm.sendOk("Make sure you got a Ellinia ticket to travel in this boat. Check your inventory.");
+        cm.sendOk("你有#z4031047#吗.");
         cm.dispose();
     }
 }
 function action(mode, type, selection) {
     if (mode <= 0) {
-	cm.sendOk("Okay, talk to me if you change your mind!");
+	cm.sendOk("改变主意了再找我!");
 	cm.dispose();
 	return;
     }
@@ -26,7 +26,7 @@ function action(mode, type, selection) {
         cm.dispose();
     }
     else{
-        cm.sendOk("The boat to Ellinia is ready to take off, please be patient for the next one.");
+        cm.sendOk("开往魔法密林的飞船已经停止检票了,请等待下一班");
         cm.dispose();
     }
 }

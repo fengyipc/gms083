@@ -50,7 +50,7 @@ function action(mode, type, selection) {
         else
             status--;
         if (status == 0) {
-            cm.sendSimple("Hi, there~! I'm Bomack. If you have a #b#t5152035##k, I can prescribe the right kind of cosmetic lenses for you. Now, what would you like to do?\r\n#L2#Cosmetic Lens: #i5152035##t5152035##l");
+            cm.sendSimple("你好~!我是#p9201061#.如果你有#b#t5152035##k,我可以改变你的瞳色. Now, what would you like to do?\r\n#L2#Cosmetic Lens: #i5152035##t5152035##l");
         } else if (status == 1) {
             if (selection == 2) {
                 if (cm.getPlayer().getGender() == 0) {

@@ -25,7 +25,7 @@
 importPackage(Packages.client);
 
 var status = 0;
-var price = 100000;
+var price = 500000;
 
 function isTransformed(ch) {
         return ch.getBuffSource(MapleBuffStat.MORPH) == 2210003;
@@ -33,12 +33,12 @@ function isTransformed(ch) {
 
 function start() {
     if(!(isTransformed(cm.getPlayer()) || cm.haveItem(4001086))) {
-        cm.sendOk("This is the cave of the mighty Horntail, supreme ruler of the Leafre Canyons. Only those #bdeemed worthy#k to meet him can pass here, #boutsiders#k are not welcome. Get lost!");
+        cm.sendOk("这是黑暗龙王居住的洞穴, 米纳尔森林最强的生物.只有有能力的人才可以进入, #b外来人#k不让进去.走吧!");
         cm.dispose();
         return;
     }
     
-    cm.sendSimple("Welcome to Cave of Life - Entrance ! Would you like to go inside and fight #rHorntail#k ? If you want to fight him, you may might need some #b#v2000005##k, so you can recover some HP if you have been hit by #rHorntail#k.\r\n#L1#I would like to buy 10 for 100,000 Mesos!#l\r\n\#L2#No thanks, let me in now!#l");
+    cm.sendSimple("欢迎来到生命洞穴入口!你想进去挑战#r黑暗龙王#k吗?如果你想去挑战他,我想你一定会需要#b#v2000005##k,这可以砸你战斗时救你一命.\r\n#L1#我要花500000金币购买10个#v2000005#!#l\r\n\#L2#不用了谢谢,我想直接进去!#l");
 }
 
 function action(mode, type, selection) {
@@ -47,21 +47,21 @@ function action(mode, type, selection) {
     else if (selection == 1) {
         if(cm.getMeso() >= price) {
             if(!cm.canHold(2000005)) {
-                cm.sendOk("Sorry, you don't have a slot on your inventory for the item!");
+                cm.sendOk("背包空间不足!");
             } else {
                 cm.gainMeso(-price);
                 cm.gainItem(2000005, 10);
-                cm.sendOk("Thank you for buying the potion. Use it as well!");
+                cm.sendOk("给你药!");
             }
         } else {
-            cm.sendOk("Sorry, you don't have enough mesos to buy them!");
+            cm.sendOk("你的金币不够!");
         }
         cm.dispose();
     } else if (selection == 2) {
         if (cm.getLevel() > 99)
             cm.warp(240050000, 0);
         else
-            cm.sendOk("I'm sorry. You need to be atleast level 100 or above to enter.");
+            cm.sendOk("你必须到100级才有资格进去.");
         cm.dispose();
     }
 }

@@ -41,16 +41,16 @@ function action(mode, type, selection) {
                 if(status == 0) {
                         var mapid = cm.getMapId();
                         if(mapid == 674030100) {
-                                cm.sendNext("Hi, I'm #p9220019#.");
+                                cm.sendNext("你好,我是#p9220019#.");
                                 cm.dispose();
                                 return;
                         } else if(mapid == 674030300) {
-                                cm.sendNext("Hi there, #h0#. This is the MV's treasure room. Use the time you have here to do whatever you want, there are a lot of things to uncover here, actually. Or else you can use the portal here to #rgo back#k to the entrance.");
+                                cm.sendNext("你好,#h0#. This is the MV's treasure room. 利用你在这里的时间做你想做的任何事，实际上这里有很多事情要揭露. 还是你想#r回去.");
                                 cm.dispose();
                                 return;
                         }
                     
-                        cm.sendYesNo("Are you sure you want to return? By returning now you are leaving your partners behind, do you really want to do it?");
+                        cm.sendYesNo("要回去吗?");
                 } else if(status == 1) {
                         cm.warp(674030100);
                         cm.dispose();

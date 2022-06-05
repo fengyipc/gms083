@@ -22,7 +22,7 @@
  */
 
 var status;
- 
+
 function start() {
         status = -1;
         action(1, 0, 0);
@@ -40,9 +40,9 @@ function action(mode, type, selection) {
                         status++;
                 else
                         status--;
-    
+        
                 if(status == 0) {
-                        cm.sendOk("Hi, I am Andy, the time traveler from a not so distant future. I have come to avert the creation of machines by the greedy people of this time. They went berserk on my time and consumed everything to dust. I must stop it at any cost!");
+                        cm.sendOk("你好,我是#p2082004#,从不远的将来回来的时光旅行者.我是来阻止这个时代的人制造机器人的。那些机器人在我的时空里发狂，把所有的东西都烧成灰。我必须不惜一切代价阻止它！");
                         cm.dispose();
                 }
         }

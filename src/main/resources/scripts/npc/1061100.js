@@ -38,7 +38,7 @@ var vipcost = 999;
 var iwantreg = 0;
 
 function start() {
-    cm.sendNext("Welcome. We're the Sleepywood Hotel. Our hotel works hard to serve you the best at all times. If you are tired and worn out from hunting, how about a relaxing stay at our hotel?");
+    cm.sendNext("欢迎你，这里是林中之城桑拿房。如果您因打猎而疲惫不堪，在我们这里休息一下怎么样?");
 }
 
 function action(mode, type, selection) {
@@ -46,19 +46,19 @@ function action(mode, type, selection) {
         cm.dispose();
     else {
         if (mode == 0 && status == 2) {
-            cm.sendNext("We offer other kinds of services, too, so please think carefully and then make your decision.");
+            cm.sendNext("我们也提供其他种类的服务，所以请仔细考虑后再做决定。");
             cm.dispose();
             return;
         }
         status++;
         if (status == 1) {
-            cm.sendSimple("We offer two kinds of rooms for our service. Please choose the one of your liking.\r\n#b#L0#Regular sauna (" + regcost + " mesos per use)#l\r\n#L1#VIP sauna (" + vipcost + " mesos per use)#l");
+            cm.sendSimple("我们提供两种房间的服务。请选择一个你喜欢的.\r\n#b#L0#普通桑拿(" + regcost + "金币)#l\r\n#L1#VIP桑拿 (" + vipcost + "金币)#l");
             iwantreg = 1;
         } else if (status == 2) {
             if (selection == 0)
-                cm.sendYesNo("You have chosen the regular sauna. Your HP and MP will recover fast and you can even purchase some items there. Are you sure you want to go in?");
+                cm.sendYesNo("你选择了常规的桑拿。你的HP和MP会很快恢复，你甚至可以在那里购买一些物品。你确定要进去吗?");
             else if (selection == 1) {
-                cm.sendYesNo("You've chosen the VIP sauna. Your HP and MP will recover even faster than that of the regular sauna and you can even find a special item in there. Are you sure you want to go in?");
+                cm.sendYesNo("你选择了VIP桑拿。你的HP和MP会比普通桑拿恢复得更快，你甚至可以在那里找到一个特殊的物品。你确定要进去吗?");
 		iwantreg = 0;
             }
         } else if (status == 3) {
@@ -67,13 +67,13 @@ function action(mode, type, selection) {
                     cm.warp(105040401);
                     cm.gainMeso(-regcost);
                 } else
-                    cm.sendNext("I'm sorry. It looks like you don't have enough mesos. It will cost you at least " + regcost + "mesos to stay at our hotel.");
+                    cm.sendNext("我很抱歉。看起来你没有足够的金币。你需要支付" + regcost + "金币.");
             } else {
                 if (cm.getMeso() >= vipcost) {
                     cm.warp(105040402);
                     cm.gainMeso(-vipcost);
                 } else
-                    cm.sendNext("I'm sorry. It looks like you don't have enough mesos. It will cost you at least " + vipcost + "mesos to stay at our hotel.");
+                    cm.sendNext("我很抱歉。看起来你没有足够的金币。你需要支付" + vipcost + "金币.");
             }
             cm.dispose();
         }

@@ -18,7 +18,7 @@ function action(mode, type, selection) {
         cm.dispose();
     } else {
         if (status >= 0 && mode == 0) {
-            cm.sendOk("Alright then, I hope we can chat later next time.");
+            cm.sendOk("好的,我们日后联系.");
             cm.dispose();
             return;
         }
@@ -29,7 +29,7 @@ function action(mode, type, selection) {
         
         if (cm.getPlayer().getMapId() == 980030010) {
             if (status == 0) {
-                cm.sendNext("I hope you had fun at the Monster Carnival!");
+                cm.sendNext("希望你在嘉年华玩的愉快!");
             } else if (status > 0) {
                 cm.warp(980030000, 0);
                 cm.dispose();
@@ -40,20 +40,20 @@ function action(mode, type, selection) {
                     var shiu = "";
                     if (cm.getPlayer().getFestivalPoints() >= 300) {
                         shiu += "#rA#k";
-                        cm.sendOk("Unfortunately, you either drew or lost the battle despite your excellent performance. Victory can be yours next time! \r\n\r\n#bYour result: " + shiu);
+                        cm.sendOk("不巧,尽管你很努力,但还是没有赢.\r\n\r\n#b你的成绩: " + shiu);
                         rnk = 10;
                     } else if (cm.getPlayer().getFestivalPoints() >= 100) {
                         shiu += "#rB#k";
                         rnk = 20;
-                        cm.sendOk("Unfortunately, you either drew or lost the battle, even with your ultimate performance. Just a little bit, and the victory could have been yours! \r\n\r\n#bYour result: " + shiu);
+                        cm.sendOk("不巧,尽管你很努力,但还是没有赢.\r\n\r\n#b你的成绩: " + shiu);
                     } else if (cm.getPlayer().getFestivalPoints() >= 50) {
                         shiu += "#rC#k";
                         rnk = 30;
-                        cm.sendOk("Unfortunately, you either drew or lost the battle. Victory is for those who strive. I see your efforts, so victory is not far from your reach. Keep it up!\r\n\r\n#bYour result: " + shiu);
+                        cm.sendOk("不巧,尽管你很努力,但还是没有赢.\r\n\r\n#b你的成绩: " + shiu);
                     } else {
                         shiu += "#rD#k";
                         rnk = 40;
-                        cm.sendOk("Unfortunately, you either equalized or lost the battle, and your performance clearly reflects on it. I expect more from you next time. \r\n\r\n#bYour result: " + shiu);
+                        cm.sendOk("不巧,尽管你很努力,但还是没有赢.\r\n\r\n#b你的成绩: " + shiu);
                     }
                 } else {
                     cm.warp(980030000, 0);
@@ -94,19 +94,19 @@ function action(mode, type, selection) {
                     if (cm.getPlayer().getFestivalPoints() >= 300) {
                         shi += "#rA#k";
                         rnk = 1;
-                        cm.sendOk("Congratulations on your victory!!! What a performance! The opposite group could not do anything! I hope the same good work next time! \r\n\r\n#bYour result: " + shi);
+                        cm.sendOk("恭喜你,你赢了! \r\n\r\n#b你的成绩: " + shi);
                     } else if (cm.getPlayer().getFestivalPoints() >= 100) {
                         shi += "#rB#k";
                         rnk = 2;
-                        cm.sendOk("Congratulations on your victory! That was awesome! You did a good job against the opposing group! Just a little longer, and you'll definitely get an A next time! \r\n\r\n#bYour result: " + shi);
+                        cm.sendOk("恭喜你,你赢了! \r\n\r\n#b你的成绩: " + shi);
                     } else if (cm.getPlayer().getFestivalPoints() >= 50) {
                         shi += "#rC#k";
                         rnk = 3;
-                        cm.sendOk("Congratulations on your victory. You did some things here and there, but that can not be considered a good victory. I expect more from you next time. \r\n\r\n#bYour result: " + shi);
+                        cm.sendOk("恭喜你,你赢了! \r\n\r\n#b你的成绩: " + shi);
                     } else {
                         shi += "#rD#k";
                         rnk = 4;
-                        cm.sendOk("Congratulations on your victory, though your performance did not quite reflect that. Be more active in your next participation in the Monster Carnival! \r\n\r\n#bYour result: " + shi);
+                        cm.sendOk("恭喜你,你赢了! \r\n\r\n#b你的成绩: " + shi);
                     }
                 } else {
                     cm.warp(980030000, 0);

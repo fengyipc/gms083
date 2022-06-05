@@ -18,73 +18,75 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 /* Dalair
-	Medal NPC.
+    Medal NPC.
 
         NPC Equipment Merger:
         * @author Ronan Lana
  */
 
-importPackage(Packages.client.processor.action);
-importPackage(Packages.config);
-
-var status;
-var mergeFee = 50000;
-var name;
-
-function start() {
-    status = -1;
-    action(1, 0, 0);
-}
-
-function action(mode, type, selection) {
-    if (mode == -1) {
-        cm.dispose();
-    } else {
-        if (mode == 0 && type > 0) {
-            cm.dispose();
-            return;
+        importPackage(Packages.client.processor.action);
+        importPackage(Packages.config);
+        
+        var status;
+        var mergeFee = 5;
+        var name;
+        
+        function start() {
+            status = -1;
+            action(1, 0, 0);
         }
-        if (mode == 1)
-            status++;
-        else
-            status--;
-
-        if(status == 0) {
-            if (!Packages.config.YamlConfig.config.server.USE_ENABLE_CUSTOM_NPC_SCRIPT) {
-                cm.sendOk("The medal ranking system is currently unavailable...");
-                cm.dispose();
-                return;
-            }
-            
-            var levelLimit = !cm.getPlayer().isCygnus() ? 160 : 110;
-            var selStr = "The medal ranking system is currently unavailable... Therefore, I am providing the #bEquipment Merge#k service! ";
-            
-            if (!YamlConfig.config.server.USE_STARTER_MERGE && (cm.getPlayer().getLevel() < levelLimit || MakerProcessor.getMakerSkillLevel(cm.getPlayer()) < 3)) {
-                selStr += "However, you must have #rMaker level 3#k and at least #rlevel 110#k (Cygnus Knight), #rlevel 160#k (other classes) and a fund of #r" + cm.numberWithCommas(mergeFee) + " mesos#k to use the service.";
-                cm.sendOk(selStr);
-                cm.dispose();
-            } else if (cm.getMeso() < mergeFee) {
-                selStr += "I'm sorry, but this service tax is of #r" + cm.numberWithCommas(mergeFee) + " mesos#k, which it seems you unfortunately don't have right now... Please, stop by again later.";
-                cm.sendOk(selStr);
+        
+        function action(mode, type, selection) {
+            if (mode == -1) {
                 cm.dispose();
             } else {
-                selStr += "For the fee of #r" + cm.numberWithCommas(mergeFee) + "#k mesos, merge unnecessary equipments in your inventory into your currently equipped gears to get stat boosts into them, statups based on the attributes of the items used on the merge!";
-                cm.sendNext(selStr);
+                if (mode == 0 && type > 0) {
+                    cm.dispose();
+                    return;
+                }
+                if (mode == 1)
+                    status++;
+                else
+                    status--;
+        
+                if (status == 0) {
+                    /* if (!Packages.config.YamlConfig.config.server.USE_ENABLE_CUSTOM_NPC_SCRIPT) {
+                         cm.sendOk("奖牌系统当前不可用...");
+                         cm.dispose();
+                         return;
+                     }*/
+        
+                    var levelLimit = !cm.getPlayer().isCygnus() ? 160 : 110;
+                    var selStr = "奖牌系统当前不可用...  因此，我提供#b装备合并#k服务! ";
+        
+                    if (!YamlConfig.config.server.USE_STARTER_MERGE && (cm.getPlayer().getLevel() < levelLimit || MakerProcessor.getMakerSkillLevel(cm.getPlayer()) < 3)) {
+                        selStr += "然而, 你必须拥有#r3级锻造#k并且#r160级(骑士团110级)#k以上,支付#r" + cm.numberWithCommas(mergeFee) + "抵用券#k才可以使用这个服务.";
+                        cm.sendOk(selStr);
+                        cm.dispose();
+                    } else if (cm.getPlayer().getCashShop().getCash(1) < mergeFee) {
+                        selStr += "你没有#r" + cm.numberWithCommas(mergeFee) + "点券#k.";
+                        cm.sendOk(selStr);
+                        cm.dispose();
+                    } else {
+                        selStr += "用了#r" + cm.numberWithCommas(mergeFee) + "#点券,将你的背包中不需要的装备合成到当前装备中，以获得属性提升!";
+                        cm.sendNext(selStr);
+                    }
+                } else if (status == 1) {
+                    selStr = "#r警告#b:确保在选定要合并的道具之后，在背包中准备好用来合并的道具。#k 所有被选择的道具都会被合并.\r\n\r\n请注意，从合并中获得奖金的设备将无法进行交易，已获得合并奖励的装备不能用于合并.\r\n\r\n";
+                    cm.sendGetText(selStr);
+                } else if (status == 2) {
+                    name = cm.getText();
+        
+                    if (cm.getPlayer().mergeAllItemsFromName(name)) {
+                        //cm.gainMeso(-mergeFee);
+                        cm.getPlayer().gainMp(-mergeFee);
+                        cm.sendOk("合并完成! 谢谢使用我的服务.");
+                    } else {
+                        cm.sendOk("你的装备栏里面没有#b'" + name + "'#k!");
+                    }
+        
+                    cm.dispose();
+                }
             }
-        } else if(status == 1) {
-            selStr = "#rWARNING#b: Make sure you have your items ready to merge at the slots #rAFTER#b the item you have selected to merge.#k Any items #bunder#k the item selected will be merged thoroughly.\r\n\r\nNote that equipments receiving bonuses from merge are going to become #rUntradeable#k thereon, and equipments that already received the merge bonus #rcannot be used for merge#k.\r\n\r\n";
-            cm.sendGetText(selStr);
-        } else if(status == 2) {
-            name = cm.getText();
-            
-            if (cm.getPlayer().mergeAllItemsFromName(name)) {
-                cm.gainMeso(-mergeFee);
-                cm.sendOk("Merging complete! Thanks for using the service and enjoy your new equipment stats.");
-            } else {
-                cm.sendOk("There is no #b'" + name + "'#k in your #bEQUIP#k inventory!");
-            }
-            
-            cm.dispose();
         }
-    }
-}
+        

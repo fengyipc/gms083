@@ -26,6 +26,6 @@
 
 
 function start() {
-    cm.sendNext("NO! Abdullah, I said 17 bedrooms, and 23 bathrooms! CALL THE CONSTRUCTION COMPANY AND CHANGE IT!");
+    cm.sendNext("不!阿杜,我说的是17间卧室,和23间浴室! #e#r快点叫建筑工人改过来!");
     cm.dispose();
 }

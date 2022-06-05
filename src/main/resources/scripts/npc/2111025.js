@@ -23,7 +23,7 @@
 	Control Device
  */
 
-function start() {
-    cm.sendNext ("This control device seems to be monitoring something...");
-    cm.dispose();
-}
+    function start() {
+        cm.sendNext ("这个控制装置好像在监视什么...");
+        cm.dispose();
+    }

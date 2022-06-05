@@ -53,8 +53,8 @@ function action(mode, type, selection) {
     else
         cm.dispose();
     if (status == 0 && mode == 1) {
-        var selStr = "Hm? Who might you be? Oh, you've heard about my forging skills? In that case, I'd be glad to process some of your ores... for a fee.#b"
-        var options = new Array("Refine a mineral ore","Refine a jewel ore","Refine a rare jewel","Refine a crystal ore","Create materials","Create Arrows");
+        var selStr = "嗯?你会是谁?听说过我的锻造技术吗?我可以为你制造一些矿石.#b"
+        var options = new Array("制作矿石","制作宝石","制作特殊宝石","制作水晶","制作其他材料","制作弓箭");
         for (var i = 0; i < options.length; i++){
             selStr += "\r\n#L" + i + "# " + options[i] + "#l";
         }
@@ -64,8 +64,8 @@ function action(mode, type, selection) {
     else if (status == 1 && mode == 1) {
         selectedType = selection;
         if (selectedType == 0){ //mineral refine
-            var selStr = "So, what kind of mineral ore would you like to refine?#b";
-            var minerals = new Array ("Bronze","Steel","Mithril","Adamantium","Silver","Orihalcon","Gold");
+            var selStr = "你想做哪种?#b";
+            var minerals = new Array ("#z4011000#","#z4011001#","#z4011002#","#z4011003#","#z4011004#","#z4011005#","#z4011006#");
             for (var i = 0; i < minerals.length; i++){
                 selStr += "\r\n#L" + i + "# " + minerals[i] + "#l";
             }
@@ -73,8 +73,8 @@ function action(mode, type, selection) {
             cm.sendSimple(selStr);
         }
         else if (selectedType == 1){ //jewel refine
-            var selStr = "So, what kind of jewel ore would you like to refine?#b";
-            var jewels = new Array ("Garnet","Amethyst","Aquamarine","Emerald","Opal","Sapphire","Topaz","Diamond","Black Crystal");
+            var selStr = "你想做哪种?#b";
+            var jewels = new Array ("#z4021000#","#z4021001#","#z4021002#","#z4021003#","#z4021004#","#z4021005#","#z4021006#","#z4021007#","#z4021008#");
             for (var i = 0; i < jewels.length; i++){
                 selStr += "\r\n#L" + i + "# " + jewels[i] + "#l";
             }
@@ -82,8 +82,8 @@ function action(mode, type, selection) {
             cm.sendSimple(selStr);
         }
         else if (selectedType == 2){ //rock refine
-            var selStr = "A rare jewel? Which one were you thinking of?#b";
-            var items = new Array ("Moon Rock","Star Rock");
+            var selStr = "你想做哪种?#b";
+            var items = new Array ("月石","星石");
             for (var i = 0; i < items.length; i++){
                 selStr += "\r\n#L" + i + "# " + items[i] + "#l";
             }
@@ -91,8 +91,8 @@ function action(mode, type, selection) {
             cm.sendSimple(selStr);
         }
         else if (selectedType == 3){ //crystal refine
-            var selStr = "Crystal ore? I love refining those!#b";
-            var crystals = new Array ("Power Crystal","Wisdom Crystal","DEX Crystal","LUK Crystal");
+            var selStr = "你想做哪种#b";
+            var crystals = new Array ("力量水晶","智慧水晶","敏捷水晶","幸运水晶","黑暗水晶");
             for (var i = 0; i < crystals.length; i++){
                 selStr += "\r\n#L" + i + "# " + crystals[i] + "#l";
             }
@@ -100,8 +100,8 @@ function action(mode, type, selection) {
             cm.sendSimple(selStr);
         }
         else if (selectedType == 4){ //material refine
-            var selStr = "Materials? I know of a few materials that I can make for you...#b";
-            var materials = new Array ("Make Processed Wood with Tree Branch","Make Processed Wood with Firewood","Make Screws (packs of 15)");
+            var selStr = "你想做哪种...#b";
+            var materials = new Array ("树枝制作木板","木块制作木板","螺丝钉(15个)");
             for (var i = 0; i < materials.length; i++){
                 selStr += "\r\n#L" + i + "# " + materials[i] + "#l";
             }
@@ -109,8 +109,8 @@ function action(mode, type, selection) {
             cm.sendSimple(selStr);
         }
         else if (selectedType == 5){ //arrow refine
-            var selStr = "Arrows? Not a problem at all.#b";
-            var arrows = new Array ("Arrow for Bow","Arrow for Crossbow","Bronze Arrow for Bow","Bronze Arrow for Crossbow","Steel Arrow for Bow","Steel Arrow for Crossbow");
+            var selStr = "箭?没问题.#b";
+            var arrows = new Array ("#z2060000#","#z2061000#","#z2060001#","#z2061001#","#z2060002#","#z2061002#");
             for (var i = 0; i < arrows.length; i++){
                 selStr += "\r\n#L" + i + "# " + arrows[i] + "#l";
             }
@@ -173,8 +173,7 @@ function action(mode, type, selection) {
             cost = costSet[selectedItem];
         }
 	        
-        var prompt = "So, you want me to make some #t" + item + "#s? In that case, how many do you want me to make?";
-		
+        var prompt = "想做#t" + item + "#?要做多少个?";
         cm.sendGetNumber(prompt,1,1,100)
     }
     else if (status == 3 && mode == 1) {
@@ -199,13 +198,13 @@ function action(mode, type, selection) {
             cost = costSet[selectedItem];
         }
 		
-        var prompt = "You want me to make ";
+        var prompt = "要制作";
         if (qty == 1)
-            prompt += "a #t" + item + "#?";
+        prompt += "一个#t" + item + "#?";
         else
-            prompt += qty + " #t" + item + "#?";
+        prompt += qty + "个#t" + item + "#?";
 			
-        prompt += " In that case, I'm going to need specific items from you in order to make it. Make sure you have room in your inventory, though!#b";
+        prompt += "我需要这些材料!#b";
 		
         if (mats instanceof Array){
             for(var i = 0; i < mats.length; i++){
@@ -217,7 +216,7 @@ function action(mode, type, selection) {
         }
 		
         if (cost > 0)
-            prompt += "\r\n#i4031138# " + cost * qty + " meso";
+        prompt += "\r\n#i4031138# " + cost * qty + "金币";
 		
         cm.sendYesNo(prompt);
     }
@@ -235,11 +234,11 @@ function action(mode, type, selection) {
             recvQty = qty;
         
         if(!cm.canHold(recvItem, recvQty)) {
-            cm.sendOk("I'm afraid you have no slots available for this transaction.");
+            cm.sendOk("你背包满了.");
         }
         else if (cm.getMeso() < cost * qty)
         {
-            cm.sendOk("I'm afraid you cannot afford my services.");
+            cm.sendOk("你的金币不够.");
         }
         else
         {
@@ -262,7 +261,7 @@ function action(mode, type, selection) {
             }
             
             if (!complete)
-                cm.sendOk("Hold it, I can't finish that without all of the proper materials. Bring them first, then we'll talk.");
+            cm.sendOk("巧妇难为无米之炊.");
             else {
                 if (mats instanceof Array) {
                     for (var i = 0; i < mats.length; i++){
@@ -276,7 +275,7 @@ function action(mode, type, selection) {
                     cm.gainMeso(-cost * qty);
 
                 cm.gainItem(recvItem, recvQty);
-                cm.sendOk("All done. If you need anything else, you know where to find me.");
+                cm.sendOk("做好了.");
             }
         }
 	

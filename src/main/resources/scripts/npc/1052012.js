@@ -47,10 +47,10 @@ function action(mode, type, selection) {
                         status--;
     
                 if(status == 0) {
-                        cm.sendYesNo("So, are you going to use the Internet Cafe? There is a fee to use the spaces there, that is #b5,000 mesos#k. Are you going to enter the Cafe?");
+                        cm.sendYesNo("要去网吧吗?需要#b5,000金币#k.要进去吗?");
                 } else if(status == 1) {
                         if(cm.getMeso() < 5000) {
-                                cm.sendOk("Oh, you don't have the money, right? Sorry, I can't let you in.");
+                                cm.sendOk("钱不够.");
                         } else {
                                 cm.gainMeso(-5000);
                                 cm.warp(193000000, "out00");

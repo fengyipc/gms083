@@ -39,7 +39,8 @@ function pushIfItemExists(array, itemid) {
 
 function start() {
     status = -1;
-    action(1, 0, 0);
+cm.openNpc(2010002,"高级脸型");
+   // action(1, 0, 0);
 }
 
 function action(mode, type, selection) {
@@ -51,7 +52,7 @@ function action(mode, type, selection) {
         else
             status--;
         if (status == 0) {
-            cm.sendSimple("Well well well, welcome to the Orbis Plastic Surgery! Would you like to transform your face into something new? With a #b#t5152005##k, you can let us take care of the rest and have the face you've always wanted~!\r\n#L2#Plastic Surgery: #i5152005##t5152005##l");
+            cm.sendSimple("欢迎光临天空之城整形医院! 你想改变你的脸型吗?使用#b#t5152005##k,你就可以选择你想要的脸型~!\r\n#L2#换脸型:使用#i5152005##t5152005##l");
         } else if (status == 1) {
             if (selection == 2) {
                 facenew = Array();
@@ -69,7 +70,7 @@ function action(mode, type, selection) {
                                 % 100));
                     }
                 }
-                cm.sendStyle("I can totally transform your face into something new... how about giving us a try? For #b#t5152005##k, you can get the face of your liking...take your time in choosing the face of your preference.", facenew);
+                cm.sendStyle("这些脸型我都可以为你服务,只要你有#b#t5152005##k,就可以随意选择...选一个你想要的样子吧.", facenew);
             }
         }
         else if (status == 2){
@@ -77,9 +78,9 @@ function action(mode, type, selection) {
             if (cm.haveItem(5152005) == true){
                 cm.gainItem(5152005, -1);
                 cm.setFace(facenew[selection]);
-                cm.sendOk("Enjoy your new and improved face!");
+                cm.sendOk("好了!");
             } else {
-                cm.sendOk("Hmm ... it looks like you don't have the coupon specifically for this place. Sorry to say this, but without the coupon, there's no plastic surgery for you...");
+                cm.sendOk("你没有我们的会员卡...");
             }
         }
     }

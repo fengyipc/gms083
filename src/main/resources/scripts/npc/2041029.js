@@ -21,7 +21,7 @@
 */
 
 function start() {
-    cm.sendOk("Up ahead is the mysterious forest of #bEllin#k. Go through #bthe portal of time#k if you are ready to unveil some of the mysteries of the past of Victoria Island, as how it used to be at it's dawn.");
+    cm.sendOk("前面是神秘的#b艾琳森林#k.通过这个#b时空门#k你们就会进入远古的金银岛.");
     cm.dispose();
 }
 	

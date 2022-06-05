@@ -12,7 +12,7 @@ function action(mode, type, selection) {
 		cm.dispose(); 
 	} else { 
 		if (mode == 0) { 
-			cm.sendOk("Talk to me again when you want to."); 
+			cm.sendOk("需要了在和我联系."); 
 			cm.dispose(); 
 		} 
                 if (mode == 1) 
@@ -22,14 +22,14 @@ function action(mode, type, selection) {
                  
                 if (status == 1) { 
                         if (cm.getChar().getMapId() == 209000000) { 
-                                cm.sendYesNo("Do you wish to head to where the #bSnow Sprinkler#k is?"); 
+                                cm.sendYesNo("你想去#b扫雪车#k所在的地方吗?"); 
                                 status = 9; 
                         } else if (cm.getChar().getMapId() == 209080000) { 
-                                cm.sendYesNo("Do you wish to return to Happyville?"); 
+                                cm.sendYesNo("想要返回幸福村吗?"); 
                                 status = 19; 
                         }
                         else {
-                                cm.sendOk("You alright?");
+                                cm.sendOk("你还好吗?");
                                 cm.dispose();
                         }
                 } 
@@ -43,7 +43,7 @@ function action(mode, type, selection) {
                 }
                 
                 else {
-                        cm.sendOk("You alrighty?");
+                        cm.sendOk("你还好吗?");
                         cm.dispose();
                 }
         }

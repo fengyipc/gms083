@@ -6,6 +6,6 @@
 */
 
 function start() {
-        cm.sendNext("At your service, my friend.");
+        cm.sendNext("任你差遣,我的朋友.");
         cm.dispose();
 }

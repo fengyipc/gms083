@@ -7,13 +7,13 @@ function start() {
 function action(mode, type, selection) {
         var eim = cm.getEventInstance();
         if (eim != null && eim.getIntProperty("glpq6") == 3) {
-                cm.sendOk("... Well played. You overtook the Twisted Masters. Pass through that gate to receive your prizes.");
+                cm.sendOk("... 干得不错.你超越了扭曲的主人.过去领取你的奖励.");
                 cm.dispose();
                 return;
         }
         
         if (!cm.isEventLeader()) {
-                cm.sendNext("I wish for your leader to talk to me.");
+                cm.sendNext("让队长来找我.");
                 cm.dispose();
                 return;
         }
@@ -27,11 +27,11 @@ function action(mode, type, selection) {
         if (eim != null) {
                 if (eim.getIntProperty("glpq6") == 0) {
                         if (status == 0) {
-                                cm.sendNext("Welcome to the Twisted Masters' Keep. I will be your host for this evening...");
+                                cm.sendNext("Welcome to the Twisted Masters' Keep. 今晚我来做东...");
                         } else if (status == 1) {
-                                cm.sendNext("Tonight, we have a feast of a squad of Maplers.. ahaha...");
+                                cm.sendNext("今晚,将有一群冒险家的盛宴.. 嘎嘎嘎...");
                         } else if (status == 2) {
-                                cm.sendNext("Let our specially trained Master Guardians escort you!");
+                                cm.sendNext("让我们训练有素的守护大师护送你!");
                                 cm.mapMessage(6, "Engarde! Master Guardians approach!");
                                 for (var i = 0; i < 10; i++) {
                                         var mob = eim.getMonster(9400594);
@@ -47,9 +47,9 @@ function action(mode, type, selection) {
                 } else if (eim.getIntProperty("glpq6") == 1) {
                         if (cm.getMap().countMonsters() == 0) {
                                 if (status == 0) {
-                                        cm.sendOk("Eh. What is this? You've defeated them?");
+                                        cm.sendOk("什么?你打败他们了?");
                                 } else if (status == 1) {
-                                        cm.sendNext("Well, no matter! The Twisted Masters will be glad to welcome you.");
+                                        cm.sendNext("好吧，没关系！扭曲的大师们会很高兴欢迎你的.");
                                         cm.mapMessage(6, "Twisted Masters approach!");
 
                                         //Margana

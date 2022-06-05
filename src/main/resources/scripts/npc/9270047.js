@@ -23,176 +23,177 @@
  *@author Alan (SharpAceX)
  *@author Ronan
  */
-importPackage(Packages.server.expeditions);
-importPackage(Packages.tools);
-importPackage(Packages.scripting.event);
-
-var status = 0;
-var expedition;
-var expedMembers;
-var player;
-var em;
-var exped = MapleExpeditionType.SCARGA;
-var expedName = "Scarga";
-var expedBoss = "Scarlion and Targa";
-var expedMap = "Spooky World";
-var expedItem = 4032246;
-
-var list = "What would you like to do?#b\r\n\r\n#L1#View current Expedition members#l\r\n#L2#Start the fight!#l\r\n#L3#Stop the expedition.#l";
-
-function start() {
-    action(1, 0, 0);
-}
-
-function action(mode, type, selection) {
-
-    player = cm.getPlayer();
-    expedition = cm.getExpedition(exped);
-    em = cm.getEventManager("ScargaBattle");
-
-    if (mode == -1) {
-        cm.dispose();
-    } else {
-        if (mode == 0) {
-            cm.dispose();
-            return;
-        }
-
-        if (status == 0) {
-            if (player.getLevel() < exped.getMinLevel() || player.getLevel() > exped.getMaxLevel()) { //Don't fit requirement, thanks Conrad
-                cm.sendOk("You do not meet the criteria to battle " + expedBoss + "!");
-                cm.dispose();
-            } else if (expedition == null) { //Start an expedition
-                cm.sendSimple("#e#b<Expedition: " + expedName + ">\r\n#k#n" + em.getProperty("party") + "\r\n\r\nWould you like to assemble a team to take on #r" + expedBoss + "#k?\r\n#b#L1#Lets get this going!#l\r\n\#L2#No, I think I'll wait a bit...#l");
-                status = 1;
-            } else if (expedition.isLeader(player)) { //If you're the leader, manage the exped
-                if (expedition.isInProgress()) {
-                    cm.sendOk("Your expedition is already in progress, for those who remain battling lets pray for those brave souls.");
-                    cm.dispose();
-                } else {
-                    cm.sendSimple(list);
-                    status = 2;
-                }
-            } else if (expedition.isRegistering()) { //If the expedition is registering
-                if (expedition.contains(player)) { //If you're in it but it hasn't started, be patient
-                    cm.sendOk("You have already registered for the expedition. Please wait for #r" + expedition.getLeader().getName() + "#k to begin it.");
-                    cm.dispose();
-                } else { //If you aren't in it, you're going to get added
-                    cm.sendOk(expedition.addMember(cm.getPlayer()));
-                    cm.dispose();
-                }
-            } else if (expedition.isInProgress()) { //Only if the expedition is in progress
-                if (expedition.contains(player)) { //If you're registered, warp you in
-                    var eim = em.getInstance(expedName + player.getClient().getChannel());
-                    if(eim.getIntProperty("canJoin") == 1) {
-                        eim.registerPlayer(player);
-                    } else {
-                        cm.sendOk("Your expedition already started the battle against " + expedBoss + ". Lets pray for those brave souls.");
-                    }
-                    
-                    cm.dispose();
-                } else { //If you're not in by now, tough luck
-                    cm.sendOk("Another expedition has taken the initiative to challenge " + expedBoss + ", lets pray for those brave souls.");
-                    cm.dispose();
-                }
-            }
-        } else if (status == 1) {
-            if (selection == 1) {
-                if (!cm.haveItem(expedItem)) {
-                    cm.sendOk("As the expedition leader, you must have on your inventory a #b#t" + expedItem + "##k to battle " + expedBoss + "!");
-                    cm.dispose();
-                    return;
-                }
-                
-                expedition = cm.getExpedition(exped);
-                if(expedition != null) {
-                    cm.sendOk("Someone already taken the initiative to be the leader of the expedition. Try joining them!");
-                    cm.dispose();
-                    return;
-                }
-                
-                var res = cm.createExpedition(exped);
-                if (res == 0) {
-                    cm.sendOk("The #r" + expedBoss + " Expedition#k has been created.\r\n\r\nTalk to me again to view the current team, or start the fight!");
-                } else if (res > 0) {
-                    cm.sendOk("Sorry, you've already reached the quota of attempts for this expedition! Try again another day...");
-                } else {
-                    cm.sendOk("An unexpected error has occurred when starting the expedition, please try again later.");
-                }
-                
-                cm.dispose();
-                return;
-            } else if (selection == 2) {
-                cm.sendOk("Sure, not everyone's up to challenging " + expedBoss + ".");
-                cm.dispose();
-                return;
-            }
-        } else if (status == 2) {
-            if (selection == 1) {
-                if (expedition == null) {
-                    cm.sendOk("The expedition could not be loaded.");
-                    cm.dispose();
-                    return;
-                }
-                expedMembers = expedition.getMemberList();
-                var size = expedMembers.size();
-                if (size == 1) {
-                    cm.sendOk("You are the only member of the expedition.");
-                    cm.dispose();
-                    return;
-                }
-                var text = "The following members make up your expedition (Click on them to expel them):\r\n";
-                text += "\r\n\t\t1." + expedition.getLeader().getName();
-                for (var i = 1; i < size; i++) {
-                    text += "\r\n#b#L" + (i + 1) + "#" + (i + 1) + ". " + expedMembers.get(i).getValue() + "#l\n";
-                }
-                cm.sendSimple(text);
-                status = 6;
-            } else if (selection == 2) {
-                var min = exped.getMinSize();
-                var size = expedition.getMemberList().size();
-                if (size < min) {
-                    cm.sendOk("You need at least " + min + " players registered in your expedition.");
-                    cm.dispose();
-                    return;
-                }
-                
-                cm.sendOk("The expedition will begin and you will now be escorted to the #b" + expedMap + "#k.");
-                status = 4;
-            } else if (selection == 3) {
-                player.getMap().broadcastMessage(MaplePacketCreator.serverNotice(6, expedition.getLeader().getName() + " has ended the expedition."));
-                cm.endExpedition(expedition);
-                cm.sendOk("The expedition has now ended. Sometimes the best strategy is to run away.");
-                cm.dispose();
-                return;
-            }
-        } else if (status == 4) {
-            if (em == null) {
-                cm.sendOk("The event could not be initialized, please report this on the forum.");
-                cm.dispose();
-                return;
-            }
-
-            em.setProperty("leader", player.getName());
-            em.setProperty("channel", player.getClient().getChannel());
-            if(!em.startInstance(expedition)) {
-                cm.sendOk("Another expedition has taken the initiative to challenge " + expedBoss + ", lets pray for those brave souls.");
-                cm.dispose();
-                return;
-            }
-            
-            cm.dispose();
-            return;
-        } else if (status == 6) {
-            if (selection > 0) {
-                var banned = expedMembers.get(selection - 1);
-                expedition.ban(banned);
-                cm.sendOk("You have banned " + banned.getValue() + " from the expedition.");
-                cm.dispose();
-            } else {
-                cm.sendSimple(list);
-                status = 2;
-            }
-        }
-    }
-}
+ importPackage(Packages.server.expeditions);
+ importPackage(Packages.tools);
+ importPackage(Packages.scripting.event);
+ 
+ var status = 0;
+ var expedition;
+ var expedMembers;
+ var player;
+ var em;
+ var exped = MapleExpeditionType.SCARGA;
+ var expedName = "梦幻主题公园";
+ var expedBoss = "暴力熊与心疤狮";
+ var expedMap = "#m551030200#";
+ var expedItem = 4032246;
+ 
+ var list = "你想做什么?#b\r\n\r\n#L1#查看远征队成员#l\r\n#L2#开始战斗!#l\r\n#L3#结束远征队.#l";
+ 
+ function start() {
+     action(1, 0, 0);
+ }
+ 
+ function action(mode, type, selection) {
+ 
+     player = cm.getPlayer();
+     expedition = cm.getExpedition(exped);
+     em = cm.getEventManager("ScargaBattle");
+ 
+     if (mode == -1) {
+         cm.dispose();
+     } else {
+         if (mode == 0) {
+             cm.dispose();
+             return;
+         }
+ 
+         if (status == 0) {
+             if (player.getLevel() < exped.getMinLevel() || player.getLevel() > exped.getMaxLevel()) { //Don't fit requirement, thanks Conrad
+                 cm.sendOk("你还不可以挑战" + expedBoss + "!");
+                 cm.dispose();
+             } else if (expedition == null) { //Start an expedition
+                 cm.sendSimple("#e#b<远征队: " + expedName + ">\r\n#k#n" + em.getProperty("party") + "\r\n\r\n你想组建一个队伍来挑战#r" + expedBoss + "#k?\r\n#b#L1#让我们开始吧!#l\r\n\#L2#不,我想再等等...#l");
+                 status = 1;
+             } else if (expedition.isLeader(player)) { //If you're the leader, manage the exped
+                 if (expedition.isInProgress()) {
+                     cm.sendOk("战斗已经开始了");
+                     cm.dispose();
+                 } else {
+                     cm.sendSimple(list);
+                     status = 2;
+                 }
+             } else if (expedition.isRegistering()) { //If the expedition is registering
+                 if (expedition.contains(player)) { //If you're in it but it hasn't started, be patient
+                     cm.sendOk("你已经加入了远征队.请等#r" + expedition.getLeader().getName() + "#k开始.");
+                     cm.dispose();
+                 } else { //If you aren't in it, you're going to get added
+                     cm.sendOk(expedition.addMember(cm.getPlayer()));
+                     cm.dispose();
+                 }
+             } else if (expedition.isInProgress()) { //Only if the expedition is in progress
+                 if (expedition.contains(player)) { //If you're registered, warp you in
+                     var eim = em.getInstance(expedName + player.getClient().getChannel());
+                     if(eim.getIntProperty("canJoin") == 1) {
+                         eim.registerPlayer(player);
+                     } else {
+                         cm.sendOk("战斗已经开始.");
+                     }
+                     
+                     cm.dispose();
+                 } else { //If you're not in by now, tough luck
+                     cm.sendOk("其他队伍正在战斗.");
+                     cm.dispose();
+                 }
+             }
+         } else if (status == 1) {
+             if (selection == 1) {
+                 if (!cm.haveItem(expedItem)) {
+                     cm.sendOk("最为队长,你必须有#b#t" + expedItem + "##k才可以挑战" + expedBoss + "!");
+                     cm.dispose();
+                     return;
+                 }
+                 
+                 expedition = cm.getExpedition(exped);
+                 if(expedition != null) {
+                     cm.sendOk("有人已经组建了远征队,加入他们吧!");
+                     cm.dispose();
+                     return;
+                 }
+                 
+                 var res = cm.createExpedition(exped);
+                 if (res == 0) {
+                     cm.sendOk("#r" + expedBoss + "远征队#k建立了.\r\n\r\n再次与我对话开始战斗!");
+                 } else if (res > 0) {
+                     cm.sendOk("你今天的战斗次数已经用完了...");
+                 } else {
+                     cm.sendOk("出错了.");
+                 }
+                 
+                 cm.dispose();
+                 return;
+             } else if (selection == 2) {
+                 cm.sendOk("S不是所有人都可以挑战" + expedBoss + ".");
+                 cm.dispose();
+                 return;
+             }
+         } else if (status == 2) {
+             if (selection == 1) {
+                 if (expedition == null) {
+                     cm.sendOk("出错了.");
+                     cm.dispose();
+                     return;
+                 }
+                 expedMembers = expedition.getMemberList();
+                 var size = expedMembers.size();
+                 if (size == 1) {
+                     cm.sendOk("你是唯一的成员.");
+                     cm.dispose();
+                     return;
+                 }
+                 var text = "以下是远征队名单 (点击移除):\r\n";
+                 text += "\r\n\t\t1." + expedition.getLeader().getName();
+                 for (var i = 1; i < size; i++) {
+                     text += "\r\n#b#L" + (i + 1) + "#" + (i + 1) + ". " + expedMembers.get(i).getValue() + "#l\n";
+                 }
+                 cm.sendSimple(text);
+                 status = 6;
+             } else if (selection == 2) {
+                 var min = exped.getMinSize();
+                 var size = expedition.getMemberList().size();
+                 if (size < min) {
+                     cm.sendOk("你的队伍至少需要" + min + "玩家.");
+                     cm.dispose();
+                     return;
+                 }
+                 
+                 cm.sendOk("现在送你们进入#b" + expedMap + "#k,加油.");
+                 status = 4;
+             } else if (selection == 3) {
+                 player.getMap().broadcastMessage(MaplePacketCreator.serverNotice(6, expedition.getLeader().getName() + "结束了远征队."));
+                 cm.endExpedition(expedition);
+                 cm.sendOk("远征队结束了.");
+                 cm.dispose();
+                 return;
+             }
+         } else if (status == 4) {
+             if (em == null) {
+                 cm.sendOk("无法初始化.");
+                 cm.dispose();
+                 return;
+             }
+ 
+             em.setProperty("leader", player.getName());
+             em.setProperty("channel", player.getClient().getChannel());
+             if(!em.startInstance(expedition)) {
+                 cm.sendOk("其他队伍正在战斗.");
+                 cm.dispose();
+                 return;
+             }
+             
+             cm.dispose();
+             return;
+         } else if (status == 6) {
+             if (selection > 0) {
+                 var banned = expedMembers.get(selection - 1);
+                 expedition.ban(banned);
+                 cm.sendOk("你把" + banned.getValue() + "移出了远征队.");
+                 cm.dispose();
+             } else {
+                 cm.sendSimple(list);
+                 status = 2;
+             }
+         }
+     }
+ }
+ 

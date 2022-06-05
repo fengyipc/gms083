@@ -21,6 +21,6 @@
 */
 
 function start() {
-    cm.sendOk("Should you have a locked box you want to open, bring it to me.");
+    cm.sendOk("如果你想打开一个上锁的盒子，把它带给我。");
     cm.dispose();
 }

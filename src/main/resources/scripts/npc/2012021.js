@@ -2,19 +2,19 @@ function start() {
     if(cm.haveItem(4031331)){
         var em = cm.getEventManager("Cabin");
         if (em.getProperty("entry") == "true") {
-            cm.sendYesNo("Do you wish to board the flight?");
+            cm.sendYesNo("要上飞机吗?");
         } else {
-            cm.sendOk("The flight has not arrived yet. Come back soon.");
+            cm.sendOk("飞机还没有抵达,请等等.");
             cm.dispose();
         }
     } else {
-        cm.sendOk("Make sure you got a Leafre ticket to travel in this flight. Check your inventory.");
+        cm.sendOk("你有票吗.");
         cm.dispose();
     }
 }
 function action(mode, type, selection) {
     if (mode <= 0) {
-	cm.sendOk("Okay, talk to me if you change your mind!");
+	cm.sendOk("改变主意了随时来找我!");
         cm.dispose();
 	return;
     }
@@ -24,7 +24,7 @@ function action(mode, type, selection) {
         cm.warp(200000132);
         cm.gainItem(4031331, -1);
     } else {
-        cm.sendOk("The flight has not arrived yet. Come back soon.");
+        cm.sendOk("飞机还没有抵达,请等等.");
     }
     cm.dispose();
 }

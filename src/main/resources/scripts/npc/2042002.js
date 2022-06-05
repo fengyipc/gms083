@@ -34,7 +34,7 @@ function start() {
             status = 0;
             action(1, 0, 4);
         } else {
-            cm.sendOk("The Monster Carnival is currently unavailable.");
+            cm.sendOk("怪物嘉年华当前不可用.");
             cm.dispose();
         }
         

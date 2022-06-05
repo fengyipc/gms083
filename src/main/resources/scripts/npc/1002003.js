@@ -36,11 +36,11 @@ function action(mode, type, selection) {
 		cm.dispose();
 	} else {
 	if (status == 0 && mode == 0) {
-		cm.sendNext("I see... you don't have as many friends as I thought you would. Hahaha, just kidding! Anyway if you feel like changing your mind, please feel free to come back and we'll talk business. If you make a lot of friends, then you know ... hehe ...");
+		cm.sendNext("我看看。。。你想你没有我想象中的那么多朋友。哈哈哈，开玩笑的！不管怎样，如果你想改变主意，请随时回来，我们继续谈。");
 		cm.dispose();
 		return;
 	} else if (status >= 1 && mode == 0) {
-		cm.sendNext("I see... I don't think you don't have as many friends as I thought you would. If not, you just don't have 240,000 mesos with you right this minute? Anyway, if you ever change your mind, come back and we'll talk business. That is, of course, once you have get some financial relief. .. hehe ...");
+		cm.sendNext("我看看。。。我想你没有我想象中那么多朋友。如果不是，你现在就没有24万金币？不管怎样，如果你改变主意，我们回来继续谈。");
 		cm.dispose();
 		return;
 	}	
@@ -49,19 +49,19 @@ function action(mode, type, selection) {
 	else
 		status--;
 	if (status == 0) {
-		cm.sendYesNo("I hope I can make as much as yesterday... well, hello! Don't you want to extend your buddy list? You look like someone who'd have a whole lot of friends... well, what do you think? With some money I can make it happen for you. Remember, though, it only applies to one character at a time, so it won't affect any of your other characters on your account. Do you want to extend your buddy list?");
+		cm.sendYesNo("你好！你看起来像是个有很多朋友的人，你不想增加你的好友名单吗？花钱我可以帮你实现。但是，记住，它一次只适用于一个角色，因此不会影响您帐户上的其他任何角色。你想扩展你的好友列表吗？");
 	} else if (status == 1) {
-		cm.sendYesNo("Alright, good call! It's not that expensive actually. #b240,000 mesos and I'll add 5 more slots to your buddy list#k. And no, I won't be selling them individually. Once you buy it, it's going to be permanently on your buddy list. So if you're one of those that needs more space there, then you might as well do it. What do you think? Will you spend 240,000 mesos for it?");
+		cm.sendYesNo("好的！其实没那么贵。#b240000金币#k，我会在你的好友列表中再增加5个空间。一旦你买了它，它将永远在你的好友名单上。所以，如果你是那种需要更多好友名单空间的人，那么你可以这么做。你怎么认为？你想花24万金币购买吗？");
 	} else if (status == 2) {
 		var capacity = cm.getPlayer().getBuddylist().getCapacity();
 		if (capacity >= 50 || cm.getMeso() < 240000){
-			cm.sendNext("Hey... are you sure you have #b240,000 mesos#k? If so, then check and see if you have extended your buddy list to the max. Even if you pay up, the most you can have on your buddy list is #b50#k.");
+			cm.sendNext("你确定你有#b240000金币#k吗？如果是这样的话，那么检查一下你是否已经把你的好友列表扩展到了最大值。即使你付了钱，你的好友列表上最多也只有50个。");
             cm.dispose();
 		} else {
 			var newcapacity = capacity + 5;
 			cm.gainMeso(-240000);
 			cm.getPlayer().setBuddyCapacity(newcapacity)		
-			cm.sendOk("Alright! Your buddy list will have 5 extra slots by now. Check and see for it yourself. And if you still need more room on your buddy list, you know who to find. Of course, it isn't going to be for free ... well, so long ...");
+			cm.sendOk("好吧！你的好友列表现在增加了5个。看看吧。如果你还需要更多的空间在你的好友名单上，你知道该找谁。当然，这不是免费的，再见！");
 			cm.dispose();
 			}
 		}

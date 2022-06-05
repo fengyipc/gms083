@@ -38,7 +38,7 @@ function start() {
         return;
     }
     
-    cm.sendNext("Hey, you look like you want to go farther and deeper past this place. Over there, though, you'll find yourself surrounded by aggressive, dangerous monsters, so even if you feel that you're ready to go, please be careful. Long ago, a few brave men from our town went in wanting to eliminate anyone threatening the town, but never came back out...");
+    cm.sendNext("嘿，你看起来想去更深处。不过，在那里，你会发现自己被好斗、危险的怪物包围，所以即使你觉得自己已经准备好了，也请小心。很久以前，我们镇上有几个勇敢的人进去想消灭任何威胁镇上的人，但一直没有回来。。。");
 }
 
 function action(mode, type, selection) {
@@ -46,7 +46,7 @@ function action(mode, type, selection) {
         cm.dispose();
     else {
         if (status == 1 && mode == 0 && cm.getLevel() > 49) {
-            cm.sendNext("Even if your level's high it's hard to actually go in there, but if you ever change your mind, please find me. After all, my job is to protect this place.");
+            cm.sendNext("即使你的等级很高，也很难去那里，但如果你改变主意，请找我。毕竟，我的工作是保护这个地方。");
             cm.dispose();
             return;
         }
@@ -56,9 +56,9 @@ function action(mode, type, selection) {
             status--;
         if (status == 1) {
             if (cm.getLevel() > 49)
-                cm.sendYesNo("If you are thinking of going in, I suggest you change your mind. But if you really want to go in... I'm only letting in the ones that are strong enough to stay alive in there. I do not wish to see anyone else die. Let's see... Hmmm...! You look pretty strong. All right, do you want to go in?");
+                cm.sendYesNo("如果你想进去，我建议你改变主意。但如果你真的想进去。。。我只让那些强壮到可以在里面生存的人进来。我不想看到别人死。让我们看看。。。。。。！你看起来很强壮。好吧，你想进去吗？");
              else 
-                cm.sendPrev("If you are thinking of going in, I suggest you change your mind. But if you really want to go in... I'm only letting in the ones that are strong enough to stay alive in there. I do not wish to see anyone else die. Let's see... Hmmm... You haven't reached Level 50 yet. I can't let you in, then, so forget it.");
+                cm.sendPrev("你等级太低了,进去就是送死,回头吧");
         } else if (status == 2) {
             if (cm.getLevel() >= 50) 
                 cm.warp(211040300, 5);

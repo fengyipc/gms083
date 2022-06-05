@@ -25,7 +25,7 @@ function action(mode, type, selection) {
 			cm.dispose();
 			return;
 		} else if(mode == 0) {
-			cm.sendNext("If you're not interested, then oh well...");
+			cm.sendNext("如果你不感兴趣，那好吧。。。");
 			cm.dispose();
 			return;
 		}
@@ -33,12 +33,12 @@ function action(mode, type, selection) {
 		if (status == 0) {
                         var display = "";
                         for(var i=0; i < menu.length; i++) {
-                                display += "\r\n#L"+i+"##b Victoria Island (1000 mesos)#k";
+                                display += "\r\n#L"+i+"##b金银岛(1000 金币)#k";
                         }			
-                        cm.sendSimple("Eh, Hello...again. Do you want to leave Ereve and go somewhere else? If so, you've come to the right place. I operate a ferry that goes from #bEreve#k to #bVictoria Island#k, I can take you to #bVictoria Island#k if you want... You'll have to pay a fee of #b1000#k Mesos.\r\n"+display);
+                        cm.sendSimple("- 你好.我负责#b圣地#k到#b金银岛#k的航线,如果你需要的话,我可以把你送到#b金银岛#k... 你需要支付#b1000#k 金币.\r\n"+display);
 		} else if(status == 1) {
                         if(cm.getMeso() < 1000) {
-				cm.sendNext("Hmm... Are you sure you have #b1000#k Mesos? Check your Inventory and make sure you have enough. You must pay the fee or I can't let you get on...");
+				cm.sendNext("额..你确定你有#b1000#k金币吗?");
 				cm.dispose();
 			} else {
 				cm.gainMeso(-1000);

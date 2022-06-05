@@ -63,32 +63,32 @@ function action(mode, type, selection) {
                 if (status == 0) {
                         em = cm.getEventManager("GuildQuest");
                         if(em == null) {
-                                cm.sendOk("The Guild Quest has encountered an error.");
+                                cm.sendOk("家族挑战出错了.");
                                 cm.dispose();
                                 return;
                         }
                     
-                        cm.sendSimple("#e#b<Guild Quest: Sharenian Ruins>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nThe path to Sharenian starts here. What would you like to do? #b\r\n#L0#Register your guild for Guild Quest#l\r\n#L1#Join your guild's Guild Quest#l\r\n#L2#I would like to hear more details.#l");
+                        cm.sendSimple("#e#b<家族任务:遗迹发掘地>\r\n#k#n" + em.getProperty("party") + "\r\n\r\n通往遗迹的路在这里.你想做什么? #b\r\n#L0#把家族登记到家族任务里#l\r\n#L1#参加家族任务#l\r\n#L2#我想知道细节.#l");
                 } else if (status == 1) {
                         sel = selection;
                         if (selection == 0) {
                                 if(!cm.isGuildLeader()) {
-                                        cm.sendOk("Your guild master/jr.master must talk to me to register the guild for the guild quest.");
+                                        cm.sendOk("你的家族长必须要找我把家族登记到家族任务里.");
                                         cm.dispose();
                                 } else {
                                         if(em.isQueueFull()) {
-                                                cm.sendOk("The queue on this channel is already full. Please be patient and try again after a while, or try on another channel.");
+                                                cm.sendOk("这个频道上的队伍已经满了.请耐心等待或者去别的频道看看.");
                                                 cm.dispose();
                                         } else {
                                                 var qsize = em.getQueueSize();
-                                                cm.sendYesNo(((qsize > 0) ? "There is currently #r" + qsize + "#k guilds queued on. " : "") + "Do you wish for your guild to join this queue?");
+                                                cm.sendYesNo(((qsize > 0) ? "当前有#r" + qsize + "#k个家族在队列中. " : "") + "你想排队吗?");
                                         }
                                 }
                         } else if (selection == 1) {
                                 if(cm.getPlayer().getGuildId() > 0) {
                                         var eim = findLobby(cm.getPlayer().getGuildId());
                                         if(eim == null) {
-                                                cm.sendOk("Your guild is not currently on strategy time on this channel. Check again if your guild is currently planning a Guild Quest or, if so, the channel they are allotted on.");
+                                                cm.sendOk("现在不是这个频道你们家族挑战的时间.");
                                         } else {
                                                 if(cm.isLeader()) {
                                                         em.getEligibleParty(cm.getParty());
@@ -98,31 +98,31 @@ function action(mode, type, selection) {
                                                 }
                                         }
                                 } else {
-                                        cm.sendOk("You can't participate in the guild quest if you don't pertain on a guild yourself!");
+                                        cm.sendOk("你不能参加!");
                                 }
                                 
                                 cm.dispose();
                         } else {
                                 var reqStr = "";
-                                reqStr += "\r\n\r\n    Team requirements:\r\n\r\n";
-                                reqStr += "     - 1 team member #rbelow or equal level 30#k.\r\n";
-                                reqStr += "     - 1 team member who is a #rThief with Dark Sight#k skill and #rmaxed Haste#k.\r\n";
-                                reqStr += "     - 1 team member who is a Magician with #rmaxed Teleport#k.\r\n";
-                                reqStr += "     - 1 team member who is a #rlong ranged attacker#k like Bowman, Assassin, or Gunslinger.\r\n";
-                                reqStr += "     - 1 team member with #rgood jumping skills#k like Assassin with maxed Flash Jump or Gunslinger with Wings.\r\n";
+                                reqStr += "\r\n\r\n    队伍需求:\r\n\r\n";
+                                reqStr += "     - 1名队员 #r等级低于或等于30级#k.\r\n";
+                                reqStr += "     - 1名队员 #r轻功学满并且会隐身的飞侠#k.\r\n";
+                                reqStr += "     - 1名队员 #r学满瞬间移动的法师#k.\r\n";
+                                reqStr += "     - 1名队员 #r远程攻击职业,比如弓箭手,刺客或者枪手.\r\n";
+                                reqStr += "     - 1名队员 #r拥有很好机动性的职业,比如会二段跳的飞侠,会轻羽鞋的海盗#k.\r\n";
                             
-                                cm.sendOk("#e#b<Guild Quest: Sharenian Ruins>#k#n\r\n Team up with your guild members in an auspicious attempt to recover the Rubian from the skeleton's grasp, with teamwork overcoming many puzzles and challenges awaiting inside the Sharenian tombs. Great rewards can be obtained upon the instance completion, and Guild Points can be racked up for your Guild." + reqStr);
+                                cm.sendOk("#e#b<家族任务:遗迹发掘地>#k#n\r\n与你的家族成员合作，从骷髅手中夺回鲁宾，团队合作克服了许多谜团和挑战,等待在遗迹发掘地的坟墓。实例完成后可获得丰厚奖励，并可为您的帮会累积帮会积分。" + reqStr);
                                 cm.dispose();
                         }
                 } else if (status == 2) {
                         if (sel == 0) {
                                 var entry = em.addGuildToQueue(cm.getPlayer().getGuildId(), cm.getPlayer().getId());
                                 if(entry > 0) {
-                                        cm.sendOk("Your guild has been registered successfully. A message will pop on your chat keeping your guild aware about the registration status.\r\n\r\nNow, #rimportant#k: as the leader of this instance, #ryou must already be present on this channel#k the right moment your guild is called for the strategy time. #bThe missubmission of this action will void#k your guild registration as a whole, and the next guild will be called immediately. Must be noted also that if you, leader of this instance, become absent from the end of the strategy time to any point on the duration of the instance, it will render the mission interrupted, and your guild will be moved out instantly, moving again the queue.");
+                                        cm.sendOk("你的家族成功登记了.我会通知你们家族成员.\r\n\r\n现在,#r敲黑板#k:作为队长, #r你一定已经在这个频道了,#k当你的公会被召唤到的时候. #b此操作的错误提交将使您的公会注册整体无效, 那样就轮到下一个家族挑战了.还必须注意的是，如果你，最为队长，再开始任务后离开，都会使任务中断，你的家族会立即被移出队列。");
                                 } else if(entry == 0) {
-                                        cm.sendOk("The queue on this channel is already full. Please be patient and try again after a while, or try on another channel.");
+                                        cm.sendOk("这个频道上的队伍已经满了.请耐心等待或者去别的频道看看.");
                                 } else {
-                                        cm.sendOk("Your guild is already queued on a channel. Please wait for your guild's turn.");
+                                        cm.sendOk("你的家族已经在一个频道里排队了.请排队.");
                                 }
                         }
                         

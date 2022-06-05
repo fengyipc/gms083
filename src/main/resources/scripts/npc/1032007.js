@@ -2,7 +2,7 @@ var status = 0;
 var cost = 5000;
 
 function start() {
-    cm.sendYesNo("Hello, I'm in charge of selling tickets for the ship ride to Orbis Station of Ossyria. The ride to Orbis takes off every 15 minutes, beginning on the hour, and it'll cost you #b"+cost+" mesos#k. Are you sure you want to purchase #b#t4031045##k?");
+    cm.sendYesNo("你好,我是魔法密林-天空之城飞船售票员.去天空之城的航班15分钟一趟,船票是#b"+cost+"金币#k.要购买#b#t4031045##k吗?");
 }
 
 function action(mode, type, selection) {
@@ -10,7 +10,7 @@ function action(mode, type, selection) {
         cm.dispose();
     else {
         if(mode == 0) {
-            cm.sendNext("You must have some business to take care of here, right?");
+            cm.sendNext("在这里还有没完成的事情对吗?");
             cm.dispose();
             return;
         }
@@ -21,7 +21,7 @@ function action(mode, type, selection) {
                 cm.gainMeso(-cost);
                 cm.dispose();
             } else {
-                cm.sendOk("Are you sure you have #b"+cost+" mesos#k? If so, then I urge you to check your etc. inventory, and see if it's full or not.");
+                cm.sendOk("确定你有#b"+cost+"金币#k?如果有的话你的其他栏空间应该满了.");
                 cm.dispose();
             }
         }

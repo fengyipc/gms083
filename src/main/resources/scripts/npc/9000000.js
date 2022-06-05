@@ -27,7 +27,7 @@
 var status = 0;
 
 function start() {
-    cm.sendNext("Hey, I'm #bPaul#k, if you're not busy and all ... then can I hang out with you? I heard there are people gathering up around here for an #revent#k but I don't want to go there by myself ... Well, do you want to go check it out with me?");
+    cm.sendNext("你好,我是#b#p9000000##k,如果你不忙的话...我可以和你一起出去玩吗?我听说人们正在举行什么活动,但我不想一个人去 ... 那么,你想要和我一起去看看吗?");
 }
 
 function action(mode, type, selection) {
@@ -36,15 +36,15 @@ function action(mode, type, selection) {
     } else {
         status++;
         if (status == 1) {
-            cm.sendSimple("Huh? What kind of an event? Well, that's...\r\n#L0##e1.#n#b What kind of an event is it?#k#l\r\n#L1##e2.#n#b Explain the event game to me.#k#l\r\n#L2##e3.#n#b Alright, let's go!#k#l");
+            cm.sendSimple("蛤?什么活动?嗯...\r\n#L0##e1.#n#b那是什么活动?#k#l\r\n#L1##e2.#n#b向我介绍一下活动内容.#k#l\r\n#L2##e3.#n#b好,我们出发吧!#k#l");
         } else if (status == 2) {
             if (selection == 0) {
-                cm.sendNext("All this month, MapleStory Global is celebrating its 3rd anniversary! The GM's will be holding surprise GM Events throughout the event, so stay on your toes and make sure to participate in at least one of the events for great prizes!");
+                cm.sendNext("整个月,冒险岛正在周年庆!通过这个活动,GM将会发放特殊的礼物,所以,抓住机会,至少参加一个游戏才有机会获得奖励!");
                 cm.dispose();
             } else if (selection == 1) {
-                cm.sendSimple("There are many games for this event. It will help you a lot to know how to play the game before you play it. Choose the one you want to know more of! #b\r\n#L0# Ola Ola#l\r\n#L1# MapleStory Maple Physical Fitness Test#l\r\n#L2# Snow Ball#l\r\n#L3# Coconut Harvest#l\r\n#L4# OX Quiz#l\r\n#L5# Treasure Hunt#l#k");
+                cm.sendSimple("活动里会有许多种游戏.我会在你参加游戏前告诉你游戏规则. 选择你想知道的内容! #b\r\n#L0# Ola Ola#l\r\n#L1# MapleStory Maple Physical Fitness Test#l\r\n#L2#滚雪球#l\r\n#L3# Coconut Harvest#l\r\n#L4#OX答题#l\r\n#L5# Treasure Hunt#l#k");
             } else if (selection == 2) {
-                cm.sendNext("Either the event has not been started, you already have the #bScroll of Secrets#k, or you have already participated in this event within the last 24 hours. Please try again later!");
+                cm.sendNext("活动没有开始,你已经有#b神秘卷轴#k,或者你在24小时内已经参加过活动.请稍后再试!");
                 cm.dispose();
             }
         } else if (status == 3) {

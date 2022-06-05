@@ -22,7 +22,7 @@
 var status = -1;
 
 function start() {
-    cm.sendNext("飞侠是运气、敏捷和力量的完美结合，他们善于对无助的敌人发动突然袭击。高水平的可避免性和速度允许飞侠从不同的角度攻击敌人。");
+    cm.sendNext("飞侠是运气、敏捷和力量的完美结合，他们善于对无助的敌人发动突然袭击。高水平的回避率和速度允许飞侠从不同的角度攻击敌人。");
 }
 
 function action(mode, type, selection) {

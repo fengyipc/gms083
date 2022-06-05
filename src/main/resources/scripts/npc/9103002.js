@@ -1,8 +1,8 @@
 /*
-	This file is part of the OdinMS Maple Story Server
+    This file is part of the OdinMS Maple Story Server
     Copyright (C) 2008 Patrick Huy <patrick.huy@frz.cc>
-		       Matthias Butz <matze@odinms.de>
-		       Jan Christian Meyer <vimes@odinms.de>
+               Matthias Butz <matze@odinms.de>
+               Jan Christian Meyer <vimes@odinms.de>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -26,37 +26,45 @@
  *	Gives Ludibrium Maze Party Quest reward
  */
 
-var status = 0;
+ var status = 0;
 
-function start() {
-    status = -1;
-    action(1,0,0);
-}
-
-function action(mode, type, selection){
-    if (mode == -1) {
-        cm.dispose();
-    }
-    if (mode == 0) {
-        cm.dispose();
-        return;
-    } else {
-        if (mode == 1)
-            status++;
-        else
-            status--;
-        if (status == 0) {
-		cm.sendYesNo("Your party gave a stellar effort and gathered up at least 30 coupons. For that, I have a present for each and every one of you. After receiving the present, you will be sent back to Ludibrium. Now, would you like to receive the present right now?");
-        } else if(status == 1) {
-                var eim = cm.getEventInstance();
-                    
-                if(!eim.giveEventReward(cm.getPlayer())) {
-                        cm.sendNext("It seems you don't have a free slot in either your #rEquip#k, #rUse#k or #rEtc#k inventories. Please make some room and try again.");
-                } else {
-                        cm.warp(809050017);
-                }
-
-                cm.dispose();
-        }
-    }
-}
+ function start() {
+     status = -1;
+     action(1, 0, 0);
+ }
+ 
+ function action(mode, type, selection) {
+     if (mode == -1) {
+         cm.dispose();
+     }
+     if (mode == 0) {
+         cm.dispose();
+         return;
+     } else {
+         if (mode == 1)
+             status++;
+         else
+             status--;
+         if (status == 0) {
+             cm.sendYesNo("你的队伍给我带来了至少30张通行证,因此我会奖励你们每一个人.请让背包都腾出一些空间,现在我来发放奖励?");
+         } else if (status == 1) {
+             var map = cm.getPlayer().getMap();
+             var party = cm.getParty().getPartyMembers();
+             for (var i = 0; i < party.size(); i++) {
+                 if (map.getMapAllPlayers().get(party.get(i).getId()).getBossLog(0, PQtype) == 0) {
+                     map.getMapAllPlayers().get(party.get(i).getId()).setBossLog(0, PQtype);
+                     map.getMapAllPlayers().get(party.get(i).getId()).setBossLog(-1, "组队挑战积分", 积分);
+                 }
+             }
+             var eim = cm.getEventInstance();
+ 
+             if (!eim.giveEventReward(cm.getPlayer())) {
+                 cm.sendNext("看来你背包空间不足.");
+             } else {
+                 cm.warp(809050017);
+             }
+ 
+             cm.dispose();
+         }
+     }
+ }

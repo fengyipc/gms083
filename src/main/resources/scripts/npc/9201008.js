@@ -107,7 +107,7 @@ function action(mode, type, selection) {
             }
 
             if (status == 0) {
-                var text = "Welcome to the #bChapel#k! How can I help you?";
+                var text = "欢迎来到#b小教堂#k!有什么事吗?";
                 var choice = ["How do I prepare a wedding?", "I have an engagement and want to arrange the wedding", "I am the guest and I'd like to go into the wedding"];
                 for (x = 0; x < choice.length; x++) {
                     text += "\r\n#L" + x + "##b" + choice[x] + "#l";

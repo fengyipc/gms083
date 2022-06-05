@@ -47,8 +47,8 @@ function action(mode, type, selection) {
     else
         cm.dispose();
     if (status == 0 && mode == 1) {
-        var selStr = "Hello there. El Nath winters are incredibly cold, you're going to need a warm pair of shoes to survive.#b"
-        var options = new Array("Create Warrior shoes","Create Bowman shoes","Create Magician shoes","Create Thief shoes");
+        var selStr = "嘿.神秘岛的冬天很冷,你需要一双合适的鞋子.#b"
+        var options = new Array("制作战士鞋子","制作弓箭手鞋子","制作法师鞋子","制作飞侠鞋子");
         for (var i = 0; i < options.length; i++){
             selStr += "\r\n#L" + i + "# " + options[i] + "#l";
         }
@@ -60,28 +60,26 @@ function action(mode, type, selection) {
         var selStr;
         var shoes;
         if (selectedType == 0){ //warrior shoes
-            selStr = "Warrior shoes? Okay, then which set?#b";
-            var shoes = new Array ("Sapphire Camel Boots#k - Warrior Lv. 60#b","Orihalcon Camel Boots#k - Warrior Lv. 60#b","Blood Camel Boots#k - Warrior Lv. 60#b",
-                "Blue Carzen Boots#k - Warrior Lv. 70#b","Purple Carzen Boots#k - Warrior Lv. 70#b","Dark Carzen Boots#k - Warrior Lv. 70#b",
-                "Red Rivers Boots#k - Warrior Lv. 80#b","Blue Rivers Boots#k - Warrior Lv. 80#b","Dark Rivers Boots#k - Warrior Lv. 80#b");
+            selStr = "战士鞋子? 要做哪个?#b";
+            //1072147,1072148,1072149,1072154,1072155,1072156,1072210,1072211,1072212
+            var shoes = new Array ("#z1072147##k - 战士 等级 60#b","#z1072148##k - 战士 等级 60#b","#z1072149##k - 战士 等级 60#b","#z1072154##k - 战士 等级 70#b","#z1072155##k - 战士 等级 70#b","#z1072156##k - 战士 等级 70#b","#z1072210##k - 战士 等级 80#b","#z1072211##k - 战士 等级 80#b","#z1072212##k - 战士 等级 80#b");
         }
         else if (selectedType == 1){ //bowman shoes
-            selStr = "Bowman shoes? Okay, then which set?#b";
-            var shoes = new Array ("Red Gore Boots#k - Bowman Lv. 60#b","Blue Gore Boots#k - Bowman Lv. 60#b","Green Gore Boots#k - Bowman Lv. 60#b",
-                "Blue Elf Boots#k - Bowman Lv. 70#b","Beige Elf Boots#k - Bowman Lv. 70#b","Green Elf Boots#k - Bowman Lv. 70#b","Dark Elf Boots#k - Bowman Lv. 70#b",
-                "Blue Wing Boots#k - Bowman Lv. 80#b","Red Wing Boots#k - Bowman Lv. 80#b","Green Wing Boots#k - Bowman Lv. 80#b","Dark Wing Boots#k - Bowman Lv. 80#b");
+            selStr = "弓箭手的鞋子吗?这些都可以做#b";
+            //1072144,1072145,1072146,1072164,1072165,1072166,1072167,1072182,1072183,1072184,1072185
+            var shoes = new Array ("#z1072144##k - 弓箭手 等级 60#b","#z1072145##k - 弓箭手 等级 60#b","#z1072146##k - 弓箭手 等级 60#b","#z1072164##k - 弓箭手 等级 70#b","#z1072165##k - 弓箭手 等级 70#b","#z1072166##k - 弓箭手 等级 70#b","#z1072167##k - 弓箭手 等级 70#b","#z1072182##k - 弓箭手 等级 80#b","#z1072183##k - 弓箭手 等级 80#b","#z1072184##k - 弓箭手 等级 80#b","#z1072185##k - 弓箭手 等级 80#b");
         }
         else if (selectedType == 2){ //mage shoes
-            selStr = "Magician shoes? Okay, then which set?#b";
-            var shoes = new Array ("Pink Goldrunners#k - Magician Lv. 60#b","Green Goldrunners#k - Magician Lv. 60#b","Orange Goldrunners#k - Magician Lv. 60#b","Blue Goldrunners#k - Magician Lv. 60#b",
-                "Blue Lapiz Sandals#k - Magician Lv. 70#b","Red Lapiz Sandals#k - Magician Lv. 70#b","Brown Lapiz Sandals#k - Magician Lv. 70#b","Gold Lapiz Sandals#k - Magician Lv. 70#b",
-                "Green Enigma Shoes#k - Magician Lv. 80#b","Purple Enigma Shoes#k - Magician Lv. 80#b","Dark Enigma Shoes#k - Magician Lv. 80#b");
+            selStr = "法师鞋子? 挑一个吧?#b";
+            //1072136,1072137,1072138,1072139,1072157,1072158,1072159,1072160,1072177,1072178,1072179
+            var shoes = new Array ("#z1072136##k - 法师 等级 60#b","#z1072137##k - 法师 等级 60#b","#z1072138##k - 法师 等级 60#b","#z1072139##k - 法师 等级 60#b","#z1072157##k - 法师 等级 70#b","#z1072158##k - 法师 等级 70#b","#z1072159##k - 法师 等级 70#b","#z1072160##k - 法师 等级 70#b","#z1072177##k - 法师 等级 80#b","#z1072178##k - 法师 等级 80#b","#z1072179##k - 法师 等级 80#b");
         }
         else if (selectedType == 3){ //thief shoes
-            selStr = "Thief shoes? Okay, then which set?#b";
-            var shoes = new Array ("Blood Moss Boots#k - Thief Lv. 60#b","Gold Moss Boots#k - Thief Lv. 60#b","Dark Moss Boots#k - Thief Lv. 60#b",
-                "Purple Mystique Shoes#k - Thief Lv. 70#b","Blue Mystique Shoes#k - Thief Lv. 70#b","Red Mystique Shoes#k - Thief Lv. 70#b",
-                "Green Pirate Boots#k - Thief Lv. 80#b","Red Pirate Boots#k - Thief Lv. 80#b","Dark Pirate Boots#k - Thief Lv. 80#b");
+            selStr = "飞侠? 挑一个吧?#b";
+            //1072150,1072151,1072152,1072161,1072162,1072163,1072172,1072173,1072174
+            var shoes = new Array ("#z1072150##k - 飞侠 等级 60#b","#z1072151##k - 飞侠 等级 60#b","#z1072152##k - 飞侠 等级 60#b",
+                "#z1072161##k - 飞侠 等级 70#b","#z1072162##k - 飞侠 等级 70#b","#z1072163##k - 飞侠 等级 70#b",
+                "#z1072172##k - 飞侠 等级 80#b","#z1072173##k - 飞侠 等级 80#b","#z1072174##k - 飞侠 等级 80#b");
         }
         for (var i = 0; i < shoes.length; i++){
             selStr += "\r\n#L" + i + "# " + shoes[i] + "#l";
@@ -145,26 +143,26 @@ function action(mode, type, selection) {
             matQty = matQtySet[selectedItem];
             cost = costSet[selectedItem];
         }
-        var prompt = "You want me to make a #t" + item + "#? In that case, I'm going to need specific items from you in order to make it. Make sure you have room in your inventory, though!#b";
+        var prompt = "制作一双#t" + item + "#?我需要这些材料!#b";
         if (mats instanceof Array)
             for(var i = 0; i < mats.length; i++)
                 prompt += "\r\n#i"+mats[i]+"# " + matQty[i] + " #t" + mats[i] + "#";
         else
             prompt += "\r\n#i"+mats+"# " + matQty + " #t" + mats + "#";
         if (cost > 0)
-            prompt += "\r\n#i4031138# " + cost + " meso";
+            prompt += "\r\n#i4031138# " + cost + "金币";
         cm.sendYesNo(prompt);
     }
     else if (status == 3 && mode == 1) {
         var complete = true;
         
         if(!cm.canHold(item, 1)) {
-            cm.sendOk("Check your inventory for a free slot first.");
+            cm.sendOk("背包空间不足.");
             cm.dispose();
             return;
         }
         else if (cm.getMeso() < cost) {
-            cm.sendOk("I'm afraid you cannot afford my services.");
+            cm.sendOk("你的钱不够.");
             cm.dispose();
             return;
         }
@@ -178,7 +176,7 @@ function action(mode, type, selection) {
                 complete = false;
         }
         if (!complete)
-            cm.sendOk("I only make quality goods, which I cannot do without the proper materials.");
+            cm.sendOk("材料不足");
         else {
             if (mats instanceof Array)
                 for (var i = 0; i < mats.length; i++)
@@ -187,7 +185,7 @@ function action(mode, type, selection) {
                 cm.gainItem(mats, -matQty );
             cm.gainMeso(-cost);
             cm.gainItem(item, 1);
-            cm.sendOk("All done. Stay warm!");
+            cm.sendOk("做好了!");
         }
         cm.dispose();
     }

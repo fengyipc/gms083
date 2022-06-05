@@ -28,9 +28,9 @@
 
 var status;
 var map = 101000003;
-var job = "Magician";
+var job = "魔法师";
 var jobType = 2;
-var no = "Come back to me if you decided to be a #b"+job+"#k.";
+var no = "如果你想成为#b" + job + "#k,记得回来找我";
 
 function start() {
     status = -1;
@@ -52,21 +52,21 @@ function action(mode, type, selection) {
         else
             status--;
 
-        if(status == 0) {
-            if (cm.getJob() == "BEGINNER") {
-                if (cm.getLevel() >= 8 && cm.canGetFirstJob(jobType)) {
-                    cm.sendYesNo("Hey #h #, I can send you to #b#m"+map+"##k if you want to be a #b"+job+"#k. Do you want to go now?");
+            if (status == 0) {
+                if (cm.getJobId() == 0) {
+                    if (cm.getLevel() >= 10 && cm.canGetFirstJob(jobType)) {
+                        cm.sendYesNo("你好 #h #, 我可以把你送到#b#m" + map + "##k进行#b" + job + "#k转职.现在出发吗?");
+                    } else {
+                        cm.sendOk("如果你想成为#b" + job + "#k,你需要到达#b10级, " + cm.getFirstJobStatRequirement(jobType) + "#k.");
+                        cm.dispose();
+                    }
                 } else {
-                    cm.sendOk("If you want to be a #b"+job+"#k, train yourself further until you reach #blevel 8, " + cm.getFirstJobStatRequirement(jobType) + "#k.");
+                    cm.sendOk("你现在很强壮了.继续训练吧!");
                     cm.dispose();
                 }
-            } else {
-                cm.sendOk("You're much stronger now. Keep training!");
+            } else if (status == 1) {
+                cm.warp(map, 0);
                 cm.dispose();
             }
-        } else if (status == 1) {
-            cm.warp(map, 0);
-            cm.dispose();
-        }
     }
 }

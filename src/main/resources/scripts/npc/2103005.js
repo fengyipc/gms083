@@ -22,7 +22,7 @@
  */
 
 var status;
- 
+
 function start() {
         status = -1;
         action(1, 0, 0);
@@ -40,22 +40,24 @@ function action(mode, type, selection) {
                         status++;
                 else
                         status--;
-    
+        
                 if(status == 0) {
                         if(cm.isQuestStarted(3929)) {
-                            var progress = cm.getQuestProgress(3929);
-                            var slot = 1;
-                            
-                            var ch = progress[slot];
-                            if(ch == '2') {
+                                var progress = cm.getQuestProgress(3929);
+                                var slot = 0;
+                                var ch = progress[slot];//2
+                                if(ch == '2') {
                                 var nextProgress = progress.substr(0, slot) + '3' + progress.substr(slot + 1);
-
                                 cm.gainItem(4031580, -1);
+                                cm.getPlayer().dropMessage("把粮食分配到了民宅4");
                                 cm.setQuestProgress(3929, nextProgress);
-                            }
+                                }else{
+                                cm.getPlayer().dropMessage("民宅4已经分配过了");
+                                }
                         }
-                    
+                        
                         cm.dispose();
                 }
         }
 }
+        

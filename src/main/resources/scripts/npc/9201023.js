@@ -67,13 +67,13 @@ function processNanaQuest() {
             cm.gainItem(questItems[nanaLoc], -50);
             cm.gainItem(4031367 + nanaLoc, 1);
 
-            cm.sendOk("Kyaaaa~ Thank you a lot, here get the #b#t4031367##k.");
+            cm.sendOk("谢谢你,#b#t4031367##k给你.");
             return true;
         } else {
-            cm.sendOk("Please have a free ETC slot available to hold the token of love.");
+            cm.sendOk("背包空间不足.");
         }
     } else {
-        cm.sendOk("Please gather to me #b50 #t" + questItems[nanaLoc] + "##k.");
+        cm.sendOk("请给我#b50个#z" + questItems[nanaLoc] + "##k.");
     }
     
     return false;
@@ -99,14 +99,14 @@ function action(mode, type, selection) {
 
         if(status == 0) {
             if(!cm.isQuestStarted(100400)) {
-                cm.sendOk("Hello #b#h0##k, I'm #p9201023# the fairy of Love.");     // thanks Periwinks (LuckyStory) for noticing Nana's introducing themselves as Nana (H)
+                cm.sendOk("你好#b#h0##k,我是#p9201023#.");     // thanks Periwinks (LuckyStory) for noticing Nana's introducing themselves as Nana (H)
                 cm.dispose();
                 return;
             }
             
             nanaLoc = getNanaLocation(cm.getPlayer());
             if(nanaLoc == -1) {
-                cm.sendOk("Hello #b#h0##k, I'm #p9201023# the fairy of Love.");
+                cm.sendOk("你好#b#h0##k,我是#p9201023#.");
                 cm.dispose();
                 return;
             }
@@ -114,7 +114,7 @@ function action(mode, type, selection) {
             if(!cm.haveItem(4031367 + nanaLoc, 1)) {
                 if(cm.isQuestCompleted(100401 + nanaLoc)) {
                     state = 1;
-                    cm.sendAcceptDecline("Did you lost the #k#t4031367##k I gave to you? Well, I can share another one with you, but you will need to redo the favor I asked last time, is that ok? I need you to bring me #r50 #t" + questItems[nanaLoc] + "#'s.#k");
+                    cm.sendAcceptDecline("你把我给你的#k#t4031367##k弄丢了? 我可以再给你一个,但是这次需要你给我带来#r50个#t" + questItems[nanaLoc] + "#.#k");
                 } else if(cm.isQuestStarted(100401 + nanaLoc)) {
                     if(processNanaQuest()) {
                         cm.gainExp(questExp[nanaLoc] * cm.getPlayer().getExpRate());
@@ -124,17 +124,17 @@ function action(mode, type, selection) {
                     cm.dispose();
                 } else {
                     state = 0;
-                    cm.sendAcceptDecline("Are you searching for #k#t4031367#'s#k? I can share one with you, but you must do a favor for me, is that ok?");
+                    cm.sendAcceptDecline("你需要#k#t4031367##k吗?我可以给你一个,但你要帮我一个忙?");
                 }
             } else {
-                cm.sendOk("Hey there. Did you get the #t4031367# from the other Nana's already?");
+                cm.sendOk("你好,你是不是从这里获得过#t4031367#了?去其他地方看看吧");
                 cm.dispose();
             }
         } else if(status == 1) {
             if(state == 0) {
                 cm.startQuest(100401 + nanaLoc);
                 
-                cm.sendOk("I need you to collect #r50 #t" + questItems[nanaLoc] + "##k.");
+                cm.sendOk("我要你收集#r50个#t" + questItems[nanaLoc] + "##k.");
                 cm.dispose();
             } else {
                 processNanaQuest();

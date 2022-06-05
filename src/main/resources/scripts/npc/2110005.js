@@ -30,8 +30,8 @@
 ---------------------------------------------------------------------------------------------------
 */
 
-var toMagatia = "Would you like to take the #bCamel Cab#k to #bMagatia#k, the town of Alchemy? The fare is #b1500 mesos#k.";
-var toAriant = "Would you like to take the #bCamel Cab#k to #bAriant#k, the town of Burning Roads? The fare is #b1500 mesos#k.";
+var toMagatia = "你想乘坐#b骆驼中巴#k去#b马加提亚#k吗?费用是#b1500金币#k.";
+var toAriant = "你想乘坐#b骆驼中巴#k去#b阿里安特#k吗??费用是#b1500金币#k.";
 
 function start() {
     cm.sendYesNo(cm.getPlayer().getMapId() == 260020000 ? toMagatia : toAriant);
@@ -40,7 +40,7 @@ function start() {
 function action(mode, type, selection) {
     if (mode == 1) {
         if (cm.getMeso() < 1500) {
-            cm.sendNext("I am sorry, but I think you are short on mesos. I am afraid I can't let you ride this if you do not have enough money to do so. Please come back when you have enough money to use this.");
+            cm.sendNext("抱歉,你没有足够的金币.我想你可能要自己走过去才行了.");
             cm.dispose();
        } else {
             cm.warp(cm.getPlayer().getMapId() == 260020000 ? 261000000 : 260000000, 0);
@@ -48,6 +48,6 @@ function action(mode, type, selection) {
             cm.dispose();
 	}
     } else if (mode == 0)
-        cm.sendNext("Hmmm... too busy to do it right now? If you feel like doing it, though, come back and find me.");
+        cm.sendNext("嗯,在这里还有没做完的事情吗?那你有需要了再来找我吧.");
         cm.dispose();
 }

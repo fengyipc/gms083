@@ -27,8 +27,8 @@ function action(mode, type, selection) {
                         status--;
     
                 if (status == 0) {
-                        if (playerNearby(cm.getPlayer().getPosition(), cm.getMap().getPortal("chimney01").getPosition())) cm.sendOk("Hey, hey~~ Please don't go sneaking into someone else's house without permission, you don't want to get a naughty remark on Santa's list this year, do you?");
-                        else cm.sendOk("Hohoho~~ have you a Great Year full of health, realization and happiness!");
+                        if (playerNearby(cm.getPlayer().getPosition(), cm.getMap().getPortal("chimney01").getPosition())) cm.sendOk("嘿~~ 不要删闯民宅,你可不想在今年圣诞老人的名单上听到一句调皮的话吧?");
+                        else cm.sendOk("哈哈~~ 祝你有健康、幸福的一年!");
                 } else {
                         cm.dispose();
                 }

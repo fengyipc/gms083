@@ -9,6 +9,6 @@
 **/
 
 function start() {
-    cm.sendOk("Ah, such lovely winds. This should be a perfect voyage as long as no stupid customer falls off for attempting some weird skill. Of course, I'm talking about you. Please refrain from using your skills.");
+    cm.sendOk("如果你不在这里使用奇奇怪怪的技能,我想这次航程将会很完美.");
     cm.dispose();
 }

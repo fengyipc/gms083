@@ -54,20 +54,20 @@ function action(mode, type, selection) {
                 if (status == 0) {
                         if(cm.isEventLeader()) {
                                 if(!cm.getEventInstance().isEventTeamTogether()) {
-                                        cm.sendOk("One or more instance team members is missing, please wait for them to reach here first.");
+                                        cm.sendOk("有队员不在这里,请先等他们过来.");
                                         cm.dispose();
                                 }
                                 else if(cm.hasItem(4001106, 30)) {
                                         qty = cm.getItemQuantity(4001106);
-                                        cm.sendYesNo("Splendid! You have retrieved " + qty + " #t4001106# from this run, now your team will receive the fair amount of EXP from this action. Are you ready to get transported out?");
+                                        cm.sendYesNo("完美!你找回了" + qty + "个#t4001106#,现在你的队伍将会获得经验.现在准备回去吗?");
                                 }
                                 else {
-                                        cm.sendOk("Your party cannot finish this PQ yet, as you have not reached the minimum of 30 #t4001106#'s in hand yet.");
+                                        cm.sendOk("你的队伍还不能完成组队挑战,因为你们还没有获得30个#t4001106#.");
                                         cm.dispose();
                                 }
                         }
                         else {
-                                cm.sendOk("Let your party leader talk to me to end this quest.");
+                                cm.sendOk("让队长来与我对话.");
                                 cm.dispose();
                         }
                 } else if(status == 1) {

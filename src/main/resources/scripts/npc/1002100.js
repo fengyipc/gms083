@@ -27,12 +27,12 @@ var item;
 
 function start() {
     if (cm.isQuestCompleted(2013))
-        cm.sendNext("It's you ... thanks to you I was able to get a lot done. Nowadays I've been making a bunch of items. If you need anything let me know.");
+        cm.sendNext("是你。。。多亏了你，我才得以做很多事。现在我做了很多东西。如果你需要什么，请告诉我。");
     else {
         if (cm.isQuestCompleted(2010))
-            cm.sendNext("You don't seem strong enough to be able to purchase my potion ...");
+            cm.sendNext("你看起来不够强壮，买不到我的药剂。。。");
         else
-            cm.sendOk("My dream is to travel everywhere, much like you. My father, however, does not allow me to do it, because he thinks it's very dangerous. He may say yes, though, if I show him some sort of a proof that I'm not the weak girl that he thinks I am ...");
+            cm.sendOk("我的梦想是到处旅行，就像你一样。然而，我父亲不允许我这样做，因为他认为这很危险。不过，如果我证明我不是他认为的那种软弱的女孩，他可能会答应的。");
         cm.dispose();
     }
 }
@@ -41,32 +41,32 @@ function action(mode, type, selection) {
     status++;
     if (mode != 1){
         if(mode == 0 && type == 1)
-            cm.sendNext("I still have quite a few of the materials you got me before. The items are all there so take your time choosing.");
+            cm.sendNext("我还有不少你以前给我的材料。所有的东西都在那里，所以慢慢挑选吧。");
         cm.dispose();
         return;
     }
     if (status == 0){
-        var selStr = "Which item would you like to buy?#b";
+        var selStr = "你想买哪种商品?#b";
         for (var i = 0; i < items.length; i++)
-            selStr += "\r\n#L" + i + "##i" + items[i][0] + "# (Price : " + items[i][1] + " mesos)#l";
+            selStr += "\r\n#L" + i + "##i" + items[i][0] + "# (价格 : " + items[i][1] + " 金币)#l";
         cm.sendSimple(selStr);
     } else if (status == 1) {
         item = items[selection];
         var recHpMp = ["300 HP.","1000 HP.","800 MP","1000 HP and MP."];
-        cm.sendGetNumber("You want #b#t" + item[0] + "##k? #t" + item[0] + "# allows you to recover " + recHpMp[selection] + " How many would you like to buy?", 1, 1, 100);
+        cm.sendGetNumber("你想要 #b#t" + item[0] + "##k? #t" + item[0] + "# 可以让你回复 " + recHpMp[selection] + " 想要买多少个?", 1, 1, 100);
     } else if (status == 2) {
-        cm.sendYesNo("Will you purchase #r" + selection + "#k #b#t" + item[0] + "#(s)#k? #t" + item[0] + "# costs " + item[1] + " mesos for one, so the total comes out to be #r" + (item[1] * selection) + "#k mesos.");
+        cm.sendYesNo("你要买#r" + selection + "#k个 #b#t" + item[0] + "##k? #t" + item[0] + "# 费用: " + item[1] + " 金币一个, 总价是 #r" + (item[1] * selection) + "#k 金币.");
         amount = selection;
     } else if (status == 3) {
         if (cm.getMeso() < item[1] * amount)
-            cm.sendNext("Are you lacking mesos by any chance? Please check and see if you have an empty slot available at your etc. inventory, and if you have at least #r" + (item[1] * selectedItem) + "#k mesos with you.");
+            cm.sendNext("你是不是缺金币？请检查一下您的其他栏是否有空位.你至少需要#r" + (item[1] * selectedItem) + "#k金币.");
         else {
             if (cm.canHold(item[0])) {
                 cm.gainMeso(-item[1] * amount);
                 cm.gainItem(item[0], amount);
-                cm.sendNext("Thank you for coming. Stuff here can always be made so if you need something, please come again.");
+                cm.sendNext("欢迎光临.这里的东西总是可以做的，所以如果你需要什么，请再来。");
             } else
-                cm.sendNext("Please check and see if you have an empty slot available at your etc. inventory.");
+                cm.sendNext("请检查一下，看看您的其他栏是否有空间。");
         }
         cm.dispose();
     }

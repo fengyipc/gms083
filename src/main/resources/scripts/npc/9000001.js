@@ -27,7 +27,7 @@
 var status = 0;
 
 function start() {
-    cm.sendNext("Hey, I'm #bJean#k. I am waiting for my brother #bPaul#k. He is supposed to be here by now...");
+    cm.sendNext("嘿, 我是#b#p9000001##k. 我在等我的哥哥#b#p9000000##k.他现在应该到这里了...");
 }
 
 function action(mode, type, selection) {
@@ -43,15 +43,15 @@ function action(mode, type, selection) {
         else
             status--;
         if (status == 1) {
-            cm.sendNextPrev("Hmm... What should I do? The event will start, soon... Many people went to participate in the event, so we better be hurry...");
+            cm.sendNextPrev("嗯...我该做些什么?很多人都要开始加入这个活动了我们最好快点...");
         } else if (status == 2) {
-            cm.sendSimple("Hey... Why don't you go with me? I think my brother will come with other people.\r\n#L0##e1.#n#b What kind of an event is it?#k#l\r\n#L1##e2.#n#b Explain the event game to me.#k#l\r\n#L2##e3.#n#b Alright, let's go!#k#l");
+            cm.sendSimple("嘿... 你不和我一起吗? 我想我哥哥应该和其他人一起来了.\r\n#L0##e1.#n#b这是什么活动?#k#l\r\n#L1##e2.#n#b向我介绍这个活动.#k#l\r\n#L2##e3.#n#b 我们出发吧#k#l");
         } else if (status == 3) {
             if (selection == 0) {
-                cm.sendNext("All this month, MapleStory Global is celebrating its 3rd anniversary! The GM's will be holding surprise GM Events throughout the event, so stay on your toes and make sure to participate in at least one of the events for great prizes!");
+                cm.sendNext("整个月,冒险岛正在周年庆!通过这个活动,GM将会发放特殊的礼物,所以,抓住机会,至少参加一个游戏才有机会获得奖励!");
                 cm.dispose();
             } else if (selection == 1) {
-                cm.sendSimple("There are many games for this event. It will help you a lot to know how to play the game before you play it. Choose the one you want to know more of! #b\r\n#L0# Ola Ola#l\r\n#L1# MapleStory Maple Physical Fitness Test#l\r\n#L2# Snow Ball#l\r\n#L3# Coconut Harvest#l\r\n#L4# OX Quiz#l\r\n#L5# Treasure Hunt#l#k");
+                cm.sendSimple("活动里会有许多种游戏.我会在你参加游戏前告诉你游戏规则. 选择你想知道的内容! #b\r\n#L0# Ola Ola#l\r\n#L1# MapleStory Maple Physical Fitness Test#l\r\n#L2#滚雪球#l\r\n#L3# Coconut Harvest#l\r\n#L4#OX答题#l\r\n#L5# Treasure Hunt#l#k");
             } else if (selection == 2) {
 				if (cm.getEvent() != null && cm.getEvent().getLimit() > 0) {
 					cm.getPlayer().saveLocation("EVENT");
@@ -62,7 +62,7 @@ function action(mode, type, selection) {
 					cm.warp(cm.getEvent().getMapId(), 0);
 					cm.dispose();
 				} else {
-					cm.sendNext("Either the event has not been started, you already have the #bScroll of Secrets#k, or you have already participated in this event within the last 24 hours. Please try again later!");
+					cm.sendNext("活动没有开始,你已经有#b神秘卷轴#k,或者你在24小时内已经参加过活动.请稍后再试!");
 					cm.dispose();                
             }
 			}

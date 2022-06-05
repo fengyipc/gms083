@@ -3,6 +3,6 @@
 **/ 
 
 function start() {
-        cm.sendOk("Welcome to #bHappyville#k, young traveler. Do you have any wishes?");
+        cm.sendOk("年轻的旅行者,欢迎来到幸福村.你有什么愿望吗?");
         cm.dispose();
 } 

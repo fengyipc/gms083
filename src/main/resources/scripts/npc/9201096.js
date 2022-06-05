@@ -42,7 +42,7 @@ function action(mode, type, selection) {
     if (mode == 1)
         status++;
     else {
-        cm.sendOk("Very well, see you around.");
+        cm.sendOk("下次见.");
         cm.dispose();
         return;
     }
@@ -52,7 +52,7 @@ function action(mode, type, selection) {
         cm.sendNext(selStr);
     }
     else if (status == 1) {
-	var selStr = "Said so, methinks making use of some strong utility potions can potentially create some differential on the front, and by this I mean to start crafting #b#t2022284##k's to help on the efforts. So, getting right down to business, I'm currently pursuing #rplenty#k of those items: #r#t4032010##k, #r#t4032011##k, #r#t4032012##k, and some funds to support the cause. Would you want to get some of these boosters?";
+    var selStr = "Said so, methinks making use of some strong utility potions can potentially create some differential on the front, and by this I mean to start crafting #b#t2022284##k's to help on the efforts. So, getting right down to business, I'm currently pursuing #rplenty#k of those items: #r#t4032010##k, #r#t4032011##k, #r#t4032012##k, and some funds to support the cause. Would you want to get some of these boosters?";
         cm.sendYesNo(selStr);
     }
 

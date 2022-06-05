@@ -54,7 +54,7 @@ function action(mode, type, selection) {
                         if(cm.isQuestCompleted(8074)) {
                                 cm.openNpc(9110002);
                         } else {
-                                cm.sendOk("Musssshhhhroooom Shrine~~~");
+                                cm.sendOk("蘑菇~~神殿~");
                         }
                         
                         cm.dispose();

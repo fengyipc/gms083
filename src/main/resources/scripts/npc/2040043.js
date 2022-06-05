@@ -87,14 +87,14 @@ function action(mode, type, selection) {
                 var eim = cm.getPlayer().getEventInstance();
                 
                 if(eim.getProperty(stage.toString() + "stageclear") != null) {
-                        cm.sendNext("Hurry, goto the next stage, the portal is open!");
+                        cm.sendNext("赶快,传送门打开了,去下一关吧!");
                 }
                 else {
                         if (eim.isEventLeader(cm.getPlayer())) {
                                 var state = eim.getIntProperty("statusStg" + stage);
 
                                 if(state == -1) {           // preamble
-                                        cm.sendOk("Hi. Welcome to the #bstage " + stage + "#k. In this stage, line up 5 member of your party above those boxes in order to form the right combination to unlock the next stage. Only one player should stay above a box desired to pertain the combination.");
+                                        cm.sendOk("嗨.欢迎来到第#b" + stage + "#k关.  在这个阶段中，将你的5名队员排在这些方块上方，以形成正确的组合来解锁下一阶段。");
                                         
                                         var st = (debug) ? 2 : 0;
                                         eim.setProperty("statusStg" + stage, st);
@@ -145,12 +145,12 @@ function action(mode, type, selection) {
                                                 cm.dispose();
                                             }
                                         } else {
-                                            cm.sendNext("It looks like you haven't found the 5 boxes just yet. Please think of a different combination of boxes. Only 5 are allowed to stand on boxes, and if you move it may not count as an answer, so please keep that in mind. Keep going!");
+                                            cm.sendNext("错误的组合!");
                                             cm.dispose();
                                         }
                                 }
                         } else {
-                                cm.sendNext("Please tell your #bParty-Leader#k to come talk to me.");
+                                cm.sendNext("让队长来.");
                         }
                 }
                 

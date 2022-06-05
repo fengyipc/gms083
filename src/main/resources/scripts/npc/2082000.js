@@ -34,7 +34,7 @@ var status = 0;
 var cost = 30000;
 
 function start() {
-    cm.sendYesNo("Hello, I'm in charge of selling tickets for the ship ride to Orbis Station of Ossyria. The ride to Orbis takes off every 10 minutes, beginning on the hour, and it'll cost you #b"+cost+" mesos#k. Are you sure you want to purchase #b#t4031045##k?");
+    cm.sendYesNo("你好,我在这里出售去天空之城的票.要支付30000金币购买#b#t4031045##k吗?");
 }
 
 function action(mode, type, selection) {
@@ -44,7 +44,7 @@ function action(mode, type, selection) {
         if(mode == 1)
             status++;
         else {
-            cm.sendNext("You must have some business to take care of here, right?");
+            cm.sendNext("你在这边还有事对吗?");
             cm.dispose();
             return;
         }
@@ -53,7 +53,7 @@ function action(mode, type, selection) {
                 cm.gainItem(4031045,1);
                 cm.gainMeso(-cost);
             } else
-                cm.sendOk("Are you sure you have #b"+cost+" mesos#k? If so, then I urge you to check your etc. inventory, and see if it's full or not.");
+                cm.sendOk("你的金币不够,或者其他栏没有空间.");
             cm.dispose();
         }
     }

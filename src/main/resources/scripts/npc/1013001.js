@@ -14,9 +14,9 @@ function action(mode, type, selection) {
 		status++;
 	}
 	if (status == 0) {
-	    cm.sendNext("You, who are destined to be a Dragon Master... You have finally arrived.", 1);
+	    cm.sendNext("注定成为驯龙高手的你……终于来了。", 1);
 	} else if (status == 1) {
-	    cm.sendNextPrev("Go and fulfill your duties as the Dragon Master...", 1);
+	    cm.sendNextPrev("去履行你作为驯龙高手的职责..", 1);
 	} else if (status == 2) {
 	    cm.warp(900090101, 0);
 	    cm.dispose();

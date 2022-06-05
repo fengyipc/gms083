@@ -24,7 +24,7 @@ var menu;
 var cost = 10000;
 
 function start() {
-    cm.sendYesNo("Will you move to #b#m230000000##k now? The price is #b"+cost+" mesos#k.");
+    cm.sendYesNo("你想去#b#m230000000##k吗?给我#b"+cost+"金币#k.");
 }
 
 function action(mode, type, selection) {
@@ -32,7 +32,7 @@ function action(mode, type, selection) {
         cm.dispose();
     else {
         if (mode == 0) {
-            cm.sendNext("Hmmm ... too busy to do it right now? If you feel like doing it, though, come back and find me.");
+            cm.sendNext("嗯 ...现在很忙?");
             cm.dispose();
             return;
         }
@@ -42,7 +42,7 @@ function action(mode, type, selection) {
             status--;
         if (status == 1) {
             if(cm.getPlayer().getMeso() < cost)
-                cm.sendOk("I don't think you have enough money...");
+                cm.sendOk("你没有那么多金币...");
             else {
                 cm.gainMeso(-cost);
                 cm.warp(230000000);

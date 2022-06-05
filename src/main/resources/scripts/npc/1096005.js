@@ -15,7 +15,7 @@ function action(mode, type, selection) {
 	}
 	if (status == 0) {
 		cm.sendDirectionInfo(4, 1096005);//else you will crash sending sendNext
-		cm.sendNext("All right! Let's go!");
+		cm.sendNext("好吧!我们出发!");
 	} else if (status == 1) {
 		cm.removeNPC(579711);
 		cm.updateInfo("fire", "0");

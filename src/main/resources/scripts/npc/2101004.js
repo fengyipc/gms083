@@ -25,6 +25,6 @@
 */
 
 function start() {
-	cm.sendNext("This isn't much of a #bpalace#k but it'll do until we can get an even better palace built! Anyone's allowed to speak to the king and queen, but don't expect niceness from either of them. Well... maybe King Abdullah VIII, if you catch him in his non-lazy and not-paying-attention moods.");
+	cm.sendNext("这里虽然不能真算一个宫殿,但是在我们修建出一座真正的宫殿之前,它还是可以凑合一下的!任何人都可以与国王与王后说上话,但是别指望他们能够和蔼可亲.");
     cm.dispose();
 }

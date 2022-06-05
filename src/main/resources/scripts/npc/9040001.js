@@ -45,14 +45,14 @@ function action(mode, type, selection){
     }
 
     if (status == 0) {
-        var outText = "It seems you have finished exploring Sharenian Keep, yes? Are you going to return to the recruitment map now?";
+        var outText = "你们完成了发掘地的探索?现在要回去吗?";
         cm.sendYesNo(outText);
     } else if (mode == 1) {
         var eim = cm.getEventInstance();
         
         if(eim != null && eim.isEventCleared()) {
             if(!eim.giveEventReward(cm.getPlayer())) {
-                    cm.sendNext("It seems you don't have a free slot in either your #rEquip#k, #rUse#k or #rEtc#k inventories. Please make some room first.");
+                    cm.sendNext("看样子你的背包空间不够.");
             } else {
                     cm.warp(101030104);
             }

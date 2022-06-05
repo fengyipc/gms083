@@ -3,10 +3,10 @@ function start() {
 		if (!cm.haveItem(4032985)) {
 			if (cm.canHold(4032985)) {
 				cm.gainItem(4032985, true);
-				cm.earnTitle("You found the Ignition Device. Bring it to Cutter.");				
+				cm.earnTitle("你找到了点火装置。把它交给卡特。");				
 			}
 		} else {
-			cm.earnTitle("You already have the Ignition Device.");
+			cm.earnTitle("你已经有点火装置了.");
 		}
 	}
 	cm.dispose();

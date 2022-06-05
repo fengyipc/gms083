@@ -18,24 +18,24 @@ function action(mode, type, selection){
 
 
 	if(status == 0){
-		cm.sendGetText("The entrance of the Sealed Shrine... #bPassword#k!");
+		cm.sendGetText("请输入... #b暗号#k!");
 	}
 	else if(status == 1){
                 if(cm.getWarpMap(925040100).countPlayers() > 0) {
-                        cm.sendOk("Someone is already attending the Sealed Shrine.");
+                        cm.sendOk("有人已经在#m925040100#了.");
                         cm.dispose();
                         return;
                 }
-		if(cm.getText() == "Actions speak louder than words"){
+		if(cm.getText() == "事实胜于雄辩"){
 			if(cm.isQuestStarted(21747) && cm.getQuestProgressInt(21747, 9300351) == 0)
 				cm.warp(925040100, 0);
                         else
-                                cm.playerMessage(5, "Although you said the right answer, some mysterious forces are blocking the way in.");
+                                cm.playerMessage(5, "尽管你说对了暗号,我还是不会让你进去.");
 
 			cm.dispose();
 		}
 		else{
-			cm.sendOk("#rWrong!");
+			cm.sendOk("#r错了!");
 		}
 	}
 	else if(status == 2){

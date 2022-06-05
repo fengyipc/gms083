@@ -31,7 +31,8 @@
 **/
 var status = 0;
 function start() {
-    cm.sendSimple ("What do you want from me?\r #L0##bGather up some information on the hideout.#l\r\n#L1#Take me to the hideout#l\r\n#L2#Nothing#l#k");
+    //cm.sendSimple ("我能帮助你些什么呢？\r #L0##b请告诉我一些关于<火狸金融>的信息。#l\r\n#L1#请将我送入<火狸金融>。#l\r\n#L2#谢谢你，没事儿。#l#k");
+      cm.sendSimple ("有什么事吗？\r #L0##b听取有关基地的说明。#l\r\n#L1#将我送往基地。#l\r\n#L2#没什么事情耶~#l#k");
 }
 
 function action(mode, type, selection) {
@@ -41,12 +42,12 @@ function action(mode, type, selection) {
         status++;
         if (status == 1) {
             if (selection == 0) {
-                cm.sendNext("I can take you to the hideout, but the place is infested with thugs looking for trouble. You'll need to be both incredibly strong and brave to enter the premise. At the hideaway, you'll find the Boss that controls all the other bosses around this area. It's easy to get to the hideout, but the room on the top floor of the place can only be entered ONCE a day. The Boss's Room is not a place to mess around. I suggest you don't stay there for too long; you'll need to swiftly take care of the business once inside. The boss himself is a difficult foe, but you'll run into some incredibly powerful enemies on you way to meeting the boss! It ain't going to be easy.");
+                cm.sendNext("我可以带你去据点，但那里到处都是找麻烦的家伙，你最好下定决心再去。在据点大楼，有个大亲分掌管着这附近的头目们。去他的据点倒是很容易，但据点大楼最顶端的房间是个可怕的地方。不宜久留，尽量短时间内就解决他们！那个大亲分也不是一般的人，可是在见到大亲分之前，还有很多实力很强的家伙，真是又够麻烦的啊。");
                 cm.dispose();
             } else if (selection == 1)
-                cm.sendNext("Oh, the brave one. I've been awaiting your arrival. If these\r\nthugs are left unchecked, there's no telling what going to\r\nhappen in this neighborhood. Before that happens, I hope\r\nyou take care of all them and beat the boss, who resides\r\non the 5th floor. You'll need to be on alert at all times, since\r\nthe boss is too tough for even wisemen to handle.\r\nLooking at your eyes, however, I can see that eye of the\r\ntiger, the eyes that tell me you can do this. Let's go!");
+                cm.sendNext("哦，勇者啊。如果继续放任他们不管，就无法挽回了。在那之前，用你的力量惩罚他们，千万不要大意，大亲分是很多勇者都敌不过的人，但是看着你的眼睛，我确信你一定会成功的。");
             else {
-                cm.sendOk("I'm a busy person! Leave me alone if that's all you need!");
+                cm.sendOk("我是一个忙碌的人！离我远一点！");
                 cm.dispose();
             }
         } else {

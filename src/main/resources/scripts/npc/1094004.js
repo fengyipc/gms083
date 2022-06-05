@@ -27,12 +27,12 @@ var rolled = 0;
 
 function start(mode, type, selection){
     if(!cm.isQuestStarted(2186)) {
-        cm.sendOk("Just a pile of boxes, nothing special...");
+        cm.sendOk("只是一堆箱子，没什么特别的。。。");
         cm.dispose();
         return;
     }
     
-    cm.sendNext("Do you want to obtain a glasses?");
+    cm.sendNext("你想要一副眼镜吗？");
 }
 
 function action(mode, type, selection) {
@@ -43,7 +43,7 @@ function action(mode, type, selection) {
         else if(rolled == 1) cm.gainItem(4031854, 1);
         else cm.gainItem(4031855, 1);
     }
-    else cm.sendOk("You #balready have#k the glasses that was here!");
+    else cm.sendOk("已经把眼镜给你了！");
     
     cm.dispose();
 }

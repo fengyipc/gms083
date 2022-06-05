@@ -27,9 +27,9 @@
 
 function start() {
     if (cm.haveItem(4001020))
-        cm.sendYesNo("You can use #bEos Rock Scroll#k to activate #bFourth Eos Rock#k. Will you head over to #bThird Eos Rock#k at the 41st floor?");
+    cm.sendYesNo("你可以使用#b#z4001020##k开启#b#p2040027#k.去41层的#b#p2040026#k吗?");
     else {
-        cm.sendOk("There's a rock that will enable you to teleport to #bThird Eos Rock#k, but it cannot be activated without the scroll.");
+        cm.sendOk("这个石头可以穿送到41层的#b#p2040026#k,但是需要#b#z4001020#.");
         cm.dispose();
     }
 }

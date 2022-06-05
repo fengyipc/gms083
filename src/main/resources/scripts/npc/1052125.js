@@ -1,8 +1,8 @@
 /*
-	This file is part of the OdinMS Maple Story Server
+    This file is part of the OdinMS Maple Story Server
     Copyright (C) 2008 Patrick Huy <patrick.huy@frz.cc>
-		       Matthias Butz <matze@odinms.de>
-		       Jan Christian Meyer <vimes@odinms.de>
+               Matthias Butz <matze@odinms.de>
+               Jan Christian Meyer <vimes@odinms.de>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -20,18 +20,18 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 /*
-	NPC Name: 		June
-	Map(s): 		Kerning Square : 7th Floor 
-	Description: 	Entrance to Spirit of Rock
-	Depart_topFloorEnter
-	request for a new song (block the portal before the spirit)
-	composition fee (block the portal before the spirit)
-	Say "NO" to Plagiarism (now we can open the portal)
+    NPC Name: 		June
+    Map(s): 		Kerning Square : 7th Floor 
+    Description: 	Entrance to Spirit of Rock
+    Depart_topFloorEnter
+    request for a new song (block the portal before the spirit)
+    composition fee (block the portal before the spirit)
+    Say "NO" to Plagiarism (now we can open the portal)
 */
 var status = -1;
 
 function start() {
-    cm.sendSimple("Hold up! Access to this area is limited due to remodeling. I can only allow people who meet certain conditions to enter here.#b\n\r\n#L0#I'm helping #eBlake#n right now.#l\r\n#L1#I'm a #rVIP#b at this shopping Center!#l");
+    cm.sendSimple("等等！由于改建，进入该区域的道路受到限制。我只能允许符合某些条件的人进入这里。#b\n\r\n#L0#帮助#e布莱克#n.#l\r\n#L1#我是购物中心的#rVIP#b!#l");
 }
 
 function action(mode, type, selection) {
@@ -45,28 +45,26 @@ function action(mode, type, selection) {
         }
     }
     if (status == 0) {
-    	if (selection == 0) {
-    		if (cm.isQuestStarted(2286) || cm.isQuestStarted(2287) || cm.isQuestStarted(2288)) {
-        		var em = cm.getEventManager("RockSpirit");
-                        if (!em.startInstance(cm.getPlayer())) {
-                            cm.sendOk("Uh... It looks like the rooms ahead are a bit crowded right now. Please wait around here for a bit, ok?");
-                        }
-    			cm.dispose();
-    			return;
-    		} else {
-    			cm.sendOk("I did not hear anything from Blake that you are assisting him.");  
-       		}
-    	} else {
-    		if (cm.isQuestCompleted(2290)) {
-                        if(cm.getPlayer().getLevel() > 50) {
-                                cm.sendOk("The VIP area is available only for players #rlevel 50 or below#k.");
-                        } else {
-                                cm.sendOk("The VIP area only gets available after handing over #r#t4032521#s#k from the #b'Admission to the VIP Zone'#k quest.");
-                        }
-                } else {
-                        cm.sendOk("#rVIP#k? Yeah that is funny #rMr. VIP#k, now get lost before I call security."); 
+        if (selection == 0) {
+            if (cm.isQuestStarted(2286) || cm.isQuestStarted(2287) || cm.isQuestStarted(2288)) {
+                var em = cm.getEventManager("RockSpirit");
+                if (!em.startInstance(cm.getPlayer())) {
+                    cm.sendOk("啊...看样子前面现在有点拥挤.等一下好吗?");
                 }
-    	}
-    	cm.dispose();
+                cm.dispose();
+                return;
+            } else {
+                cm.sendOk("我没有听到布莱克说你在帮助他。.");
+            }
+        } else {
+            if (cm.isQuestCompleted(2290)) {
+                if (!em.startInstance(cm.getPlayer())) {
+                    cm.sendOk("啊...看样子前面现在有点拥挤.等一下好吗?");
+                }
+            } else {
+                cm.sendOk("#rVIP#k? 听起来可真有趣 #rVIP先生#k?别骗我,快走吧.");
+            }
+        }
+        cm.dispose();
     }
 }

@@ -13,23 +13,23 @@ function action(mode, type, selection) {
 	return;
     }
     if (status == 0) {
-        cm.sendSimple("My name is #p2131001#, I am the strongest magician around these parts.#b\r\n#L0#Hey, take these rubbles. You can perform your magic on them.#l");
+        cm.sendSimple("我是#p2131001#,我是这一代最厉害的魔法师.#b\r\n#L0#嘿,把这些#z4000439#拿去,你可以利用它们施展魔法.#l");
     } else if (status == 1) {
 	if (!cm.haveItem(exchangeItem, 100)) {
-	    cm.sendNext("You don't have enough... I need at least 100.");
+	    cm.sendNext("你没有足够的#z4000439#... 我需要至少100个.");
 	    cm.dispose();
 	} else {
             // thanks yuxaij for noticing a few methods having parameters not matching the expected Math library function parameter types
-	    cm.sendGetNumber("Hey, that's a good idea! I can give you #i4310000#Perfect Pitch for each 100 #i" + exchangeItem + "##t" + exchangeItem + "# you give me. How many do you want? (Current Items: " + cm.itemQuantity(exchangeItem) + ")", Math.min(300, cm.itemQuantity(exchangeItem) / 100), 1, Math.min(300, cm.itemQuantity(exchangeItem) / 100));
+	    cm.sendGetNumber("哇, 好主意!我用#i4310000#换100个#i" + exchangeItem + "##t" + exchangeItem + "#.你想换多少个? (兑换: " + cm.itemQuantity(exchangeItem) + ")", Math.min(300, cm.itemQuantity(exchangeItem) / 100), 1, Math.min(300, cm.itemQuantity(exchangeItem) / 100));
 	}
     } else if (status == 2) { 
 	if (selection >= 1 && selection <= cm.itemQuantity(exchangeItem) / 100) {
 	    if (!cm.canHold(4310000, selection)) {
-		cm.sendOk("Please make some space in ETC tab.");
+		cm.sendOk("其他栏空间不足.");
 	    } else {
 		cm.gainItem(4310000, selection);
 		cm.gainItem(exchangeItem, -(selection * 100));
-		cm.sendOk("Thanks!");
+		cm.sendOk("谢谢!");
 	    }
 	}
         cm.dispose();

@@ -26,6 +26,6 @@
 
 
 function start() {
-    cm.sendNext("I thought #rAriant#k was amazing, but Valvendale is just SUPERB! There are so many different landscapes and forms of life. Like #b#ethose weird slimes outside of town#n#k... those are just WEIRD!");
+    cm.sendNext("我觉得#r阿里安特#k很特别!这里有许多不同的场景和生物. 比如#b#e村外怪异的史莱姆#n#k...这些都很奇怪!");
     cm.dispose();
 }

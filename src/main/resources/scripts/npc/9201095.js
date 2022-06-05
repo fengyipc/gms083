@@ -39,7 +39,7 @@ var qty;
 
 function start() {
     if (cm.getQuestStatus(8225) != 2) {
-        cm.sendOk("Step aside, novice, we're doing business here.");
+        cm.sendOk("让开，新手，我们在这里做生意.");
         cm.dispose();
         return;
     }
@@ -56,8 +56,8 @@ function action(mode, type, selection) {
         cm.dispose();
     
     if (status == 0 && mode == 1) {
-        var selStr = "Hey, partner! If you have the right goods, I can turn it into something very nice...#b"
-        var options = new Array("Weapon Forging","Weapon Upgrading");
+        var selStr = "嘿，搭档！如果你有合适的商品，我可以把它做成很好的。。。#b"
+        var options = new Array("武器锻造","武器升级");
         for (var i = 0; i < options.length; i++)
             selStr += "\r\n#L" + i + "# " + options[i] + "#l";
         cm.sendSimple(selStr);
@@ -65,7 +65,7 @@ function action(mode, type, selection) {
     else if (status == 1 && mode == 1) {
         selectedType = selection;
         if (selectedType == 0){ //weapon forge
-            var selStr = "So, what kind of weapon would you like me to forge?#b";
+            var selStr = "你想让我锻造什么武器?#b";
             var weapon = new Array ("#t2070018#","#t1382060#","#t1442068#","#t1452060#");
             for (var i = 0; i < weapon.length; i++)
                 selStr += "\r\n#L" + i + "# " + weapon[i] + "#l";
@@ -73,7 +73,7 @@ function action(mode, type, selection) {
             cm.sendSimple(selStr);
         }
         else if (selectedType == 1){ //weapon upgrade
-            var selStr = "An upgraded weapon? Of course, but note that upgrades won't carry over to the new item... #b";
+            var selStr = "升级的武器? ... #b";
             var weapon = new Array ("#t1472074#","#t1472073#","#t1472075#","#t1332079#","#t1332078#","#t1332080#","#t1462054#","#t1462053#","#t1462055#","#t1402050#","#t1402049#","#t1402051#");
             for (var i = 0; i < weapon.length; i++)
                 selStr += "\r\n#L" + i + "# " + weapon[i] + "#l";
@@ -107,13 +107,13 @@ function action(mode, type, selection) {
             cost = costSet[selectedItem];
         }
                 
-        var prompt = "You want me to make ";
+        var prompt = "你要制作";
         if (qty == 1)
-            prompt += "a #t" + item + "#?";
+            prompt += "1个#t" + item + "#?";
         else
-            prompt += qty + " #t" + item + "#?";
+            prompt += qty + "个#t" + item + "#?";
                         
-        prompt += " In that case, I'm going to need specific items from you in order to make it. Make sure you have room in your inventory, though!#b";
+        prompt += "我需要这些材料!#b";
                 
         if (mats instanceof Array){
             for(var i = 0; i < mats.length; i++){
@@ -125,7 +125,7 @@ function action(mode, type, selection) {
         }
                 
         if (cost > 0)
-            prompt += "\r\n#i4031138# " + cost * qty + " meso";
+            prompt += "\r\n#i4031138# " + cost * qty + "金币";
                 
         cm.sendYesNo(prompt);
     }
@@ -136,13 +136,13 @@ function action(mode, type, selection) {
         recvQty = qty;
         
         if(!cm.canHold(recvItem, recvQty)) {
-            cm.sendOk("Check your inventory for a free slot first.");
+            cm.sendOk("背包空间不足.");
             cm.dispose();
             return;
         }
         else if (cm.getMeso() < cost * qty)
         {
-            cm.sendOk("I am afraid you don't have enough to pay me, partner. Please check this out first, ok?");
+            cm.sendOk("金币不够");
             cm.dispose();
             return;
         }
@@ -158,7 +158,7 @@ function action(mode, type, selection) {
         }
                         
         if (!complete)
-            cm.sendOk("Hey, I need those items to craft properly, you know?");
+            cm.sendOk("材料呢?");
         else {
             if (mats instanceof Array) {
                 for (var i = 0; i < mats.length; i++){
@@ -171,7 +171,7 @@ function action(mode, type, selection) {
                 cm.gainMeso(-cost * qty);
             
             cm.gainItem(recvItem, recvQty);
-            cm.sendOk("All done. If you need anything else... Well, I'm not going anywhere.");
+            cm.sendOk("做好了.");
         }
         cm.dispose();
     }

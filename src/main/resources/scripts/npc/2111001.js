@@ -31,6 +31,6 @@
 */
 
 function start() {
-    cm.sendOk("Zenumist......I know what they say. They don't like combination the of life with machine. But it is about being fearful of machine only. Seeking Pure Alchemy won't achieve anyting.");
+    cm.sendOk("蒙特鸠学会......我知道他们. 他们不喜欢让机器改变生活.他们惧怕机器.一味追寻纯粹的炼金术起不了任何作用.");
     cm.dispose();
 }

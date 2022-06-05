@@ -1,8 +1,8 @@
 /*
-	This file is part of the OdinMS Maple Story Server
+    This file is part of the OdinMS Maple Story Server
     Copyright (C) 2008 Patrick Huy <patrick.huy@frz.cc>
-		       Matthias Butz <matze@odinms.de>
-		       Jan Christian Meyer <vimes@odinms.de>
+               Matthias Butz <matze@odinms.de>
+               Jan Christian Meyer <vimes@odinms.de>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -20,14 +20,14 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 /* Grendel the Really Old
-	Magician Job Advancement
-	Victoria Road : Magic Library (101000003)
+    Magician Job Advancement
+    Victoria Road : Magic Library (101000003)
 
-	Custom Quest 100006, 100008, 100100, 100101
+    Custom Quest 100006, 100008, 100100, 100101
 */
 
 status = -1;
-actionx = {"1stJob" : false, "2ndjob" : false, "3thJobI" : false, "3thJobC" : false};
+actionx = { "1stJob": false, "2ndjob": false, "3thJobI": false, "3thJobC": false };
 job = 210;
 
 spawnPnpc = false;
@@ -37,37 +37,37 @@ jobType = 2;
 function start() {
     if (parseInt(cm.getJobId() / 100) == jobType && cm.canSpawnPlayerNpc(Packages.constants.game.GameConstants.getHallOfFameMapid(cm.getJob()))) {
         spawnPnpc = true;
-        
-        var sendStr = "You have walked a long way to reach the power, wisdom and courage you hold today, haven't you? What do you say about having right now #ra NPC on the Hall of Fame holding the current image of your character#k? Do you like it?";
-        if(spawnPnpcFee > 0) {
-            sendStr += " I can do it for you, for the fee of #b " + cm.numberWithCommas(spawnPnpcFee) + " mesos.#k";
+
+        var sendStr = "经过不懈的努力才能达到你今天所拥有的力量、智慧和勇气，对吧？ 你觉得把你现在角色的形象做成名人堂里的NPC怎么样?";
+        if (spawnPnpcFee > 0) {
+            sendStr += "我可以为你服务,你需要支付#b " + cm.numberWithCommas(spawnPnpcFee) + "金币.#k";
         }
-        
+
         cm.sendYesNo(sendStr);
     } else {
         if (cm.getJobId() == 0) {
             actionx["1stJob"] = true;
-            cm.sendNext("Want to be a #rmagician#k? There are some standards to meet. because we can't just accept EVERYONE in... #bYour level should be at least 8#k, with getting " + cm.getFirstJobStatRequirement(jobType) + " as your top priority. Let's see.");   // thanks Vcoc for noticing a need to state and check requirements on first job adv starting message
+            cm.sendNext("你想转职成为#r法师#k? 你的等级必须到达10级,并且 " + cm.getFirstJobStatRequirement(jobType) + "#k.来看看.");   // thanks Vcoc for noticing a need to state and check requirements on first job adv starting message
         } else if (cm.getLevel() >= 30 && cm.getJobId() == 200) {
             actionx["2ndJob"] = true;
             if (cm.haveItem(4031012))
-                cm.sendNext("I see you have done well. I will allow you to take the next step on your long road.");
-            else if (cm.haveItem(4031009)){
-                cm.sendOk("Go and see the #b#p1072001##k.");
+                cm.sendNext("哈哈…我就知道你会轻松通过考试的。我承认，你是一个伟大的魔法师。我会让你比现在更强大。但在那之前。。。你需要从给你的两条路中选择一条。这对你来说是个艰难的决定，但是。。。如果有什么问题要问，请问。");
+            else if (cm.haveItem(4031009)) {
+                cm.sendOk("去看看#b#p1072001##k.");
                 cm.dispose();
             } else
-                cm.sendNext("The progress you have made is astonishing.");
-        } else if (actionx["3thJobI"] || (cm.getPlayer().gotPartyQuestItem("JB3") && cm.getLevel() >= 70 && cm.getJobId() % 10 == 0 && parseInt(cm.getJobId() / 100) == 2 && !cm.getPlayer().gotPartyQuestItem("JBP"))){
+                cm.sendNext("嗯。。。自从我上次见到你以来，你已经成长了很多。我没有看到我以前看到的弱者，相反，现在看起来更像一个弓箭手。你觉得呢？难道你不想变得更强大吗？通过一个简单的测试，我会使你更强。你想继续吗？");
+        } else if (actionx["3thJobI"] || (cm.getPlayer().gotPartyQuestItem("JB3") && cm.getLevel() >= 70 && cm.getJobId() % 10 == 0 && parseInt(cm.getJobId() / 100) == 2 && !cm.getPlayer().gotPartyQuestItem("JBP"))) {
             actionx["3thJobI"] = true;
-            cm.sendNext("There you are. A few days ago, #b#p2020009##k of Ossyria talked to me about you. I see that you are interested in making the leap to the enlightened of the third job advancement for magicians. To archieve that goal, I will have to test your strength in order to see whether you are worthy of the advancement. There is an opening in the middle of a deep forest of evil in Victoria Island, where it'll lead you to a secret passage. Once inside, you'll face a clone of myself. Your task is to defeat him and bring #b#t4031059##k back with you.");
-        } else if (cm.getPlayer().gotPartyQuestItem("JBP") && !cm.haveItem(4031059)){
-            cm.sendNext("Please, bring me the #b#t4031059##k from my clone. You can find him inside a hole in space which is deep in a forest of evil.");
+            cm.sendNext("给你.几天前,冰峰雪域的#b#p2020009##k跟我谈起了你.我知道你对法师的第三次转职的有着较大的兴趣.为了达到这个目标,我必须测试你的力量，看看能否达到转职要求。在金银岛的一片深邃的森林中间有一个洞口,它会把你引向一条秘密通道.一旦进入,你将面我的分身.你的任务是打败她，获取#b#t4031059##k带回来.");
+        } else if (cm.getPlayer().gotPartyQuestItem("JBP") && !cm.haveItem(4031059)) {
+            cm.sendNext("请把#b#t4031059##k带回来.");
             cm.dispose();
-        } else if (cm.haveItem(4031059) && cm.getPlayer().gotPartyQuestItem("JBP")){
+        } else if (cm.haveItem(4031059) && cm.getPlayer().gotPartyQuestItem("JBP")) {
             actionx["3thJobC"] = true;
-            cm.sendNext("Nice work. You have defeated my clone and brought #b#t4031059##k back safely. You have now proven yourself worthy of the 3rd job advancement from the physical standpoint. Now you should give this necklace to #b#p2020011##k in Ossyria to take on the second part of the test. Good luck. You'll need it.");
+            cm.sendNext("恭喜你，打败了我的分身，获取#b#t4031059##k后安全返回。你现在已经证明了自己。现在你应该把这条项链给#b#p2020011##k，在冰峰雪域接受第二部分的测试。祝你好运。");
         } else {
-            cm.sendOk("You have chosen wisely.");
+            cm.sendOk("你的选择很明智。");
             cm.dispose();
         }
     }
@@ -81,133 +81,125 @@ function action(mode, type, selection) {
     } else if (mode == 0 && type == 0) {
         status -= 2;
     }
-    
-    if (status == -1){
+
+    if (status == -1) {
         start();
         return;
     } else {
-        if(spawnPnpc) {
-            if(mode > 0) {
-                if(cm.getMeso() < spawnPnpcFee) {
-                    cm.sendOk("Sorry, you don't have enough mesos to purchase your place on the Hall of Fame.");
+        if (spawnPnpc) {
+            if (mode > 0) {
+                if (cm.getMeso() < spawnPnpcFee) {
+                    cm.sendOk("对不起，你没有足够的金币来购买你在名人堂的位置。");
                     cm.dispose();
                     return;
                 }
-                
-                if(Packages.server.life.MaplePlayerNPC.spawnPlayerNPC(Packages.constants.game.GameConstants.getHallOfFameMapid(cm.getJob()), cm.getPlayer())) {
-                    cm.sendOk("There you go! Hope you will like it.");
+
+                if (Packages.server.life.MaplePlayerNPC.spawnPlayerNPC(Packages.constants.game.GameConstants.getHallOfFameMapid(cm.getJob()), cm.getPlayer())) {
+                    cm.sendOk("给你！希望你会喜欢。");
                     cm.gainMeso(-spawnPnpcFee);
                 } else {
-                    cm.sendOk("Sorry, the Hall of Fame is currently full...");
+                    cm.sendOk("不好意思,满员了");
                 }
             }
-            
+
             cm.dispose();
             return;
         } else {
-            if (mode != 1 || status == 7 || (actionx["1stJob"] && status == 4) || (cm.haveItem(4031008) && status == 2) || (actionx["3thJobI"] && status == 1)){
+            if (mode != 1 || status == 7 || (actionx["1stJob"] && status == 4) || (cm.haveItem(4031008) && status == 2) || (actionx["3thJobI"] && status == 1)) {
                 if (mode == 0 && status == 2 && type == 1)
-                    cm.sendOk("You know there is no other choice...");
-                if (!(mode == 0 && type == 0)){
+                    cm.sendOk("你知道别无选择...");
+                if (!(mode == 0 && type == 0)) {
                     cm.dispose();
                     return;
                 }
             }
         }
     }
-    
-    if (actionx["1stJob"]){
+
+    if (actionx["1stJob"]) {
         if (status == 0) {
             if (cm.getLevel() >= 8 && cm.canGetFirstJob(jobType)) {
-                cm.sendYesNo("Oh...! You look like someone that can definitely be a part of us... all you need is a little sinister mind, and... yeah... so, what do you think? Wanna be the Magician?");
+                cm.sendYesNo("这是一个重要的最终选择。你不能反悔。");
             } else {
-                cm.sendOk("Train a bit more until you reach the base requirements and I can show you the way of the #rMagician#k.");
+                cm.sendOk("再训练一下,直到你达到基本要求，我可以让你成为#r法师#k.");
                 cm.dispose();
             }
-        } else if (status == 1){
-            if (cm.canHold(1372043)){
-                if (cm.getJobId() == 0){
+        } else if (status == 1) {
+            if (cm.canHold(1372043)) {
+                if (cm.getJobId() == 0) {
                     cm.changeJobById(200);
                     cm.gainItem(1372043, 1);
                     cm.resetStats();
                 }
-                cm.sendNext("Alright, from here out, you are a part of us! You'll be living the life of a wanderer at ..., but just be patient as soon, you'll be living the high life. Alright, it ain't much, but I'll give you some of my abilities... HAAAHHH!!!");
+                cm.sendNext("好吧，从这开始，你就是我们的一员了！你将过着四处游走的生活，但只要耐心一点，你就会过上更好的生活。好吧，不多，但我会给你一些我的能力。。。哈哈！！！");
             } else {
-                cm.sendNext("Make some room in your inventory and talk back to me.");
+                cm.sendNext("背包需要清理出一些空间.");
                 cm.dispose();
             }
-        } else if (status == 2) 
-            cm.sendNextPrev("You've gotten much stronger now. Plus every single one of your inventories have added slots. A whole row, to be exact. Go see for it yourself. I just gave you a little bit of #bSP#k. When you open up the #bSkill#k menu on the lower left corner of the screen, there are skills you can learn by using SP's. One warning, though: You can't raise it all together all at once. There are also skills you can acquire only after having learned a couple of skills first.");
+        } else if (status == 2)
+            cm.sendNextPrev("你现在变得更强大了,我给了你一点点#b能力值#k. 当你打开#b技能#k 菜单在屏幕的左下角,您可以使用SP'.不过,有一个警告:你不可能一下子把它都提起来.也有一些技能只有在你先学会了一些技能之后才能获得.");
         else if (status == 3)
-            cm.sendNextPrev("But remember, skills aren't everything. Your stats should support your skills as a Magician, also. Magicians use INT as their main stat, and LUK as their secondary stat. If raising stats is difficult, just use #bAuto-Assign#k");
-        else if (status == 4)
-            cm.sendNextPrev("Now, one more word of warning to you. If you fail in battle from this point on, you will lose a portion of your total EXP. Be extra mindful of this, since you have less HP than most.");
-        else if (status == 5)
-            cm.sendNextPrev("This is all I can teach you. Good luck on your journey, young Magician.");
+            cm.sendNextPrev("现在提醒你。一旦你选择了，你就不能改变主意，尝试选择另一条路。去吧，做一个强大的法师。");
         else
             cm.dispose();
-    } else if(actionx["2ndJob"]){
-        if (status == 0){
+    } else if (actionx["2ndJob"]) {
+        if (status == 0) {
             if (cm.haveItem(4031012))
-                cm.sendSimple("Alright, when you have made your decision, click on [I'll choose my occupation] at the bottom.#b\r\n#L0#Please explain to me what being the Wizard (Fire / Poison) is all about.\r\n#L1#Please explain to me what being the Wizard (Ice / Lighting) is all about.\r\n#L2#Please explain to me what being the Cleric is all about.\r\n#L3#I'll choose my occupation!");
+                cm.sendSimple("好吧，当你做出决定后，点击底部的[我将选择我的职业]。\b\r\n#L0#请向我解释火毒法师。#l\r\n#L1#请向我解释一下冰雷法师。#l\r\n#L2#请向我解释一下牧师。#l\r\n#L3#我将选择我的职业！#l");
             else {
-                cm.sendNext("Good decision. You look strong, but I need to see if you really are strong enough to pass the test, it's not a difficult test, so you'll do just fine. Here, take my letter first... make sure you don't lose it!");
-		if(!cm.isQuestStarted(100006)) cm.startQuest(100006);
-	    }
-        } else if (status == 1){
-            if (!cm.haveItem(4031012)){
-                if (cm.canHold(4031009)){
-                    if(!cm.haveItem(4031009))
+                cm.sendNext("很好的决定。你看起来很厉害，但我需要看看你是否真的足够厉害，能通过考试，这不是一个困难的考试，所以你会做得很好。给，先拿我的信。。。一定不要丢了！");
+                if (!cm.isQuestStarted(100006)) cm.startQuest(100006);
+            }
+        } else if (status == 1) {
+            if (!cm.haveItem(4031012)) {
+                if (cm.canHold(4031009)) {
+                    if (!cm.haveItem(4031009))
                         cm.gainItem(4031009, 1);
-                    cm.sendNextPrev("Please get this letter to #b#p1072001##k who's around #b#m101020000##k near Ellinia. He is taking care of the job of an instructor in place of me. Give him the letter and he'll test you in place of me. Best of luck to you.");
+                    cm.sendNextPrev("请把这封信送到#b#m101020000##k的#b#p1072001##k.把信给她，她就代替我来考验你。祝你好运.");
                 } else {
-                    cm.sendNext("Please, make some space in your inventory.");
+                    cm.sendNext("请在你的背包中留出一些空间。");
                     cm.dispose();
                 }
-            }else{
-                if (selection < 3){
-                    if(selection == 0) {
-                        cm.sendNext("Magicians that master #rFire/Poison-based magic#k.\r\n\r\n#bWizards#k are a active class that deal magical, elemental damage. These abilities grants them a significant advantage against enemies weak to their element. With their skills #rMeditation#k and #rSlow#k, #bWizards#k can increase their magic attack and reduce the opponent's mobility. #bFire/Poison Wizards#k contains a powerful flame arrow attack and poison attack.");    //f/p mage
-                    } else if(selection == 1) {
-                        cm.sendNext("Magicians that master #rIce/Lightning-based magic#k.\r\n\r\n#bWizards#k are a active class that deal magical, elemental damage. These abilities grants them a significant advantage against enemies weak to their element. With their skills #rMeditation#k and #rSlow#k, #bWizards#k can increase their magic attack and reduce the opponent's mobility. #bIce/Lightning Wizards#k have a freezing ice attack and a striking lightning attack.");    //i/l mage
+            } else {
+                if (selection < 3) {
+                    if (selection == 0) {
+                        cm.sendNext("火毒法师擅长使用火焰和剧毒魔法,很强力的单体输出.");    //f/p mage
+                    } else if (selection == 1) {
+                        cm.sendNext("冰雷法师擅长使用寒冰和雷电魔法,很强力的群体输出和控制.");    //i/l mage
                     } else {
-                        cm.sendNext("Magicians that master #rHoly magic#k.\r\n\r\n#bClerics#k are a powerful supportive class, bound to be accepted into any Party. That's because the have the power to #rHeal#k themselves and others in their party. Using #rBless#k, #bClerics#k can buff the attributes and reduce the amount of damage taken. This class is on worth going for if you find it hard to survive. #bClerics#k are especially effective against undead monsters.");    //cleric
+                        cm.sendNext("牧师擅长使用神圣魔法,可以为队友治疗,可以给队友提供很强的增益法术.");    //牧师
                     }
-                    
+
                     status -= 2;
                 } else
-                    cm.sendSimple("Now... have you made up your mind? Please choose the job you'd like to select for your 2nd job advancement. #b\r\n#L0#Wizard (Fire / Poison)\r\n#L1#Wizard (Ice / Lighting)\r\n#L2#Cleric");
+                    cm.sendSimple("现在决定好了吗. #b\r\n#L0#巫师(火/毒)\r\n#L1#巫师(冰/雷)\r\n#L2#牧师");
             }
-        } else if (status == 2){
-            if (cm.haveItem(4031009)){
+        } else if (status == 2) {
+            if (cm.haveItem(4031009)) {
                 cm.dispose();
                 return;
             }
             job += selection * 10;
-            cm.sendYesNo("So you want to make the second job advancement as the " + (job == 210 ? "#bWizard (Fire / Poison)#k" : job == 220 ? "#bWizard (Ice / Lighting)#k" : "#bCleric#k") + "? You know you won't be able to choose a different job for the 2nd job advancement once you make your desicion here, right?");
-        } else if (status == 3){
+            cm.sendYesNo("你想转职成为" + (job == 210 ? "#b巫师(火/毒)#k" : job == 220 ? "#b巫师(冰/雷)#k" : "#b牧师#k") + "? 一旦选择就不能反悔了,确定吗?");
+        } else if (status == 3) {
             if (cm.haveItem(4031012))
                 cm.gainItem(4031012, -1);
             cm.completeQuest(100008);
-            cm.sendNext("Alright, you're the " + (job == 210 ? "#bWizard (Fire / Poison)#k" : job == 220 ? "#bWizard (Ice / Lighting)#k" : "#bCleric#k") + " from here on out. Mages and wizards are the intelligent bunch with incredible magical prowess, able to pierce the mind and the psychological structure of the monsters with ease... please train yourself each and everyday. I'll help you become even stronger than you already are.");
+            cm.sendNext("好的,你现在是一个" + (job == 210 ? "#b巫师(火/毒)#k" : job == 220 ? "#b巫师(冰/雷)#k" : "#b牧师#k") + "了.");
             if (cm.getJobId() != job)
                 cm.changeJobById(job);
-        } else if (status == 4)
-            cm.sendNextPrev("I have just given you a book that gives you the list of skills you can acquire as a " + (job == 210 ? "#bWizard (Fire / Poison)#k" : job == 220 ? "#bWizard (Ice / Lighting)#k" : "#bCleric#k") + ". Also your etc inventory has expanded by adding another row to it. Your max HP and MP have increased, too. Go check and see for it yourself.");
-        else if (status == 5)
-            cm.sendNextPrev("I have also given you a little bit of #bSP#k. Open the #bSkill Menu#k located at the bottomleft corner. you'll be able to boost up the newer acquired 2nd level skills. A word of warning, though. You can't boost them up all at once. Some of the skills are only available after you have learned other skills. Make sure you remember that.");
-        else if (status == 6)
-            cm.sendNextPrev((job == 210 ? "Wizard (Fire / Poison)" : job == 220 ? "Wizard (Ice / Lighting)" : "Cleric") + " need to be strong. But remember that you can't abuse that power and use it on a weakling. Please use your enormous power the right way, because... for you to use that the right way, that is much harden than just getting stronger. Please find me after you have advanced much further. I'll be waiting for you.");
-    } else if (actionx["3thJobI"]){
-        if (status == 0){
-            if (cm.getPlayer().gotPartyQuestItem("JB3")){
+            cm.dispose();
+        }
+    } else if (actionx["3thJobI"]) {
+        if (status == 0) {
+            if (cm.getPlayer().gotPartyQuestItem("JB3")) {
                 cm.getPlayer().removePartyQuestItem("JB3");
                 cm.getPlayer().removePartyQuestItem("JB3");
                 cm.getPlayer().setPartyQuestItemObtained("JBP");
             }
-            cm.sendNextPrev("Since he is a clone of myself, you can expect a tough battle ahead. He uses a number of special attacking skills unlike any you have ever seen, and it is your task to successfully take him one on one. There is a time limit in the secret passage, so it is crucial that you defeat him within the time limit. I wish you the best of luck, and I hope you bring the #b#t4031059##k with you.");
+            cm.sendNextPrev("把#b#t4031059##k带过来.");
         }
-    } else if (actionx["3thJobC"]){
+    } else if (actionx["3thJobC"]) {
         cm.getPlayer().removePartyQuestItem("JBP");
         cm.gainItem(4031059, -1);
         cm.gainItem(4031057, 1);

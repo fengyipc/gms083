@@ -25,7 +25,7 @@
  */
 
 var status;
- 
+
 function start() {
         status = -1;
         action(1, 0, 0);
@@ -43,11 +43,11 @@ function action(mode, type, selection) {
                         status++;
                 else
                         status--;
-    
+        
                 if (status == 0) {
-                        cm.sendSimple("Defeated... So, that's how Yulete's legacy will reach it's end, oh how woe is this... Hope you guys are happy now, as I will pass my days rotting in a dark cellar. Everything I've done was for the sake of Magatia!! (sob)\r\n #Ll# Hey man, come now, cheer up! There were not many damages that couldn't be resolved here. Magatia created these forbidding laws to protect it's people from the undoings a greater power like this would do if it reaches wrong hands. That's not the end for you, accept rehabilitation from the Societies and everything will work out!#l");
+                        cm.sendSimple("打败了。。。所以，尤利特的遗产就这样结束了，哦，这是多么悲哀。。。希望你们现在开心，因为我将在黑暗的地窖里度过我腐烂的日子。我所做的一切都是为了玛加提亚！！ (sob)\r\n #Ll# 嘿，伙计，过来，振作起来！没有多少损失不能在这里解决。玛加提亚制定了这些禁止性的法律，以保护其人民不受毁灭性的伤害，如果一个更强大的国家落入坏人之手，它就会这样做。对你来说，这不是终点，接受社会的改造，一切都会好起来的！#l");
                 } else if (status == 1){
-                        cm.sendNext("... Are you guys forgiving me after all that I've done? Well, I guess I was blinded by the great source of power that could be discovered that way, maybe they're right saying a human can't simply fathom on the usage of those powers without corrupting theirselves along the way... I am profoundly sorry, and to make myself up with everyone I'm willing to help the Societies again wherever I can on the progress of alchemy. Thank you.");
+                        cm.sendNext("你们原谅我做了这么多吗？好吧，我想我被那种可以被发现的伟大力量的来源蒙蔽了双眼，也许他们说的对，一个人不能简单地理解这些力量的使用，而不腐蚀自己的一路上。。。我非常抱歉，为了补偿每一个人，我愿意在炼金术的进步上尽我所能再次帮助社会。谢谢您。");
                 } else {
                         if(!cm.isQuestCompleted(7770)) cm.completeQuest(7770);
                         

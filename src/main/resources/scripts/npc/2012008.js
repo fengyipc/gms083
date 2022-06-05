@@ -27,7 +27,7 @@ var price = 1000000;
 var skin = Array(0, 1, 2, 3, 4);
 
 function start() {
-    cm.sendSimple("Well, hello! Welcome to the Orbis Skin-Care~! Would you like to have a firm, tight, healthy looking skin like mine?  With #b#t5153001##k, you can let us take care of the rest and have the kind of skin you've always wanted~!\r\n#L2#Skin Care: #i5153001##t5153001##l");
+    cm.sendSimple("你好!欢迎光临天空之城皮肤护理店!你想护肤吗?如果你有#b#t5153001##k,我会为你服务!\r\n#L2#皮肤护理:使用#i5153001##t5153001##l");
 }
 
 function action(mode, type, selection) {
@@ -40,16 +40,16 @@ function action(mode, type, selection) {
             status--;
         if (status == 1) {
             if (selection == 2)
-                cm.sendStyle("With our specialized machine, you can see the way you'll look after the treatment PRIOR to the procedure. What kind of a look are you looking for? Go ahead and choose the style of your liking~!", skin);
+                cm.sendStyle("你想要什么肤色~!", skin);
         }
         else if (status == 2){
             cm.dispose();
             if (cm.haveItem(5153001)){
                 cm.gainItem(5153001, -1);
                 cm.setSkin(selection + 1);
-                cm.sendOk("Enjoy your new and improved skin!");
+                cm.sendOk("好了!");
             } else
-                cm.sendOk("Um...you don't have the skin-care coupon you need to receive the treatment. Sorry, but I am afraid we can't do it for you...");
+                cm.sendOk("你好像没有我们的会员卡...");
         }
     }
 }

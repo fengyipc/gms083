@@ -42,7 +42,7 @@ function action(mode, type, selection) {
                         if (Packages.config.YamlConfig.config.server.USE_ENABLE_CUSTOM_NPC_SCRIPT) {
                                 cm.openShopNPC(2082014);
                         } else if (cm.isQuestStarted(3749)) {
-                                cm.sendOk("We've already located the enemy's ultimate weapon! Follow along the ship's bow area ahead and you will find my sister #b#p2082013##k. Report to her for futher instructions on the mission.");
+                                cm.sendOk("我们已经找到了敌人的终极武器！沿着船头区域往前走，你会找到我妹妹#b#p2082013##k.向她汇报获得任务的进一步指示.");
                         } else {
                                 cm.sendDefault();
                         }

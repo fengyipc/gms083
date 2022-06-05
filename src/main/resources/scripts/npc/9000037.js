@@ -86,35 +86,35 @@ function action(mode, type, selection) {
                                 }
                             
                                 if(cm.isEventLeader()) {
-                                        cm.sendOk("Your party completed such an astounding feat coming this far, #byou have defeated all the bosses#k, congratulations! Now I will be handing your reward as you are being transported out...");
+                                        cm.sendOk("你们的队伍完成了如此惊人的壮举,#b你打败了所有的BOSS#k,恭喜你们!现在我将送你们出去,之后会发放你们应得的奖励...");
                                 }
                                 else {
-                                        cm.sendOk("For #bdefeating all bosses#k in this instance, congratulations! You will now receive a prize that matches your performance here as I warp you out.");
+                                        cm.sendOk("恭喜你们#b击败了所有BOSS#k!你现在将获得一个与你在这里的表现相匹配的奖品.");
                                 }
                         }
                         else if(state == 2) {
                                 if(cm.isEventLeader()) {
                                         if(cm.getPlayer().getEventInstance().isEventTeamTogether()) {
-                                                cm.sendYesNo("Is your party ready to proceed to the next stages? Walk through the portal if you think you're done, the time is now.. Now, do you guys REALLY want to proceed?");
+                                                cm.sendYesNo("队伍准备好去下一关了吗?如果想结束挑战请进入前面的传送门.");
                                         }
                                         else {
-                                                cm.sendOk("Please wait for your party to reassemble before proceeding.");
+                                                cm.sendOk("请等待您的队伍重组后再继续.");
                                                 cm.dispose();
                                                 return;
                                         }
                                 }
                                 else {
-                                        cm.sendOk("Wait for your party leader to give me the signal to proceed. If you're not feeling too well and want to quit, walk through the portal and you will be transported out, and you will receive a prize for coming this far.");
+                                        cm.sendOk("请等待队长开始继续挑战.如果你现在就想离开,走进前面的传送门就可以出去了,你会获得当前的阶段奖励.");
                                         cm.dispose();
                                         return;
                                 }
                         } else if(state == 1) {
-                                cm.sendYesNo("Do you wish to abandon this instance?");
+                                cm.sendYesNo("真要放弃了吗?");
                         }
                         else {
                                 em = cm.getEventManager("BossRushPQ");
                                 if(em == null) {
-                                        cm.sendOk("The Boss Rush PQ has encountered an error.");
+                                        cm.sendOk("副本出错了.");
                                         cm.dispose();
                                         return;
                                 } else if(cm.isUsingOldPqNpcStyle()) {
@@ -122,12 +122,12 @@ function action(mode, type, selection) {
                                         return;
                                 }
                                 
-                                cm.sendSimple("#e#b<Party Quest: Boss Rush>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nWould you like to collaborate with party members to complete the expedition, or are you brave enough to take it on all by yourself? Have your #bparty leader#k talk to me or make yourself a party.#b\r\n#L0#I want to participate in the party quest.\r\n#L1#I would like to " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "disable" : "enable") + " Party Search.\r\n#L2#I would like to hear more details.");
+                                cm.sendSimple("#e#b<组队挑战:刷Boss>\r\n#k#n" + em.getProperty("party") + "\r\n\r\n你愿意和队员们一起完成这次探险，还是勇敢地一个人前往？让#b队长#k与我对话或者自己组建一个队伍.#b\r\n#L0#我想尝试组队挑战.\r\n#L1#我想" + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "关闭" : "开启") + "队伍搜索.\r\n#L2#我想知道详情.");
                         }
                 } else if (status == 1) {
                         if(state == 3) {
                                 if(!cm.getPlayer().getEventInstance().giveEventReward(cm.getPlayer(), 6)) {
-                                        cm.sendOk("Please arrange a slot in all tabs of your inventory beforehand.");
+                                        cm.sendOk("请给背包每个栏位都留下至少一个空格.");
                                         cm.dispose();
                                         return;
                                 }
@@ -147,10 +147,10 @@ function action(mode, type, selection) {
                         else {
                                 if (selection == 0) {
                                         if (cm.getParty() == null) {
-                                                cm.sendOk("You can participate in the party quest only if you are in a party.");
+                                                cm.sendOk("你只有组队才可以挑战.");
                                                 cm.dispose();
                                         } else if(!cm.isLeader()) {
-                                                cm.sendOk("Your party leader must talk to me to start this party quest.");
+                                                cm.sendOk("只有队长才有资格发起挑战.");
                                                 cm.dispose();
                                         } else {
                                                 var eli = em.getEligibleParty(cm.getParty());
@@ -161,21 +161,21 @@ function action(mode, type, selection) {
                                                         }
                                                         
                                                         if(i == 8) {
-                                                                cm.sendOk("Another party has already entered the #rParty Quest#k in this channel. Please try another channel, or wait for the current party to finish.");
+                                                                cm.sendOk("其他队伍正在进行挑战,请等待他们结束或者去其他频道看看.");
                                                         }
                                                 }
                                                 else {
-                                                        cm.sendOk("You cannot start this party quest yet, because either your party is not in the range size, some of your party members are not eligible to attempt it or they are not in this map. If you're having trouble finding party members, try Party Search.");
+                                                        cm.sendOk("由于你的队伍人数不足,或者有成员的等级或者挑战次数不满足条件,你无法开始挑战.");
                                                 }
                                                 
                                                 cm.dispose();
                                         }
                                 } else if (selection == 1) {
                                         var psState = cm.getPlayer().toggleRecvPartySearchInvite();
-                                        cm.sendOk("Your Party Search status is now: #b" + (psState ? "enabled" : "disabled") + "#k. Talk to me whenever you want to change it back.");
+                                        cm.sendOk("你当前的队伍搜索状态: #b" + (psState ? "开启" : "关闭") + "#k.");
                                         cm.dispose();
                                 } else {
-                                        cm.sendOk("#e#b<Party Quest: Boss Rush>#k#n\r\nBrave adventurers from all over the places travels here to test their skills and abilities in combat, as they face even more powerful bosses from MapleStory. Join forces with fellow adventurers or face all the burden by yourself and receive all the glory, it is up to you. REWARDS are given accordingly to how far the adventurers reach and extra prizes may are given to a random member of the party, all attributed at the end of an expedition.\r\n\r\nThis instance also supports #bmultiple lobbies for matchmaking several ranges of team levels#k at once: team up with players with lower level if you want better chances to swiftly set up a boss rush for your team.");
+                                        cm.sendOk("#e#b<组队挑战:刷Boss>#k#n\r\n你猜我翻不翻.");
                                         cm.dispose();
                                 }
                         }

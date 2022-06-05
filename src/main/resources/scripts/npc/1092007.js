@@ -30,15 +30,15 @@ function action(mode, type, selection){
         if (status == 0){
             if (cm.getQuestStatus(2175) == 1){
                 if (cm.getPlayer().canHold(2030019)){
-                    cm.sendOk("Please take this #b#t2030019##k, it will make your life a lot easier.  #i2030019#");
+                    cm.sendOk("拿着#b#t2030019##k,这会让你更轻松.  #i2030019#");
                 }
                 else{
-                    cm.sendOk("No free inventory spot available. Please make room in your USE inventory first.");
+                    cm.sendOk("背包空间不足.");
                     cm.dispose();
                 }
             }
             else{
-                cm.sendOk("The Black Magician and his followers. Kyrin and the Crew of Nautilus. \n They'll be chasing one another until one of them doesn't exist, that's for sure.");
+                cm.sendOk("黑魔法师和他的手下.凯琳和她的船员. \n他们之间的斗争永远不会结束.");
                 cm.dispose();
             }
         }

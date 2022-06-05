@@ -38,15 +38,15 @@ function action(mode, type, selection) {
         status++;
         
         if (status == 0) {
-            cm.sendNext("Congratulations on getting this far! Well, I suppose I'd better give you the #bBreath of Fire#k. You've certainly earned it!");
+            cm.sendNext("恭喜你到了这里! 我觉得可以把#b火山的呼吸#k交给你!");
         } else if (status == 1) {
             if(!cm.canHold(4031062)) {
-                cm.sendOk("Try freeing a slot to receive the #b#t4031062##k.");
+                cm.sendOk("给#b#t4031062##k留点空间.");
                 cm.dispose();
                 return;
             }
             
-            cm.sendNext("Well, time for you to head off.");
+            cm.sendNext("好吧，你该走了.");
         } else if (status == 2) {
             cm.gainItem(4031062,1);
             cm.gainExp(10000 * cm.getPlayer().getExpRate());

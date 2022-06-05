@@ -2,13 +2,13 @@
 
 var status = 0;
 var ticketSelection = -1;
-var text = "Here's the ticket reader.";
+var text = "检票口.";
 var hasTicket = false;
 var NLC = false;
 var em;
 
 function start() {
-	cm.sendSimple("Pick your destination.\n\r\n#L0##bKerning Square Shopping Center#l\n\n\r\n#L1#Enter Contruction Site#l\r\n#L2#New Leaf City#l");
+	cm.sendSimple("选择目的地.\n\r\n#L0##b废弃都市购物中心#l\n\n\r\n#L1#进入秘密区域#l\r\n#L2#新叶城#l");
 }
 
 function action(mode, type, selection) {
@@ -27,14 +27,14 @@ function action(mode, type, selection) {
         if (selection == 0) {
     		var em = cm.getEventManager("KerningTrain");
                 if (!em.startInstance(cm.getPlayer())) {
-                    cm.sendOk("The passenger wagon is already full. Try again a bit later.");
+                    cm.sendOk("里面人满了.待会儿再来吧.");
                 }
                 
         	cm.dispose();
         	return;
         } else if (selection == 1) {
             if (cm.haveItem(4031036) || cm.haveItem(4031037) || cm.haveItem(4031038)) {
-                text += " You will be brought in immediately. Which ticket you would like to use?#b";
+                text += "你可以进去,要用哪张票?#b";
                 for (var i = 0; i < 3; i++) {
 	                if (cm.haveItem(4031036 + i)) {
 	                    text += "\r\n#b#L" + (i + 1) + "##t" + (4031036 + i) +"#";
@@ -43,20 +43,20 @@ function action(mode, type, selection) {
                 cm.sendSimple(text);  
                 hasTicket = true;
             } else { 
-            	cm.sendOk("It seems as though you don't have a ticket!");
+            	cm.sendOk("看样子你没有地铁票!");
             	cm.dispose();
             	return;
             }
         } else if (selection == 2) {
         	if (!cm.haveItem(4031711) && cm.getPlayer().getMapId() == 103000100) {
-	    		cm.sendOk("It seems you don't have a ticket! You can buy one from Bell.");
+	    		cm.sendOk("你没有票!你可以找#p9201057#购买.");
 	    		cm.dispose();
 	    		return;
         	}
             if (em.getProperty("entry") == "true") {
-                cm.sendYesNo("It looks like there's plenty of room for this ride. Please have your ticket ready so I can let you in. The ride will be long, but you'll get to your destination just fine. What do you think? Do you want to get on this ride?");
+                cm.sendYesNo("看起来这里有足够的空间。请把票准备好，我可以让你进去。旅程会很长，但你会很快到达目的地的。你怎么认为？你想搭这趟车吗？");
             } else {
-                cm.sendNext("We will begin boarding 1 minute before the takeoff. Please be patient and wait for a few minutes. Be aware that the subway will take off right on time, and we stop receiving tickets 1 minute before that, so please make sure to be here on time.");
+                cm.sendNext("我们将在起飞前1分钟开始登机。请耐心等待几分钟。请注意，地铁将准时起飞，在此之前1分钟我们将停止收票，请务必准时到达。");
                 cm.dispose();
                 return;
             }
@@ -75,7 +75,7 @@ function action(mode, type, selection) {
         
 	if (cm.haveItem(4031711)) {
             if(em.getProperty("entry") == "false") {
-                cm.sendNext("We will begin boarding 1 minute before the takeoff. Please be patient and wait for a few minutes. Be aware that the subway will take off right on time, and we stop receiving tickets 1 minute before that, so please make sure to be here on time.");
+                cm.sendNext("我们将在起飞前1分钟开始登机。请耐心等待几分钟。请注意，地铁将准时起飞，在此之前1分钟我们将停止收票，请务必准时到达。");
             }
             else {
                 cm.gainItem(4031711, -1);

@@ -46,26 +46,26 @@ function action(mode, type, selection) {
     
                 if(status == 0) {
                         if (cm.isQuestCompleted(100007)) {
-                            cm.sendOk("You're truly a hero!");
+                            cm.sendOk("你真是个英雄！");
                             cm.dispose();
                         } else if(cm.isQuestCompleted(100006)) {
-                            cm.sendNext("Alright I'll let you in! Defeat the monsters inside, collect 30 Dark Marbles, then strike up a conversation with a colleague of mine inside. He'll give you #bThe Proof of a Hero#k, the proof that you've passed the test. Best of luck to you.");
+                            cm.sendNext("好吧，我让你进去！打败里面的怪物，收集30个黑珠，然后和里面的人谈谈。他会给你英雄的证明");
                             status = 4;
                         } else if (cm.isQuestStarted(100006)) {
-                            cm.sendNext("Hmmm...it is definitely the letter from #bGrendell the Really Old#k...so you came all the way here to take the test and make the 2nd job advancement as a magician. Alright, I'll explain the test to you. Don't sweat it too much, it's not that complicated.");
+                            cm.sendNext("嗯...肯定是那封信。#k...所以你千里迢迢来这里参加考试，参加魔法师第二次转职测试。好吧，我来给你解释一下。别操心太多，没那么复杂。");
                         } else {
-                            cm.sendOk("I can show you the way once your ready for it.");
+                            cm.sendOk("一旦你准备好了，我可以带你去。");
                             cm.dispose();
                         }
                 }
                 else if(status == 1)
-                        cm.sendNextPrev("I'll send you to a hidden map. You'll see monsters you don't normally see. They look the same like the regular ones, but with a totally different attitude. They neither boost your experience level nor provide you with item.");
+                        cm.sendNextPrev("我会送你去看隐藏的地图。你会看到平时看不到的怪物。他们看起来和普通怪物一样,但是打败他们不会让你获得任何经验或者道具");
                 else if (status == 2)
-                        cm.sendNextPrev("You'll be able to acquire a marble called #b#t4031013##k while knocking down those monsters. It is a special marble made out of their sinister, evil minds. Collect 30 of those, and then go talk to a colleague of mine in there. That's how you pass the test.");
+                        cm.sendNextPrev("他们会掉落#b#z4031013##k,你需要收集30个");
                 else if (status == 3)
-                        cm.sendYesNo("Once you go inside, you can't leave until you take care of your mission. If you die, your experience level will decrease.. So you better really buckle up and get ready...well, do you want to go for it now?");
+                        cm.sendYesNo("你进去以后必须完成任务,否则只有死亡才可以离开,确定要进去了吗?");
                 else if (status == 4) {
-                        cm.sendNext("Alright I'll let you in! Defeat the monsters inside, collect 30 Dark Marbles, then strike up a conversation with a colleague of mine inside. He'll give you #bThe Proof of a Hero#k, the proof that you've passed the test. Best of luck to you.");
+                        cm.sendNext("好吧，我让你进去！打败里面的怪物，收集30个黑珠,拿到#b英雄的证明#k, 祝你好运。");
                         cm.completeQuest(100006);            
                         cm.startQuest(100007);
                         cm.gainItem(4031009, -1);

@@ -27,13 +27,13 @@
 */
 
 function jobString(niche) {
-    if(niche == 1) return "warrior";
-    else if(niche == 2) return "magician";
-    else if(niche == 3) return "bowman";
-    else if(niche == 4) return "thief";
-    else if(niche == 5) return "pirate";
+    if(niche == 1) return "战士";
+    else if(niche == 2) return "法师";
+    else if(niche == 3) return "弓箭手";
+    else if(niche == 4) return "飞侠";
+    else if(niche == 5) return "海盗";
     
-    return "beginner";
+    return "新手";
 }
 
 function canEnterDimensionMap(mapid, jobid) {
@@ -57,10 +57,10 @@ function start() {
         
         var em = cm.getEventManager("3rdJob_" + js);
         if (em == null)
-            cm.sendOk("Sorry, but 3rd job advancement (" + js + ") is closed.");
+            cm.sendOk("对不起,三转(" + js + ")失败.");
         else {
             if (!em.startInstance(cm.getPlayer())) {
-                cm.sendOk("Someone else is already challenging the clone. Please wait until the area is cleared.");
+                cm.sendOk("已经有人在挑战了，请更换频道或者稍后再试。");
             }
             
             cm.dispose();

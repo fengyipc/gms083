@@ -15,7 +15,7 @@ function action(mode, type, selection) {
 		cm.dispose();
 	} else {
 	if (mode == 0) {
-		cm.sendNext("Aye...are you scared of speed or heights? You can't trust my flying skills? Trust me, I've worked out all the kinks!");
+		cm.sendNext("阿耶...你害怕高速或者高空吗? 你怀疑我的技术吗? 相信我, 这些都不是问题!");
 		cm.dispose();
 		return;
 	}
@@ -24,17 +24,17 @@ function action(mode, type, selection) {
 	else
 		status--;
 	if(status == 0){
-		cm.sendNext("I don't know how you found out about this, but you came to the right place! For those that wandered around Nihal Desert and are getting homesick, I am offering a flight straight to Victorial Island, non-stop! Don't worry about the flying ship--it's only fallen once or twice! Don't you feel claustrophobic being in a long flight on that small ship?");
+		cm.sendNext("我不知道你怎么知道的，但你来对地方了！对于那个些在尼哈沙漠游荡、想家的人，我提供直飞金银岛的航班，直达！别担心那只会飞的船——它只掉了一两次！在那艘小船上长途飞行，你不觉得幽闭恐怖吗？");
 	} else if(status == 1){
-		cm.sendYesNo("Please remember two things. One, this line is actually for overseas shipping, so #rI cannot gurantee exactly which town you'll land#k. Two, since I am putting you in this special flight, it'll be a bit expensive. The service charge is #e#b10,000 mesos#n#k. There's a flight thats about to take off. Are you interested in this direct flight?");
+		cm.sendYesNo("请记住两件事。第一，这条线实际上是为了海外运输，所以我不能保证你到底要在哪个城镇着陆。第二，既然我把你安排在这架特别航班上，那就有点贵了。服务费是10000金币。有一班飞机就要起飞了。你对这趟直达航班感兴趣吗？");
 	} else if(status == 2){
-		cm.sendNext("Okay, ready to takeoff~");
+		cm.sendNext("好了，准备起飞~");
 	} else if(status == 3){
 		if(cm.getMeso() >= 10000){
 			cm.gainMeso(-10000);
 			cm.warp(towns[Math.floor(Math.random() * towns.length)]);
 		} else{
-			cm.sendNextPrev("Hey, are you short on cash? I told you you'll need #b10,000#k mesos to get on this.");
+			cm.sendNextPrev("现金短缺?我需要#b10,000#k金币才能让你上飞机.");
 			cm.dispose();
 			}
 		}

@@ -46,6 +46,6 @@
 */
 
 function start() {
-    cm.sendNext("Yawnnnn~!");
+    cm.sendNext("啊啊啊啊欠~!");
     cm.dispose();
 }

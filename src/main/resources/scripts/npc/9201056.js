@@ -30,7 +30,7 @@ function start() {
 function action(mode, type, selection) {
     if (mode != 1) {
         if (mode == 0)
-            cm.sendOk("Alright, see you next time.");
+            cm.sendOk("好吧,下次见.");
         cm.dispose();
     }
     else {
@@ -38,26 +38,26 @@ function action(mode, type, selection) {
         if (cm.getPlayer().getMapId() == 682000000) {
             if (status == 0) {
                 if (selection == 0)
-                    cm.sendYesNo("Would you like to return back to #bcivilization#k? The fee is " + fee + " mesos.");
+                    cm.sendYesNo("要返回#b#m600000000##k?费用是" + fee + "金币.");
             } else if (status == 1) {
                 if(cm.getMeso() >= fee) {
                     cm.gainMeso(-fee);
                     cm.warp(600000000);
                 } else {
-                    cm.sendOk("Hey, what are you trying to pull on? You don't have enough meso to pay the fee.");
+                    cm.sendOk("你金币不够.");
                 }
                 
                 cm.dispose();
             }
         } else {
             if (status == 0) {
-                cm.sendYesNo("Would you like to go to the #bHaunted Mansion#k? The fee is " + fee + " mesos.");
+                cm.sendYesNo("你想去#b#m682000000##k?费用是" + fee + "金币.");
             } else if (status == 1) {
                 if(cm.getMeso() >= fee) {
                     cm.gainMeso(-fee);
                     cm.warp(682000000, 0);
                 } else {
-                    cm.sendOk("Hey, what are you trying to pull on? You don't have enough meso to pay the fee.");
+                    cm.sendOk("你金币不够.");
                 }
                 
                 cm.dispose();

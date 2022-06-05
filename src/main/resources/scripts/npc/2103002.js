@@ -43,10 +43,10 @@ function action(mode, type, selection) {
                 if(status == 0) {
                         if(cm.isQuestStarted(3923) && !cm.haveItem(4031578, 1)) {
                                 if(cm.canHold(4031578, 1)) {
-                                        cm.sendOk("You have just swiped the ring. Clear the area asap!", 2);
+                                        cm.sendOk("你刚刚清洗了戒指。尽快清理这片区域！", 2);
                                         cm.gainItem(4031578, 1);
                                 } else {
-                                        cm.sendOk("You don't have a ETC slot available.", 2);
+                                        cm.sendOk("其他栏空间不足.", 2);
                                 }
                         }
                         

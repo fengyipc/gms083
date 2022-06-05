@@ -40,18 +40,18 @@ function action(mode, type, selection) {
         else
             status--;
         var eim = cm.getPlayer().getEventInstance(); 
-        var nthtext = "last";
+        var nthtext = "最终";
         if (status == 0) {
             party = eim.getPlayers();
             preamble = eim.getProperty("leader" + nthtext + "preamble");
             mobcount = eim.getProperty("leader" + nthtext + "mobcount");
             if (preamble == null) {
-                cm.sendOk("Hi. Welcome to the " + nthtext + " stage. This is where you fight the #bboss#k. Shall we get started?");
+                cm.sendOk("嗨.欢迎来到" + nthtext + "关.这里你将会挑战#bboss#k.我们开始吧?");
                 status = 9;
             }else{
                 if(!isLeader()){
                     if(mobcount == null){
-                        cm.sendOk("Please tell your #bParty-Leader#k to come talk to me");
+                        cm.sendOk("请让#b队长#k来与我对话");
                         cm.dispose();
                     }else{
                         cm.warp(109020001,0);
@@ -59,19 +59,19 @@ function action(mode, type, selection) {
                     }
                 }
                 if(mobcount == null){
-                    cm.sendYesNo("You're finished?!");
+                    cm.sendYesNo("这就结束了?!");
                 }
             }
         }else if (status == 1){
             //if (cm.mobCount(600010000)==0) {
             if (cm.mapMobCount() == 0) {
-                cm.sendOk("Good job! You've killed 'em!");
+                cm.sendOk("干得好!你击败了他们!");
             }else{
-                cm.sendOk("What are you talking about? Kill those creatures!!");
+                cm.sendOk("你在说什么?杀掉所有怪物!!");
                 cm.dispose();
             }
         }else if (status == 2){
-            cm.sendOk("You may continue to the next stage!");
+            cm.sendOk("你可以进入下一关了!");
         }else if (status == 3) {
             cm.clear();
             eim.setProperty("leader" + nthtext + "mobcount","done");

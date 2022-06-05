@@ -19,23 +19,23 @@ function action(mode, type, selection) {
         if(!inHuntingGround) {
             if (cm.isQuestStarted(quest)) {
                 if(!cm.getPlayer().haveItemEquipped(1003036)) {
-                    cm.sendOk("The path ahead has a weird stench... Equip the #rgas mask#k before entering.");
+                    cm.sendOk("里面充满了毒气...进去之前请穿好#r#z1003036##k.");
                     cm.dispose();
                     return;
                 }
 
-                cm.sendYesNo("Would you like to move to #b#m" + map + "##k?");
+                cm.sendYesNo("你想去#b#m" + map + "##k吗?");
             } else {
-                cm.sendOk("The entrance is blocked by a strange force.");
+                cm.sendOk("入口被堵住了.");
                 cm.dispose();
             }
         } else {
             if(cm.getMapId() == 677000011) {
                 map = 677000012;
-                cm.sendYesNo("Would you like to move to #b#m" + map + "##k?");
+                cm.sendYesNo("要去#b#m" + map + "##k吗?");
             } else {
                 map = 105050400;
-                cm.sendYesNo("Would you like to #bexit this place#k?");
+                cm.sendYesNo("要离开吗?");
             }
         }
     } else {

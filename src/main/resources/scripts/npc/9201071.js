@@ -4,6 +4,6 @@
  */
  
 function start() {
-    cm.sendOk("(This tombstone keeps emmiting ever oddier light waves the more I stare to it...)");
+    cm.sendOk("(我越是盯着墓碑，墓碑上就不断发出越来越奇怪的光波。。。)");
     cm.dispose();
 }

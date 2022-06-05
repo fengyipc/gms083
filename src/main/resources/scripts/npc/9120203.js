@@ -52,6 +52,8 @@ function action(mode, type, selection) {
     
                 if (status == 0) {
                         cm.sendNext("Ah, The Boss has been defeated. What a happy day this turns out to be! Congratulations, everyone. Follow this way back to town.");
+                        cm.sendNext("哈哈哈，Boss被打败了！多么幸福的一天！恭喜大家，跟着这条路回镇上吧。");
+
                 } else if (status == 1) {
                         cm.warp(801000000);
                         cm.dispose();

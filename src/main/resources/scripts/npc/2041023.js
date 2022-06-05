@@ -51,14 +51,14 @@ function action(mode, type, selection) {
                 
                 if (status == 0) {
                         if(!(cm.isQuestCompleted(6316) && (cm.isQuestStarted(6225) || cm.isQuestStarted(6315)))) {
-                                cm.sendOk("You seems to have no reason to meet element-based Thanatos.");
+                                cm.sendOk("你好像不需要去找黑甲凶灵啊.");
                                 cm.dispose();
                                 return;
                         }
                     
                         em = cm.getEventManager("ElementalBattle");
                         if(em == null) {
-                                cm.sendOk("The Elemental Battle has encountered an error.");
+                                cm.sendOk("脚本错误.");
                                 cm.dispose();
                                 return;
                         } else if(cm.isUsingOldPqNpcStyle()) {
@@ -66,34 +66,34 @@ function action(mode, type, selection) {
                                 return;
                         }
                     
-                        cm.sendSimple("#e#b<Party Quest: Elemental Thanatos>\r\n#k#n" + em.getProperty("party") + "\r\n\r\nYou are looking for Elemental Thanatos, right? If you team up with another mage, with the opposite elemental affinity as yours, you guys will be able to overcome them. As a leader, talk to me when you feel ready to go.#b\r\n#L0#I want to participate in the party quest.\r\n#L1#I would like to " + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "disable" : "enable") + " Party Search.\r\n#L2#I would like to hear more details.");
+                        cm.sendSimple("#e#b<组队任务:黑甲凶灵>\r\n#k#n" + em.getProperty("party") + "\r\n\r\n你在寻找黑甲凶灵的踪迹,是吗?如果你与一个和你的魔法完全相反的法师组队,你们就可以去抵抗黑甲凶灵.作为队长,准备好了请跟我说.#b\r\n#L0#我想开始任务.\r\n#L1#我想" + (cm.getPlayer().isRecvPartySearchInviteEnabled() ? "关闭" : "开启") + "组队搜索.\r\n#L2#我想知道一些细节.");
                 } else if (status == 1) {
                         if (selection == 0) {
                                 if (cm.getParty() == null) {
-                                        cm.sendOk("You can participate in the party quest only if you are in a party.");
+                                        cm.sendOk("你必须组队参加这个任务.");
                                         cm.dispose();
                                 } else if(!cm.isLeader()) {
-                                        cm.sendOk("Your party leader must talk to me to start this party quest.");
+                                        cm.sendOk("你不是队长.");
                                         cm.dispose();
                                 } else {
                                         var eli = em.getEligibleParty(cm.getParty());
                                         if(eli.size() > 0) {
                                                 if(!em.startInstance(cm.getParty(), cm.getPlayer().getMap(), 1)) {
-                                                        cm.sendOk("Another party has already entered the #rParty Quest#k in this channel. Please try another channel, or wait for the current party to finish.");
+                                                        cm.sendOk("其他队伍正在挑战了,等他们出来或者换个频道试试.");
                                                 }
                                         }
                                         else {
-                                                cm.sendOk("You cannot start this party quest yet, because either your party is not in the range size, some of your party members are not eligible to attempt it or they are not in this map. If you're having trouble finding party members, try Party Search.");
+                                                cm.sendOk("你的队伍不能参加,人数不足或者有人的等级不够.");
                                         }
                                         
                                         cm.dispose();
                                 }
                         } else if (selection == 1) {
                                 var psState = cm.getPlayer().toggleRecvPartySearchInvite();
-                                cm.sendOk("Your Party Search status is now: #b" + (psState ? "enabled" : "disabled") + "#k. Talk to me whenever you want to change it back.");
+                                cm.sendOk("你当前的队伍搜索状态: #b" + (psState ? "开启" : "关闭") + "#k.想改变的话跟我说.");
                                 cm.dispose();
                         } else {
-                                cm.sendOk("#e#b<Party Quest: Elemental Thanatos>#k#n\r\n Team up with another mage with #rdifferent elemental affinity#k before entering the stage. This team aspect is crucial to overcome the elementals inside.");
+                                cm.sendOk("#e#b<组队任务:黑甲凶灵>#k#n\r\n 你需要和一个与你使用的魔法相反的法师组队参加.");
                                 cm.dispose();
                         }
                 }

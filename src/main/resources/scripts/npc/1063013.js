@@ -31,7 +31,7 @@ function activateShamanRock(slot,progress) {
         
         cm.setQuestProgress(2236, nextProgress);
         cm.gainItem(4032263, -1);
-        cm.sendOk("The seal took it's place, repelling the evil in the area.");
+        cm.sendOk("使用了#z4032263#,这个区域的邪恶力量被驱散了.");
         return 1;
     }
     
@@ -49,6 +49,7 @@ function start() {
         
         else if(map == 105090000) { // workaround... TWO SAME NPC ID ON SAME MAP
             var npcOid = cm.getQuestProgressInt(100300, 1);
+            java.lang.System.out.println(npcOid+"!!")
             if (npcOid == 0) {
                 activateShamanRock(3,progress);
                 cm.setQuestProgress(100300, 1, cm.getNpcObjectId());

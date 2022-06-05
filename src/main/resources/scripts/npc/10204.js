@@ -22,19 +22,19 @@
 var status = -1;
 
 function start() {
-    cm.sendNext("海盗有着非凡的敏捷和力量，他们在近战情况下使用自己的枪进行远程攻击。枪手使用基于元素的子弹来增加伤害，而内讧者则转换成不同的生物来获得最大的效果。");
+    cm.sendNext("海盗被赋予了杰出的敏捷和力量，利用他们的枪进行远程攻击，同时将他们的力量用于近战作战。枪手使用以元素为基础的子弹来增加伤害，而投弹者则为了达到最大效果而转换成不同的人.");
 }
 
 function action(mode, type, selection) {
     status++;
     if (mode != 1){
         if(mode == 0)
-           cm.sendNext("如果你想体验当海盗的感觉，再来找我。");
+           cm.sendNext("如果你想体验海盗，再来找我.");
         cm.dispose();
         return;
     }
     if (status == 0) {
-        cm.sendYesNo("你想体验一下当海盗的感觉吗？");
+        cm.sendYesNo("你想体验一下当海盗吗？");
     } else if (status == 1){
 	cm.lockUI();
         cm.warp(1020500, 0);

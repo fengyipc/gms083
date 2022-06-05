@@ -37,7 +37,7 @@ function action(mode, type, selection) {
         }
         if (cm.getPlayer().getMapId() == 980010000) {
             if (cm.getLevel() > 30) {
-                cm.sendOk("You are already over #rlevel 30#k, therefore you can't participate in this instance anymore.");
+                cm.sendOk("你已经超过#r30级#k了, 所以你不能再参加这个活动了.");
                 cm.dispose();
                 return;
             }
@@ -48,26 +48,26 @@ function action(mode, type, selection) {
                 var expedicao2 = cm.getExpedition(exped2);
                 
                 var channelMaps = cm.getClient().getChannelServer().getMapFactory();
-                var startSnd = "What would you like to do? \r\n\r\n\t#e#r(Choose a Battle Arena)#n#k\r\n#b";
+                var startSnd = "你想干什么? \r\n\r\n\t#e#r(选择一个阿里安特竞技场)#n#k\r\n#b";
                 var toSnd = startSnd;
 
                 if (expedicao == null) {
-                    toSnd += "#L0#Battle Arena (1) (Empty)#l\r\n";
+                    toSnd += "#L0#竞技场(1) (空)#l\r\n";
                 } else if (channelMaps.getMap(980010101).getCharacters().isEmpty()) {
-                    toSnd += "#L0#Join Battle Arena (1)  Owner (" + expedicao.getLeader().getName() + ")" + " Current Member: " + cm.getExpeditionMemberNames(exped) + "\r\n";
+                    toSnd += "#L0#参加竞技场(1)  擂主(" + expedicao.getLeader().getName() + ")" + "当前有: " + cm.getExpeditionMemberNames(exped) + "\r\n";
                 }
                 if (expedicao1 == null) {
-                    toSnd += "#L1#Battle Arena (2) (Empty)#l\r\n";
+                    toSnd += "#L1#竞技场(2) (空)#l\r\n";
                 } else if (channelMaps.getMap(980010201).getCharacters().isEmpty()) {
-                    toSnd += "#L1#Join Battle Arena (2)  Owner (" + expedicao1.getLeader().getName() + ")" + " Current Member: " + cm.getExpeditionMemberNames(exped1) + "\r\n";
+                    toSnd += "#L1#参加竞技场(2)  擂主(" + expedicao1.getLeader().getName() + ")" + " 当前有: " + cm.getExpeditionMemberNames(exped1) + "\r\n";
                 }
                 if (expedicao2 == null) {
-                    toSnd += "#L2#Battle Arena (3) (Empty)#l\r\n";
+                    toSnd += "#L2#竞技场(3) (空)#l\r\n";
                 } else if (channelMaps.getMap(980010301).getCharacters().isEmpty()) {
-                    toSnd += "#L2#Join Battle Arena (3)  Owner (" + expedicao2.getLeader().getName() + ")" + " Current Member: " + cm.getExpeditionMemberNames(exped2) + "\r\n";
+                    toSnd += "#L2#参加竞技场(3)  擂主(" + expedicao2.getLeader().getName() + ")" + " 当前有: " + cm.getExpeditionMemberNames(exped2) + "\r\n";
                 }
                 if (toSnd.equals(startSnd)) {
-                    cm.sendOk("All the Battle Arena is currently occupied. I suggest you to come back later or change channels.");
+                    cm.sendOk("所有竞技场里都有人了.我建议你换个频道看看或者等会儿再来.");
                     cm.dispose();
                 } else {
                     cm.sendSimple(toSnd);
@@ -83,15 +83,15 @@ function action(mode, type, selection) {
                 if (expedicao != null) {
                     enterArena(-1);
                 } else {
-                    cm.sendGetText("Up to how many partipants can join in this match? (2~5 people)");
+                    cm.sendGetText("想允许多少人参加战斗? (2~5人)");
                 }
             } else if (status == 2) {
                 var players = parseInt(cm.getText());   // AriantPQ option limit found thanks to NarutoFury (iMrSiN)
                 if (isNaN(players)) {
-                    cm.sendNext("Please enter a numeric limit value of allowed players in your instance.");
+                    cm.sendNext("请输入你允许进入的玩家数量.");
                     status = 0;
                 } else if (players < 2) {
-                    cm.sendNext("The numeric limit value should not be less than 2 players.");
+                    cm.sendNext("人数在2-5之间.");
                     status = 0;
                 } else {
                     enterArena(players);
@@ -137,37 +137,37 @@ function enterArena(arenaPlayers) {
             var res = cm.createExpedition(exped, true, 0, arenaPlayers);
             if (res == 0) {
                 cm.warp(map, 0);
-                cm.getPlayer().dropMessage("Your arena was created successfully. Wait for people to join the battle.");
+                cm.getPlayer().dropMessage("请等其他玩家加入.");
             } else if (res > 0) {
-                cm.sendOk("Sorry, you've already reached the quota of attempts for this expedition! Try again another day...");
+                cm.sendOk("对不起,你今天的次数已经用完...");
             } else {
-                cm.sendOk("An unexpected error has occurred when starting the expedition, please try again later.");
+                cm.sendOk("出错了,请汇报管理员.");
             }
         } else {
-            cm.sendOk("An unexpected error has occurred when locating the expedition, please try again later.");
+            cm.sendOk("出错了,请汇报管理员.");
         }
         
         cm.dispose();
     } else {
         if (playerAlreadyInLobby(cm.getPlayer())) {
-            cm.sendOk("Sorry, you're already inside the lobby.");
+            cm.sendOk("抱歉,可是你已经在里面了.");
             cm.dispose();
             return;
         }
 
         var playerAdd = expedicao.addMemberInt(cm.getPlayer());
         if (playerAdd == 3) {
-            cm.sendOk("Sorry, the lobby is full now");
+            cm.sendOk("对不起,满员了");
             cm.dispose();
         } else {
             if (playerAdd == 0) {
                 cm.warp(map, 0);
                 cm.dispose();
             } else if (playerAdd == 2) {
-                cm.sendOk("Sorry, the leader do not allowed you to enter.");
+                cm.sendOk("对不起,队长不让你进去.");
                 cm.dispose();
             } else {
-                cm.sendOk("Error.");
+                cm.sendOk("错误.");
                 cm.dispose();
             }
         }

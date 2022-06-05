@@ -46,14 +46,14 @@ function action(mode, type, selection) {
             status--;
         if (status == 0 && mode == 1) {
             if (cm.isQuestCompleted(4911)) {
-                cm.sendNext("Good job! You've solved all of my questions about NLC. Enjoy your trip!");
+                cm.sendNext("不错!你解决了我在新叶城的全部问题.旅途愉快!");
                 cm.dispose();
             } else if (cm.isQuestCompleted(4900) || cm.isQuestStarted(4900)) {  // thanks imbee for pointing out the quiz leak
-                cm.sendNext("Hey, pay attention, I'm trying to quiz you on another question, fam!");
+                cm.sendNext("嘿,请注意, 我现在想问你下一个问题!");
                 cm.dispose();
             } else {
-                var selStr = "What up! Name's Icebyrd Slimm, mayor of New Leaf City! Happy to see you accepted my invite. So, what can I do for you?#b"
-                var info = new Array("What is this place?","Who is Professor Foxwit?","What's a Foxwit Door?","Where are the MesoGears?","What is the Krakian Jungle?","What's a Gear Portal?","What do the street signs mean?","What's the deal with Jack Masque?","Lita Lawless looks like a tough cookie, what's her story?","When will new boroughs open up in the city?","I want to take the quiz!");
+                var selStr = "什么!我是#p9201050#,新叶城的市长!很高兴你的到来.有什么我可以帮你的吗?#b"
+                var info = new Array("这里是什么地方?","Who is Professor Foxwit?","What's a Foxwit Door?","Where are the MesoGears?","What is the Krakian Jungle?","What's a Gear Portal?","What do the street signs mean?","What's the deal with Jack Masque?","Lita Lawless looks like a tough cookie, what's her story?","When will new boroughs open up in the city?","I want to take the quiz!");
                 for (var i = 0; i < info.length; i++)
                     selStr += "\r\n#L" + i + "# " + info[i] + "#l";
                 cm.sendSimple(selStr);

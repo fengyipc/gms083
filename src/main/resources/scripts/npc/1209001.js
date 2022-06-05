@@ -6,6 +6,6 @@ function start() {
 }
 
 function action(mode, type, selection) {
-    cm.sendOk("The #rBlack Mage#k's forces approaches here in an unstoppable pace... We have no other way than to flee this area now, leaving our home behind. Oh, the tragedy!");
+    cm.sendOk("#r黑魔法师#k的势力不可抵挡地出现在这里...我们没法守护这里了了,被迫背井离乡!");
     cm.dispose();
 }

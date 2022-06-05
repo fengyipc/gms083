@@ -28,14 +28,14 @@
  * Zakum Quest NPC 
  * Helps players leave the map
  */
- importPackage(Packages.server.expeditions);
+importPackage(Packages.server.expeditions);
  
 function start() {
     if(cm.getMapId() == 280030000) {
-        if(!cm.getEventInstance().isEventCleared()) cm.sendYesNo("If you leave now, you'll have to start over. Are you sure you want to leave?");
-        else cm.sendYesNo("You guys finally overthrew Zakum, what a superb feat! Congratulations! Are you sure you want to leave now?");
+        if(!cm.getEventInstance().isEventCleared()) cm.sendYesNo("如果现在离开,一切就前功尽弃了.确定要离开吗?");
+        else cm.sendYesNo("你们打败了扎昆, 真厉害! 恭喜你们!现在要出去吗?");
     } else {
-        cm.sendYesNo("If you leave now, you'll have to start over. Are you sure you want to leave?");
+        cm.sendYesNo("如果现在离开,就要重新开始.确定要离开吗?");
     }
 }
 

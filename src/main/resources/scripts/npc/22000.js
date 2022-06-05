@@ -27,7 +27,7 @@
 var status = 0;
 
 function start() {
-    cm.sendYesNo("坐这艘船，你就可以去一个更大的大陆了。#e150 金币#n，我会带你去#b金银岛#k。问题是，一旦你离开这里，你就再也回不来了。你怎么认为？你想去金银岛吗？");
+    cm.sendYesNo("如果你想离开这里，你需要支付#b150金币#k，我会带你去#b明珠港#k。但关键的是，你一旦离开，就再也不能回到这里来了。你是不是想要去#b明珠港#k？");
 }
 
 function action(mode, type, selection) {
@@ -37,28 +37,28 @@ function action(mode, type, selection) {
             status -= 2;
         else if(type == 1 || (mode == -1 && type != 1)){
             if(mode == 0)
-                cm.sendOk("我想你还有事情要做吗？");
+                cm.sendOk("嗯……我猜你还有什么别的事情要在这里做吧？");
             cm.dispose();
             return;
         }
     }
     if (status == 1) {
         if (cm.haveItem(4031801))
-            cm.sendNext("好吧，现在给我150金币。。。嘿，那是什么？那是卢卡斯长老的推荐信吗？嘿，你应该告诉我你有这个。 我香克斯，当我看到一个伟大的人时，请认清它的伟大，因为卢卡斯推荐了你，我知道你作为一个冒险家有着巨大的潜力。这次旅行我决不收你钱！");
+            cm.sendNext("好，现在给我#b150金币#k……嗯，那是什么？是路卡斯的#b推荐信#k？嘿，你应该告诉我。伟大的冒险家，我似乎已经看到你的未来！");
         else
-            cm.sendNext("厌倦了这个地方？在这里。。。先给我#e150 金币#n。。。");
+            cm.sendNext("确定要离开吗？那么……先付我#b150金币#k吧……");
     } else if (status == 2) {
         if (cm.haveItem(4031801))
-            cm.sendNextPrev("既然你有推荐信，我就不收你这个费用了。好吧，系好安全带，因为我们现在要去金银岛，那里可能会有点混乱！！");
+            cm.sendNextPrev("既然你有#b推荐信#k，我也不会向你收取任何费用的。好了，我们现在就向#b明珠港#k出发。船可能会有点晃，坐好了……");
         else
         if (cm.getLevel() > 6) {
             if (cm.getMeso() < 150) {
-                cm.sendOk("什么？你是说你想不带钱就想出发？想得美。。。");
+                cm.sendOk("什么？你想去#b明珠港#k但你没有钱？想得美……");
                 cm.dispose();
             } else
-                cm.sendNext("哇哦！#e150#n金币，成交! 好吧，出去发金银岛！");
+                cm.sendNext("很好！#b150金币#k！那么，我们现在就向#b明珠港#k出发吧！");
         } else {
-            cm.sendOk("让我们看看。。。我觉得你不够强大。你至少要达到7级才能去维多利亚岛。");
+            cm.sendOk("让我看看，我认为你还没有足够的资格去#b明珠港#k。你的等级应该至少在7级或者7级以上。");
             cm.dispose();
         }
     } else if (status == 3) {

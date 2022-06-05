@@ -25,7 +25,7 @@ function action(mode, type, selection) {
 			cm.dispose();
 			return;
 		} else if(mode == 0) {
-			cm.sendNext("OK. If you ever change your mind, please let me know.");
+			cm.sendNext("好吧,你如果改变主意了记得找我.");
 			cm.dispose();
 			return;
 		}
@@ -33,13 +33,13 @@ function action(mode, type, selection) {
 		if (status == 0) {
                         var display = "";
 			for(var i=0; i < menu.length; i++) {
-                                display += "\r\n#L"+i+"##b Rien (800 mesos)#k";
+                                display += "\r\n#L"+i+"##b前往里恩(800金币)#k";
                         }
-                        cm.sendSimple("Are you thinking about leaving Victoria Island and heading to our town? If you board this ship, I can take you from #bLith Harbor#k to #bRien#k and back. But you must pay a #bfee of 800#k Mesos. Would you like to go to Rien? It'll take about a minute to get there.\r\n"+display);
+                        cm.sendSimple("你想离开金银岛去寒冷的里恩吗? 支付800金币我带你过去.\r\n"+display);
 			
                 } else if(status == 1) {
                         if(cm.getMeso() < 800) {
-                                cm.sendNext("Hmm... Are you sure you have #b800#k Mesos? Check your Inventory and make sure you have enough. You must pay the fee or I can't let you get on...");
+                                cm.sendNext("你没有足够的金币...");
                                 cm.dispose();
                         } else {
                                 cm.gainMeso(-800);

@@ -8,17 +8,17 @@ function start() {
 	
     if (cm.haveItem(4031242)){
 		if(atHerbTown)
-			menu = "#L0##bI will use #t4031242##k to move to #b#m230030200##k.#l\r\n#L1#Go to #b#m230000000##k after paying #b10000mesos#k.#l";
+			menu = "#L0##b我要使用#t4031242##k前往#b#m230030200##k.#l\r\n#L1#我要花#b10000金币#k前往#b#m230000000##k#l";
 		else
-			menu = "#L0##bI will use #t4031242##k to move to #b#m230030200##k.#l\r\n#L1#Go to #b#m251000000##k after paying #b10000mesos#k.#l";
+            menu = "#L0##b我要使用#t4031242##k前往#b#m230030200##k.#l\r\n#L1#我要花#b10000金币#k前往#b#m251000000##k.#l";
     }else {
 		if(atHerbTown)
-			menu = "#L0#Go to #b#m230030200##k after paying #b1000mesos#k.#l\r\n#L1#Go to #b#m230000000##k after paying #b10000mesos#k.#l";
+			menu = "#L0#我要花#b1000金币#k去#b#m230030200##k.#l\r\n#L1#我要花#b10000金币#k去#b#m230000000##k#l";
 		else
-			menu = "#L0#Go to #b#m230030200##k after paying #b1000mesos#k.#l\r\n#L1#Go to #b#m251000000##k after paying #b10000mesos#k.#l";
+			menu = "#L0我要花#b1000金币#k去#b#m230030200##k.#l\r\n#L1#我要花#b10000金币#k去#b#m251000000##k.#l";
         payment = true;
     }
-    cm.sendSimple ("Ocean are all connected to each other. Place you can't reach by foot can easily reached oversea. How about taking #bDolphin Taxi#k with us today?\r\n"+menu);
+    cm.sendSimple ("海洋是相互连接的。你没办法步行从一个地方到另一个地方。今天和我们一起坐海豚出租车怎么样？\r\n"+menu);
 }
 
 function action(mode, type, selection) {
@@ -28,7 +28,7 @@ function action(mode, type, selection) {
         if (selection == 0) {
             if(payment) {
                 if(cm.getPlayer().getMeso() < 1000) {
-                    cm.sendOk("I don't think you have enough money...");
+                    cm.sendOk("你没有足够的金币...");
                     cm.dispose();
                 } else
                     cm.gainMeso(-1000);
@@ -39,7 +39,7 @@ function action(mode, type, selection) {
             return;
         } else if (selection == 1) {
 			 if (cm.getPlayer().getMeso() < 10000) {
-				cm.sendOk("I don't think you have enough money...");
+				cm.sendOk("你没有足够的金币...");
 				cm.dispose();
 				return;
 			}else{
