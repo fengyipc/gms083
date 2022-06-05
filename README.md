@@ -3,7 +3,7 @@
 ## MapleStory GMS 0.83 汉化以优化
 
 - [x] Maven
-- [x] 主程序汉化(80%)
+- [x] 主程序汉化(90%)
 - [x] WZ汉化(95%)
 - [ ] 服务端汉化
 - [ ] 脚本引擎替换
@@ -34,25 +34,3 @@ HeavenMS
 │       │   ...
 ```
 
-
-
----
-### 下载链接
-
-  久等了，因为是疫情期间在家弄的，疫情后太忙一直搁置
-  链接：https://pan.baidu.com/s/1GAgyysoRqKsfv-ODvnGkfA 
-  提取码：ysn1
-
----
-### 截图预览
-
-<img src="http://s.pikadoll.cn/maplestory/2.png"  width="auto" height="auto">
-
-
-<img src="http://s.pikadoll.cn/maplestory/1.png"  width="auto" height="auto">
-
-<img src="http://s.pikadoll.cn/maplestory/5.png"  width="auto" height="auto">
-
-<img src="http://s.pikadoll.cn/maplestory/4.png"  width="auto" height="auto">
-
-<img src="http://s.pikadoll.cn/maplestory/3.png"  width="auto" height="auto">
