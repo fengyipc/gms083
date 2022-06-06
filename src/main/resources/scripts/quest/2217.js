@@ -35,7 +35,7 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("Hey, did you notice already, it looks like some awful stench is emanating from the sewers... Ewww");
+            qm.sendNext("嘿，你注意到了吗，看起来下水道里散发出可怕的恶臭。。。呃呃呃呃呃");
         } else if (status == 1) {
             qm.forceCompleteQuest();
             qm.gainExp(7000);

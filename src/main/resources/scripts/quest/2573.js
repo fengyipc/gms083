@@ -10,16 +10,16 @@ function start(mode, type, selection) {
 		status++;
 	}
 	if (status == 0) {
-		qm.sendNext("Greetings! Isn't this just the perfect weather for a journey? I'm Skipper, the captain of this fine ship. You must be a new Explorer, eh? Nice to meet you.");
+		qm.sendNext("这不正是旅行的最佳天气吗？我是凯琳，这艘船的船长。你一定是个新冒险家吧？很高兴认识你。");
 	} else if (status == 1) {
-		qm.sendAcceptDecline("We're not quite ready to leave, so feel free to look around the ship while we're waiting.");
+		qm.sendAcceptDecline("我们还没有完全准备好离开，所以请在我们等待的时候到处看一看吧。");
 	} else if (status == 2) {
 		if (mode == 0) {//decline
-			qm.sendNext("Hey, take it easy! Sometimes you just gotta wait.");
+			qm.sendNext("H嘿，别紧张！有时候你需要等一会。");
 		} else {
 			qm.warp(3000000, 0);
 			qm.forceCompleteQuest();
-                        qm.sendNext("Looks like we're all set! I think this is going to be a great voyage. Let's get underway.");
+                        qm.sendNext("看来我们都准备好了！我认为这将是一次伟大的航行。我们开始吧。");
 		}
 	} else if (status == 3) {
                 qm.dispose();

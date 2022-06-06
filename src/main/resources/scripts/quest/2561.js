@@ -10,29 +10,29 @@ function start(mode, type, selection) {
 		status++;
 	}
 	if (status == 0) {
-		qm.sendNext("Ook, ook! Oook! Ook! Ook! Ook?!");
+		qm.sendNext("哦，哦！哦！哦！哦！哦？！");
 	} else if (status == 1) {
-		qm.sendNextPrev("I remember...I was on my way to Maple Island, to become an Explorer... What happened? What's going on?", 2);
+		qm.sendNextPrev("我记得…我在去彩虹岛的路上，想成为一名探险家。。。怎么了？发生什么事？", 2);
 	} else if (status == 2) {
-		qm.sendNextPrev("Oook! Ook! Ook! Oooook!");
+		qm.sendNextPrev("哦！哦！哦！哦哦！");
 	} else if (status == 3) {
-		qm.sendNextPrev("I was talking to the captain, and admiring the scenery, and... Balrog! Balrog attacked the ship! So... Did I fall overboard? Then, why am I alive? I know #bI can swim#k, but can I swim while unconscious? Maybe I can. Maybe I'm a natural swimmer!", 2);
+		qm.sendNextPrev("我在和船长谈话，欣赏风景，然后。。。蝙蝠怪！蝙蝠怪袭击了那艘船！所以。。。我落水了吗？那么，为什么我还活着？我知道#b我会游泳#k,但我能在失去知觉的时候游泳吗？也许我可以。也许我是个天生的游泳运动员！", 2);
 	} else if (status == 4) {
-		qm.sendNext("Ooook! Ook! Ook! (Huh, a little monkey...tapping its foot angrily. Actually, when I first woke up, that monkey was the only thing I saw...)");
+		qm.sendNext("喔！哦！哦！(嗯，一只小猴子……愤怒地拍打着它的脚。事实上，当我第一次醒来的时候，我看到的只有那只猴子。。。)");
 	} else if (status == 5) {
-		qm.sendNextPrev("Huh? Why are you waving your arms like that? Are you trying to tell me something? (The monkey took an apple out of the nearby chest. It looks delicious. But, what is he trying to tell you?)\r\n\r\n#i2010000#", 2);
+		qm.sendNextPrev("呵呵？你为什么那样挥舞手臂？你想告诉我什么吗？(猴子从旁边的箱子里拿出一个苹果。看起来很好吃。但是，他想告诉你什么？)\r\n\r\n#i2010000#", 2);
 	} else if (status == 6) {
-		qm.sendAcceptDecline("Ook ook! Om nom nom! (The monkey looks frustrated that you don't understand him. He pretends to eat the apple. Wait, does he want YOU to eat it? That must be it! What a nice monkey.)");
+		qm.sendAcceptDecline("你看！哦，不，不！(猴子看起来很沮丧，因为你不了解他。他假装吃苹果。等等，他要你吃吗？一定是这样！多好的猴子啊。)");
 	} else if (status == 7) {
 		if (mode == 0) {//decline
-			qm.sendNext("The thing is, I don't like apples... Sorry, but no thanks.", 2);
+			qm.sendNext("问题是，我不喜欢苹果。。。对不起，但不，谢谢。", 2);
 			qm.dispose();
 		} else {
 			if (!qm.isQuestStarted(2561)) {//seems that hp is not changed o.o
 				qm.gainItem(2010000, true);
 				qm.forceStartQuest();
 			}
-			qm.sendNext("(You have received a delicious-looking apple. You should eat it. Now...how do you open your Inventory? Was it the #bI#k key...?)", 2);
+			qm.sendNext("(你收到了一个好看的苹果。你应该吃了它。现在…你怎么打开你的库存？是那个钥匙吗。。。？)", 2);
 		}
 	} else if (status == 8) {
 		qm.showInfo("UI/tutorial.img/28");

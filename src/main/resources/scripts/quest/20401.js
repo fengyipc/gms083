@@ -1,6 +1,6 @@
 /*
     This file is part of the HeavenMS MapleStory Server
-    Copyleft (L) 2016 - 2019 RonanLana
+    Copyleft (L) 2016 - 2018 RonanLana
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -22,27 +22,28 @@
 	
  */
 
-var status = -1;
+    var status = -1;
 
-function start(mode, type, selection) {
-    if (mode == -1) {
-        qm.dispose();
-    } else {
-        if(mode == 0 && type > 0) {
+    function start(mode, type, selection) {
+        if (mode == -1) {
             qm.dispose();
-            return;
-        }
-        
-        if (mode == 1)
-            status++;
-        else
-            status--;
-        
-        if (status == 0) {
-            qm.sendNext("Last time #bAdvanced Knight #p1103000##k was seen, he was investigating the surging increase on #rzombies#k lately on the #rhigh-grounds of El Nath#k. You should get yourself there to see if you can find any clue of what could have happened.");
-        } else if (status == 1) {
-            qm.forceCompleteQuest();
-            qm.dispose();
+        } else {
+            if(mode == 0 && type > 0) {
+                qm.dispose();
+                return;
+            }
+            
+            if (mode == 1)
+                status++;
+            else
+                status--;
+            
+            if (status == 0) {
+                qm.sendNext("上一次看到#b高级骑士#p1103000##k时,他正在调查最近在废矿区僵尸激增的原因。你应该亲自去看看是否能找到任何可能发生的线索.");
+            } else if (status == 1) {
+                qm.forceCompleteQuest();
+                qm.dispose();
+            }
         }
     }
-}
+    

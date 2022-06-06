@@ -1,6 +1,6 @@
 /*
     This file is part of the HeavenMS MapleStory Server
-    Copyleft (L) 2016 - 2019 RonanLana
+    Copyleft (L) 2016 - 2018 RonanLana
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -21,37 +21,37 @@
 	Quest: Hughes the Fuse's Basic of Theory of Science
  */
 
-var status = -1;
+    var status = -1;
 
-function end(mode, type, selection) {
-    if (mode == -1) {
-        qm.dispose();
-    } else {
-        if(mode == 0 && type > 0) {
+    function end(mode, type, selection) {
+        if (mode == -1) {
             qm.dispose();
-            return;
-        }
-        
-        if (mode == 1)
-            status++;
-        else
-            status--;
-        
-        if (status == 0) {
-            qm.sendNext("I am to teach you about the basics of the Theory of Science.");
-        } else if (status == 1) {
-            qm.sendNextPrev("Science stages where the alchemy doesn't meet the requirements. All items have molecular constitutions. The #rnature of their arrangements and each intrinsic unit of matter#k defines the many properties an item will have.");
-        } else if (status == 2) {
-            qm.sendNextPrev("This makes true in the scenario of the #rMaker#k as well. One must be able to study the traces of each component that is being used to form the item, to be able to tell if the experiment will utmostly succeed of fail.");
-        } else if (status == 3) {
-            qm.sendNextPrev("Take that in mind: the main perspective of science, that one engine that makes it flows the strongest, whatever scenario it is, is the aspect of #bunderstanding the process#k that generates the results, not simply throwing away tries at will.");
-        } else if (status == 4) {
-            qm.sendNextPrev("That has been made clear, right? Good, then the class is over. Dismissed.");
-        } else if (status == 5) {
-            qm.gainMeso(-10000);
+        } else {
+            if(mode == 0 && type > 0) {
+                qm.dispose();
+                return;
+            }
             
-            qm.forceCompleteQuest();
-            qm.dispose();
+            if (mode == 1)
+                status++;
+            else
+                status--;
+            
+            if (status == 0) {
+                qm.sendNext("我要教你科学理论的基础知识。");
+            } else if (status == 1) {
+                qm.sendNextPrev("炼金术不符合要求的科学阶段。所有项目都有分子组成。它们的排列结构和物质的每一个内在单位，定义了一个物品将具有的许多属性。");
+            } else if (status == 2) {
+                qm.sendNextPrev("一个人必须能够研究构成项目的每个组成部分的痕迹，以便能够判断实验是否最终会失败。");
+            } else if (status == 3) {
+                qm.sendNextPrev("记住这一点：科学的主要观点是，使其流动最强劲的一个引擎，不管它是什么情况，#b理解过程#k这会产生结果，而不仅仅是随意丢弃尝试。");
+            } else if (status == 4) {
+                qm.sendNextPrev("已经说清楚了，对吧？很好，那么下课了。解散。");
+            } else if (status == 5) {
+                qm.gainMeso(-10000);
+                
+                qm.forceCompleteQuest();
+                qm.dispose();
+            }
         }
     }
-}

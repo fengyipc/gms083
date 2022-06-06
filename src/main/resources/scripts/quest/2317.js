@@ -1,5 +1,5 @@
 /* ===========================================================
-        @author Resonance
+			Resonance
 	NPC Name: 		Scarrs
 	Map(s): 		Mushroom Castle: Corner of Mushroom Forest(106020000)
 	Description: 	Quest -  Killer Mushroom Spores(1)
@@ -18,16 +18,16 @@ function start(mode, type, selection) {
 	    if(type == 1 && mode == 0)
 		    status -= 2;
 		else{
-			qm.sendOk("Breaking through the barrier will require the Poison Mushroom Cap. Talk to me when you change your mind.");
+			qm.sendOk("突破障碍需要#b紫色毒蘑菇盖#k。你改变主意的时候跟我说。");
 			qm.dispose();
 			return;
 		}
 	}
 	if (status == 0)
-		qm.sendAcceptDecline("Ah! If I am not mistaken, I saw the #bKiller Mushroom Spores#k way back when I was a kid in a book. Now I remember... it's made out of extracts of powerful poisons from Poison Mushrooms, which means you'll need some Poison Mushroom Caps. If you can get me those, I think I'll be able to make it.");
+		qm.sendAcceptDecline("啊！如果我没搞错的话，我还是个孩子的时候就在一本书中看到过#b奇拉蘑菇孢子#k。到现在我还记得它。。。，它是从#b紫色毒蘑菇盖#k提取的强力毒素，这意味着你需要收集一些#b紫色毒蘑菇盖#k。");
 	else if (status == 1){
 		qm.forceStartQuest();
-		qm.sendOk("Please defeat #bPoison Mushrooms#k and bring back #b100 Poison Mushroom Caps#k in return.");
+		qm.sendOk("请打败#b紫色毒蘑菇#k然后带回来#b100个紫色毒蘑菇盖#k给我.");
         } else if (status == 2){
 		qm.dispose();
 	}
@@ -44,9 +44,9 @@ function end(mode, type, selection) {
 		}
 	}
 	if (status == 0)
-		qm.sendOk("Have you gathered up the 100 Poison Mushroom Caps like I asked you to get?");
+		qm.sendOk("你还没有收集完#b100个紫色毒蘑菇盖#k。");
 	else if (status == 1){
-                qm.sendOk("I am amazed that you were able to gather up these 100 Poison Mushroom Caps, which is considered a difficult feat. I think I'll be able to make #bKiller Mushroom Spores#k our of these.");
+                qm.sendOk("我很惊讶你能收集到#b100个紫色毒蘑菇盖#k，太棒了！我想我可以制作出#b奇拉蘑菇孢子#k了.");
 	} else if (status == 2) {
                 qm.forceCompleteQuest();
                 qm.gainExp(13500);

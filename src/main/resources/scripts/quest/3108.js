@@ -1,6 +1,6 @@
 /*
     This file is part of the HeavenMS MapleStory Server
-    Copyleft (L) 2016 - 2019 RonanLana
+    Copyleft (L) 2016 - 2018 RonanLana
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -35,7 +35,7 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("(As you peek into the shattered statue, you might have found a clue about what happened. Better talk to #rScadur#k about this.)");
+            qm.sendNext("(当你偷看破碎的雕像时，你可能已经找到了发生什么的线索。最好#r斯卡德#k谈一谈.)");
             qm.forceCompleteQuest();
         } else if (status == 1) {
             qm.dispose();

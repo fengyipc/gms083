@@ -15,15 +15,15 @@ function start(mode, type, selection) {
 	    if(type == 1 && mode == 0)
 		    status -= 2;
 		else{
-			qm.sendOk("Okay, then. See you around.");
+			qm.sendOk("好的，那么回头见.");
 			qm.dispose();
 			return;
 		}
 	}
 	if (status == 0)
-		qm.sendAcceptDecline("Hey, partner. Now that you make part of the Raven Claws team, I have a task for you. Are you up now?");
+		qm.sendAcceptDecline("嘿，搭档。现在你加入了乌鸦爪队，我有一个任务要做。你现在起床了吗?");
 	else if (status == 1){
-		qm.sendOk("Very well. To prove your valor among our ranks, you must first pass on a little challenge: you have to be able to move extraordinaly well around here, known of all secrets these woods holds. Trace a #bmap of the Phantom Forest#k, then come talk to me. I shall then evaluate if you're worth to be with us.");
+		qm.sendOk("很好。为了在我们的队伍中证明你的勇气，你必须先接受一个小小的挑战：你必须能够在这里出类拔萃地移动，知道这些树林所蕴含的所有秘密。追踪幽灵森林的地图，然后跟我说。我会评估你是否值得和我们在一起.");
 		qm.forceStartQuest();
 	} else if (status == 2) {
                 qm.dispose();

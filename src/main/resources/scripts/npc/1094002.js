@@ -32,18 +32,19 @@ function start(mode, type, selection){
         return;
     }
     
-    cm.sendNext("你想要一副眼镜吗？");
+    cm.sendNext("你似乎在草丛里发现了什么东西？");
 }
 
 function action(mode, type, selection) {
-    if(!(cm.haveItem(4031853) || cm.haveItem(4031854) || cm.haveItem(4031855))) {
+    if(!cm.haveItem(4031853)) {
         rolled = Math.floor(Math.random() * 3);
         
         if(rolled == 0) cm.gainItem(4031853, 1);
         else if(rolled == 1) cm.gainItem(4031854, 1);
         else cm.gainItem(4031855, 1);
+        cm.sendOk("你发现了一副眼镜！");
     }
-    else cm.sendOk("已经把眼镜给你了！");
+    else cm.sendOk("只是一堆箱子，没什么特别的。。。");
     
     cm.dispose();
 }

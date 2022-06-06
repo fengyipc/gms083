@@ -1,6 +1,6 @@
 /*
     This file is part of the HeavenMS MapleStory Server
-    Copyleft (L) 2016 - 2019 RonanLana
+    Copyleft (L) 2016 - 2018 RonanLana
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -35,7 +35,7 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("Okay, you should not return to #bTru#k for further details on your next steps. ... Oh wait!! I remembered something. See the #rMysterious Statue#k over there? That statue has it's origins unknwown, and there's something scribbled onto it that resembles something big, it probably is the password for the cave? #rGet the password there#k, it may help you on your journey.");
+            qm.sendNext("看样子除了我还有人见过那个家伙。不，不是人，而是一个#r奇怪的雕像#k？那个雕像的来历不明，上面写着洞穴的密码？我们一得到暗号就马上攻击人偶师怎么样？不，我们还是不要轻举妄动，而是找到暗号后把这件事报告给特鲁吧。");
         } else if (status == 1) {
             qm.forceStartQuest();
             qm.dispose();

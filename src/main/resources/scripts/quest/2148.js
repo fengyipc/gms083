@@ -15,7 +15,7 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("Some bats seems to accompany this tree wherever it goes. Creepy...");
+            qm.sendNext("这棵树无论走到哪里，似乎都有蝙蝠相伴。令人毛骨悚然。。。");
             qm.forceCompleteQuest();
         } else if (status == 1) {
             qm.dispose();

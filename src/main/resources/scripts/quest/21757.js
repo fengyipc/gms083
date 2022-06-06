@@ -1,6 +1,6 @@
 /*
     This file is part of the HeavenMS MapleStory Server
-    Copyleft (L) 2016 - 2019 RonanLana
+    Copyleft (L) 2016 - 2018 RonanLana
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -35,7 +35,7 @@ function end(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("Oh, a letter for the #rempress#k? From the #bheroes#k?!");
+            qm.sendNext("哦，一封写给伦普雷斯的信？贝洛斯家？！");
         } else if (status == 1) {
             qm.forceCompleteQuest();
             qm.gainExp(1000);

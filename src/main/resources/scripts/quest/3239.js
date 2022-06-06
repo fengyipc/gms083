@@ -17,14 +17,14 @@ function end(mode, type, selection) {
         if (status == 0) {
             if(qm.haveItem(4031092, 10)) {
 		if(qm.getPlayer().getInventory(Packages.client.inventory.MapleInventoryType.USE).getNumFreeSlot() >= 1) {
-                    qm.sendOk("Well done! You brought back all the #t4031092# that were missing. Here, take this scroll as a token of my gratitude...");
+                    qm.sendOk("做得好！你把所有的#t4031092#都收集完了. 过来，作为感谢请收下这份礼物。。。");
 		} else {
-                    qm.sendOk("Free a space on your USE inventory before receiving your prize.");
+                    qm.sendOk("在收到奖品之前，在你的使用消耗栏上留出一些空间.");
                     qm.dispose();
                     return;
 		}
             } else {
-                qm.sendOk("Please return me 10 #t4031092# that went missing on this room.");
+                qm.sendOk("请带回10个#t4031092#给我.");
                 qm.dispose();
                 return;
             }

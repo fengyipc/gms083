@@ -13,8 +13,8 @@ function start(mode, type, selection) {
                 }
                 
                 var medalname = qm.getMedalName();
-                qm.message("<" + medalname + "> has been awarded.");
-                qm.earnTitle("<" + medalname + "> has been awarded.");
+                qm.message("<" + medalname + "> 奖励已获取.");
+                qm.earnTitle("<" + medalname + "> 奖励已获取.");
                 
 		qm.forceStartQuest();
 		qm.forceCompleteQuest();
@@ -35,8 +35,8 @@ function end(mode, type, selection) {
                 }
             
                 var medalname = qm.getMedalName();
-                qm.message("<" + medalname + "> has been awarded.");
-                qm.earnTitle("<" + medalname + "> has been awarded.");
+                qm.message("<" + medalname + "> 奖励已获取.");
+                qm.earnTitle("<" + medalname + "> 奖励已获取.");
             
 		qm.forceStartQuest();
 		qm.forceCompleteQuest();

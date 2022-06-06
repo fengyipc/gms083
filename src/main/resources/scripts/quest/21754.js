@@ -1,6 +1,6 @@
 /*
     This file is part of the HeavenMS MapleStory Server
-    Copyleft (L) 2016 - 2019 RonanLana
+    Copyleft (L) 2016 - 2018 RonanLana
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -36,12 +36,12 @@ function start(mode, type, selection) {
         
         if (status == 0) {
             if(!qm.canHold(4032328, 1)) {
-                qm.sendNext("Hm, I will need you to prepare a ETC slot for a letter I need to give you.");
+                qm.sendNext("嗯，你需要给信空出一个背包位置。");
                 qm.dispose();
                 return;
             }
             
-            qm.sendNext("Here, take this. Send it to #r#p1002104##k, it contains a relevant matter for protecting this world. Please comply to this request.");
+            qm.sendNext("给，拿着这个。把它交给#r#p1002104##k，里面有一封维护世界和平的信。不要把这个秘密告诉别人。");
         } else if (status == 1) {
             qm.forceStartQuest();
             

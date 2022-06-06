@@ -10,14 +10,14 @@ function start(mode, type, selection) {
 		status++;
 	}
 	if (status == 0) {
-		qm.sendNext("Ooook! Ook! Ook!");
+		qm.sendNext("吱!吱!吱!");
 	} else if (status == 1) {
-		qm.sendNextPrev("Well, that hit the spot, but... I still don't understand what happened. Where's the ship? Hey, do you know what happened to me?", 2);
+		qm.sendNextPrev("好吧，那正好，但是。。。我还是不明白发生了什么。船在哪里？嘿，你知道我怎么了吗？", 2);
 	} else if (status == 2) {
-		qm.sendAcceptDecline("Oook! (The monkey nods. Does he really know what's going on? Couldn't hurt to ask.)");
+		qm.sendAcceptDecline("吱! (猴子点了点头。他真的知道怎么回事吗？不由自主地问。)");
 	} else if (status == 3) {
 		if (mode == 0) {//decline
-			qm.sendNext("Ook! Ook! (The monkey looks very dissatisfied.)");
+			qm.sendNext("吱!吱! (猴子看起来很不满意。)");
 		} else {
 			qm.forceStartQuest();
                         qm.dispose();

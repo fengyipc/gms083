@@ -17,18 +17,18 @@ function start(mode, type, selection){
 
 
 	if(status == 0){
-		qm.sendNext("This is not the end, #b#h ##k. Minions of the #bPrime Minister#k can still be found scattered throughout the castle.");
+		qm.sendNext("这仅仅是开始， #b#h ##k.#b企鹅国王#k的仆从在城堡里到处都可以找到.");
 	}
 	else if(status == 1){
-		qm.sendAcceptDecline("From what I've heard, there is a place near #bSkyscraper 3#k where a group of Prime Minister's minions can be found. I've picked up a key that the Prime Minister dropped the other day. Here, use this key.");
+		qm.sendAcceptDecline("据我所知，附近有个地方#b摩天楼3#k在那里还可以找到一群企鹅国王的奴仆。我捡到一把前几天企鹅国王丢的钥匙。给，用这把钥匙。");
 	}
 	else if(status == 2){
 		if(qm.canHold(4032405)){
 			qm.gainItem(4032405, 1);
-			qm.sendNext("For one last time, good luck.");
+			qm.sendNext("最后一次，祝你好运。");
 		}
 		else{
-			qm.sendOk("Please have a free space in your ETC inventory.");
+			qm.sendOk("请在您的其他栏中留至少一个位置。");
 			qm.dispose();
 		}
 	}

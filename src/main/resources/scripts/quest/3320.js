@@ -1,6 +1,6 @@
 /*
     This file is part of the HeavenMS MapleStory Server
-    Copyleft (L) 2016 - 2019 RonanLana
+    Copyleft (L) 2016 - 2018 RonanLana
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -37,7 +37,7 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendAcceptDecline("I may have an idea of the whereabouts of Dr. De Lang. Are you ready to be transported to the area?");
+            qm.sendAcceptDecline("我可能知道德朗医生的下落。你准备好被送到那个地区了吗？");
         } else if (status == 1) {
             qm.forceStartQuest();
             qm.warp(926120200, 1);

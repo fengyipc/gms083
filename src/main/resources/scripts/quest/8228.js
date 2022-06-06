@@ -15,20 +15,20 @@ function start(mode, type, selection) {
 	    if(type == 1 && mode == 0)
 		    status -= 2;
             else {
-                qm.sendOk("Come on, the city really needs you cooperating on this one!");
+                qm.sendOk("拜托，这个城市真的需要你配合!");
                 qm.dispose();
                 return;
             }
 	}
 	if (status == 0)
-		qm.sendAcceptDecline("Hm, that's no good. I can't seem to make these Hyper Glyphs work, dang it. ... Ah, yea, the outsider! He may know the language this paper is written on. Let Elpam try to read this, maybe he knows something.");
+		qm.sendAcceptDecline("嗯，那不好。我好像不能让这些超象形文字工作，该死。。。啊，是的，外人！他可能知道这篇论文所用的语言。让埃尔帕姆读一下，也许他知道些什么.");
 	else if (status == 1){
             if(qm.canHold(4032032, 1)) {
                 qm.gainItem(4032032, 1);
-                qm.sendOk("Very well, I'm counting on you on this one.");
+                qm.sendOk("很好，这件事我指望你.");
                 qm.forceStartQuest();
             } else {
-                qm.sendOk("Hey. There's no slot on your ETC.");
+                qm.sendOk("嘿。你的ETC没有空位.");
             }
 	} else if (status == 2){
             qm.dispose();
@@ -47,11 +47,11 @@ function end(mode, type, selection) {
     }
     if (status == 0){
         if(qm.haveItem(4032032, 1)) {
-            qm.sendOk("Hello, native of this world. So you have a message that needs translation? My people back in Versal is known for mastering many foreign languages, this one may very well be some we know. Please stand by...");
+            qm.sendOk("你好，本地人。你有需要翻译的信息吗？我在范思哲的人以精通多种外语而闻名，这个人很可能是我们认识的一些人。请待命。。。");
             qm.gainItem(4032032, -1);
             qm.forceCompleteQuest();
         } else {
-            qm.sendOk("I'm afraid you don't have the letter you claimed to have with you.");
+            qm.sendOk("恐怕你没有自称随身携带的那封信.");
         }
     } else if (status == 1) {
         qm.dispose();

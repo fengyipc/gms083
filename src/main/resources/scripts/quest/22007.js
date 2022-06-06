@@ -10,12 +10,12 @@ function end(mode, type, selection) {
 		status++;
 	}
 	if (status == 0) {
-		qm.sendNext("Oh, did you bring the #t4032451#? Here, give it to me. I'll give you the Incubator then.");
+		qm.sendNext("哦，你带了 #t4032451#吗? 给，给我。那我就把孵化器给你.");
 	} else if (status == 1) {
-		qm.sendYesNo("Alright, here you go. I have no idea how you use it, but it's yours... \r\n\r\n#fUI/UIWindow.img/QuestIcon/8/0# 360 exp");
+		qm.sendYesNo("好的，给你。我不知道你怎么用，但这是你的... \r\n\r\n#fUI/UIWindow.img/QuestIcon/8/0# 360 exp");
 	} else if (status == 2) {
 		if (mode == 0) {//decline
-			qm.sendNext("Hm? That's strange. The Incubator wasn't installed properly. Try again.");
+			qm.sendNext("嗯？真奇怪。培养箱安装不正确。再试一次.");
 		} else {
 			qm.gainItem(4032451, -1);
 			qm.forceCompleteQuest();

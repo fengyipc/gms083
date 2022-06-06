@@ -1,6 +1,6 @@
 /*
     This file is part of the HeavenMS MapleStory Server
-    Copyleft (L) 2016 - 2019 RonanLana
+    Copyleft (L) 2016 - 2018 RonanLana
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -35,7 +35,7 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("Ok, meet me at #b#m260020700##k for your information. To reach there, follow #reast#k from here until you reach #rMagatia#k, I will be there. Now go.");
+            qm.sendNext("好的，我们在#b#m260020700##k给你消息. 要到达那里, 请跟从#雷斯特#k到达#r玛加提亚#k,我会在那里等你，现在出发吧.");
         } else {
             qm.forceStartQuest();
             qm.dispose();
@@ -59,11 +59,11 @@ function end(mode, type, selection) {
         
         if (status == 0) {
             if(qm.getMapId() == 260020000) {
-                qm.sendNext("Eh you're still here? To reach #b#m260020700##k, follow #reast#k from here until you reach #rMagatia#k, I will be there. Now go.");
+                qm.sendNext("好的，我们在#b#m260020700##k给你消息. 要到达那里, 请跟从#雷斯特#k到达#r玛加提亚#k,我会在那里等你，现在出发吧.");
                 return;
             }
             
-            qm.sendNext("Oh there you are. There're no Meerkat's nearby, so there probably is no eavesdropping around here. Very well, you must be fit to go to the #rMushroom Castle#k. Talk to me once you've got #blevel 30#k.");
+            qm.sendNext("哦，给你。附近没有猫鼬,所以这里可能没有窃听。很好，你一定很适合去#r蘑菇城堡#k.不过需要你到#b30级#k.");
             qm.forceCompleteQuest();
         } else if (status == 1) {
             qm.dispose();

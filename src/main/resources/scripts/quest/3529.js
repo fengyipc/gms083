@@ -1,6 +1,6 @@
 /*
     This file is part of the HeavenMS MapleStory Server
-    Copyleft (L) 2016 - 2019 RonanLana
+    Copyleft (L) 2016 - 2018 RonanLana
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -35,7 +35,7 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendOk("You have regained your memories, talk to #b#p2140001##k to get the pass.");
+            qm.sendOk("你已经找回了记忆，和#b#p2140001##k谈一谈，获取通行许可吧。");
             qm.setQuestProgress(3507, 7081, 1);
             qm.forceCompleteQuest();
         } else if (status == 1) {

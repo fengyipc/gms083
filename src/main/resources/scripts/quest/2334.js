@@ -18,22 +18,22 @@ function start(mode, type, selection){
 
 	if(status == 0){
 		qm.forceStartQuest();
-		qm.sendNext("Thank you so much, #b#h ##k. You are the hero that has saved our empire from danger. I'm so grateful for what you've done. I dont know how to thank you. And please understand why I can't show you my face.");
+		qm.sendNext("非常感谢你, #b#h ##k.你是拯救蘑菇王国的英雄。我很感激你所做的一切。我不知道该怎么感谢你。请理解为什么我不能让你看到我的脸。");
 	}
 	else if(status == 1){
-		qm.sendNextPrev("It's humiliating to say this, but ever since I was a baby, my family has kept my face veiled from the world. They feared of men falling hopelessly in love with me. I've grown so accustomed to it that I even shy away from women. I know, it's rude of me to have my back turned against the hero, but I'll need some time to muster my courage before I can greet you face to face.");
+		qm.sendNextPrev("这么说很丢人，但从我还是个孩子的时候起，我的家人就把我的脸蒙住了。他们害怕男人绝望地爱上我。我已经习惯了，甚至对女人都避而远之。我知道，背对着英雄是不礼貌的，但我需要一些时间鼓起勇气才能面对面地向你打招呼。");
 	}
 	else if(status == 2){
-		qm.sendNextPrev("I see...\r\n#b(Wow, how pretty could she be?)", 2);
+		qm.sendNextPrev("我懂了。。。\r\n#b(哇，她有多漂亮？)", 2);
 	}
 	else if(status == 3){
-		qm.sendNextPrev("#b(What the--)", 2);
+		qm.sendNextPrev("#b(什么--)", 2);
 	}
 	else if(status == 4){
-		qm.sendNextPrev("#b(Is that what's considered pretty in the world of mushrooms?!)", 2);
+		qm.sendNextPrev("#b(在蘑菇的世界里，这是被认为很美的东西吗？)", 2);
 	}
 	else if(status == 5){
-		qm.sendNextPrev("I'm so shy, I'm blushing. Anyways, thank you, #b#h ##k.");
+		qm.sendNextPrev("我太害羞了，脸红了。不管怎样，谢谢你，#b#h ##k.");
 	}
 	else if(status == 6){
 		qm.forceStartQuest();

@@ -15,15 +15,15 @@ function start(mode, type, selection) {
         if(type == 1 && mode == 0)
                 status -= 2;
             else{
-                    qm.sendOk("Okay, then. See you around.");
+                    qm.sendOk("好吧，那么。回头见.");
                     qm.dispose();
                     return;
             }
     }
     if (status == 0)
-            qm.sendAcceptDecline("Hey traveler, come here! I am Taggrin, leader of the Raven Ninja Clan. We are mercenaries currently under the payload of the New Leaf City county. Our job here is to hunt down those creatures that have been lurking around here these days. Are you interested to make a little errand for us? Of course, the pay off will be advantageous for both parties.");
+            qm.sendAcceptDecline("嘿，旅行者，过来！我是Taggrin，乌鸦忍者部落的首领。我们是目前在新叶市郡的雇佣兵。我们的任务是追捕这些天一直潜伏在这里的生物。你有兴趣帮我们办点事吗？当然，付款对双方都有利.");
     else if (status == 1){
-            qm.sendOk("Ok. I need you to hunt down #bthose fake trees#k in the forest, and collect 50 of their drops as proof that you made your part on this.");
+            qm.sendOk("好啊。我要你在森林里找些假树，收集其中的50滴作为你参与此事的证据.");
             qm.forceStartQuest();
     } else if (status == 2) {
             qm.dispose();

@@ -17,10 +17,10 @@ function start(mode, type, selection){
 
 
 	if(status == 0){
-		qm.sendAcceptDecline("Please help me!");
+		qm.sendAcceptDecline("请帮帮我!");
 	}
 	else if(status == 1){
-		qm.sendNext("The #bPrime Minister#k is the one who plotted all this! Oh no! Here he comes...");
+		qm.sendNext("#b蘑菇大臣#k是幕后策划的黑手！哦，不！他来了。。。");
 	}
 	else if (status == 2){
 		qm.forceStartQuest();
@@ -40,7 +40,7 @@ function end(mode, type, selection){
 
 
 	if(status == 0){
-		qm.sendNext("Hurray! #b#h ##k you defeated the #bPrime Minister#k.");
+		qm.sendNext("天哪! #b#h ##k你居然打败了#b蘑菇大臣#k.");
 	}
 	else if(status == 1){
 		qm.gainExp(15000);

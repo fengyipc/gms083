@@ -36,10 +36,10 @@ function start(mode, type, selection) {
                 //qm.sendOk("Nice doing business with you~~.");
                 qm.startQuest(3514);
             } else {
-                qm.sendOk("Check out for a slot on your USE inventory first.");
+                qm.sendOk("请确认你的消耗栏是否有足够的空间。");
             }
         } else {
-            qm.sendOk("Oy, you don't have the money. I charge #r1,000,000 mesos#k for the emotion potion. No money, no deal.");
+            qm.sendOk("购买#b魔法制炼术士的药水#k需要花费#b1000,0000#k金币，请确认你有足够的金币。");
         }
         
         qm.dispose();
@@ -62,20 +62,20 @@ function end(mode, type, selection) {
         if(status == 0) {
                 if(!usedPotion(qm.getPlayer())) {
                         if(qm.haveItem(2022337)) {
-                                qm.sendOk("Are you scared to drink the potion? I can assure you it has only a minor #rside effect#k.");
+                                qm.sendOk("你害怕喝药水吗？我可以向你保证只有未成年人才有#r副作用#k。");
                         } else {
                                 if(qm.canHold(2022337)) {
                                         qm.gainItem(2022337, 1);
-                                        qm.sendOk("Lost it? Luckily for you I managed to recover it back. Take it.");
+                                        qm.sendOk("丢了吗？幸运的是，我设法找回了它。拿着吧。");
                                 } else {
-                                        qm.sendOk("Lost it? Luckily for you I managed to recover it back. Make a room to get it.");
+                                        qm.sendOk("丢了？幸运的是，我设法找回了它。请在背包中留出一个空位来接收。");
                                 }
                         }
                         
                         qm.dispose();
                         return;
                 } else {
-                        qm.sendOk("It seems the potion worked and your emotions are no longer frozen. And, oh, my... You're ailing bad, #bpurge#k that out quickly.");
+                        qm.sendOk("看来药水起作用了，你的情绪不再僵化。还有，哦，不对。。。发生副作用了，快把它弄出来。");
                 }
         } else if(status == 1) {
                 qm.gainExp(891500);

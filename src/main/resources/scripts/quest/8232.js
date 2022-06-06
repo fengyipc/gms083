@@ -26,7 +26,7 @@ function start(mode, type, selection) {
     }
     else if (status == 1) {
             var reqs = "#r30 #t4032031##k";
-            qm.sendOk("Very well. Get me #r" + reqs + "#k, asap. The NLC is counting on you.");
+            qm.sendOk("干得好，给我 #r" + reqs + "#k, asap. NLC委员会指望你.");
             qm.forceStartQuest();
     } else if (status == 2) {
             qm.dispose();

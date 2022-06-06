@@ -12,29 +12,29 @@ function start(mode, type, selection) {
 	status++;
     } else {
 	if (status == 6) {
-	    qm.sendNext("I know it takes an incredible amount of strength and will to outdo your instructor, but you weren't meant to let yourself wither away. You must move on to bigger and better things! You must do everything you can to embrace your heroic nature!");
+	    qm.sendNext("我知道要超越你的教练需要极大的力量和意志，但你并不是能让自己颓废。你必须朝着更大更好的方向前进！你必须尽你所能去拥抱你的英雄本性!");
 	    qm.dispose();
 	    return;
 	}
 	status--;
     }
     if (status == 0) {
-    	qm.sendNext("Your abilities are really beginning to take shape. I am surprised that an old man like me was able to help you. I'm tearing up just thinking about how happy it makes me to have been of assistance to you. *Sniff sniff*");
+    	qm.sendNext("……现在你的能力是什么程度，我大概了解了……呵呵……没想到我这把老骨头还能有今天……真是感动得要流眼泪……不，是鼻涕……");
     } else if (status == 1) {
-    	qm.sendNextPrev("#b(You didn't even train that long with him... Why is he crying?)#k", 2);
+    	qm.sendNextPrev("#b(……也没怎么修炼嘛……?)#k", 2);
     } else if (status == 2) {
-    	qm.sendNextPrev("Alright, here's the third and the final stage of training. Your last opponent is... #r#o9300343#s#k! Do you know anything about #o1210100#s?");
+    	qm.sendNextPrev("好，现在让我们开始第3阶段的最后一阶段的锻炼。这次修炼的对象是……#r#o9300343##k！猪猪！你了解他们吗?");
     } else if (status == 3) {
-    	qm.sendNextPrev('Well, a little bit...', 2);
+    	qm.sendNextPrev('一点点……', 2);
     } else if (status == 4) {
-    	qm.sendNextPrev("They are natural warriors! They're born with a voracious appetite for food. They devour any food that's visible the moment they sweep by. Terrifying, isn't it?");
+    	qm.sendNextPrev("他们是天生的战士！从出生的那一刻起，对食物就充满了无穷的愤怒，凡是他们经过的地方都不会留下任何食物。很可怕吧?");
     } else if (status == 5) {
-    	qm.sendNextPrev("#b(Is that really true?)#k", 2);
+    	qm.sendNextPrev("#b(他不是在开玩笑吧?)#k", 2);
     } else if (status == 6) {
-    	qm.sendAcceptDecline("Okay, now... #bEnter the Training Center again#k, defeat #r30#k #o9300343#s, and show me what you're made of! You'll have to exert all your energy to defeat them! Go, go, go! Rise above me!");
+    	qm.sendAcceptDecline("来，快点#b再次进入修炼场#k，去和那些天生的战士们修炼用的猪中战斗吧，打倒#r30只#k后，你的能力将会有一个质的飞跃。全力以赴地去战斗吧！超越我这个教练！");
     } else if (status == 7) {
         qm.forceStartQuest();
-        qm.sendOk("Now go and take on those monstrous #o9300343#s!");
+        qm.sendOk("快走吧！去打倒那些#o9300343#!");
     } else if (status == 8) {
         qm.dispose();
     }
@@ -50,27 +50,27 @@ function end(mode, type, selection) {
     	status++;
     } else {
 	if (status == 2) {
-	    qm.sendNext("Are you reluctant to leave your instructor? *Sniff sniff* I'm so moved, but you can't stop here. You are destined for bigger and better things!");
+	    qm.sendNext("你不愿意离开你的教练吗？....嗅嗅....我很感动，但你不能停在这里。你注定会得到更大更好的东西!");
 	    qm.dispose();
 	    return;
 	}
         status--;
     }
     if (status == 0) {
-    	qm.sendNext("Ah, you've come back after defeating all 30 #o9300343#s. I knew you had it in you... Even though you have no memories and few abilities, I could see that you were different! How? Because you're carrying around a Polearm, obviously!");
+    	qm.sendNext("这么快就打倒了30只#o9300343#……我果然没有看错。虽然你失去了曾经的记忆，失去了曾经的能力，但你仍然是个英雄！只要手上的长矛还在！");
     } else if (status == 1) {
-    	qm.sendNextPrev("#b(Is he pulling your leg?)#k'", 2);
+    	qm.sendNextPrev("#b（这么说是为了安慰我吗？）#k", 2);
     } else if (status == 2) {
-    	qm.sendYesNo("I have nothing more to teach you, as you've surpassed my level of skill. Go now! Don't look back! This old man is happy to have served as your instructor.");
+    	qm.sendYesNo("我已经没什么可继续教你的了。你已经超越了我。你可以离开这里了……唉，没什么好忧郁的。我能够有机会指导你，已经很满足了。");
     } else if (status == 3) {
 	if (qm.isQuestStarted(21703)) {
 	    qm.forceCompleteQuest();
 	    qm.teachSkill(21000000, qm.getPlayer().getSkillLevel(21000000), 10, -1);   // Combo Ability Skill
 	    qm.gainExp(2800);
 	}
-        qm.sendNext("(You remembered the #bCombo Ability#k skill! You were skeptical of the training at first, since the old man suffers from Alzheimer's and all, but boy, was it effective!)", 2);
+        qm.sendNext("(我想起了技能#b连击能力#k！ 我还想在这训练有没有效果呢，没想到真的有效！)", 2);
     } else if (status == 4) {
-        qm.sendPrev("Now report back to #p1201000#. I know she'll be ecstatic when she sees the progress you've made!");
+        qm.sendPrev("现在你回去找#p1201000#吧。他看到你的进步会很高兴的！");
     } else if (status == 5) {
         qm.dispose();
     }

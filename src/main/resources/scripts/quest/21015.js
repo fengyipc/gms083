@@ -1,30 +1,29 @@
 var status = -1;
 
 function start(mode, type, selection) {
-	if (mode == 0 && type == 0) {
-		status--;
-	} else if (mode == -1) {
-		qm.dispose();
-		return;
-	} else {
-		status++;
+    if (mode == 1) {
+	status++;
+    } else {
+	if (status == 2) {
+	    qm.sendNext("还说您是英雄，怎么会这么犹豫不决？您没听过打铁要趁热吗？想变强的话，那就快点开始吧！");
+	    qm.dispose();
+	    return;
 	}
-	if (status == 0) {
-        qm.sendNext("Alright, I've done enough explaining for now. Let's move on to the next stage. What's the next stage, you ask? I just told you. Train as hard as you can until you become strong enough to defeat the Black Mage with a single blow.");
-    } else if (status == 1) {
-        qm.sendNextPrev("You may have been a hero in the past, but that was hundreds of years ago. Even if it weren't for the curse of the Black Mage, all those years you spent frozen in time have stiffened your body. You must loosen up a bit and slowly regain your agility. How do you do that, you ask?");
-    } else if (status == 2) {
-        qm.sendAcceptDecline("Don't you know that you must first master the fundamentals? So the wise thing to do is to begin with #bBasic Training#k. Oh, of course, I forgot that you lost your memory. Well, that's why I'm here. You'll just have to experience it yourself. Shall we begin?");
-    } else if (status == 3) {
-		if (mode == 0) {
-			qm.sendNext("What are you so hesitant about? You're a hero! You gotta strike while the iron is hot! Come on, let's do this!");
-			qm.dispose();
-		} else {
-			qm.forceStartQuest();
-			qm.sendNext("The population of Rien may be mostly Penguins, but even this island has monsters. You'll find #o0100131#s if you go to #b#m140020000##k, located on the right side of the town. Please defeat #r10 of those #o0100131#s#k. I'm sure you'll have no trouble defeating the #o0100131#s that even the slowest penguins here can defeat.", 1);
-		}
-	} else if (status == 4) {
-		qm.showInfo("Effect/OnUserEff.img/guideEffect/aranTutorial/tutorialArrow3");
-		qm.dispose();
+	status--;
     }
+    if (status == 0) {
+	qm.sendNext("那么，说明就到此结束，现在进入下一阶段。下一个阶段是什么呢？刚刚才跟您说过不是吗？要修炼变强盗你可以除掉黑魔法师的程度。");
+    } else if (status == 1) {
+	qm.sendNextPrev("您虽然过去是英雄，可是那已经是几百年前的事了。就算不是黑魔法师的诅咒，待在冰雪当中这么长的时间，身体一定会变得很僵硬吧！首先先松开僵硬的身体。您觉得如何？");
+    } else if (status == 2) {
+	qm.sendYesNo("体力就是战力！英雄的基础就是体力！ ... 您没听过这些话吗？当然要先做#b基础体力锻炼#k ... 啊！ 您丧失记忆所以什么都忘了。不知道也没关系。那么现在就进入基础体力锻炼吧！");
+    } else if (status == 3) {
+	qm.forceStartQuest();
+	//qm.AranTutInstructionalBubble("Effect/OnUserEff.img/guideEffect/aranTutorial/tutorialArrow3");
+	qm.dispose();
+    }
+}
+
+function end(mode, type, selection) {
+    qm.dispose();
 }

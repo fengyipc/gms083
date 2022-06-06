@@ -1,6 +1,6 @@
 /*
     This file is part of the HeavenMS MapleStory Server
-    Copyleft (L) 2016 - 2019 RonanLana
+    Copyleft (L) 2016 - 2018 RonanLana
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -22,41 +22,41 @@
 	3rd skill level
  */
 
-var status = -1;
+    var status = -1;
 
-function end(mode, type, selection) {
-    if (mode == -1) {
-        qm.dispose();
-    } else {
-        if(mode == 0 && type > 0) {
+    function end(mode, type, selection) {
+        if (mode == -1) {
             qm.dispose();
-            return;
-        }
-        
-        if (mode == 1)
-            status++;
-        else
-            status--;
-        
-        if (status == 0) {
-            qm.sendNext("Bothering me again? What's it?");
-        } else if (status == 1) {
-            if(qm.haveItem(4031980, 1)) {
-                qm.sendNext("You crafted a #b#t4031980##k?! How comes, how did you do it?? ... Well, that can't be helped, I guess. The student surpassed the teacher! Youth sure do wonders to one's perception capabilities.\r\n\r\nYou are now ready to take the last step on mastering the Maker skill, contemplate it at it's finest form!");
-            } else {
-                qm.sendNext("... Please step aside, I can't finish this work if I'm being distracted at every moment.");
+        } else {
+            if(mode == 0 && type > 0) {
                 qm.dispose();
                 return;
             }
-        } else if (status == 2) {
-            qm.forceCompleteQuest();
             
-            qm.gainItem(4031980, -1);
-            var skillid = Math.floor(qm.getPlayer().getJob().getId() / 1000) * 10000000 + 1007;
-            qm.teachSkill(skillid, 3, 3, -1);
-            qm.gainExp(300000);
+            if (mode == 1)
+                status++;
+            else
+                status--;
             
-            qm.dispose();
+            if (status == 0) {
+                qm.sendNext("找我有什么事情吗？怎么了？");
+            } else if (status == 1) {
+                if(qm.haveItem(4031980, 1)) {
+                    qm.sendNext("你精心设计了一个#b#t4031980##k?!怎么，你怎么做到的。。。好吧，我想这没用。学生胜过了老师！年轻人对自己的感知能力肯定有奇效。\r\n\r\n现在你已经准备好掌握造物主技能的最后一步，以最好的形式来思考它吧！");
+                } else {
+                    qm.sendNext("... 请让开，如果我每时每刻都心烦意乱，我就不能完成这项工作。");
+                    qm.dispose();
+                    return;
+                }
+            } else if (status == 2) {
+                qm.forceCompleteQuest();
+                
+                qm.gainItem(4031980, -1);
+                var skillid = Math.floor(qm.getPlayer().getJob().getId() / 1000) * 10000000 + 1007;
+                qm.teachSkill(skillid, 3, 3, -1);
+                qm.gainExp(300000);
+                
+                qm.dispose();
+            }
         }
     }
-}

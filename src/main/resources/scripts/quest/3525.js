@@ -20,7 +20,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 /* Author: PurpleMadness
- * In search for the lost memory - bowman
+ * In search for the lost memory - 弓箭手
 */
 
 var status = -1;
@@ -43,7 +43,7 @@ function start(mode, type, selection) {
             qm.startQuest();
             qm.setQuestProgress(3507, 7081, 1);
             qm.completeQuest();
-            qm.sendOk("You have regained your memories, talk to #b#p2140001##k to get the pass.");
+            qm.sendOk("你已经找回了记忆，和#b#p2140001##k谈一谈，获取通行许可吧。");
         } else if (status == 1) {
             qm.dispose();
         }

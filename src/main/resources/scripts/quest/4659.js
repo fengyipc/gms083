@@ -45,15 +45,15 @@ function end(mode, type, selection) {
     }
     if (status == 0) {
         if(qm.getMeso() < 10000) {
-            qm.sendOk("Hey! I need #b10,000 mesos#k to do your pet's evolution!");
+            qm.sendOk("你好!我需要#b10,000金币#k进行你的宠物!");
             qm.dispose();
             return;
         }
-        qm.sendNext("Great job on finding your evolution materials. I will now give you a robot.");
+        qm.sendNext("在寻找进化材料方面做得很好。我现在给你一个机器人。");
     }
     else if (status == 1) {
         if (qm.isQuestCompleted(4659)) {
-            qm.dropMessage(1, "how did this get here?");
+            qm.dropMessage(1, "这是怎么来的？");
             qm.dispose();
         } else if (qm.canHold(5000048)){
             var pet = 0;
@@ -67,14 +67,14 @@ function end(mode, type, selection) {
                 }
             }
             if(i == 3) {
-                qm.getPlayer().message("Pet could not be evolved.");
+                qm.getPlayer().message("宠物无法进化。");
                 qm.dispose();
                 return;
             }
             
             var closeness = pet.getCloseness();
             if(closeness < 1642) {
-                qm.sendOk("It looks like your pet is not grown enough to be evolved yet. Train it a bit more, util it reaches #blevel 15#k.");
+                qm.sendOk("看起来你的宠物还没有发育到可以进化的程度。请继续训练，让它到达#b15级#k把。");
                 qm.dispose();
                 return;
             }
@@ -96,7 +96,7 @@ function end(mode, type, selection) {
             } else if (rand == 9) {
 		after = 5000053;
             } else {
-		qm.sendOk("Something wrong. Try again.");
+		qm.sendOk("出什么事了。再试一次。");
             	qm.dispose();
                 return;
 	    }
@@ -111,7 +111,7 @@ function end(mode, type, selection) {
 //            MapleInventoryManipulator.addById(qm.getClient(), rand+5000049, 1, "", petId);
             qm.dispose();
         } else {
-            qm.dropMessage(1,"Your inventory is full");
+            qm.dropMessage(1,"你的背包已经满了。");
             qm.dispose();
         }
     }

@@ -20,9 +20,9 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 /* 	Author: 		Blue
-	Name:	 		Garnox
-	Map(s): 		New Leaf City : Town Center
-	Description: 		Quest - Pet Evolution2
+	Name:	 		加诺克斯
+	Map(s): 		新叶城：市中心
+	Description: 		探索-宠物进化2
 */
 
 importPackage (Packages.net.server.channel.handlers);
@@ -39,23 +39,23 @@ function end(mode, type, selection) {
 			status--;
 		if (status == 0) {
                         if(qm.getMeso() < 10000) {
-                            qm.sendOk("Hey! I need #b10,000 mesos#k to do your pet's evolution!");
+                            qm.sendOk("嘿！我需要10,000金币来完成你宠物的进化!");
                             qm.dispose();
                             return;
                         }
                     
-			qm.sendNext("#e#bHey, you did it!#n#k \r\n#rWow!#k Now I could complete my studies on your pet!");
+			qm.sendNext("#e#b嘿，是你干的!#n#k \r\n#r哇噢!#k 现在我可以完成对你宠物的研究了!");
 		} else if (status == 1) {
 			if (mode == 0) {
-				qm.sendOk("I see... Come back when you wish to do it. I'm really excited to do this.");
+				qm.sendOk("我懂了。。。你想做的时候就回来。我真的很兴奋.");
 				qm.dispose();
 			} else {
-				qm.sendNextPrev("Just saying, your new dragon's color is gonna be #e#rrandom#k#n! It's either gonna be #ggreen, #bblue, #rred, #dor very rarely#k, black. \r\n\r\n#fUI/UIWindow.img/QuestIcon/5/0# \r\n\r If you happen to not like your pet's new color, or if you ever wish to change your pet color again, #eyou can change it!#n Simply just #dbuy another Rock of Evolution, 10,000 mesos, #kand #dequip your new pet#k before talking to me again, but of course, I cannot return your pet as a baby dragon, only to another adult dragon.");
+				qm.sendNextPrev("只是说，你的新龙的颜色是#e#r随机的#k#n！可能是#r绿色，可能是#b蓝色，可能是#r红色, #d或者是稀有的#k,黑色. \r\n\r\n#fUI/UIWindow.img/QuestIcon/5/0# \r\n\r\n如果你碰巧不喜欢你宠物的新颜色, 或者如果你想再次改变你的宠物的颜色, 你只需要#b再买一块进化之石,需要花费10,000金币#k。请准备好你的#b宠物#k然后与我对话。");
 			}
 		} else if (status == 2) {
-			qm.sendYesNo("Now let me try to evolve your pet. You ready? Wanna see your cute baby dragon turn into either a matured dark black, blue, calm green, or fiery red adult dragon? It'll still have the same closeness, level, name, fullness, hunger, and equipment in case you're worried. \r\n\r #b#eDo you wish to continue or do you have some last-minute things to do first?#k#n");
+			qm.sendYesNo("现在让我试着让你的宠物进化.准备好了吗？想看看你可爱的小龙变成成熟的深黑色，蓝色，平静的绿色，或火红的成年龙吗？如果你担心的话，它仍然会有同样的亲密度、等级、名字、丰满度、饥饿感和装备. \r\n\r\n#b#e你想继续还是想再考虑考虑?#k#n");
                 } else if (status == 3) {
-			qm.sendNextPrev("Alright, here we go...! #rHYAHH!#k");
+			qm.sendNextPrev("好吧，我们开始。。。! #r耶!#k");
 		} else if (status == 4) {
 			var rand = 1 + Math.floor(Math.random() * 10);
 			var after = 0;
@@ -68,7 +68,7 @@ function end(mode, type, selection) {
                             }
                         }
                         if(i == 3) {
-                            qm.getPlayer().message("Pet could not be evolved.");
+                            qm.getPlayer().message("宠物无法进化.");
                             qm.dispose();
                             return;
                         }
@@ -83,7 +83,7 @@ function end(mode, type, selection) {
 			} else if (rand == 10) {
 				after = 5000033;
 			} else {
-				qm.sendOk("Something wrong. Try again.");
+				qm.sendOk("出现了意外，请再试一次.");
 				qm.dispose();
                                 return;
 			}
@@ -99,7 +99,7 @@ function end(mode, type, selection) {
 			
                         //SpawnPetHandler.evolve(qm.getPlayer().getClient(), 5000029, after);
                         
-                        qm.sendOk("#bSWEET! IT WORKED!#k Your dragon has grown beautifully! #rYou may find your new pet under your 'CASH' inventory.\r #kIt used to be a #b #i5000029##t5000029##k, and now it's \r a #b#i" + after + "##t" + after + "##k!\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#v"+after+"# #t"+after+"#");
+                        qm.sendOk("#b太好了！它成功了!#k你的龙长得真不错呀!#r你可以在你的“商城道具”目录下找到你的新宠物.\r#k以前是 #b #i5000029##t5000029##k, 现在是\r a #b#i" + after + "##t" + after + "##k!\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#v"+after+"# #t"+after+"#");
 		} else if (status == 5) {
                         qm.dispose();
                 }

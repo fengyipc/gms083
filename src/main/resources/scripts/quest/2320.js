@@ -1,5 +1,5 @@
 /* ===========================================================
-        @author Resonance
+			Resonance
 	NPC Name: 		Scarrs
 	Map(s): 		Mushroom Castle: Corner of Mushroom Forest(106020000)
 	Description: 	Quest -  A Friendship with Bruce
@@ -18,17 +18,17 @@ function start(mode, type, selection) {
 	    if(type == 1 && mode == 0)
 		    status -= 2;
 		else{
-			qm.sendOk("I wanted you to personally give this piece of good news to #bBruce#k, but I understand if you're busy.");
+			qm.sendOk("我想让你亲自把这条好消息告诉#b布鲁斯#k，但如果你很忙的话，我能理解。");
 			qm.dispose();
 			return;
 		}
 	}
 	if (status == 0)
-		qm.sendAcceptDecline("I have just one more request for you. Would you like to take a listen?");
+		qm.sendAcceptDecline("我还有一个要求。你想听听吗？");
 	else if (status == 1){
 		qm.forceStartQuest();
 		qm.gainItem(4032389, 1);
-		qm.sendOk("To be honest, these #bKiller Mushroom Spores#k are not completely out of my own work. Do you remember #bBruce#k from #bHenesys#k? I have been friends with him since childhood, and #bKiller Mushroom Spores#k was completed after he shared the results of his studies with me. This was all thanks to him, so I'd like for you to give this to him for me.");
+		qm.sendOk("老实说，这些#b奇拉蘑菇孢子#k并不是完全出自我的工作.你还记得射手村的#b布鲁斯#k吗?我从小就是他的朋友, #b奇拉蘑菇孢子#k是我和他分享以后，共同研究完成的。这都要感谢他，所以我想让你把这个给他.");
         } else if (status == 2){
 		qm.dispose();
 	}
@@ -45,12 +45,12 @@ function end(mode, type, selection) {
 		}
 	}
 	if (status == 0)
-		qm.sendOk("Oh! You're here on behalf of #bScarrs#k? \r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0# \r\n#fUI/UIWindow.img/QuestIcon/8/0# 8800 exp");
+		qm.sendOk("哦！你是代表#b斯卡斯#k吗? \r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0# \r\n#fUI/UIWindow.img/QuestIcon/8/0# 8800 经验");
 	else if (status == 1){
                 qm.forceCompleteQuest();
 		qm.gainExp(8800);
 		qm.gainItem(4032389, -1);
-		qm.sendOk("Ahh, so this is the #bKiller Mushroom Spores#k that I was working on in the past. I had a tough time gathering up the ingredients, so I left it in theory only, but he was able to complete it, with a sample to show for as well. Please tell him I appreciate his good work.");
+		qm.sendOk("啊，这就是#b奇拉蘑菇孢子#k我过去一直在研究他们。我很难收集到原料，所以我只在理论上留了下来，但他能完成，还有一个样品可以展示。请告诉他我很欣赏他的工作。");
 	} else if (status == 2) {
                 qm.dispose();
         }

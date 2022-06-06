@@ -1,6 +1,6 @@
 /*
     This file is part of the HeavenMS MapleStory Server
-    Copyleft (L) 2016 - 2019 RonanLana
+    Copyleft (L) 2016 - 2018 RonanLana
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -44,19 +44,19 @@ function start(mode, type, selection) {
         
         if (status == 0) {
             if(!isTigunMorphed(qm.getPlayer())) {
-                qm.sendNext("What's this? I can't simply give the Queen's silk to anyone, claiming they will hand it at once to the queen. Get out of my sights.");
+                qm.sendNext("这是什么？我不能简单地把女王的丝绸给任何人，声称他们会马上把它交给女王。离开我的视线。");
                 status = 1;
                 return;
             }
 
-            qm.sendNext("Tigun, what are you doing here?");
+            qm.sendNext("提甘，你在这里干什么？");
         } else if (status == 1) {
             if(!isTigunMorphed(qm.getPlayer())) {
-                qm.sendNext("What's this? I can't simply give the Queen's silk to anyone, claiming they will hand it at once to the queen. Get out of my sights.");
+                qm.sendNext("这是什么？我不能简单地把女王的丝绸给任何人，声称他们会马上把它交给女王。离开我的视线。");
                 return;
             }
 
-            qm.sendNext("The Queen wants her silk right now? Alright, I have them here. Hold on a moment.");
+            qm.sendNext("女王现在想要她的丝绸？好吧，我把它们放在这里了。等一下。");
             qm.forceStartQuest();
         } else if (status == 2) {
             qm.dispose();
@@ -80,7 +80,7 @@ function end(mode, type, selection) {
         
         if (status == 0) {
             if(!isTigunMorphed(qm.getPlayer())) {
-                qm.sendNext("What's this? I can't simply give the Queen's silk to anyone, claiming they will hand it at once to the queen. Get out of my sights.");
+                qm.sendNext("这是什么？我不能简单地把女王的丝绸给任何人，声称他们会马上把它交给女王。离开我的视线。");
                 qm.dispose();
                 return;
             }
@@ -88,10 +88,10 @@ function end(mode, type, selection) {
             if(qm.canHold(4031571, 1)) {
                 qm.gainItem(4031571);
                 
-                qm.sendNext("There you go. Please deliver to the queen as soon as possible, Tigun, she gets really mad if things get delayed.");
+                qm.sendNext("给你。提甘，请你尽快给女王送去，如果事情耽搁了，她会很生气的。");
                 qm.forceCompleteQuest();
             } else {
-                qm.sendNext("Hey, you're lacking space to hold this, man. I will stay with it while you arrange your backpack...");
+                qm.sendNext("嘿，你没地方放这个，伙计。当你整理背包的时候我会留下来。。。");
             }
         } else if (status == 1) {
             qm.dispose();

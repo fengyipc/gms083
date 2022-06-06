@@ -1,6 +1,6 @@
 /*
     This file is part of the HeavenMS MapleStory Server
-    Copyleft (L) 2016 - 2019 RonanLana
+    Copyleft (L) 2016 - 2018 RonanLana
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -35,7 +35,7 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendAcceptDecline("I have a request for you. Can you ask #bMaed#k for a potion of my devise? Obviously, don't mention I have asked you that, that would be a problem. #bKeeny#k got an illness due to the contact with the Huroids, this have bothering me so much I couldn't give progress on my researches... Please #rbring her the potion#k, so that I could feel better and start making progress. I'm counting on you.");
+            qm.sendAcceptDecline("我有个请求。你能为了我的药水问一下#b麦麦德#k吗? 对了，不要让他知道是我问的，感谢。#b基尼#k因为和赫鲁兹的接触而生病，这让我很困扰，我无法在研究上取得进展。。。请#r把药水带给她#k,好让我能够能深入的研究。谢谢你！");
         } else if (status == 1) {
             qm.forceStartQuest();
             qm.dispose();

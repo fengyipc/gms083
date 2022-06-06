@@ -25,10 +25,10 @@ function start(mode, type, selection){
                     qm.forceStartQuest();
                     qm.gainItem(4001318, 1);
                     qm.forceCompleteQuest();
-                    qm.sendOk("Looks like you forgot to pick up the #b#t4001318##k when you fought with the #bPrime Minister#k. This is very important to our kingdom, so please deliver this to my father as soon as possible.");
+                    qm.sendOk("好像你忘了从#b企鹅国王#k手里获得#b#t4001318##k. 这对我们的王国很重要，所以请尽快把这个交给我父亲。");
                 }
                 else{
-                    qm.sendOk("Please free up one spot in your ETC inventory");
+                    qm.sendOk("请在其他栏中留至少一个位置");
                 }
             }
             else{

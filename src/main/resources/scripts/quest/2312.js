@@ -1,5 +1,5 @@
 /* ===========================================================
-        @author Resonance
+			Resonance
 	NPC Name: 		Head Patrol Officer
 	Map(s): 		Mushroom Castle: Corner of Mushroom Forest(106020000)
 	Description: 	Quest -  The Test
@@ -18,16 +18,16 @@ function start(mode, type, selection) {
 	    if(type == 1 && mode == 0)
 		    status -= 2;
 		else{
-			qm.sendOk("Hmmm... you must be unsure of your combat skills. We'll be here waiting for you, so come see us when you're ready.");
+			qm.sendOk("嗯。。。你一定还不熟悉你的战斗技巧。我们会在这里等你，等你准备好了再来找我们。");
 		    qm.dispose();
 			return;
 		}
 	}
 	if (status == 0)
-		qm.sendAcceptDecline("We need your help, noble explorer. Our kingdom is currently facing a big threat, and we are in desperate need of a courageous explorer willing to fight for us, and that's how you ended up here. Please understand, though, that since we need place our faith in you, we'll have to test your skills first before we can stand firmly behind you. Will it be okay for you to do this for us?");
+		qm.sendAcceptDecline("我们需要你的帮助，高贵的探险家。我们的王国现在面临着巨大的威胁，我们迫切需要一个勇敢的冒险家愿意为我们而战，这就是为什么不过，请你明白，既然我们需要信任你，我们必须先测试你的能力，然后才能坚定地支持你。你能帮我们吗？");
 	else if (status == 1){
 		qm.forceStartQuest();
-		qm.sendOk("Keep moving forward, and you'll see #bRenegade Spores#k, the Spores that turned their backs on the Kingdom of Mushroom. We'd appreciate it if you can teach them a lesson or two, and bring back #b50 Mutated Spores#k in return.");
+		qm.sendOk("继续前进，你会看到#b得意的蘑菇仔#k, 它们是背弃蘑菇王国的孢子。请你击败它们并带回来#b50个变异的孢子#k.");
 	} else if (status == 2){
                 qm.dispose();
         }
@@ -44,12 +44,12 @@ function end(mode, type, selection) {
 		}
 	}
 	if (status == 0)
-		qm.sendOk("Did you teach those Renegade Spores a lesson?");
+		qm.sendOk("你已经击败了得意的蘑菇仔吗?");
 	else if (status == 1){
 		qm.forceCompleteQuest();
 		qm.gainExp(11500);
 		qm.gainItem(4000499, -50);
-		qm.sendOk("That was amazing. I apologize for doubting your abilities. Please save our Kingdom of Mushroom from this crisis!");
+		qm.sendOk("太棒了。我为怀疑你的能力而道歉。请帮助我们把蘑菇王国从这场危机中拯救出来！");
 	} else if (status == 2){
                 qm.dispose();
         }

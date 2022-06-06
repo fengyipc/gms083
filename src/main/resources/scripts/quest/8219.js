@@ -15,15 +15,15 @@ function start(mode, type, selection) {
             if(type == 1 && mode == 0)
                     status -= 2;
             else{
-                    qm.sendOk("Okay, then. See you around.");
+                    qm.sendOk("好吧，那么。回头见.");
                     qm.dispose();
                     return;
             }
     }
     if (status == 0)
-            qm.sendAcceptDecline("The time is now, kid. We have all the preparations complete to further research for why all these oddities have been happening lately. I also must introduce you to my brother, Jack. ");
+            qm.sendAcceptDecline("现在是时候了，孩子。我们已经做好一切准备，以便进一步研究为什么最近发生了这些奇怪的事情。我还得把你介绍给我哥哥杰克。");
     else if (status == 1){
-            qm.sendOk("He is currently wandering around the Crimsonwood Mountain, past the sinister Phantom Forest, in the track to the Crimsonwood Keep. Your next destination is there, may your journey be a safe one.");
+            qm.sendOk("他目前正在红木山附近徘徊，经过险恶的幽灵森林，在红木保留地的轨道上。你的下一个目的地在那里，祝你旅途平安.");
             qm.forceStartQuest();
     } else if (status == 2) {
             qm.dispose();
@@ -36,16 +36,16 @@ function end(mode, type, selection) {
 	    if(type == 1 && mode == 0)
 		    status -= 2;
 		else{
-			qm.sendOk("Okay, then. See you around.");
+			qm.sendOk("好吧，那么。回头见.");
 			qm.dispose();
 			return;
 		}
 	}
 	if (status == 0)
-		qm.sendNext("Who are you? Oh, you came here by my brother John's stead? Great.");
+		qm.sendNext("你是谁？哦，你是代替我弟弟约翰来的？太好了");
             
         else if (status == 1){
-		qm.sendOk("It seems you helped the folks at the city at some errands, don't you? I shall appraise you nicely. Take a look on this: this is a map of the Phantom Forest, which I made myself after enough exploration. Take possession of that, and you #bwill be granted passage#k by paths other times undiscoverable. Remember well to #rnever lose it#k, you won't be having that again!\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0# \r\n#i3992040# #t3992040#\r\n\r\n#fUI/UIWindow.img/QuestIcon/8/0# 175000 EXP");
+		qm.sendOk("你好像帮城里的人办事，是吗？我会好好评价你的。看看这个：这是一张幽灵森林的地图，我经过充分的探索后自己绘制的。占有了它，你就可以在其他无法发现的时间里通过这条路。记住无论失去它，你都不会再拥有它！\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0# \r\n#i3992040# #t3992040#\r\n\r\n#fUI/UIWindow.img/QuestIcon/8/0# 175000 EXP");
 	}
 	else if (status == 2){
 		if(qm.canHold(3992040, 1)) {
@@ -55,7 +55,7 @@ function end(mode, type, selection) {
                     qm.dispose();
                 }
 		else {
-                    qm.sendOk("Hey, you don't have a slot in your SETUP inventory for what I have to give to you. Solve that minor issue of yours then talk to me.");
+                    qm.sendOk("嘿，你的设置清单上没有我要给你的位置。解决你的小问题然后和我谈谈.");
                 }
 	} else if (status == 3) {
                 qm.dispose();

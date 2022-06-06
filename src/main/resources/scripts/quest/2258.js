@@ -1,6 +1,6 @@
 /*
     This file is part of the HeavenMS MapleStory Server
-    Copyleft (L) 2016 - 2019 RonanLana
+    Copyleft (L) 2016 - 2018 RonanLana
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -35,9 +35,9 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendAcceptDecline("Meerkats spreads rumors like wildfire... By blackmailing me and my cab service, they are taking costumers away from me day after day... Hey, tell no one about this, if you clean some #rMeerkats#k from my way, I'll tell you an info about the #rMushroom Castle#k. What do you say?");
+            qm.sendAcceptDecline("狸猫像野火一样散布谣言。。。通过勒索我和我的出租车服务，他们日复一日地从我身边带走顾客。。。嘿，别告诉任何人，如果你清理一些#r狸猫#k,我会告诉你#r蘑菇城堡#k.");
         } else if (status == 1) {
-            qm.sendNext("Great, they you have #r5 minutes#k to kill #b40 Meerkats#k within this time. Good luck!");
+            qm.sendNext("太好了，你有#r5分钟#k杀死#b40只狸猫#k在这段时间内。祝你好运!");
         } else if (status == 2) {
             qm.forceStartQuest();
             qm.dispose();
@@ -60,7 +60,7 @@ function end(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("You did it! ... Hey, #rMeerkats#k around here may listen to our conversation. I'm not going to talk about THAT right now.");
+            qm.sendNext("你做到了! 嘿..., #r狸猫#k在这附近可以听我们的谈话.我现在不想谈这个.");
         } else if (status == 1) {
             qm.forceCompleteQuest();
             qm.dispose();

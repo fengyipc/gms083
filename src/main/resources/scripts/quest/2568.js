@@ -10,7 +10,7 @@ function start(mode, type, selection) {
 		status++;
 	}
 	if (status == 0) {
-		qm.sendAcceptDecline("You're back! Great. I got the Ignition Device all hooked up, so we can get back to civilization. Nothing left to do here, right? Let's roll!");
+		qm.sendAcceptDecline("你回来了！我把点火装置都接上了，这样我们就能回到文明社会了。这里没什么可做的了，对吧？我们开始吧！");
 	} else if (status == 1) {
 		if (mode == 0) {//decline
 			

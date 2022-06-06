@@ -1,5 +1,5 @@
 /* ===========================================================
-        @author Resonance
+			Resonance
 	NPC Name: 		Minister of Home Affairs
 	Map(s): 		Mushroom Castle: Corner of Mushroom Forest(106020000)
 	Description: 	Quest -  Exploring Mushroom Forest(2)
@@ -18,16 +18,16 @@ function start(mode, type, selection) {
 	    if(type == 1 && mode == 0)
 		    status -= 2;
 		else{
-			qm.sendOk("Please do not forget our plea for help.");
+			qm.sendOk("请继续帮我们.");
 			qm.dispose();
 			return;
 		}
 	}
 	if (status == 0)
-		qm.sendAcceptDecline("A powerful barrier of magic, huh? Then what should we do...? If we can't find a way to break that barrier, then we can't save the princess. If it's impossible to physically break through, as you mentioned, then how about requesting help from our #bMinister of Magic#k?");
+		qm.sendAcceptDecline("一个强大的魔法屏障，嗯？那我们该怎么办。。。？如果我们找不到办法打破这个障碍，那么我们就救不了公主。如果如你所说，身体上无法突破，那么请问问#b魔法大臣#k?");
 	else if (status == 1){
 		qm.forceStartQuest();
-		qm.sendOk("Please go see him immediately. The #bMinister of Magic#k may seem a bit on the edge, but he's very knowledgeable, and I'm sure he'll know what to do.");
+		qm.sendOk("请马上去见他。魔法大臣似乎有点紧张，但他知识渊博，我相信他会知道该怎么做。");
 	} else if (status == 2){
                 qm.dispose();
         }
@@ -44,11 +44,11 @@ function end(mode, type, selection) {
 		}
 	}
 	if (status == 0)
-		qm.sendOk("What? You investigated the barrier at the Mushroom Forest?");
+		qm.sendOk("什么？你调查了蘑菇森林的屏障？");
 	else if (status == 1){
 		qm.forceCompleteQuest(); 
                 qm.gainExp(4000);
-		qm.sendOk("Hmmm...this is interesting. It's a barrier set up by someone with a powerful force of magic, which means there's no way we can manually break through it.");
+		qm.sendOk("嗯…这很有趣。这是一个有强大魔法力量的人设置的屏障，这意味着我们无法突破它。");
 	} else if (status == 2) {
                 qm.dispose();
         }

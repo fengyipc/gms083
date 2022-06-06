@@ -16,15 +16,15 @@ function end(mode, type, selection){
 		status++;
 
 	if(status == 0){
-		qm.sendNext("I... I am scared... Please... please help me...");
+		qm.sendNext("我 。。。我很害怕。。。拜托。。。请帮帮我。。。");
 	}
 	else if(status == 1){
-		qm.sendNextPrev("Don't be afriad, #b#p1300005##k sent me here.", 2);
+		qm.sendNextPrev("别害怕,是#b#p1300005##k让我来找你的.", 2);
 	}
 	else if(status == 2){
 		qm.forceCompleteQuest();
 		qm.gainExp(6000);
-                qm.sendOk("What? My brother sent you here? Ahhh... I am safe now. Thank you so much...");
+                qm.sendOk("什么？我哥哥派你来的？啊。。。我现在安全了。非常感谢你。。。");
 	} else if (status == 3) {
                 qm.dispose();
         }

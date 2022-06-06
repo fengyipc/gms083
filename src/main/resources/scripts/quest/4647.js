@@ -43,9 +43,9 @@ function end(mode, type, selection) {
 				qm.completeQuest();
 				qm.teachSkill(8, 1, 1, -1);
 				qm.gainItem(5460000, -1, false);
-				qm.sendOk("You got the Pet Snack! Thanks! You can use these to feed multiple pets at once!");
+				qm.sendOk("你有宠物零食！谢谢！你可以用这些一次喂多只宠物！");
 			} else {
-				qm.sendOk("Get me the Pet Snack! It can be found in a very big shop....");
+				qm.sendOk("把宠物零食给我！它可以在一家很大的商店里找到。。");
 			}
 		} else if (status == 1) {
 			qm.dispose();

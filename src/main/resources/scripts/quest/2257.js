@@ -1,6 +1,6 @@
 /*
     This file is part of the HeavenMS MapleStory Server
-    Copyleft (L) 2016 - 2019 RonanLana
+    Copyleft (L) 2016 - 2018 RonanLana
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -35,7 +35,7 @@ function end(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("Hey there, do you want a ride to #r#m261000000##k? Oh a request from #b#p2101013##k?");
+            qm.sendNext("嘿，你想搭便车去#r#m261000000##k吗?哦，来自#b#p2101013##k?");
         } else if (status == 1) {
             qm.forceCompleteQuest();
             qm.dispose();

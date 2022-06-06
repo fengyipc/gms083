@@ -1,6 +1,6 @@
 /*
     This file is part of the HeavenMS MapleStory Server
-    Copyleft (L) 2016 - 2019 RonanLana
+    Copyleft (L) 2016 - 2018 RonanLana
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -35,19 +35,19 @@ function end(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendSimple("Eh, are you still saying Deo is a monster? No, Deo is not a monster, he is a peaceful leader of the Royal cactus from the region.\r\n\r\n#L0##bHave you heard that a group of merchants crossing through the desert were attacked by the monsters?#k");
+            qm.sendSimple("呃，你还在说迪欧是个怪物吗？不，迪奥不是怪物，他是一个来自该地区王室的和平领袖。\r\n\r\n#L0##b你听说过一群穿过沙漠的商人被怪物袭击了吗？#k");
         } else if (status == 1) {
-            qm.sendSimple("Is that so? I wonder why these merchants were wandering so recklessly in the desert. They trespassed the territory of the Cactus'! They shouldn't be wandering around in the first place, they should first have the leave of the Ariant Counsel.\r\n\r\n#L0##bThis is all because of the Queen's negligence in maintaining the safety of the town.#k");
+            qm.sendSimple("是这样吗？我想知道这些商人为什么在沙漠中如此肆无忌惮地游荡。他们侵入了仙人掌的领地！他们一开始不应该四处游荡，他们应该先得到阿里安特的许可。\r\n\r\n#L0##b这都是因为女王在维护小镇安全方面的疏忽。#k");
         } else if (status == 2) {
-            qm.sendSimple("Ehh... Yeah, the city is not really doing well because of the currently ruling govern, that's indeed a fact. If only the Guardians of the Deserts returned to put order on this mess...\r\n\r\n#L0##bWhat is the Guardian of the Deserts doing when we're under the Queen's tyranny?#k");
+            qm.sendSimple("呃。。。是的，这个城市并不是真的很好，因为目前的执政，这确实是一个事实。只能等沙漠的守护者回来收拾这烂摊子。。。\r\n\r\n#L0##b当我们在女王的暴政下，沙漠守护者在做什么？#k");
         } else if (status == 3) {
-            qm.sendSimple("They have departed on an expedition to get rid of some major threats in the desert that were ravaging Ariant, for quite some time now... It's strange, they should have already returned... Thinking about it now, the last attack on the merchants was around the direction the Guardians departed... No, that can't be... Can it?\r\n\r\n#L0##bPerhaps Deo has already turned into a monster.#k");
+            qm.sendSimple("他们已经出发远征，以消除沙漠中的一些主要威胁，肆虐阿里安特，一段时间以来。。。很奇怪，他们应该已经回来了。。。现在想想，最后一次对商人的攻击是围绕着卫士离开的方向。。。不，那不可能。。。可以吗？\r\n\r\n#L0##b也许迪欧已经变成了一个怪物。#k");
         } else if (status == 4) {
             qm.forceCompleteQuest();
             qm.gainItem(4011008, -1);
             qm.gainExp(20000);
 
-            qm.sendNext("We're in great trouble, if it is like this. And it really seems like it. If the Royal Cactus Deo has gone insane, Ariant is done for. You, can you do something to defeat Deo? We really need your help now.");
+            qm.sendNext("如果是这样的话，我们就有大麻烦了。看起来真的很像。如果皇室仙人掌迪欧疯了，那就别唱咏叹调了。你，你能做点什么来打败迪欧吗？我们现在真的需要你的帮助。");
         } else if (status == 5) {
             qm.dispose();
         }

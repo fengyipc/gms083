@@ -1,6 +1,6 @@
 /*
     This file is part of the HeavenMS MapleStory Server
-    Copyleft (L) 2016 - 2019 RonanLana
+    Copyleft (L) 2016 - 2018 RonanLana
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -35,9 +35,9 @@ function start(mode, type, selection) {
             status--;
         
         if (status == 0) {
-            qm.sendNext("I see. De Lang wants to stop the Huroids from causing more destruction, but the societies would like to get him on jail at once. So that's why he hid himself there.");
+            qm.sendNext("我懂了。德朗博想阻止赫鲁德造成更多的破坏，但社会想让他立即坐牢。所以他把自己藏在那里。");
         } else if (status == 1) {
-            qm.sendAcceptDecline("In that case, go there again and hear more details from De Lang, will you?");
+            qm.sendAcceptDecline("如果是那样的话，你再去那里听听德朗博的详细情况，好吗？");
         } else if (status == 2) {
             qm.warp(926120200, 1);
             

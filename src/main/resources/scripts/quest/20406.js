@@ -1,6 +1,6 @@
 /*
     This file is part of the HeavenMS MapleStory Server
-    Copyleft (L) 2016 - 2019 RonanLana
+    Copyleft (L) 2016 - 2018 RonanLana
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -22,27 +22,28 @@
 	
  */
 
-var status = -1;
+    var status = -1;
 
-function start(mode, type, selection) {
-    if (mode == -1) {
-        qm.dispose();
-    } else {
-        if(mode == 0 && type > 0) {
+    function start(mode, type, selection) {
+        if (mode == -1) {
             qm.dispose();
-            return;
-        }
-        
-        if (mode == 1)
-            status++;
-        else
-            status--;
-        
-        if (status == 0) {
-            qm.sendNext("Is that so? All there was was a saying that #p1103000# set out to continue his journey? That can't be, there were further instructions for him to detail the progress of his mission until then. #rReturn to the cave#k and report again if it really has nothing more there.");
-        } else if (status == 1) {
-            qm.forceCompleteQuest();
-            qm.dispose();
+        } else {
+            if(mode == 0 && type > 0) {
+                qm.dispose();
+                return;
+            }
+            
+            if (mode == 1)
+                status++;
+            else
+                status--;
+            
+            if (status == 0) {
+                qm.sendNext("是这样吗？有句话是说，#p1103000#打算继续他的旅程？不可能，在那之前还有进一步的指示要他详细说明任务的进展。#如果洞穴里真的没有什么东西了，请返回洞穴并再次报告.");
+            } else if (status == 1) {
+                qm.forceCompleteQuest();
+                qm.dispose();
+            }
         }
     }
-}
+    

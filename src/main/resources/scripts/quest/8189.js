@@ -38,14 +38,14 @@ function end(mode, type, selection) {
 			status--;
 		if (status == 0) {
                         if(qm.getMeso() < 10000) {
-                            qm.sendOk("Hey! I need #b10,000 mesos#k to do your pet's re-evolution!");
+                            qm.sendOk("嘿！我需要#b10,000金币#k来完成你宠物的重新进化！");
                             qm.dispose();
                             return;
                         }
                         
-			qm.sendYesNo("Alright then, let's do this again, shall we? As usual, it's going to be random, and I'm going to take away one of your Rock of Evolutions. \r\n\r #r#eReady?#n#k");
+			qm.sendYesNo("好吧，那我们再来一次，好吗？像往常一样，它是随机的，我要拿走你的进化之石。\r\n\r#r#e准备好了吗?#n#k");
 		} else if (status == 1) {
-			qm.sendNextPrev("Then here we go...! #rHYAHH!#k");
+			qm.sendNextPrev("然后我们开始...! #r耶!#k");
 		} else if (status == 2) {
 			var petidx = -1;
                         var petItemid;
@@ -57,7 +57,7 @@ function end(mode, type, selection) {
                                                 petItemid = 5000030;
                                                 petidx = i;
                                                 break;
-                                        } else if (id >= 5000048 && id <= 5000053) {    // thanks Conrad for noticing Robo pets not being able to re-evolve
+                                        } else if (id >= 5000048 && id <= 5000053) {    // 感谢 康拉德注意到机器人宠物无法重新进化
                                                 petItemid = 5000049;
                                                 petidx = i;
                                                 break;
@@ -66,7 +66,7 @@ function end(mode, type, selection) {
                         }
 
                         if (petidx == -1) {
-                                qm.sendOk("Something wrong, try again.");
+                                qm.sendOk("非常抱歉，系统繁忙，请休息一下再来！");
                                 qm.dispose();
                                 return;
                         }
@@ -96,7 +96,7 @@ function end(mode, type, selection) {
 			qm.gainItem(5380000, -1);
 			qm.evolvePet(petidx, after);
                         
-			qm.sendOk("Woo! It worked again! #rYou may find your new pet under your 'CASH' inventory.\r #kIt used to be a #b#i" + id + "##t" + id + "##k, and now it's \r a#b #i" + after + "##t" + after + "##k! \r\n Come back with 10,000 mesos and another Rock of Evolution if you don't like it!\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#v"+after+"# #t"+after+"#");
+			qm.sendOk("Woo!又起作用了！#你可能会发现你的新宠物 'CASH' inventory.\r #kIt used to be a #b#i" + id + "##t" + id + "##k, and now it's \r a#b #i" + after + "##t" + after + "##k! \r\n Come back with 10,000 mesos and another Rock of Evolution if you don't like it!\r\n\r\n#fUI/UIWindow.img/QuestIcon/4/0#\r\n#v"+after+"# #t"+after+"#");
 		} else if (status == 3) {
                         qm.dispose();
                 }
