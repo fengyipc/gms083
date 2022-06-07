@@ -1,6 +1,6 @@
 function enter(pi) {
     if (!pi.haveItem(4031890)) {
-        pi.getPlayer().dropMessage(6, "You need a warp card to activate this portal.");
+        pi.getPlayer().dropMessage(6, "你需要一张传送卡才能激活这个入口。");
         return false;
     }
     

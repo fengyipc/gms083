@@ -1,8 +1,8 @@
 /*
-	This file is part of the OdinMS Maple Story Server
+    This file is part of the OdinMS Maple Story Server
     Copyright (C) 2008 Patrick Huy <patrick.huy@frz.cc>
-		       Matthias Butz <matze@odinms.de>
-		       Jan Christian Meyer <vimes@odinms.de>
+               Matthias Butz <matze@odinms.de>
+               Jan Christian Meyer <vimes@odinms.de>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -27,24 +27,40 @@ function enter(pi) {
         var em = pi.getEventManager("PapulatusBattle");
 
         if (pi.getParty() == null) {
-            pi.playerMessage(5, "You are currently not in a party, create one to attempt the boss.");
+            pi.playerMessage(5, "你当前不队伍中，创建一个来尝试。");
             return false;
-        } else if(!pi.isLeader()) {
-            pi.playerMessage(5, "Your party leader must enter the portal to start the battle.");
+        } else if (!pi.isLeader()) {
+            pi.playerMessage(5, "你的队长必须进入传送门才能开始战斗。");
             return false;
         } else {
-            var eli = em.getEligibleParty(pi.getParty());
-            if(eli.size() > 0) {
-                if(!em.startInstance(pi.getParty(), pi.getPlayer().getMap(), 1)) {
-                    pi.playerMessage(5, "The battle against the boss has already begun, so you may not enter this place yet.");
-                    return false;
+            var me = Java.type("server.expeditions.MapleExpeditionBossLog");
+            var canGo = true;
+            var channel = pi.getPlayer().getClient().getChannel();
+            var name;
+            for (var i = 0; i < pi.getParty().getPartyMembers().size(); i++) {
+                if (!me.attemptBoss(pi.getParty().getPartyMembers().get(i).getId(), channel, "PAPULATUS", false)) {
+                    name = pi.getParty().getPartyMembers().get(i).getName();
+                    canGo = false;
+                    break;
                 }
             }
-            else {  //this should never appear
-                pi.playerMessage(5, "You cannot start this battle yet, because either your party is not in the range size, some of your party members are not eligible to attempt it or they are not in this map. If you're having trouble finding party members, try Party Search.");
+            if (!canGo) {
+                pi.playerMessage(5, "队伍中'" + name + "'玩家剩余挑战次数不足。");
                 return false;
             }
-
+            var eli = em.getEligibleParty(pi.getParty());
+            if (eli.size() > 0) {
+                if (!em.startInstance(pi.getParty(), pi.getPlayer().getMap(), 1)) {
+                    pi.playerMessage(5, "战斗已经开始，所以你还不能进入这个地方。");
+                    return false;
+                }
+            } else {  //this should never appear
+                pi.playerMessage(5, "你还不能开始这场战斗，因为你的队伍不在范围内，你的一些队员没有资格参加战斗，或者他们不这个地图。如果找不到成员，请尝试“群搜索”。");
+                return false;
+            }
+            for (var i = 0; i < pi.getParty().getPartyMembers().size(); i++) {
+                me.attemptBoss(pi.getParty().getPartyMembers().get(i).getId(), channel, "PAPULATUS", true);
+            }
             pi.playPortalSound();
             return true;
         }

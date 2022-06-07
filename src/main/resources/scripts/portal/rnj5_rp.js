@@ -24,7 +24,7 @@
 function enter(pi) {
     var mapplayer = "stage6_comb" + (pi.getMapId() % 10);
     var eim = pi.getEventInstance();
-    
+    java.lang.System.out.println( eim.getProperty(mapplayer));
     var comb = eim.getProperty(mapplayer);
     
     var name = pi.getPortal().getName().substring(2, 4);

@@ -7,7 +7,7 @@ function enter(pi) {
         var eim = pi.getEventInstance();
         eim.setIntProperty("glpq1", 1);
         
-        pi.getEventInstance().dropMessage(5, "A strange force starts being emitted from the portal apparatus, showing a hidden path once blocked now open.");
+        pi.getEventInstance().dropMessage(5, "一股奇怪的力量开始从传送门溢出来，显示出一条曾经被封锁的隐藏路径现在已经打开。");
         pi.playPortalSound(); pi.warp(610030100, 0);
         
         pi.getEventInstance().showClearEffect();
@@ -15,6 +15,6 @@ function enter(pi) {
         return true;
     }
     
-    pi.getEventInstance().dropMessage(5, "The portal apparatus is malfunctional, due to the last transportation. The finding another way through.");
+    pi.getEventInstance().dropMessage(5, "由于最近一次传送，传送门出现故障。找到另一条出路。");
     return false;
 }

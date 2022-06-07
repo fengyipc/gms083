@@ -5,7 +5,7 @@ function enter(pi) {
 	    pi.playPortalSound(); pi.warp(610030300, 0);
             return true;
 	} else {
-	    pi.playerMessage(5, "The portal has not been activated yet!");
+	    pi.playerMessage(5, "传送门还没激活！");
             return false;
 	}
     }

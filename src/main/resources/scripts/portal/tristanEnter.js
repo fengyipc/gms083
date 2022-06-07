@@ -3,7 +3,7 @@ function enter(pi) {
         pi.playPortalSound(); pi.warp(105100101, "in00");
         return true;
     } else {
-        pi.message("A mysterious force won't let you in.");
+        pi.message("一股神秘的力量不会让你进来的。");
         return false;
     }
 }

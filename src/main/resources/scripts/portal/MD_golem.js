@@ -20,7 +20,7 @@
 */
 
 /*
-MiniDungeon - Golem
+迷你地图 - 倒塌的巨人城池
 */ 
 
 var baseid = 105040304;
@@ -39,7 +39,7 @@ function enter(pi) {
                     }
                 }
             } else {
-                pi.playerMessage(5, "Only solo or party leaders are supposed to enter the Mini-Dungeon.");
+                pi.playerMessage(5, "只有单独玩家或者队长才可以进入迷你地图");
                 return false;
             }
         } else {
@@ -51,7 +51,7 @@ function enter(pi) {
                 }
             }
         }
-        pi.playerMessage(5, "All of the Mini-Dungeons are in use right now, please try again later.");
+        pi.playerMessage(5, "所有迷你地图现在都在被使用,请稍后再试");
         return false;
     } else {
     	pi.playPortalSound();

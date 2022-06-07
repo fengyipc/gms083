@@ -30,6 +30,6 @@ function enter(pi) {
         pi.playPortalSound(); pi.warp(990000431, 0);
         return true;
     }
-    pi.playerMessage(5, "This way forward is not open yet.");
+    pi.playerMessage(5, "前路未通");
     return false;
 }

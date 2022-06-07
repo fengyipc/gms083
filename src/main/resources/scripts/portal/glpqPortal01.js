@@ -3,7 +3,7 @@ function enter(pi) {
 	pi.playPortalSound(); pi.warp(610030540,0);
         return true;
     } else {
-	pi.playerMessage(5, "Only bowmen may enter this portal.");
+	pi.playerMessage(5, "只有弓箭手可以进入");
         return false;
     }
 }

@@ -29,7 +29,7 @@ function enter(pi) {
         pi.playPortalSound(); pi.warp(990000401, 0);
         return true;
     } else {
-        pi.getPlayer().dropMessage(5, "This way forward is not open yet.");
+        pi.getPlayer().dropMessage(5, "前路不通.");
         return false;
     }
 }

@@ -24,7 +24,7 @@ importPackage(Packages.server.life);
 function enter(pi) {
 	if(pi.isQuestStarted(21301) && pi.getQuestProgressInt(21301, 9001013) == 0) {
 		if(pi.getPlayerCount(108010700) != 0) {
-			pi.message("The portal is blocked from the other side. I wonder if someone is already fighting the Thief Crow?");
+			pi.message("入口被从另一边堵住了。我想知道是不是有人已经在和小偷乌鸦搏斗了？");
 			return false;
 		} else {
 			var map = pi.getClient().getChannelServer().getMapFactory().getMap(108010700);

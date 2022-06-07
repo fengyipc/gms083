@@ -19,7 +19,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 /*
-MiniDungeon - Skele
+迷你地图 - 复活的记忆
 */ 
 var baseid = 240040511;
 var dungeonid = 240040800;
@@ -50,6 +50,37 @@ function enter(pi) {
             }
         }
         pi.playerMessage(5, "All of the Mini-Dungeons are in use right now, please try again later.");
+        return false;
+    } else {
+    	pi.playPortalSound();
+    	pi.warp(baseid, "MD00");
+    	return true;
+    }
+}function enter(pi) {
+    if (pi.getMapId() == baseid) {
+        if (pi.getParty() != null) {
+            if (pi.isLeader()) {
+                for (var i = 0; i < dungeons; i++) {
+                    if(pi.startDungeonInstance(dungeonid + i)) {
+                        pi.playPortalSound();
+                        pi.warpParty(dungeonid + i, "out00");
+                        return true;
+                    }
+                }
+            } else {
+                pi.playerMessage(5, "只有单独玩家或者队长才可以进入迷你地图");
+                return false;
+            }
+        } else {
+            for (var i = 0; i < dungeons; i++) {
+                if(pi.startDungeonInstance(dungeonid + i)) {
+                    pi.playPortalSound();
+                    pi.warp(dungeonid + i, "out00");
+                    return true;
+                }
+            }
+        }
+        pi.playerMessage(5, "所有迷你地图现在都在被使用,请稍后再试");
         return false;
     } else {
     	pi.playPortalSound();

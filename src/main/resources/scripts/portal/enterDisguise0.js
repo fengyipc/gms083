@@ -30,7 +30,7 @@ function enter(pi) {
 			pi.playPortalSound();
 			pi.warp(130010000, "east00");
 		} else {
-			pi.getPlayer().dropMessage(5, "Due to the lock down you can not enter without a permit.");
+			pi.getPlayer().dropMessage(5, "由于封锁，没有许可证你不能进入。");
 			return false;
 		}
 	} else {

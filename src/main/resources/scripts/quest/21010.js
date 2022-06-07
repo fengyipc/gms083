@@ -89,7 +89,7 @@ function end(mode, type, selection) {
             qm.forceCompleteQuest();
         }
         
-        qm.sendNext("哦，你的水平！你甚至可能已经得到了一些技能点数。在枫树世界里，你每次都能获得3个技能点。按下 #bK 键 #k去查看技能窗口", 9);
+        qm.sendNext("哦，你的水平！你甚至可能已经得到了一些技能点数。在冒险岛世界里，你每次都能获得3个技能点。按下 #bK 键 #k去查看技能窗口", 9);
     } else if (status == 3) {
 	qm.sendNextPrev("#b(所有人都对我很好，但我什么都不记得了。我真的是英雄吗？我应该检查一下我的技能。但是我怎么检查呢?)", 3);
     } else if (status == 4) {

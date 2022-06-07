@@ -34,7 +34,7 @@ function enter(pi) {
         pi.playPortalSound(); pi.warp(925020001, 0);
         return true;
     } else {
-        pi.getPlayer().message("So Gong: Haha! You're going to run away like a coward? I won't let you get away that easily!");
+        pi.getPlayer().message("萧公：哈哈！你要像个懦夫一样逃跑？我不会让你那么容易就逃走的！");
         return false;
     }
 }

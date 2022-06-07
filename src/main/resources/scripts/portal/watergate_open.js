@@ -29,6 +29,6 @@ function enter(pi) {
         pi.playPortalSound(); pi.warp(990000600, 1);
         return true;
     } else
-        pi.getPlayer().dropMessage(5, "This way forward is not open yet.");
+        pi.getPlayer().dropMessage(5, "这条前进的道路还没有开放。");
     return false;
 }

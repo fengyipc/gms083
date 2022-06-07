@@ -1,6 +1,6 @@
 function enter(pi) {
 	if(!pi.isQuestCompleted(2335) && !(pi.isQuestStarted(2335) && pi.hasItem(4032405))){
-		pi.getPlayer().message("The door is locked securely. I will need a key if I want to go in there.");
+		pi.getPlayer().message("门锁得很牢。如果我想进去的话，我需要一把钥匙。");
 		return false;
 	}
 

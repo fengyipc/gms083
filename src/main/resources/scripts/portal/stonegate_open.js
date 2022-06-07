@@ -27,7 +27,7 @@ function enter(pi) {
         pi.playPortalSound(); pi.warp(990000430, 0);
         return true;
     } else {
-        pi.getPlayer().dropMessage(5, "The door is still blocked.");
+        pi.getPlayer().dropMessage(5, "门还没开.");
         return false;
     }
 }

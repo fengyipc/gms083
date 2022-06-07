@@ -12,7 +12,7 @@ function enter(pi) {
             pi.playPortalSound(); pi.warp(920030000,2);
             return true;
         } else {
-            pi.message("Someone is already challenging the area.");
+            pi.message("有人已经在挑战这个地区了。");
             return false;
         }
     } else {

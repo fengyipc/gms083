@@ -20,7 +20,7 @@
 function enter(pi) {
     var exit = pi.getEventInstance().getIntProperty("canLeave");
     if (exit == 0) {
-        pi.message("You have to wait one minute before you can leave this place.");
+        pi.message("你得等一分钟才能离开这个地方。");
         return false;
     } else if (exit == 2) {
         pi.playPortalSound();

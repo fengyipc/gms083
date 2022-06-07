@@ -55,7 +55,7 @@ function start(mode, type, selection) { // missing script for questid found than
             qm.forceStartQuest();
             qm.forceCompleteQuest();
             
-            qm.sendOk("#h0#. 为了勇敢地与黑魔法师战斗，从现在起，我将任命你为天鹅座骑士团的新首席骑士。请明智地运用你的权力和权威来帮助保护枫树世界的公民.");
+            qm.sendOk("#h0#. 为了勇敢地与黑魔法师战斗，从现在起，我将任命你为天鹅座骑士团的新首席骑士。请明智地运用你的权力和权威来帮助保护冒险岛世界的公民.");
         } else if (status == 4) {
             qm.dispose();
         }

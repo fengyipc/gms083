@@ -4,7 +4,7 @@ function enter(pi) {
     	pi.warp(140030000, 1);
     	return true;
     } else {
-        pi.playerMessage(5, "Something seems to be blocking this portal!");
+        pi.playerMessage(5, "好像有什么东西挡住了这个入口！");
         return false;
     }
 

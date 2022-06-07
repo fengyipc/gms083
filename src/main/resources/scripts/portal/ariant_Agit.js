@@ -28,7 +28,7 @@ function enter(pi) {
                 pi.playPortalSound(); pi.warp(260000201, 1);
                 return true;
         } else {
-                pi.message("Access restricted to only members of the Sand Bandits team.");
+                pi.message("只允许沙子图团成员进入。");
                 return false;
         }
 }

@@ -35,7 +35,7 @@ function enter(pi) {
         } else if(theWay == 3) {
             target = 240050310; //dark
         } else {
-            pi.playerMessage(5, "Hit the Lightbulb to determine your fate!");
+            pi.playerMessage(5, "敲打发光的地方决定你的命运！");
             return false;
         }
         
@@ -43,7 +43,7 @@ function enter(pi) {
         eim.warpEventTeam(target);
         return true;
     } else {
-        pi.playerMessage(6, "You are not the party leader. Only the party leader may proceed through this portal.");
+        pi.playerMessage(6, "你不是队长。只有队长才能通过这个传送门。");
         return false;
     }
 }

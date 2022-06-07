@@ -29,7 +29,7 @@ function enter(pi) {
         return false;
     } else {
         pi.playPortalSound(); pi.warp(260000300, 7);
-        pi.message("You, intruder! You don't have permission to roam the palace! Get out!!");
+        pi.message("你，入侵者！你无权在皇宫里闲逛！滚粗！！");
         return true;
     }
 }

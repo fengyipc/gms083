@@ -69,11 +69,11 @@ function end(mode, type, selection) {
         else if (status == 4)
                 qm.sendNextPrev("现在就走!", 3);
         else if (status == 5)
-                qm.sendNextPrev("勇士，求你了！我知道你想留下来和黑魔法师战斗，但太晚了！把它留给其他人，和我们一起去维多利亚岛！", 9);
+                qm.sendNextPrev("勇士，求你了！我知道你想留下来和黑魔法师战斗，但太晚了！把它留给其他人，和我们一起去金银岛！", 9);
         else if (status == 6)
                 qm.sendNextPrev("不，我不能！", 3);
         else if (status == 7) {
-                qm.sendNextPrev("你为什么不先去维多利亚岛？我答应你，我以后会来找你。我不会有事的我要和其他英雄一起对抗黑法师！", 3);
+                qm.sendNextPrev("你为什么不先去金银岛？我答应你，我以后会来找你。我不会有事的我要和其他英雄一起对抗黑法师！", 3);
         } else if (status == 8) {
                 qm.gainItem(4001271, -1);
                 qm.removeEquipFromSlot(-11);

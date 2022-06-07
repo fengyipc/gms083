@@ -1,8 +1,8 @@
 /*
-	This file is part of the OdinMS Maple Story Server
+    This file is part of the OdinMS Maple Story Server
     Copyright (C) 2008 Patrick Huy <patrick.huy@frz.cc>
-		       Matthias Butz <matze@odinms.de>
-		       Jan Christian Meyer <vimes@odinms.de>
+               Matthias Butz <matze@odinms.de>
+               Jan Christian Meyer <vimes@odinms.de>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -26,14 +26,14 @@ function enter(pi) {
     } else if (pi.isQuestStarted(100203) || pi.getPlayer().haveItem(4001094)) {
         var em = pi.getEventManager("NineSpirit");
         if (!em.startInstance(pi.getPlayer())) {
-            pi.message("There is currently someone in this map, come back later.");
+            pi.message("这个地图里已经有别的玩家了,过一会儿再来吧");
             return false;
         } else {
             pi.playPortalSound();
             return true;
         }
     } else {
-        pi.message("A strange force is blocking you from entering.");
+        pi.message("一股神秘的力量阻止了你前进的脚步.");
         return false;
     }
 }

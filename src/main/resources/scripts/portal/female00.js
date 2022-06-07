@@ -28,7 +28,7 @@ function enter(pi) {
         pi.playPortalSound(); pi.warp(670010200, 4);
         return true;
     } else {
-        pi.getPlayer().dropMessage(5, "You cannot proceed past here.");
+        pi.getPlayer().dropMessage(5, "你不能从这里过去。");
         return false;
     }
 }

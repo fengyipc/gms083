@@ -34,7 +34,7 @@ function enter(pi) {
         return true;
     }
     else {
-        pi.playerMessage(5, "This door is closed.");
+        pi.playerMessage(5, "门关了");
         return false;
     }
 }

@@ -22,7 +22,7 @@
 	Author: kevintjuh93
 */
 function enter(pi) {
-	pi.talkGuide("You're very close to town. I'll head over there first since I have some things to take care of. You take your time.");
+	pi.talkGuide("你离镇上很近了。我要先过去，因为我有一些事情要处理。你慢慢过来。");
 	pi.blockPortal();
 	return false;
 }

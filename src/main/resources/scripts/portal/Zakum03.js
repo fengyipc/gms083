@@ -25,12 +25,12 @@
  
 function enter(pi) {
     if (!pi.getEventInstance().isEventCleared()) {
-        pi.getPlayer().dropMessage(5, "Your team has not yet completed the trials. Fetch the Fire Ore and give it to Aura first.");
+        pi.getPlayer().dropMessage(5, "你的队伍还没有完成任务. 把火云石母矿拿来，先交给奥拉.");
         return false;
     }
     
     if (pi.getEventInstance().gridCheck(pi.getPlayer()) == -1) {
-        pi.getPlayer().dropMessage(5, "Your have yet to claim your prize. Talk to Aura.");
+        pi.getPlayer().dropMessage(5, "你还没有领取奖励.和奥拉对话.");
         return false;
     }
     

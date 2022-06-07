@@ -31,7 +31,7 @@ function enter(pi) {
         return true;
     }
     else {
-        pi.playerMessage(5, "This way forward is not open yet.");
+        pi.playerMessage(5, "这条前进的道路还没有开放。");
         return false;
     }
 }

@@ -20,6 +20,6 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 function enter(pi) {
-    pi.showInstruction("Press #e#b[Up]#k on the arrow key#n to climb up the ladder or rope.", 350, 5);
+    pi.showInstruction("按#e#b[↑]#k方向键#n爬梯子或绳子.", 350, 5);
     return true;
 }

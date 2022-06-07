@@ -1,5 +1,5 @@
 /*
-	This file is part of the OdinMS Maple Story Server
+    This file is part of the OdinMS Maple Story Server
     Copyright (C) 2008 Patrick Huy <patrick.huy@frz.cc> 
                        Matthias Butz <matze@odinms.de>
                        Jan Christian Meyer <vimes@odinms.de>
@@ -20,15 +20,11 @@
 */
 /*
 Author: kevintjuh93
-*/ 
+*/
 
 function enter(pi) {
-    var mapId = pi.getPlayer().getSavedLocation("MIRROR");
-    
     pi.playPortalSound();
-    if(mapId == -1) pi.warp(102040000, 12);
-    else pi.warp(mapId);
-    
+    pi.warp(102040000, "subway00");
     //pi.warp(102040000, 12);
     return true;
 }

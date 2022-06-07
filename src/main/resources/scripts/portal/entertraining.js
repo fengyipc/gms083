@@ -8,7 +8,7 @@ function enter(pi) {
         } else if (pi.isQuestStarted(1044)) {
 		pi.playPortalSound(); pi.warp(1010400, 4);
         } else {
-		pi.message("Only the adventurers that have been trained by Mai may enter.");
+		pi.message("只有受过麦训练的探险家才能进入。");
 		return false;
 	}
 	return true;

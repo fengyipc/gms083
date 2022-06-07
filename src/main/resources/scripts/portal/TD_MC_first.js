@@ -15,6 +15,6 @@ function enter(pi) {
 		pi.warp(106020000, 0);
 		return true;
 	}
-	pi.playerMessage(5, "A strange force is blocking you from entering.");
+	pi.playerMessage(5, "一股奇怪的力量阻止你进入。");
 	return false;
 }

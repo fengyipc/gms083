@@ -5,22 +5,22 @@ function enter(pi) {
         
 	if (eim.getIntProperty("glpq3") < 5 || eim.getIntProperty("glpq3_p") < 5) {
             if(eim.getIntProperty("glpq3_p") == 5) {
-                pi.mapMessage(6, "Not all Sigils have been activated yet. Make sure they have all been activated to proceed to the next stage.");
+                pi.mapMessage(6, "并不是所有的信号都被激活了。确保它们都已被激活以进入下一阶段。");
             } else {
                 eim.setIntProperty("glpq3_p", eim.getIntProperty("glpq3_p") + 1);
                 
                 if(eim.getIntProperty("glpq3") == 5 && eim.getIntProperty("glpq3_p") == 5) {
-                    pi.mapMessage(6, "The Antellion grants you access to the next portal! Proceed!");
+                    pi.mapMessage(6, "安泰利安允许你进入下一个入口！继续！");
                     
                     eim.showClearEffect(610030300, "3pt", 2);
                     eim.giveEventPlayersStageReward(3);
                 } else {
-                    pi.mapMessage(6, "An adventurer has passed through! " + (5 - eim.getIntProperty("glpq3_p")) + " to go.");
+                    pi.mapMessage(6, "一个冒险家经过了！还差 " + (5 - eim.getIntProperty("glpq3_p")) + " 个.");
                 }
             }
 	}
         else {
-            pi.getPlayer().dropMessage(6, "The portal at the bottom has already been opened! Proceed there!");
+            pi.getPlayer().dropMessage(6, "下面的传送门已经打开了！继续前进！");
         }
         
         return true;

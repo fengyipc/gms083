@@ -9,13 +9,13 @@ function enter(pi) {
 				pi.playPortalSound(); pi.warp(930000200,0);
                                 return true;
 			} else {
-				pi.playerMessage(5, "Eliminate all the monsters.");
+				pi.playerMessage(5, "击败所有怪物");
                                 return false;
 			}
 			break;
 		case 930000200:
 			if (pi.getMap().getReactorByName("spine") != null && pi.getMap().getReactorByName("spine").getState() < 4) {
-				pi.playerMessage(5, "The spine blocks the way.");
+				pi.playerMessage(5, "脊椎挡住了路.");
                                 return false;
 			} else {
 				pi.playPortalSound(); pi.warp(930000300,0); //assuming they cant get past reactor without it being gone
@@ -24,7 +24,7 @@ function enter(pi) {
 			break;
                         
                 default:
-                        pi.playerMessage(5, "This portal leads to an unbound path.");
+                        pi.playerMessage(5, "这个传送门指向不确定的位置.");
                         return false;
 	}
 }

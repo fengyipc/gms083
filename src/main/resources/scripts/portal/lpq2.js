@@ -32,7 +32,7 @@ function enter(pi) {
 	var avail = eim.getProperty("3stageclear");
 	if (avail == null) {
 		// can't go thru eh?
-		pi.getPlayer().dropMessage(5, "Some seal is blocking this door.");
+		pi.getPlayer().dropMessage(5, "封印锁闭了传送门。");
 		return false;
         }
 	else {

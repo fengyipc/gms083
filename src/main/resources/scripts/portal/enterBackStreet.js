@@ -4,7 +4,7 @@ function enter(pi) {
         return true;
     }
     else {
-        pi.message("You don't have permission to access this area.");
+        pi.message("你没有得到进入这个区域的允许");
         return false;
     }
 }

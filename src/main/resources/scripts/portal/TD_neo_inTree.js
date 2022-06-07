@@ -1,7 +1,7 @@
 function enter(pi) {
     var nex = pi.getEventManager("GuardianNex");
     if(nex == null) {
-        pi.message("Guardian Nex challenge encountered an error and is unavailable.");
+        pi.message("Guardian Nex challenge遇到错误，无法使用。");
         return false;
     }
     
@@ -11,12 +11,12 @@ function enter(pi) {
     for(var i = 0; i < quests.length; i++) {
         if (pi.isQuestActive(quests[i])) {
             if(pi.getQuestProgressInt(quests[i], mobs[i]) != 0) {
-                pi.message("You already faced Nex. Complete your mission.");
+                pi.message("你已经面对过Nex了。完成你的任务。");
                 return false;
             }
             
             if(!nex.startInstance(i, pi.getPlayer())) {
-                pi.message("Someone is already challenging Nex. Wait for them to finish before you enter.");
+                pi.message("有人已经在挑战Nex了。等他们说完再进去。");
                 return false;
             } else {
                 pi.playPortalSound();
@@ -25,6 +25,6 @@ function enter(pi) {
         }
     }
     
-    pi.message("A mysterious force won't let you in.");
+    pi.message("一股神秘的力量不会让你进来的。");
     return false;
 }

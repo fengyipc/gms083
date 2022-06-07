@@ -31,7 +31,7 @@ function enter(pi) {
         
             return true;
         } else {
-            pi.getPlayer().message("Make room on your ETC to receive the quest item.");
+            pi.getPlayer().message("其他栏留个空间.");
             return false;
         }
     } else {

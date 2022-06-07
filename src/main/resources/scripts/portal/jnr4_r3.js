@@ -10,7 +10,7 @@ function enter(pi) {
 	pi.playPortalSound(); pi.warp(926110301 + reg, 0); //next
         return true;
     } else {
-	pi.playerMessage(5, "This room is already being explored.");
+	pi.playerMessage(5, "这里已经有玩家在探索了。");
         return false;
     }
 }

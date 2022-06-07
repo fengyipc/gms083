@@ -45,7 +45,7 @@ function action(mode, type, selection) {
                     if(!(im.isQuestStarted(100202) || im.isQuestCompleted(100202))) im.startQuest(100202);
                     im.removeAll(2430014);
 
-                    im.message("You have used the Killer Mushroom Spore to open the way.");
+                    im.message("使用奇拉蘑菇孢子打开了一条通路.");
                 }
             }
             

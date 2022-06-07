@@ -15,7 +15,7 @@ function enter(pi) {
                 var minutes = (Math.floor(jailedTime / (1000*60)) % 60);
                 var hours   = (Math.floor(jailedTime / (1000*60*60)) % 24);
             
-                pi.playerMessage(5, "You have been caught in bad behaviour by the Maple POLICE. You've got to stay here for " + hours + " hours " + minutes + " minutes " + seconds + " seconds yet.");
+                pi.playerMessage(5, "你的不良行为被发现了。你还得待在这里" + hours + "小时" + minutes + "分钟" + seconds + "秒.");
                 return false;
         }
 }

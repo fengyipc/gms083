@@ -24,7 +24,7 @@ function enter(pi) {
         pi.playPortalSound(); pi.warp(926130000, "out00");
         return true;
     } else {
-        pi.playerMessage(5, "This pipe seems too dark to venture inside.");
+        pi.playerMessage(5, "这烟太暗了，不敢进去。.");
         return false;
     }
 }

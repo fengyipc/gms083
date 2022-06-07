@@ -5,11 +5,11 @@ function enter(pi) {
             pi.playPortalSound(); pi.warp(140010210, 0);
             return true;
         } else {
-            pi.playerMessage(5, "Free a slot on your inventory before receiving the couse clear's token.");
+            pi.playerMessage(5, "其他栏留一个空间给雷电透明道具");
             return false;
         }
     } else {
-        pi.playerMessage(5, "Defeat all wolves before exiting the stage.");
+        pi.playerMessage(5, "在离开前击败所有的狼。");
         return false;
     }
 }

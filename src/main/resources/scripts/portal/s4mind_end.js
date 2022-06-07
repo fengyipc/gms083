@@ -19,7 +19,7 @@
 */
 function enter(pi) {
     if (!pi.getEventInstance().isEventCleared()) {
-        pi.message("You have to clear this mission before entering this portal.");
+        pi.message("你必须在进入这个入口之前清除这个任务。");
         return false;
     } else {
         if (pi.isQuestStarted(6410)) {

@@ -34,7 +34,7 @@ function enter(pi) {
         return true;
     }
     else {
-        pi.playerMessage(5, "This crack appears to be blocked off by the door nearby.");
+        pi.playerMessage(5, "这个裂缝似乎被附近的门堵住了。");
         return false;
     }
 }

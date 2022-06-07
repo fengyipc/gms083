@@ -25,11 +25,11 @@
 
 function enter(pi) {
     if (pi.getMap().countPlayers() == 1) {
-        pi.getPlayer().dropMessage(6, "As the last player on this map, you are compelled to wait for the incoming keys.");
+        pi.getPlayer().dropMessage(6, "作为这个地图上的最后一个玩家，你必须等待进入的钥匙。");
         return false;
     }else {
         if(pi.haveItem(4001087)) {
-            pi.getPlayer().dropMessage(6, "You cannot pass to the next map holding the 1st Crystal Key in your inventory.");
+            pi.getPlayer().dropMessage(6, "由于持有第一个水晶钥匙,你不能传递到下一个地图。");
             return false;
         }
         pi.playPortalSound(); pi.warp(240050101, 0);

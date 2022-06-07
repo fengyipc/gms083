@@ -8,7 +8,7 @@ function enter(pi) {
         pi.playPortalSound(); pi.warp(925100100,0); //next
         return true;
     } else {
-        pi.playerMessage(5, "The portal is not opened yet.");
+        pi.playerMessage(5, "传送门没有打开");
         return false;
     }
 }

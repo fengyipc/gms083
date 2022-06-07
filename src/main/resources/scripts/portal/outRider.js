@@ -4,7 +4,7 @@ function enter(pi) {
         pi.playPortalSound(); pi.warp(211050000, 4);
         return true;
     } else {
-        pi.playerMessage(5, "Free a slot on your inventory before receiving the couse clear's token.");
+        pi.playerMessage(5, "其他栏留一个空间给雷电透明道具.");
         return false;
     }
 }

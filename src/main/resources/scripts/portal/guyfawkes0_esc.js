@@ -22,7 +22,7 @@ function enter(pi) {
                 pi.playPortalSound(); pi.warp(674030200, 0);
                 return true;
         } else {
-                pi.message("The tunnel is currently blocked.");
+                pi.message("隧道目前被封锁。");
                 return false;
         }
 }

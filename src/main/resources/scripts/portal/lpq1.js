@@ -31,7 +31,7 @@ function enter(pi) {
     var targetPortal = target.getPortal("st00");
     var avail = eim.getProperty("2stageclear");
     if (avail == null) {
-        pi.getPlayer().dropMessage(5, "Some seal is blocking this door.");
+        pi.getPlayer().dropMessage(5, "封印锁闭了传送门。");
         return false;
     }
     else {
